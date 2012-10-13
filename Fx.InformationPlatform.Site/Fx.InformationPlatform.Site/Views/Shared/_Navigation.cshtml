@@ -1,0 +1,33 @@
+﻿<div id="topbar">
+    <div class="container_24">
+        <div class="grid_24" style="text-align: right;">
+            @if (Session["CurrentUser"] == null || Session["CurrentUser"] == "")
+            { 
+                <div class="topbar">
+                    @Html.ActionLink("注册", "Create", "Account", new { rel = "nofollow" })
+                    <span class="sep">|</span>
+                    @Html.ActionLink("登录", "Login", "Account", new { rel = "nofollow" })
+                    <span class="sep">|</span> <a href="http://www.baixing.com/wo/" rel="nofollow">我的英淘网</a>
+                    <span class="sep">|</span> <a class="topbar-fav" href="http://www.baixing.com/wo/favorite/" rel="nofollow">我的收藏</a>
+
+                  @*  <span class="sep">|</span> <a href="/pay/entrance/" rel="nofollow" target="_blank">付费推广</a>*@
+                </div>
+                <!-- topbar -->
+            }
+            else
+            {
+                <div class="topbar">
+                    <span class="topbar-right-text">欢迎，<a href="http://www.baixing.com/wo">chen27468</a>
+                        [<a href="/auth/tuichu/?src=homeheader" onclick="_gaq.push(['_trackEvent', 'logout', 'click', 'header']);">退出</a>]
+                    </span>
+                    <span class="sep">|</span> <a href="http://www.baixing.com/wo/" rel="nofollow">我的百姓网</a>
+                    <span class="sep">|</span> <a class="topbar-fav" href="http://www.baixing.com/wo/favorite/" rel="nofollow">我的收藏</a>
+
+                   @* <span class="sep">|</span> <a href="/pay/entrance/" rel="nofollow" target="_blank">付费推广</a>*@
+                </div>
+            }
+        </div>
+        <div class="clear"></div>
+    </div>
+    <!-- .container -->
+</div>
