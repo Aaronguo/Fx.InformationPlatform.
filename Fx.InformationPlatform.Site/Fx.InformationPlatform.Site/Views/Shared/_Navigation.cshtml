@@ -4,9 +4,9 @@
             @if (Session["CurrentUser"] == null || Session["CurrentUser"] == "")
             { 
                 <div class="topbar">
-                    @Html.ActionLink("注册", "Create", "Account", new { rel = "nofollow" })
+                    @Html.ActionLink("注册", "Register", "Account")
                     <span class="sep">|</span>
-                    @Html.ActionLink("登录", "Login", "Account", new { rel = "nofollow" })
+                    @Html.ActionLink("登录", "Login", "Account")
                     <span class="sep">|</span> <a href="http://www.baixing.com/wo/" rel="nofollow">我的英淘网</a>
                     <span class="sep">|</span> <a class="topbar-fav" href="http://www.baixing.com/wo/favorite/" rel="nofollow">我的收藏</a>
 

@@ -18,13 +18,14 @@ namespace Fx.Domain.Account.Mapping
     using System.Data.Entity.ModelConfiguration;
     using System.Data.Entity.Infrastructure;
     using Fx.Entity;
+    using Fx.Entity.MemberShip;
     
     internal partial class Profile_Mapping : EntityTypeConfiguration<Profile>
     {
         public Profile_Mapping()
         {                        
-              this.HasKey(t => t.UserId);        
-              this.ToTable("Profile");
+              this.HasKey(t => t.UserId);
+              this.ToTable("aspnet_Profile");
               this.Property(t => t.UserId).HasColumnName("UserId");
               this.Property(t => t.PropertyNames).HasColumnName("PropertyNames").IsRequired();
               this.Property(t => t.PropertyValuesString).HasColumnName("PropertyValuesString").IsRequired();

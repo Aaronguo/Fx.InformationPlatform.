@@ -14,49 +14,53 @@ namespace Fx.Domain.Account
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using Fx.Domain.Account.Mapping;
+    using Fx.Domain.Account.Mapping.Other;
     using Fx.Entity;
-    
+    using Fx.Entity.MemberShip;
+
     public class AccountContext : DbContext
     {
         static AccountContext()
-    	{ 
-    		Database.SetInitializer<AccountContext>(null);
-    	}
+        {
+            Database.SetInitializer<AccountContext>(null);
+        }
 
         public AccountContext()
-            : base("name=membershipConnection")
+            : base(System.Configuration.ConfigurationManager.ConnectionStrings["fx.userdb"].ToString())
         {
+            
         }
-    	
+
         //public AccountContext(string nameOrConnectionString) : base(nameOrConnectionString)
         //{	
         //}
-    
+
         //public AccountContext(string nameOrConnectionString, DbCompiledModel model) : base(nameOrConnectionString, model)
         //{
         //}
-    
+
         //public AccountContext(DbConnection existingConnection, bool contextOwnsConnection) : base(existingConnection, contextOwnsConnection)
         //{
         //}
-    
+
         //public AccountContext(DbConnection existingConnection, DbCompiledModel model, bool contextOwnsConnection) : base(existingConnection, model, contextOwnsConnection)
         //{
         //}
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {		
-    		modelBuilder.Configurations.Add(new Applications_Mapping());
-    		modelBuilder.Configurations.Add(new Membership_Mapping());
-    		modelBuilder.Configurations.Add(new Paths_Mapping());
-    		modelBuilder.Configurations.Add(new PersonalizationAllUsers_Mapping());
-    		modelBuilder.Configurations.Add(new PersonalizationPerUser_Mapping());
-    		modelBuilder.Configurations.Add(new Profile_Mapping());
-    		modelBuilder.Configurations.Add(new Roles_Mapping());
-    		modelBuilder.Configurations.Add(new SchemaVersions_Mapping());
-    		modelBuilder.Configurations.Add(new Users_Mapping());
-    		modelBuilder.Configurations.Add(new WebEvent_Events_Mapping());
+        {
+            modelBuilder.Configurations.Add(new Applications_Mapping());
+            modelBuilder.Configurations.Add(new Membership_Mapping());
+            modelBuilder.Configurations.Add(new Paths_Mapping());
+            modelBuilder.Configurations.Add(new PersonalizationAllUsers_Mapping());
+            modelBuilder.Configurations.Add(new PersonalizationPerUser_Mapping());
+            modelBuilder.Configurations.Add(new Profile_Mapping());
+            modelBuilder.Configurations.Add(new Roles_Mapping());
+            modelBuilder.Configurations.Add(new SchemaVersions_Mapping());
+            modelBuilder.Configurations.Add(new Users_Mapping());
+            modelBuilder.Configurations.Add(new WebEvent_Events_Mapping());
+            modelBuilder.Configurations.Add(new OtherInformation_Mapping());
         }
-    	
+
         public DbSet<Applications> Applications { get; set; }
         public DbSet<Membership> Membership { get; set; }
         public DbSet<Paths> Paths { get; set; }
@@ -67,5 +71,6 @@ namespace Fx.Domain.Account
         public DbSet<SchemaVersions> SchemaVersions { get; set; }
         public DbSet<Users> Users { get; set; }
         public DbSet<WebEvent_Events> WebEvent_Events { get; set; }
+        public DbSet<OtherInformation> OtherInformations { get; set; }
     }
 }

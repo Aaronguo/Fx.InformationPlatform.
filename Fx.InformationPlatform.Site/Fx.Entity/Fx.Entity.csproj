@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -39,8 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\RegisterUser.cs" />
     <Compile Include="MemberShip\Applications.cs" />
     <Compile Include="MemberShip\Membership.cs" />
+    <Compile Include="MemberShip\OtherInformation.cs" />
     <Compile Include="MemberShip\Paths.cs" />
     <Compile Include="MemberShip\PersonalizationAllUsers.cs" />
     <Compile Include="MemberShip\PersonalizationPerUser.cs" />
@@ -51,7 +54,15 @@
     <Compile Include="MemberShip\WebEvent_Events.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Account\readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Fx.Infrastructure\Fx.Infrastructure.csproj">
+      <Project>{41138e06-4c15-4641-9207-d0bf5c9f32da}</Project>
+      <Name>Fx.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

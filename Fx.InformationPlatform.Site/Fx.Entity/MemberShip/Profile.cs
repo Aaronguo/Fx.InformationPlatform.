@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Fx.Entity
+namespace Fx.Entity.MemberShip
 {
     
     using System;
@@ -22,5 +22,9 @@ namespace Fx.Entity
         public System.DateTime LastUpdatedDate { get; set; }
     
         public virtual Users Users { get; set; }
+
+        public Profile()
+        {
+        }
     }
 }

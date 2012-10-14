@@ -10,21 +10,15 @@
 namespace Fx.Domain.Account.Mapping
 {
     #pragma warning disable 1573
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Common;
-    using System.Data.Entity;
     using System.Data.Entity.ModelConfiguration;
-    using System.Data.Entity.Infrastructure;
-    using Fx.Entity;
+    using Fx.Entity.MemberShip;
     
     internal partial class WebEvent_Events_Mapping : EntityTypeConfiguration<WebEvent_Events>
     {
         public WebEvent_Events_Mapping()
         {                        
-              this.HasKey(t => t.EventId);        
-              this.ToTable("WebEvent_Events");
+              this.HasKey(t => t.EventId);
+              this.ToTable("aspnet_WebEvent_Events");
               this.Property(t => t.EventId).HasColumnName("EventId").IsRequired().IsUnicode(false).IsFixedLength().HasMaxLength(32);
               this.Property(t => t.EventTimeUtc).HasColumnName("EventTimeUtc");
               this.Property(t => t.EventTime).HasColumnName("EventTime");

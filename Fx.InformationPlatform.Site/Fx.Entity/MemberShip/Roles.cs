@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Fx.Entity
+namespace Fx.Entity.MemberShip
 {
     
     using System;
@@ -28,5 +28,7 @@ namespace Fx.Entity
     
         public virtual Applications Applications { get; set; }
         public virtual ICollection<Users> Users { get; set; }
+
+
     }
 }

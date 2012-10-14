@@ -18,13 +18,14 @@ namespace Fx.Domain.Account.Mapping
     using System.Data.Entity.ModelConfiguration;
     using System.Data.Entity.Infrastructure;
     using Fx.Entity;
+    using Fx.Entity.MemberShip;
     
     internal partial class Roles_Mapping : EntityTypeConfiguration<Roles>
     {
         public Roles_Mapping()
         {                        
-              this.HasKey(t => t.RoleId);        
-              this.ToTable("Roles");
+              this.HasKey(t => t.RoleId);
+              this.ToTable("aspnet_Roles");
               this.Property(t => t.ApplicationId).HasColumnName("ApplicationId");
               this.Property(t => t.RoleId).HasColumnName("RoleId");
               this.Property(t => t.RoleName).HasColumnName("RoleName").IsRequired().HasMaxLength(256);

@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Security;
+using System.Linq;
+using System.Data.Entity;
 
 namespace Fx.Domain.Account
 {
@@ -21,15 +18,17 @@ namespace Fx.Domain.Account
             var user = Membership.GetUser(userName);
             if (user != null)
             {
-                return DomainResult.GetDefault();
+                var ret = DomainResult.GetDefault();
+                ret.Tag = user;
+                return ret;
             }
             else
             {
-                return new DomainResult(false) { Tag = user };
+                return new DomainResult(false);
             }
         }
 
-        public DomainResult AddUser(Entity.Membership entity)
+        public DomainResult AddUser(Entity.MemberShip.Membership entity)
         {
             if (!IsExistUser(entity.Users.UserName).isSuccess)
             {
@@ -37,7 +36,20 @@ namespace Fx.Domain.Account
                 var result = DomainResult.GetDefault();
                 try
                 {
-                    Membership.CreateUser(entity.Users.UserName, entity.Users.UserName);
+                    var muser = Membership.CreateUser(entity.Users.UserName, entity.Password, entity.Password);
+                    if (muser != null)
+                    {
+                        AccountContext db = new AccountContext();
+                        var user = db.Users.Where(r => r.UserName == entity.Users.UserName).First();
+                        var otherInformation = new Fx.Entity.MemberShip.OtherInformation();
+                        otherInformation.Mobile = entity.MobilePIN;
+                        otherInformation.QQ = "";
+                        otherInformation.Sex = Entity.MemberShip.SexCatalog.Male;
+                        otherInformation.ApplicationId = user.ApplicationId;
+                        otherInformation.UserId = user.UserId;
+                        var rEntity = db.OtherInformations.Add(otherInformation);
+                        db.SaveChanges();
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -54,7 +66,7 @@ namespace Fx.Domain.Account
 
         }
 
-        public DomainResult DeleteUser(Entity.Membership entity)
+        public DomainResult DeleteUser(Entity.MemberShip.Membership entity)
         {
             if (!IsExistUser(entity.Users.UserName).isSuccess)
             {
@@ -78,7 +90,7 @@ namespace Fx.Domain.Account
             }
         }
 
-        public DomainResult UpdateUser(Entity.Membership entity)
+        public DomainResult UpdateUser(Entity.MemberShip.Membership entity)
         {
             var res = IsExistUser(entity.Users.UserName);
             if (!res.isSuccess)
@@ -111,7 +123,7 @@ namespace Fx.Domain.Account
 
 
 
-        public DomainResult ChangePassword(Entity.Membership entity)
+        public DomainResult ChangePassword(Entity.MemberShip.Membership entity)
         {
             var result = DomainResult.GetDefault();
             var u = Membership.GetUser(entity.Users.UserName);
@@ -146,5 +158,9 @@ namespace Fx.Domain.Account
         }
 
 
+        public int GetUserCount()
+        {
+            return new AccountContext().Users.Count();
+        }
     }
 }

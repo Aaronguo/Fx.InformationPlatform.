@@ -35,6 +35,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Web" />
@@ -46,8 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\AccountInitializer.cs" />
     <Compile Include="Account\Mapping\Applications_Mapping.cs" />
     <Compile Include="Account\Mapping\Membership_Mapping.cs" />
+    <Compile Include="Account\Mapping\Other\OtherInformation_Mapping.cs" />
     <Compile Include="Account\Mapping\Paths_Mapping.cs" />
     <Compile Include="Account\Mapping\PersonalizationAllUsers_Mapping.cs" />
     <Compile Include="Account\Mapping\PersonalizationPerUser_Mapping.cs" />

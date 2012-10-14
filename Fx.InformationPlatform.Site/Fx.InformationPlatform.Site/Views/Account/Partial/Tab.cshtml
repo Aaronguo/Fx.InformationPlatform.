@@ -12,10 +12,12 @@
         </ul>
     </div>
 </div>
-<input id="tabShow" type="hidden" value="@ViewBag.Tag" />
+
+@*<input id="tabShow" type="hidden" value="@ViewBag.Tag" />*@
 
 <script>
     //修正因跳转后 tab的激活窗口的显示问题 class="active"  这个值由后台传入到hidden中 在通过脚本找出 li 元素进行样式添加 
+    //页面中添加tabShow的隐藏域控件，不在从ViewBag.Tag传入，相应移除Controller中的ViewBag.Tag代码 
     $(document).ready(function () {    
         var id = $('#tabShow').attr('value');
         var lis = $('#tabcontrol>li');

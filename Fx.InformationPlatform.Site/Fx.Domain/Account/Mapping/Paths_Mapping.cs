@@ -18,13 +18,14 @@ namespace Fx.Domain.Account.Mapping
     using System.Data.Entity.ModelConfiguration;
     using System.Data.Entity.Infrastructure;
     using Fx.Entity;
+    using Fx.Entity.MemberShip;
     
     internal partial class Paths_Mapping : EntityTypeConfiguration<Paths>
     {
         public Paths_Mapping()
         {                        
-              this.HasKey(t => t.PathId);        
-              this.ToTable("Paths");
+              this.HasKey(t => t.PathId);
+              this.ToTable("aspnet_Paths");
               this.Property(t => t.ApplicationId).HasColumnName("ApplicationId");
               this.Property(t => t.PathId).HasColumnName("PathId");
               this.Property(t => t.Path).HasColumnName("Path").IsRequired().HasMaxLength(256);

@@ -10,21 +10,15 @@
 namespace Fx.Domain.Account.Mapping
 {
     #pragma warning disable 1573
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Common;
-    using System.Data.Entity;
     using System.Data.Entity.ModelConfiguration;
-    using System.Data.Entity.Infrastructure;
-    using Fx.Entity;
+    using Fx.Entity.MemberShip;
     
     internal partial class PersonalizationPerUser_Mapping : EntityTypeConfiguration<PersonalizationPerUser>
     {
         public PersonalizationPerUser_Mapping()
         {                        
-              this.HasKey(t => t.Id);        
-              this.ToTable("PersonalizationPerUser");
+              this.HasKey(t => t.Id);
+              this.ToTable("aspnet_PersonalizationPerUser");
               this.Property(t => t.Id).HasColumnName("Id");
               this.Property(t => t.PathId).HasColumnName("PathId");
               this.Property(t => t.UserId).HasColumnName("UserId");

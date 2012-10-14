@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Fx.Entity
+namespace Fx.Entity.MemberShip
 {
     
     using System;
@@ -20,5 +20,10 @@ namespace Fx.Entity
         public System.DateTime LastUpdatedDate { get; set; }
     
         public virtual Paths Paths { get; set; }
+
+        public PersonalizationAllUsers()
+        {
+        }
+                    
     }
 }

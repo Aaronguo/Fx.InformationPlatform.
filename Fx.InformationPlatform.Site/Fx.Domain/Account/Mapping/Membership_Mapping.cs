@@ -10,21 +10,15 @@
 namespace Fx.Domain.Account.Mapping
 {
     #pragma warning disable 1573
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Common;
-    using System.Data.Entity;
     using System.Data.Entity.ModelConfiguration;
-    using System.Data.Entity.Infrastructure;
-    using Fx.Entity;
+    using Fx.Entity.MemberShip;
     
     internal partial class Membership_Mapping : EntityTypeConfiguration<Membership>
     {
         public Membership_Mapping()
         {                        
-              this.HasKey(t => t.UserId);        
-              this.ToTable("Membership");
+              this.HasKey(t => t.UserId);
+              this.ToTable("aspnet_");
               this.Property(t => t.ApplicationId).HasColumnName("ApplicationId");
               this.Property(t => t.UserId).HasColumnName("UserId");
               this.Property(t => t.Password).HasColumnName("Password").IsRequired().HasMaxLength(128);

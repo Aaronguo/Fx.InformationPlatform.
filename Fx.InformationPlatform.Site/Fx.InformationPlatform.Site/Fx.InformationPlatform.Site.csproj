@@ -121,6 +121,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\aspnet-Fx.InformationPlatform.Site-20121013215011.mdf" />
+    <Content Include="App_Data\aspnet-Fx.InformationPlatform.Site-20121013215011_log.ldf">
+      <DependentUpon>aspnet-Fx.InformationPlatform.Site-20121013215011.mdf</DependentUpon>
+    </Content>
     <Content Include="baixing\css\baixing.css" />
     <Content Include="baixing\css\base.css" />
     <Content Include="baixing\img\icons.png" />
@@ -156,6 +160,7 @@
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Config\DataBase.config" />
     <None Include="Scripts\jquery-1.6.2-vsdoc.js" />
     <Content Include="gs\css\960_24_col.css" />
     <Content Include="gs\css\reset.css" />
@@ -206,9 +211,10 @@
     <Content Include="Views\Shared\_Navigation.cshtml" />
     <Content Include="Views\Account\Partial\Tab.cshtml" />
     <Content Include="Views\Account\Profile.cshtml" />
+    <Content Include="Views\Account\Test.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Shared\BaixingUI\" />
   </ItemGroup>

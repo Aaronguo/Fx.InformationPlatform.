@@ -10,21 +10,15 @@
 namespace Fx.Domain.Account.Mapping
 {
     #pragma warning disable 1573
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Common;
-    using System.Data.Entity;
     using System.Data.Entity.ModelConfiguration;
-    using System.Data.Entity.Infrastructure;
-    using Fx.Entity;
+    using Fx.Entity.MemberShip;
     
     internal partial class Applications_Mapping : EntityTypeConfiguration<Applications>
     {
         public Applications_Mapping()
         {                        
-              this.HasKey(t => t.ApplicationId);        
-              this.ToTable("Applications");
+              this.HasKey(t => t.ApplicationId);
+              this.ToTable("aspnet_Applications");
               this.Property(t => t.ApplicationName).HasColumnName("ApplicationName").IsRequired().HasMaxLength(256);
               this.Property(t => t.LoweredApplicationName).HasColumnName("LoweredApplicationName").IsRequired().HasMaxLength(256);
               this.Property(t => t.ApplicationId).HasColumnName("ApplicationId");

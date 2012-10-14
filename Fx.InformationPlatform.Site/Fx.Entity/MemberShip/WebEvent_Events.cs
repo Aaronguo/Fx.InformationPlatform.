@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Fx.Entity
+namespace Fx.Entity.MemberShip
 {
     
     using System;

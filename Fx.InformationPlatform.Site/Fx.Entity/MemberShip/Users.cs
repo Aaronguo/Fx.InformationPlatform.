@@ -7,12 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Fx.Entity
+namespace Fx.Entity.MemberShip
 {
-    
+
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Users
     {
         public Users()
@@ -20,7 +20,7 @@ namespace Fx.Entity
             this.PersonalizationPerUser = new HashSet<PersonalizationPerUser>();
             this.Roles = new HashSet<Roles>();
         }
-    
+
         public System.Guid ApplicationId { get; set; }
         public System.Guid UserId { get; set; }
         public string UserName { get; set; }
@@ -28,7 +28,7 @@ namespace Fx.Entity
         public string MobileAlias { get; set; }
         public bool IsAnonymous { get; set; }
         public System.DateTime LastActivityDate { get; set; }
-    
+
         public virtual Applications Applications { get; set; }
         public virtual Membership Membership { get; set; }
         public virtual ICollection<PersonalizationPerUser> PersonalizationPerUser { get; set; }

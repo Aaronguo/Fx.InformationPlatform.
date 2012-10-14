@@ -1,0 +1,91 @@
+﻿@model Fx.Entity.Account.RegisterUser
+@{
+    ViewBag.Title = "英淘注册";
+}
+@using (Html.BeginForm("Register","Account"))
+{
+    @Html.ValidationSummary(true)
+    <div class="grid_24">
+        <p class="typo-h1">
+            你好，欢迎加入英淘网
+        </p>
+        <div class="grid_24">
+            <style>
+                .p-line {
+                    padding: 10px 0;
+                }
+
+                .p-label {
+                    display: inline-block;
+                    width: 120px;
+                    text-align: right;
+                    font-weight: 700;
+                }
+
+                .input-small {
+                    height: 22px;
+                    line-height: 22px;
+                    padding: 0 5px;
+                }
+            </style>
+            <div class="grid_18 alpha">
+                <div class="grid_2 alpha p-line p-label">
+                    用户名
+                </div>
+                <div class="grid_16 omega p-line">
+                    @Html.TextBoxFor(model => model.UserName, new { @class = "input-small" })
+                    @Html.ValidationMessageFor(model => model.UserName)
+                </div>
+                <div class="clear">
+                </div>
+                <div class="grid_2 alpha p-line p-label">
+                    <label>邮箱</label>
+                </div>
+                <div class="grid_16 omega p-line">
+                    @Html.TextBoxFor(model => model.Email, new { @class = "input-small" })
+                    @Html.ValidationMessageFor(model => model.Email)
+                </div>
+                <div class="clear">
+                </div>
+                <div class="grid_2 alpha p-line p-label">
+                    <label>手机</label>
+                </div>
+                <div class="grid_16 omega p-line">
+                    @Html.TextBoxFor(model => model.Mobile, new { @class = "input-small" })
+                    @Html.ValidationMessageFor(model => model.Mobile)
+                </div>
+                <div class="clear">
+                </div>
+
+                <div class="grid_2 alpha p-line p-label">
+                    <label>密码</label>
+                </div>
+                <div class="grid_16 omega p-line">
+                    @Html.TextBoxFor(model => model.Password, new { @class = "input-small" })
+                    @Html.ValidationMessageFor(model => model.Password)
+                    <small style="color: #f00;">为了帐号安全，建议密码最少6位</small>
+                </div>
+                <div class="clear"></div>
+                <div class="p-line">
+                    <label class="p-label"></label>
+                    <small>注册即代表您已阅读并同意<a href="/pages/agreement/" target="_blank">《百姓网用户协议》</a></small>
+                </div>
+                <div class="p-line p-line-submit">
+                    <label class="p-label"></label>
+                    <input class="btn_green button button-green" type="submit" value="免费注册">
+                    <span style="color: #f00;">@ViewBag.Error</span>
+                </div>
+            </div>
+            <div class="grid_6 omega">
+                <div class="auth-side">
+                    加入我们，<br>
+                    与 <strong style="color: green">@ViewBag.UserCount</strong>名用户做邻居<br>
+                    <br>
+                    已经有账号了？
+	<a class="btn_green button button-green" href="/auth/denglu/?redirect=http%3A%2F%2Fwww.baixing.com%2Fwo%2F">立即登录百姓网</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
