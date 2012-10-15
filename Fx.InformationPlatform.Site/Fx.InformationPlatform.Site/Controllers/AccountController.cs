@@ -41,11 +41,31 @@ namespace Fx.InformationPlatform.Site.Controllers
             return View();
         }
 
-
-        public ActionResult Test()
+        [HttpGet]
+        public ActionResult Login()
         {
             return View();
         }
+
+
+        [HttpPost]
+        public ActionResult Login(RegisterUser user)
+        {
+            var result = accountService.VaildUser(user.UserName, user.Password);
+            if (result.isSuccess)
+            {
+                // 跳转到登录页面
+            }
+            else
+            {
+                ViewBag.Error = result.ResultMsg;
+            }
+            return View();
+        }
+
+
+
+
 
         [HttpGet]
         public ActionResult Register()
@@ -70,15 +90,22 @@ namespace Fx.InformationPlatform.Site.Controllers
             if (entityResult.isSuccess)
             {
                 // 跳转到登录页面
+                Session["CurrentUser"] = user.UserName;
+                return new HomeController().Index();
             }
             else
             {
                 ViewBag.Error = entityResult.ResultMsg;
                 return View("Register", user);
             }
-
-            return View();
         }
+
+        public ActionResult LoginOff()
+        {
+            Session["CurrentUser"] = null;
+            return new HomeController().Index();
+        }
+
 
 
         /// <summary>

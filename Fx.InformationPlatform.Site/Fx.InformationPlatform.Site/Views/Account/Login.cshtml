@@ -1,8 +1,8 @@
 ﻿@model Fx.Entity.Account.RegisterUser
 @{
-    ViewBag.Title = "英淘注册";
+    ViewBag.Title = "登录 - 英淘网";
 }
-@using (Html.BeginForm("Register", "Account"))
+@using (Html.BeginForm("Login", "Account"))
 {
     @Html.ValidationSummary(true)
     <div class="grid_24">
@@ -30,7 +30,7 @@
             </style>
             <div class="grid_18 alpha">
                 <div class="grid_2 alpha p-line p-label">
-                    用户名
+                    <label>账号</label>
                 </div>
                 <div class="grid_16 omega p-line">
                     @Html.TextBoxFor(model => model.UserName, new { @class = "input-small" })
@@ -39,40 +39,18 @@
                 <div class="clear">
                 </div>
                 <div class="grid_2 alpha p-line p-label">
-                    <label>邮箱</label>
-                </div>
-                <div class="grid_16 omega p-line">
-                    @Html.TextBoxFor(model => model.Email, new { @class = "input-small" })
-                    @Html.ValidationMessageFor(model => model.Email)
-                </div>
-                <div class="clear">
-                </div>
-                <div class="grid_2 alpha p-line p-label">
-                    <label>手机</label>
-                </div>
-                <div class="grid_16 omega p-line">
-                    @Html.TextBoxFor(model => model.Mobile, new { @class = "input-small" })
-                    @Html.ValidationMessageFor(model => model.Mobile)
-                </div>
-                <div class="clear">
-                </div>
-
-                <div class="grid_2 alpha p-line p-label">
                     <label>密码</label>
                 </div>
                 <div class="grid_16 omega p-line">
                     @Html.TextBoxFor(model => model.Password, new { @class = "input-small" })
                     @Html.ValidationMessageFor(model => model.Password)
-                    <small style="color: #f00;">为了帐号安全，建议密码最少6位</small>
                 </div>
-                <div class="clear"></div>
-                <div class="p-line">
-                    <label class="p-label"></label>
-                    <small>注册即代表您已阅读并同意<a href="/Pagelink/Agreement/" target="_blank">《英淘网用户协议》</a></small>
+                <div class="clear">
                 </div>
+
                 <div class="p-line p-line-submit">
                     <label class="p-label"></label>
-                    <input class="btn_green button button-green" type="submit" value="免费注册">
+                    <input class="btn_green button button-green" type="submit" value="登录">
                     <span style="color: #f00;">@ViewBag.Error</span>
                 </div>
             </div>

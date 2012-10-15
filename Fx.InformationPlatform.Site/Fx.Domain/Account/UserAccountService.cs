@@ -66,6 +66,11 @@ namespace Fx.Domain.Account
 
         }
 
+        /// <summary>
+        /// 实现部分 业务角度来说 其实是不需要的
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
         public DomainResult DeleteUser(Entity.MemberShip.Membership entity)
         {
             if (!IsExistUser(entity.Users.UserName).isSuccess)
@@ -90,6 +95,12 @@ namespace Fx.Domain.Account
             }
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
         public DomainResult UpdateUser(Entity.MemberShip.Membership entity)
         {
             var res = IsExistUser(entity.Users.UserName);

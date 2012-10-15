@@ -13,6 +13,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Index()
         {
+
             return View();
         }
 

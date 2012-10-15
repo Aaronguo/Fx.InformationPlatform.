@@ -9,21 +9,17 @@
                     @Html.ActionLink("登录", "Login", "Account")
                     <span class="sep">|</span> <a href="http://www.baixing.com/wo/" rel="nofollow">我的英淘网</a>
                     <span class="sep">|</span> <a class="topbar-fav" href="http://www.baixing.com/wo/favorite/" rel="nofollow">我的收藏</a>
-
-                  @*  <span class="sep">|</span> <a href="/pay/entrance/" rel="nofollow" target="_blank">付费推广</a>*@
                 </div>
                 <!-- topbar -->
             }
             else
             {
                 <div class="topbar">
-                    <span class="topbar-right-text">欢迎，<a href="http://www.baixing.com/wo">chen27468</a>
-                        [<a href="/auth/tuichu/?src=homeheader" onclick="_gaq.push(['_trackEvent', 'logout', 'click', 'header']);">退出</a>]
+                    <span class="topbar-right-text">欢迎，<a href="/Account/Index">@Session["CurrentUser"]</a>
+                        [<a href="/Account/LoginOff">退出</a>]
                     </span>
-                    <span class="sep">|</span> <a href="http://www.baixing.com/wo/" rel="nofollow">我的百姓网</a>
-                    <span class="sep">|</span> <a class="topbar-fav" href="http://www.baixing.com/wo/favorite/" rel="nofollow">我的收藏</a>
-
-                   @* <span class="sep">|</span> <a href="/pay/entrance/" rel="nofollow" target="_blank">付费推广</a>*@
+                    <span class="sep">|</span> <a href="/Account/Index" rel="nofollow">我的英淘网</a>
+                    <span class="sep">|</span> <a class="topbar-fav" href="/Account/Favorite/">我的收藏</a>
                 </div>
             }
         </div>
