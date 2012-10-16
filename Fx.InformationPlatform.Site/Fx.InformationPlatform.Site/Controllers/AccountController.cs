@@ -36,8 +36,6 @@ namespace Fx.InformationPlatform.Site.Controllers
         [HttpGet]
         public ActionResult Profile()
         {
-
-
             return View();
         }
 
@@ -46,7 +44,6 @@ namespace Fx.InformationPlatform.Site.Controllers
         {
             return View();
         }
-
 
         [HttpPost]
         public ActionResult Login(RegisterUser user)
@@ -62,10 +59,6 @@ namespace Fx.InformationPlatform.Site.Controllers
             }
             return View();
         }
-
-
-
-
 
         [HttpGet]
         public ActionResult Register()
@@ -106,8 +99,6 @@ namespace Fx.InformationPlatform.Site.Controllers
             return new HomeController().Index();
         }
 
-
-
         /// <summary>
         /// 用户查询缓存5分钟
         /// </summary>
@@ -117,7 +108,5 @@ namespace Fx.InformationPlatform.Site.Controllers
         {
             return accountService.GetUserCount();
         }
-
-
     }
 }

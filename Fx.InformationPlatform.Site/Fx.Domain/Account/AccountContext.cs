@@ -22,7 +22,7 @@ namespace Fx.Domain.Account
     {
         static AccountContext()
         {
-            Database.SetInitializer<AccountContext>(null);
+            System.Data.Entity.Database.SetInitializer(new Account.AccountInitializer());
         }
 
         public AccountContext()
@@ -31,21 +31,6 @@ namespace Fx.Domain.Account
             
         }
 
-        //public AccountContext(string nameOrConnectionString) : base(nameOrConnectionString)
-        //{	
-        //}
-
-        //public AccountContext(string nameOrConnectionString, DbCompiledModel model) : base(nameOrConnectionString, model)
-        //{
-        //}
-
-        //public AccountContext(DbConnection existingConnection, bool contextOwnsConnection) : base(existingConnection, contextOwnsConnection)
-        //{
-        //}
-
-        //public AccountContext(DbConnection existingConnection, DbCompiledModel model, bool contextOwnsConnection) : base(existingConnection, model, contextOwnsConnection)
-        //{
-        //}
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new Applications_Mapping());

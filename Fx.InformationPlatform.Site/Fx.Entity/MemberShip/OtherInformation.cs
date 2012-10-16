@@ -8,7 +8,7 @@ namespace Fx.Entity.MemberShip
 {
     public class OtherInformation
     {
-        public int ID { get; set; }
+        public int OtherInformationId { get; set; }
         
         public string QQ { get; set; }
 

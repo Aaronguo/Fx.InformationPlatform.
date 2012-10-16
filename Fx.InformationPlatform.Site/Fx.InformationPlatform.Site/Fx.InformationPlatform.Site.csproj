@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Elmah">
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+    </Reference>
     <Reference Include="SimpleInjector">
       <HintPath>..\packages\SimpleInjector.1.5.0.12199\lib\net35\SimpleInjector.dll</HintPath>
     </Reference>
@@ -71,9 +74,6 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.5.0.0-rc\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -115,7 +115,6 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PagelinkController.cs" />
-    <Compile Include="Framework\InjectionModule.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -126,6 +125,9 @@
     <Content Include="App_Data\aspnet-Fx.InformationPlatform.Site-20121013215011_log.ldf">
       <DependentUpon>aspnet-Fx.InformationPlatform.Site-20121013215011.mdf</DependentUpon>
     </Content>
+    <Content Include="App_Readme\Elmah.SqlServer.sql" />
+    <Content Include="App_Readme\Elmah.SqlServer.txt" />
+    <Content Include="App_Readme\Elmah.txt" />
     <Content Include="baixing\css\baixing.css" />
     <Content Include="baixing\css\base.css" />
     <Content Include="baixing\img\icons.png" />
@@ -223,6 +225,7 @@
     <Content Include="Views\Account\LoginOff.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Framework\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Shared\BaixingUI\" />
   </ItemGroup>

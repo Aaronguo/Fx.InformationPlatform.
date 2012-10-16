@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>EntityFramework.Patterns</id>
+    <version>0.7</version>
+    <title>EntityFramework.Patterns</title>
+    <authors>Fabrice Michellonet</authors>
+    <owners>Fabrice Michellonet</owners>
+    <projectUrl>http://efpatterns.codeplex.com/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>EntityFramework.Patterns provides different patterns to be used with Entity Framework &gt;= 4.3.1
+      Implemented patterns are : 
+      - Generic Repository
+      - Unit of Work
+      - Repository Decorator
+      - Auditable Entity
+      - Archivable Entity
+      - Cache</description>
+    <summary>EntityFramework.Patterns provides different patterns easy and ready to used with Entity Framework &gt;= 4.3.1</summary>
+    <dependencies>
+      <dependency id="EntityFramework" version="4.3.1" />
+    </dependencies>
+  </metadata>
+</package>
