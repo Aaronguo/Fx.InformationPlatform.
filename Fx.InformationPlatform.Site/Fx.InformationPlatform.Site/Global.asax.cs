@@ -19,6 +19,7 @@ namespace Fx.InformationPlatform.Site
 
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
+            filters.Add(new Fx.InformationPlatform.Site.Framework.ElmahHandledErrorLoggerFilter());
             filters.Add(new HandleErrorAttribute());
         }
 
