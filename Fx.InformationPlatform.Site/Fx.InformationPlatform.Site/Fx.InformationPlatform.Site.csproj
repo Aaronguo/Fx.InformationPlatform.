@@ -131,6 +131,13 @@
     <Content Include="App_Readme\Elmah.SqlServer.txt" />
     <Content Include="App_Readme\Elmah.txt" />
     <Content Include="Content\images\logo.jpg" />
+    <Content Include="Content\images\publish.gif" />
+    <Content Include="Content\js\Flash\bcastr.swf" />
+    <Content Include="Content\js\Flash\images\01.jpg" />
+    <Content Include="Content\js\Flash\images\02.jpg" />
+    <Content Include="Content\js\Flash\images\03.jpg" />
+    <Content Include="Content\js\Flash\images\04.jpg" />
+    <Content Include="Content\js\Flash\xml\bcastr.xml" />
     <Content Include="Content\js\instant.js" />
     <Content Include="Content\js\plugins.js" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
