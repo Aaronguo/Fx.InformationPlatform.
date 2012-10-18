@@ -4,21 +4,23 @@
     <title>@ViewBag.Title</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="shortcut icon" href="@Url.Content("~/image/favicon.ico")" />
-    <link rel="stylesheet" href="@Url.Content("~/gs/css/960_24_col.css")" />
-    <link href="@Url.Content("~/baixing/css/base.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/baixing/css/baixing.css")" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")"></script>
+    <link rel="shortcut icon" href="@Url.Content("~/Content/images/favicon.ico")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/960_24_col.css")" />
+    <link href="@Url.Content("~/Content/css/base.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/baixing.css")" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="@Url.Content("~/Content/js/jquery-1.7.1.min.js")"></script>
     @* @Styles.Render("~/Content/themes/base/css")", "~/Content/css")*@
 </head>
 <body>
     @Html.Partial("_Navigation")
+
     <div class="container_24">
+        @Html.Partial("_Logo")
         @Html.Partial("_Nav")
         @RenderBody()
         <div class="clear"></div>
     </div>
 
-    @RenderSection("scripts", required: false)
+   @* @RenderSection("scripts", required: false)*@
 </body>
 </html>

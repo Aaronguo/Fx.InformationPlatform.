@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account\RegisterUser.cs" />
+    <Compile Include="FxSite\Area.cs" />
+    <Compile Include="FxSite\City.cs" />
     <Compile Include="FxSite\ELMAHError.cs" />
     <Compile Include="MemberShip\Applications.cs" />
     <Compile Include="MemberShip\Membership.cs" />

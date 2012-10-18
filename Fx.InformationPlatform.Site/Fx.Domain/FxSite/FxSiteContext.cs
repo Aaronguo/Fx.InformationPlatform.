@@ -33,5 +33,9 @@ namespace Fx.Domain.FxSite
         }
 
         public DbSet<ELMAH_Error> ELMAHErrors { get; set; }
+
+        public DbSet<Area> Areas { get; set; }
+
+        public DbSet<City> Citys { get; set; }
     }
 }
