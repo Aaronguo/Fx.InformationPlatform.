@@ -114,9 +114,11 @@
     <Compile Include="App_Start\SimpleInjectorInitializer.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CaptchaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PagelinkController.cs" />
     <Compile Include="Framework\ElmahHandledErrorLoggerFilter.cs" />
+    <Compile Include="Framework\StaticHelper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -133,10 +135,10 @@
     <Content Include="Content\images\logo.jpg" />
     <Content Include="Content\images\publish.gif" />
     <Content Include="Content\js\Flash\bcastr.swf" />
-    <Content Include="Content\js\Flash\images\01.jpg" />
     <Content Include="Content\js\Flash\images\02.jpg" />
     <Content Include="Content\js\Flash\images\03.jpg" />
     <Content Include="Content\js\Flash\images\04.jpg" />
+    <Content Include="Content\js\Flash\images\01.jpg" />
     <Content Include="Content\js\Flash\xml\bcastr.xml" />
     <Content Include="Content\js\instant.js" />
     <Content Include="Content\js\plugins.js" />
@@ -232,8 +234,11 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\LoginOff.cshtml" />
     <Content Include="Views\Shared\_Logo.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Upload\HeadPicture\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

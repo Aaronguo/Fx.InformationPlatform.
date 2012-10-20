@@ -16,6 +16,12 @@ namespace Fx.Entity.MemberShip
 
         public string Mobile { get; set; }
 
+        public string NickName { get; set; }
+
+        public string Address { get; set; }
+
+        public string HeadPicture { get; set; }
+
         public Guid ApplicationId { get; set; }
 
         public Guid UserId { get; set; }

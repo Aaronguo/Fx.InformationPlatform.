@@ -30,23 +30,60 @@
             </style>
             <div class="grid_18 alpha">
                 <div class="grid_2 alpha p-line p-label">
-                    用户名
-                </div>
-                <div class="grid_16 omega p-line">
-                    @Html.TextBoxFor(model => model.UserName, new { @class = "input-small" })
-                    @Html.ValidationMessageFor(model => model.UserName)
-                </div>
-                <div class="clear">
-                </div>
-                <div class="grid_2 alpha p-line p-label">
                     <label>邮箱</label>
                 </div>
                 <div class="grid_16 omega p-line">
-                    @Html.TextBoxFor(model => model.Email, new { @class = "input-small" })
-                    @Html.ValidationMessageFor(model => model.Email)
+                    @Html.TextBoxFor(model => model.Email, new { @class = "input-small", placeholder = "邮箱即为用户帐号" })
+                    @Html.ValidationMessageFor(model => model.Email)   <span style="color: #f00">*必填</span>
                 </div>
                 <div class="clear">
                 </div>
+
+
+                <div class="grid_2 alpha p-line p-label">
+                    <label>密码</label>
+                </div>
+                <div class="grid_16 omega p-line">
+                    @Html.TextBoxFor(model => model.Password, new { @class = "input-small", placeholder = "请输入密码" })
+                    @Html.ValidationMessageFor(model => model.Password)   <span style="color: #f00">*必填</span>
+                </div>
+                <div class="clear"></div>
+
+
+
+                <div class="grid_2 alpha p-line p-label">
+                    昵称
+                </div>
+                <div class="grid_16 omega p-line">
+                    @Html.TextBoxFor(model => model.NickName, new { @class = "input-small" })
+                    @Html.ValidationMessageFor(model => model.NickName)  <span style="color: #f00">*必填</span>
+                </div>
+                <div class="clear">
+                </div>
+
+
+                <div class="grid_2 alpha p-line p-label">
+                    联系方式
+                </div>
+                <div class="grid_16 omega p-line">
+                    @Html.TextBoxFor(model => model.Address, new { @class = "input-small" })
+                    @Html.ValidationMessageFor(model => model.Address)  <span style="color: #f00">*必填</span>
+                </div>
+                <div class="clear">
+                </div>
+
+
+                <div class="grid_2 alpha p-line p-label">
+                    QQ
+                </div>
+                <div class="grid_16 omega p-line">
+                    @Html.TextBoxFor(model => model.QQ, new { @class = "input-small" })
+                    @Html.ValidationMessageFor(model => model.QQ)
+                </div>
+                <div class="clear">
+                </div>
+
+
                 <div class="grid_2 alpha p-line p-label">
                     <label>手机</label>
                 </div>
@@ -58,14 +95,30 @@
                 </div>
 
                 <div class="grid_2 alpha p-line p-label">
-                    <label>密码</label>
+                    <label>头像</label>
                 </div>
                 <div class="grid_16 omega p-line">
-                    @Html.TextBoxFor(model => model.Password, new { @class = "input-small" })
-                    @Html.ValidationMessageFor(model => model.Password)
-                    <small style="color: #f00;">为了帐号安全，建议密码最少6位</small>
+                    <input type="file" name="headPicture" />
                 </div>
-                <div class="clear"></div>
+                <div class="clear">
+                </div>
+
+
+
+                <div class="grid_2 alpha p-line p-label">
+                    <label>验证码</label>
+                </div>
+                <div class="grid_5 p-line">
+                    @Html.TextBoxFor(model => model.VerificationCode, new { @class = "input-small" })
+                </div>
+
+                <div class="grid_11 omega p-line">
+                    <img alt="验证码" id="validimg" src="@Url.Action("CreateImageCode", "Captcha")"  onclick="reloadcode()" />
+                </div>
+                <div class="clear">
+                </div>
+
+
                 <div class="p-line">
                     <label class="p-label"></label>
                     <small>注册即代表您已阅读并同意<a href="/Pagelink/Agreement/" target="_blank">《英淘网用户协议》</a></small>
@@ -82,4 +135,12 @@
         </div>
 
     </div>
+    
+    
+    <script type="text/javascript">
+        function reloadcode() {
+            var verify = document.getElementById('validimg');
+            verify.setAttribute('src', '@Url.Action("CreateImageCode", "Captcha")');
+        }
+    </script>
 }

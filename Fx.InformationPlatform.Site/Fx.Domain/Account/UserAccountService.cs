@@ -30,25 +30,34 @@ namespace Fx.Domain.Account
 
         public DomainResult AddUser(Entity.MemberShip.Membership entity)
         {
-            if (!IsExistUser(entity.Users.UserName).isSuccess)
+            if ( !IsExistUser(entity.Users.UserName).isSuccess)
             {
-
                 var result = DomainResult.GetDefault();
                 try
                 {
-                    var muser = Membership.CreateUser(entity.Users.UserName, entity.Password, entity.Password);
+                    var muser = Membership.CreateUser(entity.Email, entity.Password, entity.Email);
                     if (muser != null)
                     {
                         AccountContext db = new AccountContext();
                         var user = db.Users.Where(r => r.UserName == entity.Users.UserName).First();
                         var otherInformation = new Fx.Entity.MemberShip.OtherInformation();
                         otherInformation.Mobile = entity.MobilePIN;
-                        otherInformation.QQ = "";
-                        otherInformation.Sex = Entity.MemberShip.SexCatalog.Male;
+                        otherInformation.QQ = entity.OtherInformations.QQ;
+                        otherInformation.Sex = entity.OtherInformations.Sex;
+                        otherInformation.Address = entity.OtherInformations.Address;
+                        otherInformation.HeadPicture = entity.OtherInformations.HeadPicture;
+                        otherInformation.NickName = entity.OtherInformations.NickName;
                         otherInformation.ApplicationId = user.ApplicationId;
                         otherInformation.UserId = user.UserId;
                         var rEntity = db.OtherInformations.Add(otherInformation);
-                        db.SaveChanges();
+                        try
+                        {
+                            db.SaveChanges();
+                        }
+                        catch (Exception)
+                        {
+                            DeleteUser(entity);                         
+                        }
                     }
                 }
                 catch (Exception ex)

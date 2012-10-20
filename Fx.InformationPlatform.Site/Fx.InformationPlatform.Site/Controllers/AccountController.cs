@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -48,7 +49,7 @@ namespace Fx.InformationPlatform.Site.Controllers
         [HttpPost]
         public ActionResult Login(RegisterUser user)
         {
-            var result = accountService.VaildUser(user.UserName, user.Password);
+            var result = accountService.VaildUser(user.Email, user.Password);
             if (result.isSuccess)
             {
                 // 跳转到登录页面
@@ -69,21 +70,39 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Register(RegisterUser user)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || user == null ||
+                user.VerificationCode == null || user.Email == null
+                || Session["PictureCode"] == null)
             {
+                return View("Register", user);
+            }
+            if (string.Compare(user.VerificationCode, Session["PictureCode"].ToString(), true) != 0)
+            {
+                ViewBag.Error = "验证码错误,请重试";
                 return View("Register", user);
             }
             var membershipuser = new Membership();
             membershipuser.Users = new Users();
-            membershipuser.Users.UserName = user.UserName;
+            membershipuser.Users.UserName = user.Email;
             membershipuser.MobilePIN = user.Mobile;
             membershipuser.Email = user.Email;
             membershipuser.Password = user.Password;
+            membershipuser.OtherInformations.Address = user.Address;
+            membershipuser.OtherInformations.Mobile = user.Mobile;
+            membershipuser.OtherInformations.NickName = user.NickName;
+            membershipuser.OtherInformations.QQ = user.QQ;
+            membershipuser.OtherInformations.Sex = SexCatalog.Male;
+            if (Request.Files["headPicture"].HasFile())
+            {
+                string path = AppDomain.CurrentDomain.BaseDirectory + "Upload/HeadPicture/";
+                string filename = Path.GetFileName(Request.Files["headPicture"].FileName);
+            }
+            membershipuser.OtherInformations.HeadPicture = user.HeadPicture;
             var entityResult = accountService.AddUser(membershipuser);
             if (entityResult.isSuccess)
             {
                 // 跳转到登录页面
-                Session["CurrentUser"] = user.UserName;
+                Session["CurrentUser"] = user.Email;
                 return new HomeController().Index();
             }
             else
@@ -108,5 +127,8 @@ namespace Fx.InformationPlatform.Site.Controllers
         {
             return accountService.GetUserCount();
         }
+
+
+
     }
 }

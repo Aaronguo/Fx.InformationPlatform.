@@ -47,11 +47,11 @@ namespace Fx.Domain.Account
         }
 
         public DbSet<Applications> Applications { get; set; }
-        public DbSet<Membership> Membership { get; set; }
+        public DbSet<Membership> Memberships { get; set; }
         public DbSet<Paths> Paths { get; set; }
         public DbSet<PersonalizationAllUsers> PersonalizationAllUsers { get; set; }
-        public DbSet<PersonalizationPerUser> PersonalizationPerUser { get; set; }
-        public DbSet<Profile> Profile { get; set; }
+        public DbSet<PersonalizationPerUser> PersonalizationPerUsers { get; set; }
+        public DbSet<Profile> Profiles { get; set; }
         public DbSet<Roles> Roles { get; set; }
         public DbSet<SchemaVersions> SchemaVersions { get; set; }
         public DbSet<Users> Users { get; set; }
