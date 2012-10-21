@@ -13,7 +13,7 @@ namespace Fx.Domain.Account.Mapping.Other
         public OtherInformation_Mapping()
         {
             this.HasKey(r => r.OtherInformationId);
-            this.ToTable("OtherInformation");
+            this.ToTable("OtherInformation","User");
             this.Property(r => r.QQ).HasMaxLength(20);
             this.Property(r => r.Mobile).HasMaxLength(20);
         }

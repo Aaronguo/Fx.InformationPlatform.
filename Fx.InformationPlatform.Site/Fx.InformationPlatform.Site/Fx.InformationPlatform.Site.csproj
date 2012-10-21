@@ -117,6 +117,7 @@
     <Compile Include="Controllers\CaptchaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PagelinkController.cs" />
+    <Compile Include="Controllers\PublishController.cs" />
     <Compile Include="Framework\ElmahHandledErrorLoggerFilter.cs" />
     <Compile Include="Framework\StaticHelper.cs" />
     <Compile Include="Global.asax.cs">
@@ -235,6 +236,8 @@
     <Content Include="Views\Account\LoginOff.cshtml" />
     <Content Include="Views\Shared\_Logo.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Publish\Index.cshtml" />
+    <Content Include="Views\Publish\Partial\Flow.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Upload\HeadPicture\" />

@@ -18,7 +18,7 @@ namespace Fx.Domain.Account.Mapping
         public Membership_Mapping()
         {                        
               this.HasKey(t => t.UserId);
-              this.ToTable("aspnet_");
+              this.ToTable("aspnet_Membership");
               this.Property(t => t.ApplicationId).HasColumnName("ApplicationId");
               this.Property(t => t.UserId).HasColumnName("UserId");
               this.Property(t => t.Password).HasColumnName("Password").IsRequired().HasMaxLength(128);
@@ -42,6 +42,7 @@ namespace Fx.Domain.Account.Mapping
               this.Property(t => t.Comment).HasColumnName("Comment");
               this.HasRequired(t => t.Applications).WithMany(t => t.Membership).HasForeignKey(d => d.ApplicationId);
               this.HasRequired(t => t.Users).WithOptional(t => t.Membership);
+              this.HasOptional(t => t.OtherInformations);
          }
     }
 }

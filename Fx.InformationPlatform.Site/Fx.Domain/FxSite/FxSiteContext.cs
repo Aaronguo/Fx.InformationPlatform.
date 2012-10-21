@@ -9,6 +9,7 @@
 #pragma warning disable 1573
 namespace Fx.Domain.FxSite
 {
+    using System;
     using System.Data.Entity;
     using Fx.Domain.Account.Mapping;
     using Fx.Domain.FxSite.Mapping;
@@ -18,13 +19,13 @@ namespace Fx.Domain.FxSite
     {
         static FxSiteContext()
         {
-            System.Data.Entity.Database.SetInitializer(new FxSiteInitializer());
+            //System.Data.Entity.Database.SetInitializer(new FxSiteInitializer());
         }
 
         public FxSiteContext()
             : base(System.Configuration.ConfigurationManager.ConnectionStrings["fx.site"].ToString())
         {
-            
+            throw new NotImplementedException("因Hosting的变化，只有一个数据库，所以请勿使用");
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

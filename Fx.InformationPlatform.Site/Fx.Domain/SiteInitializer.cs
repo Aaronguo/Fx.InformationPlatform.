@@ -6,11 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Fx.Entity.FxSite;
 
-namespace Fx.Domain.FxSite
+namespace Fx.Domain
 {
-    public class FxSiteInitializer : CreateDatabaseIfNotExists<FxSiteContext>
+    public class SiteInitializer : CreateDatabaseIfNotExists<SiteContent>
     {
-        protected override void Seed(FxSiteContext context)
+        protected override void Seed(SiteContent context)
         {
             base.Seed(context);
 
@@ -547,10 +547,18 @@ namespace Fx.Domain.FxSite
                        }
                     }
                 },
-            }; 
+            };
             #endregion
             areas.ForEach(r => context.Areas.Add(r));
-            context.SaveChanges();
+            try
+            {
+                context.SaveChanges();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                
+                throw ex;
+            }
         }
     }
 }

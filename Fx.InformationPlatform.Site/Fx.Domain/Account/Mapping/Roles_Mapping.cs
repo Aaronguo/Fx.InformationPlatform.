@@ -31,7 +31,7 @@ namespace Fx.Domain.Account.Mapping
               this.Property(t => t.RoleName).HasColumnName("RoleName").IsRequired().HasMaxLength(256);
               this.Property(t => t.LoweredRoleName).HasColumnName("LoweredRoleName").IsRequired().HasMaxLength(256);
               this.Property(t => t.Description).HasColumnName("Description").HasMaxLength(256);
-              this.HasRequired(t => t.Applications).WithMany(t => t.Roles).HasForeignKey(d => d.ApplicationId);
+              this.HasRequired(t => t.Applications).WithMany(t => t.Roles).HasForeignKey(d => d.ApplicationId).WillCascadeOnDelete(false);
     			this.HasMany(t => t.Users).WithMany(t => t.Roles)
     				.Map(m => 
     				{

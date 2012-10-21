@@ -11,6 +11,11 @@ namespace Fx.Entity.FxSite
     /// </summary>
     public class Area
     {
+        public Area()
+        {
+            this.Cities = new HashSet<City>();
+        }
+
         public int AreaId { get; set; }
 
         public string AreaName { get; set; }
@@ -20,6 +25,6 @@ namespace Fx.Entity.FxSite
         /// </summary>
         public int Sorted { get; set; }
 
-        public virtual ICollection<City> Citys { get; set; }
+        public virtual ICollection<City> Cities { get; set; }
     }
 }

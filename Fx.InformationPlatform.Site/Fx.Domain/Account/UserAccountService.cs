@@ -38,7 +38,7 @@ namespace Fx.Domain.Account
                     var muser = Membership.CreateUser(entity.Email, entity.Password, entity.Email);
                     if (muser != null)
                     {
-                        AccountContext db = new AccountContext();
+                        SiteContent db = new SiteContent();
                         var user = db.Users.Where(r => r.UserName == entity.Users.UserName).First();
                         var otherInformation = new Fx.Entity.MemberShip.OtherInformation();
                         otherInformation.Mobile = entity.MobilePIN;
@@ -180,7 +180,7 @@ namespace Fx.Domain.Account
 
         public int GetUserCount()
         {
-            return new AccountContext().Users.Count();
+            return new SiteContent().Users.Count();
         }
     }
 }

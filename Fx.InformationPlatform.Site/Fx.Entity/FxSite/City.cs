@@ -16,5 +16,7 @@ namespace Fx.Entity.FxSite
         /// 排序
         /// </summary>
         public int Sorted { get; set; }
+        
+        public int AreaID { get; set; }
     }
 }
