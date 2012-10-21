@@ -73,6 +73,9 @@
     <Compile Include="FxSite\FxSiteContext.cs" />
     <Compile Include="FxSite\FxSiteInitializer.cs" />
     <Compile Include="FxSite\Mapping\Area_Mapping.cs" />
+    <Compile Include="FxSite\Mapping\ChannelListDetail_Mapping.cs" />
+    <Compile Include="FxSite\Mapping\ChannelList_Mapping.cs" />
+    <Compile Include="FxSite\Mapping\Channel_Mapping.cs" />
     <Compile Include="FxSite\Mapping\City_Mapping.cs" />
     <Compile Include="FxSite\Mapping\ELMAH_Error_Mapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

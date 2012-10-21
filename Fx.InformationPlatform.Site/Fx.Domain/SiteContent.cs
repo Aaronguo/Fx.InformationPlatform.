@@ -47,9 +47,9 @@ namespace Fx.Domain
             //Site
             modelBuilder.Configurations.Add(new Area_Mapping());
             modelBuilder.Configurations.Add(new City_Mapping());
-
-
-
+            modelBuilder.Configurations.Add(new Channel_Mapping());
+            modelBuilder.Configurations.Add(new ChannelList_Mapping());
+            modelBuilder.Configurations.Add(new ChannelListDetail_Mapping());
         }
 
         public DbSet<Applications> Applications { get; set; }
@@ -73,6 +73,8 @@ namespace Fx.Domain
         public DbSet<Area> Areas { get; set; }
 
         public DbSet<City> Cities { get; set; }
+
+        public DbSet<Channel> Channels { get; set; }//不在新增ChannelList和ChannelListDetail
 
 
     }

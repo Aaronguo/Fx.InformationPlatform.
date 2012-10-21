@@ -556,7 +556,244 @@ namespace Fx.Domain
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException ex)
             {
-                
+
+                throw ex;
+            }
+
+            #region 频道建立
+            var channels = new List<Channel>() { 
+                new Channel(){
+                     ChannelName="物品交易",
+                     Description=""
+                },
+                new Channel(){
+                     ChannelName="汽车交易",
+                     Description=""
+                },
+                new Channel(){
+                     ChannelName="租房信息",
+                     Description=""
+                },
+            };
+
+
+            #region 物品交易
+            var goodsList = new List<ChannelList>() { 
+                new ChannelList(){
+                     ChannelListName="数码产品",
+                     Description="",
+                     ChannelListDetails=new List<ChannelListDetail>(){
+                         new ChannelListDetail(){
+                            ChannelListDetailName="手机"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="电脑"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="数码摄像器材"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="电脑配件"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="游戏机"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="游戏机配件"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="手机配件"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="其他"
+                         },
+                     }
+                },
+                new ChannelList(){
+                     ChannelListName="居家用品",
+                     Description="",
+                     ChannelListDetails=new List<ChannelListDetail>(){
+                         new ChannelListDetail(){
+                            ChannelListDetailName="家具"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="厨房家电"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="视听家电"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="餐具/厨具"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="工艺品/摆设"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="其他家电"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="运动器材"
+                         },
+                     }
+                },
+                new ChannelList(){
+                     ChannelListName="衣服鞋包",
+                     Description="",
+                     ChannelListDetails=new List<ChannelListDetail>(){
+                         new ChannelListDetail(){
+                            ChannelListDetailName="衣服"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="鞋子"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="箱包"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="首饰"
+                         }
+                     }
+                },
+                new ChannelList(){
+                     ChannelListName="文化生活",
+                     Description="",
+                     ChannelListDetails=new List<ChannelListDetail>(){
+                         new ChannelListDetail(){
+                            ChannelListDetailName="衣服"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="鞋子"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="箱包"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="首饰"
+                         }
+                     }
+                },
+            };
+            goodsList.ForEach(r => channels[0].ChannelLists.Add(r));
+            #endregion
+
+            #region 汽车交易
+            var carList = new List<ChannelList>() { 
+                new ChannelList(){
+                     ChannelListName="二手汽车",
+                     Description="",
+                     ChannelListDetails=new List<ChannelListDetail>(){
+                         new ChannelListDetail(){
+                            ChannelListDetailName="奥迪"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="宝马"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="别克"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="雪铁龙"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="福特"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="本田"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="丰田"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="日产"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="MINI"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="奔驰"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="标致"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="大众"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="沃尔沃"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="其他品牌"
+                         },
+                     }
+                },
+                new ChannelList(){
+                     ChannelListName="汽车配件",
+                     Description="",
+                     ChannelListDetails=new List<ChannelListDetail>(){
+                         new ChannelListDetail(){
+                            ChannelListDetailName="GPS"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="汽车装饰"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="其他"
+                         }
+                     }
+                }
+            };
+            carList.ForEach(r => channels[1].ChannelLists.Add(r));
+            #endregion
+
+            #region 租房信息
+            var houseList = new List<ChannelList>() { 
+                new ChannelList(){
+                     ChannelListName="商业用房",
+                     Description="",
+                     ChannelListDetails=new List<ChannelListDetail>(){
+                         new ChannelListDetail(){
+                            ChannelListDetailName="展销商铺"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="饮食商铺"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="仓库"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="办公室"
+                         }
+                     }
+                },
+                new ChannelList(){
+                     ChannelListName="居住用房",
+                     Description="",
+                     ChannelListDetails=new List<ChannelListDetail>(){
+                         new ChannelListDetail(){
+                            ChannelListDetailName="House"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="Flat"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="学生公寓"
+                         }
+                     }
+                }
+            };
+            houseList.ForEach(r => channels[2].ChannelLists.Add(r));
+            #endregion
+
+            channels.ForEach(r => context.Channels.Add(r));
+            #endregion
+
+            try
+            {
+                context.SaveChanges();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+
                 throw ex;
             }
         }
