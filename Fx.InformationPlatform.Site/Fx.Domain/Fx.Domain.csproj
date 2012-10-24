@@ -70,8 +70,10 @@
     <Compile Include="Account\IService\IAccountService.cs" />
     <Compile Include="Account\AccountContext.cs" />
     <Compile Include="DomainResult.cs" />
+    <Compile Include="FxSite\ChannelService.cs" />
     <Compile Include="FxSite\FxSiteContext.cs" />
     <Compile Include="FxSite\FxSiteInitializer.cs" />
+    <Compile Include="FxSite\IService\IChannel.cs" />
     <Compile Include="FxSite\Mapping\Area_Mapping.cs" />
     <Compile Include="FxSite\Mapping\ChannelListDetail_Mapping.cs" />
     <Compile Include="FxSite\Mapping\ChannelList_Mapping.cs" />
@@ -89,7 +91,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="FxSite\IService\" />
     <Folder Include="Ioc\" />
   </ItemGroup>
   <ItemGroup>

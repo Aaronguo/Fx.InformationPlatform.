@@ -564,15 +564,21 @@ namespace Fx.Domain
             var channels = new List<Channel>() { 
                 new Channel(){
                      ChannelName="物品交易",
-                     Description=""
+                     Description="",
+                     ControllerName="Goods",
+                     ActionName="Index"
                 },
                 new Channel(){
                      ChannelName="汽车交易",
-                     Description=""
+                     Description="",
+                     ControllerName="Car",
+                     ActionName="Index"
                 },
                 new Channel(){
                      ChannelName="租房信息",
-                     Description=""
+                     Description="",
+                     ControllerName="House",
+                     ActionName="Index"
                 },
             };
 
@@ -582,6 +588,8 @@ namespace Fx.Domain
                 new ChannelList(){
                      ChannelListName="数码产品",
                      Description="",
+                     ControllerName=channels[0].ControllerName,
+                     ActionName="Publish",
                      ChannelListDetails=new List<ChannelListDetail>(){
                          new ChannelListDetail(){
                             ChannelListDetailName="手机"
@@ -612,6 +620,8 @@ namespace Fx.Domain
                 new ChannelList(){
                      ChannelListName="居家用品",
                      Description="",
+                     ControllerName=channels[0].ControllerName,
+                     ActionName="Publish",
                      ChannelListDetails=new List<ChannelListDetail>(){
                          new ChannelListDetail(){
                             ChannelListDetailName="家具"
@@ -639,6 +649,8 @@ namespace Fx.Domain
                 new ChannelList(){
                      ChannelListName="衣服鞋包",
                      Description="",
+                     ControllerName=channels[0].ControllerName,
+                     ActionName="Publish",
                      ChannelListDetails=new List<ChannelListDetail>(){
                          new ChannelListDetail(){
                             ChannelListDetailName="衣服"
@@ -657,6 +669,8 @@ namespace Fx.Domain
                 new ChannelList(){
                      ChannelListName="文化生活",
                      Description="",
+                     ControllerName=channels[0].ControllerName,
+                     ActionName="Publish",
                      ChannelListDetails=new List<ChannelListDetail>(){
                          new ChannelListDetail(){
                             ChannelListDetailName="衣服"
@@ -681,6 +695,8 @@ namespace Fx.Domain
                 new ChannelList(){
                      ChannelListName="二手汽车",
                      Description="",
+                     ControllerName=channels[1].ControllerName,
+                     ActionName="Publish",
                      ChannelListDetails=new List<ChannelListDetail>(){
                          new ChannelListDetail(){
                             ChannelListDetailName="奥迪"
@@ -729,6 +745,8 @@ namespace Fx.Domain
                 new ChannelList(){
                      ChannelListName="汽车配件",
                      Description="",
+                     ControllerName=channels[1].ControllerName,
+                     ActionName="Publish",
                      ChannelListDetails=new List<ChannelListDetail>(){
                          new ChannelListDetail(){
                             ChannelListDetailName="GPS"
@@ -750,6 +768,8 @@ namespace Fx.Domain
                 new ChannelList(){
                      ChannelListName="商业用房",
                      Description="",
+                     ControllerName=channels[2].ControllerName,
+                     ActionName="Publish",
                      ChannelListDetails=new List<ChannelListDetail>(){
                          new ChannelListDetail(){
                             ChannelListDetailName="展销商铺"
@@ -768,6 +788,8 @@ namespace Fx.Domain
                 new ChannelList(){
                      ChannelListName="居住用房",
                      Description="",
+                     ControllerName=channels[2].ControllerName,
+                     ActionName="Publish",
                      ChannelListDetails=new List<ChannelListDetail>(){
                          new ChannelListDetail(){
                             ChannelListDetailName="House"

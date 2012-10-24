@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Fx.Domain.FxSite.IService;
 
 namespace Fx.InformationPlatform.Site.Controllers
 {
@@ -11,12 +12,17 @@ namespace Fx.InformationPlatform.Site.Controllers
     /// </summary>
     public class PublishController : Controller
     {
+        IChannelService channelService;
+        public PublishController(IChannelService channelService)
+        {
+            this.channelService = channelService;
+        }
+
         //
         // GET: /Publish/
-
         public ActionResult Index()
         {
-            return View();
+            return View(channelService.GetAllChannels());
         }
 
     }

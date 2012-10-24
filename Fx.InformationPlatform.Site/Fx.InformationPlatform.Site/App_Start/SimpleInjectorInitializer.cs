@@ -7,26 +7,26 @@ namespace Fx.InformationPlatform.Site.App_Start
 
     using SimpleInjector;
     using SimpleInjector.Integration.Web.Mvc;
-    
+
     public static class SimpleInjectorInitializer
     {
         /// <summary>Initialize the container and register it as MVC3 Dependency Resolver.</summary>
         public static void Initialize()
         {
             var container = new Container();
-            
+
             InitializeContainer(container);
 
             container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
-            
+
             container.RegisterMvcAttributeFilterProvider();
-       
+
             // Using Entity Framework? Please read this: http://simpleinjector.codeplex.com/discussions/363935
             container.Verify();
-            
+
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
         }
-     
+
         private static void InitializeContainer(Container container)
         {
             // Please note that if you updated the SimpleInjector.MVC3 package from a previous version, this
@@ -36,7 +36,7 @@ namespace Fx.InformationPlatform.Site.App_Start
             // folder.
             //#error Register your services here (remove this line).
             container.Register<Fx.Domain.Account.IService.IAccountService, Fx.Domain.Account.UserAccountService>();
-
+            container.Register<Fx.Domain.FxSite.IService.IChannelService, Fx.Domain.FxSite.ChannelService>();
             // For instance:
             // container.Register<IUserRepository, SqlUserRepository>();
         }

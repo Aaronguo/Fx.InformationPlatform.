@@ -33,8 +33,8 @@
                     <label>账号</label>
                 </div>
                 <div class="grid_16 omega p-line">
-                    @Html.TextBoxFor(model => model.UserName, new { @class = "input-small" })
-                    @Html.ValidationMessageFor(model => model.UserName)
+                    @Html.TextBoxFor(model => model.Email, new { @class = "input-small" ,placeholder = "abc@abc.com"})
+                    @Html.ValidationMessageFor(model => model.Email)
                 </div>
                 <div class="clear">
                 </div>

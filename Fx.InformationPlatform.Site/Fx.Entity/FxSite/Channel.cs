@@ -9,11 +9,11 @@ namespace Fx.Entity.FxSite
     /// <summary>
     /// 频道
     /// </summary>
-    public class Channel
+    public class Channel : IAction
     {
         public Channel()
         {
-            this.ChannelLists = new List<ChannelList>();
+            this.ChannelLists = new List<ChannelList>();            
         }
 
         public int ChannelId { get; set; }
@@ -29,5 +29,13 @@ namespace Fx.Entity.FxSite
         public string Description { get; set; }
 
         public virtual ICollection<ChannelList> ChannelLists { get; set; }
+
+        public string ControllerName { get; set; }
+
+        public string ActionName { get; set; }
+
+        public string RoutePars { get; set; }
+
+
     }
 }

@@ -20,7 +20,7 @@ namespace Fx.Domain
         }
 
         public SiteContent()
-            : base(System.Configuration.ConfigurationManager.ConnectionStrings["fxdbone"].ToString())
+            : base(System.Configuration.ConfigurationManager.ConnectionStrings["fxdbone-sqlserver"].ToString())
         {
 
         }
