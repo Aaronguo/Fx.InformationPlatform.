@@ -113,6 +113,7 @@
   <ItemGroup>
     <Compile Include="App_Start\SimpleInjectorInitializer.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AjaxController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CaptchaController.cs" />
     <Compile Include="Controllers\CarController.cs" />
@@ -136,7 +137,9 @@
     <Content Include="App_Readme\Elmah.SqlServer.sql" />
     <Content Include="App_Readme\Elmah.SqlServer.txt" />
     <Content Include="App_Readme\Elmah.txt" />
+    <Content Include="Content\images\arrowhead.gif" />
     <Content Include="Content\images\logo.jpg" />
+    <Content Include="Content\images\logo_v2.png" />
     <Content Include="Content\images\publish.gif" />
     <Content Include="Content\js\Flash\bcastr.swf" />
     <Content Include="Content\js\Flash\images\02.jpg" />
@@ -178,7 +181,9 @@
     <Content Include="Content\css\base.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Config\DataBase.config" />
+    <Content Include="Config\DataBase.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Content\js\jquery-1.6.2-vsdoc.js" />
     <Content Include="Content\images\icons.png" />
     <Content Include="Content\images\new-icons.png" />

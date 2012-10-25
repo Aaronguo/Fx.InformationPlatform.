@@ -589,7 +589,7 @@ namespace Fx.Domain
                      ChannelListName="数码产品",
                      Description="",
                      ControllerName=channels[0].ControllerName,
-                     ActionName="Publish",
+                     ActionName="Electronics",
                      ChannelListDetails=new List<ChannelListDetail>(){
                          new ChannelListDetail(){
                             ChannelListDetailName="手机"

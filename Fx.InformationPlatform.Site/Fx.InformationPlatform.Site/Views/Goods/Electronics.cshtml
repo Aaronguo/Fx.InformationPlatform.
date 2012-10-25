@@ -1,11 +1,191 @@
 ﻿@{
-    ViewBag.Title = "Electronics";
+    ViewBag.Title = "发布信息";
 }
 @Html.Partial("Partial/Flow")
 <div class="grid_24">
     &nbsp;
 </div>
 <div id="publish" class="grid_24">
+    <div class="publishborder" style="display: inline; float: left; width: 948px;">
+        <div class="grid_20" style="padding: 30px 30px 30px 30px;">
+               <input id="flow" type="hidden" value="0" />
+            @*   <div class="txtright alpha grid_3">
+                <p>
+                    <cite class="red">*</cite><strong>供求：</strong>
+                </p>
+            </div>
+            <div class="omega grid_17">
+                <label class="radio">
+                    <input name="wanted" type="radio" checked="checked" style="border: 1px solid rgb(226, 226, 226);" />
+                    出售</label>
+                <label class="radio">
+                    <input name="wanted" type="radio" style="border: 1px solid rgb(226, 226, 226);">
+                    求购</label>
+            </div>
+            <div class="clear">
+            </div>*@
+            <div class="txtright alpha grid_3">
+                <p>
+                    <cite class="red">*</cite><strong>标题：</strong>
+                </p>
+            </div>
+            <div class="omega grid_17">
+                <input type="text" id="title" value=""
+                    class="form-input" size="30" maxlength="60" style="border: 1px solid rgb(226, 226, 226);" />
+            </div>
+            <div class="clear">
+            </div>
+            <br />
 
+
+            <div class="txtright alpha grid_3">
+                <p>
+                    <cite class="red">*</cite><strong>类别：</strong>
+                </p>
+            </div>
+            <div class="omega grid_17">
+                <select id="catagroy">
+                    <option value="0">--请选择物品类别--</option>
+                </select>
+            </div>
+            <div class="clear">
+            </div>
+            <br />
+
+
+            <div class="txtright alpha grid_3">
+                <p>
+                    <cite class="red">*</cite><strong>价格：</strong>
+                </p>
+            </div>
+            <div class="omega grid_17">
+                <input type="text" id="price" value=""
+                    class="form-input" size="30" maxlength="8" style="border: 1px solid rgb(226, 226, 226);" />
+            </div>
+            <div class="clear">
+            </div>
+            <br />
+
+
+
+
+            <div class="txtright alpha grid_3">
+                <p>
+                    <strong>换物：</strong>
+                </p>
+            </div>
+            <div class="omega grid_17">
+                <input id="changegoods" type="checkbox" />
+            </div>
+            <div class="clear">
+            </div>
+            <br />
+
+
+
+
+
+
+            <div class="txtright alpha grid_3">
+                <p>
+                    <cite class="red">*</cite><strong>地区：</strong>
+                </p>
+            </div>
+            <div class="omega grid_17">
+                <select id="area">
+                   
+                </select>
+            </div>
+            <div class="clear">
+            </div>
+            <br />
+
+
+            <div class="txtright alpha grid_3">
+                <p>
+                    <cite class="red">*</cite><strong>新旧程度：</strong>
+                </p>
+            </div>
+            <div class="omega grid_17">
+                <select id="goodconditon">
+                    <option value="0">--请选择新旧程度--</option>
+                </select>
+            </div>
+            <div class="clear">
+            </div>
+            <br />
+
+
+
+            <div class="txtright alpha grid_3">
+                <p>
+                    <cite class="red">*</cite><strong>照片：</strong>
+                </p>
+            </div>
+            <div class="omega grid_17">
+                <input id="File1" type="file" />
+            </div>
+            <div class="clear">
+            </div>
+            <br />
+
+            <div class="txtright alpha grid_3">
+                <p>
+                    <cite class="red">*</cite><strong>邮箱：</strong>
+                </p>
+            </div>
+            <div class="omega grid_17">
+                <input type="text" id="email" value=""
+                    class="form-input" size="30" maxlength="8" style="border: 1px solid rgb(226, 226, 226);" />
+            </div>
+            <div class="clear">
+            </div>
+            <br />
+
+            <div class="txtright alpha grid_3">
+                <p>
+                    <cite class="red">*</cite><strong>备注：</strong>
+                </p>
+            </div>
+            <div class="omega grid_17">
+                <input type="text" id="tag" value=""
+                    class="form-input" size="30" maxlength="100" style="border: 1px solid rgb(226, 226, 226);" />
+            </div>
+            <div class="clear">
+            </div>
+            <br />
+
+            <div class="txtright alpha grid_3">
+                &nbsp;
+            </div>
+            <div class="omega grid_17">
+                <input type="submit" class="form-submit button button-green" value="免费注册并发布">
+                <span class="p-note">发布即代表您已阅读并同意 
+                        @Html.ActionLink("英淘网用户协议", "Agreement", "Pagelink")
+                    和  @Html.ActionLink("英淘网公约", "Convention", "Pagelink")
+                </span>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+    </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //GetArea
+        $.ajax({
+            url: "/Ajax/Aera",
+            type: "POST",
+            dataType: "json",
+            data: {},
+            success: function (data) {
+                $("#area").html(data);
+            },
+            error: function () {
+                $("#area").html("<option value='0'>服务异常，请稍后重试</option>");
+            }
+        })
 
+    });
+
+</script>

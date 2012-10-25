@@ -1,7 +1,7 @@
 ﻿<div id="topbar">
     <div class="container_24">
         <div class="grid_24" style="text-align: right;">
-            @if (Session["CurrentUser"] == null || Session["CurrentUser"] == "")
+            @if (!Request.IsAuthenticated)
             { 
                 <div class="topbar">
                     @Html.ActionLink("注册", "Register", "Account")
@@ -15,7 +15,7 @@
             else
             {
                 <div class="topbar">
-                    <span class="topbar-right-text">欢迎，<a href="/Account/Index">@Session["CurrentUser"]</a>
+                    <span class="topbar-right-text">欢迎，<a href="/Account/Index">@User.Identity.Name</a>
                         [<a href="/Account/LoginOff">退出</a>]
                     </span>
                     <span class="sep">|</span> <a href="/Account/Index" rel="nofollow">我的英淘网</a>

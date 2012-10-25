@@ -30,13 +30,14 @@ namespace Fx.Domain.Account
 
         public DomainResult AddUser(Entity.MemberShip.Membership entity)
         {
-            if ( !IsExistUser(entity.Users.UserName).isSuccess)
+            if (!IsExistUser(entity.Users.UserName).isSuccess)
             {
                 var result = DomainResult.GetDefault();
                 try
                 {
-                    var muser = Membership.CreateUser(entity.Email, entity.Password, entity.Email);
-                    if (muser != null)
+                    MembershipCreateStatus createStatus;
+                    Membership.CreateUser(entity.Email, entity.Password, entity.Email, null, null, true, null, out createStatus);
+                    if (createStatus == MembershipCreateStatus.Success)
                     {
                         SiteContent db = new SiteContent();
                         var user = db.Users.Where(r => r.UserName == entity.Users.UserName).First();
@@ -56,7 +57,7 @@ namespace Fx.Domain.Account
                         }
                         catch (Exception)
                         {
-                            DeleteUser(entity);                         
+                            DeleteUser(entity);
                         }
                     }
                 }

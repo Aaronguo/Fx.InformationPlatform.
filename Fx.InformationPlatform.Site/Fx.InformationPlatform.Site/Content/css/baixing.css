@@ -1,4 +1,5 @@
-﻿#topbar {
+﻿#topbar
+{
     height: 28px;
     line-height: 28px;
     background: #FBFBFB;
@@ -9,12 +10,23 @@
 }
 
 
-.p-line {
+.p-line
+{
     padding: 10px 0;
 }
 
-
-
-.center {
+.txtcenter
+{
     text-align: center;
+}
+
+
+.txtright
+{
+    text-align: right;
+}
+
+.publishborder
+{
+    border: 1px solid #DDD;
 }

@@ -19,6 +19,7 @@
             <div class="p-line">
                 <label class="p-label">
                     <cite class="red">*</cite>手机号码：<strong>@Html.LabelFor(model => model.MobilePIN)</strong>
+                </label>
             </div>
 
             <div class="p-line" id="form_b1614_pass">
@@ -35,7 +36,7 @@
 
             <div class="p-line">
                 @if (Model.OtherInformations.Sex == Fx.Entity.MemberShip.SexCatalog.Male)
-                    {
+                {
                     <label class="p-label">
                         性别：</label><label class="radio">
                             @Html.RadioButtonFor(model => model.OtherInformations.Sex, 0, new { @name = "sexGroup", @checked = true });                     
@@ -43,9 +44,9 @@
                     <label class="radio">
                         @Html.RadioButtonFor(model => model.OtherInformations.Sex, 1, new { @name = "sexGroup" });              
                     女</label>
-                    }
-                    else
-                    {
+                }
+                else
+                {
                     <label class="p-label">
                         性别：</label><label class="radio">
                             @Html.RadioButtonFor(model => model.OtherInformations.Sex, 0, new { @name = "sexGroup" });                     
@@ -53,7 +54,7 @@
                     <label class="radio">
                         @Html.RadioButtonFor(model => model.OtherInformations.Sex, 1, new { @name = "sexGroup", @checked = true });              
                     女</label>
-                    }
+                }
             </div>
 
             <div class="p-line">

@@ -34,11 +34,13 @@ namespace Fx.Domain
 
         public DomainResult SetResult(string retultMsg="", Exception ex = null, string Tag = "",bool isSuccess = false)
         {
-            result.isSuccess = isSuccess;
-            result.ResultMsg = retultMsg;
-            result.error = ex;
-            result.Tag = Tag;
-            return result;
+            //解决公用一个DomainResult而导致的冲突问题
+            var copyone = result.MemberwiseClone() as DomainResult;
+            copyone.isSuccess = isSuccess;
+            copyone.ResultMsg = retultMsg;
+            copyone.error = ex;
+            copyone.Tag = Tag;
+            return copyone;
         }
     }
 }

@@ -49,10 +49,23 @@ namespace Fx.InformationPlatform.Site.Controllers
         [HttpPost]
         public ActionResult Login(RegisterUser user)
         {
+
             var result = accountService.VaildUser(user.Email, user.Password);
             if (result.isSuccess)
             {
-                // 跳转到登录页面
+                //记住登录
+                System.Web.Security.FormsAuthentication.SetAuthCookie(user.Email, true);
+               
+                return RedirectToAction("Index", "Home");
+                //if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
+                //    && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
+                //{
+                //    return Redirect(returnUrl);
+                //}
+                //else
+                //{
+                //    return RedirectToAction("Index", "Home");
+                //}
             }
             else
             {
@@ -102,8 +115,8 @@ namespace Fx.InformationPlatform.Site.Controllers
             if (entityResult.isSuccess)
             {
                 // 跳转到登录页面
-                Session["CurrentUser"] = user.Email;
-                return new HomeController().Index();
+                System.Web.Security.FormsAuthentication.SetAuthCookie(user.Email, true);
+                return RedirectToAction("Index", "Home");
             }
             else
             {
@@ -112,10 +125,14 @@ namespace Fx.InformationPlatform.Site.Controllers
             }
         }
 
+        /// <summary>
+        /// 注销用户
+        /// </summary>
+        /// <returns></returns>
         public ActionResult LoginOff()
         {
-            Session["CurrentUser"] = null;
-            return new HomeController().Index();
+            System.Web.Security.FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
         }
 
         /// <summary>
