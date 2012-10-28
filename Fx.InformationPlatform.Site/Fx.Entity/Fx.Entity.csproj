@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Fx.Entity</RootNamespace>
     <AssemblyName>Fx.Entity</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,6 +48,7 @@
     <Compile Include="FxSite\ChannelListDetail.cs" />
     <Compile Include="FxSite\City.cs" />
     <Compile Include="FxSite\ELMAHError.cs" />
+    <Compile Include="FxSite\GoodsCondition.cs" />
     <Compile Include="IAction.cs" />
     <Compile Include="MemberShip\Applications.cs" />
     <Compile Include="MemberShip\Membership.cs" />

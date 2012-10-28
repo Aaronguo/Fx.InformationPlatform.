@@ -8,12 +8,15 @@ namespace Fx.InformationPlatform.Site.Controllers
 {
     public class BaseController : Controller
     {
-      
+        protected string ControllerName { get; private set; }
+        protected string ActionName { get; private set; }
+        protected string RoutePars { get; private set; }
 
-        public BaseController()
+
+        public virtual void InitParas()
         {
-           
+            ActionName = this.ActionName();
+            ControllerName = this.ControllerName();
         }
-
     }
 }

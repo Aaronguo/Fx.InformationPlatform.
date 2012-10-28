@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Fx.Entity.Account
 {
@@ -15,7 +8,7 @@ namespace Fx.Entity.Account
         [StringLength(256, MinimumLength = 1, ErrorMessage = "用户名长度为1~256个字符")]
         public string NickName { get; set; }
 
-        [EmailAddress(ErrorMessage = "请填写正确的邮箱地址")]
+        [EmailCheck(ErrorMessage = "请填写正确的邮箱地址")]
         [Required(ErrorMessage = "Email不能为空")]
         public string Email { get; set; }
 
@@ -29,12 +22,10 @@ namespace Fx.Entity.Account
 
 
         [Required(ErrorMessage = "地址不能为空")]
-        [MaxLength(50, ErrorMessage = "地址长度最大为50个字符")]
+        [StringLength(50, ErrorMessage = "地址长度最大为50个字符")]
         public string Address { get; set; }
 
-
         public string QQ { get; set; }
-
 
         public string HeadPicture { get; set; }
 

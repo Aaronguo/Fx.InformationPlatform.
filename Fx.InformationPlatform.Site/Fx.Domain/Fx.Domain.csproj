@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Fx.Domain</RootNamespace>
     <AssemblyName>Fx.Domain</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,9 +34,9 @@
     <Reference Include="Afterthought">
       <HintPath>..\packages\EntityFramework.Patterns.0.7\lib\net40\Afterthought.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework, Version=4.3.1.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.5.0.0-rc\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.5.0.0-rc\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.Patterns">
       <HintPath>..\packages\EntityFramework.Patterns.0.7\lib\net40\EntityFramework.Patterns.dll</HintPath>
@@ -73,7 +74,9 @@
     <Compile Include="FxSite\ChannelService.cs" />
     <Compile Include="FxSite\FxSiteContext.cs" />
     <Compile Include="FxSite\FxSiteInitializer.cs" />
+    <Compile Include="FxSite\GoodsService.cs" />
     <Compile Include="FxSite\IService\IChannel.cs" />
+    <Compile Include="FxSite\IService\IGoods.cs" />
     <Compile Include="FxSite\IService\IPageAjax.cs" />
     <Compile Include="FxSite\Mapping\Area_Mapping.cs" />
     <Compile Include="FxSite\Mapping\ChannelListDetail_Mapping.cs" />
@@ -91,10 +94,12 @@
       <Project>{dff0501c-dcff-4d13-a6ef-bfa9404e09dc}</Project>
       <Name>Fx.Entity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fx.Infrastructure\Fx.Infrastructure.csproj">
+      <Project>{41138e06-4c15-4641-9207-d0bf5c9f32da}</Project>
+      <Name>Fx.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Ioc\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

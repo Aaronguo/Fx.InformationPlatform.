@@ -2,14 +2,15 @@
 using System.Web.Security;
 using System.Linq;
 using System.Data.Entity;
+using Fx.Infrastructure;
 
 namespace Fx.Domain.Account
 {
-    public class UserAccountService : IService.IAccountService
+    public class UserAccountService : BaseIService<SiteContent>, IService.IAccountService
     {
         public UserAccountService()
         {
-
+            this.content = new SiteContent();
         }
 
 
@@ -38,9 +39,8 @@ namespace Fx.Domain.Account
                     MembershipCreateStatus createStatus;
                     Membership.CreateUser(entity.Email, entity.Password, entity.Email, null, null, true, null, out createStatus);
                     if (createStatus == MembershipCreateStatus.Success)
-                    {
-                        SiteContent db = new SiteContent();
-                        var user = db.Users.Where(r => r.UserName == entity.Users.UserName).First();
+                    {                        
+                        var user = content.Users.Where(r => r.UserName == entity.Users.UserName).First();
                         var otherInformation = new Fx.Entity.MemberShip.OtherInformation();
                         otherInformation.Mobile = entity.MobilePIN;
                         otherInformation.QQ = entity.OtherInformations.QQ;
@@ -50,10 +50,10 @@ namespace Fx.Domain.Account
                         otherInformation.NickName = entity.OtherInformations.NickName;
                         otherInformation.ApplicationId = user.ApplicationId;
                         otherInformation.UserId = user.UserId;
-                        var rEntity = db.OtherInformations.Add(otherInformation);
+                        var rEntity = content.OtherInformations.Add(otherInformation);
                         try
                         {
-                            db.SaveChanges();
+                            content.SaveChanges();
                         }
                         catch (Exception)
                         {
@@ -122,9 +122,7 @@ namespace Fx.Domain.Account
                 {
                     var u = result.Tag as MembershipUser;
                     u.Comment = entity.Comment;
-
                     u.Email = entity.Email;
-
                     Membership.UpdateUser(u);
 
                 }
@@ -181,7 +179,7 @@ namespace Fx.Domain.Account
 
         public int GetUserCount()
         {
-            return new SiteContent().Users.Count();
+            return this.content.Users.Count();
         }
     }
 }

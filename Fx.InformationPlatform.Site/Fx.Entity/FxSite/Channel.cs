@@ -37,5 +37,7 @@ namespace Fx.Entity.FxSite
         public string RoutePars { get; set; }
 
 
+        public virtual int Sorted { get; set; }
+
     }
 }

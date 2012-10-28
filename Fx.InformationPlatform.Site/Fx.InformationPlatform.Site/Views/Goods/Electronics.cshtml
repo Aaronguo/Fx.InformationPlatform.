@@ -8,7 +8,7 @@
 <div id="publish" class="grid_24">
     <div class="publishborder" style="display: inline; float: left; width: 948px;">
         <div class="grid_20" style="padding: 30px 30px 30px 30px;">
-               <input id="flow" type="hidden" value="0" />
+            <input id="flow" type="hidden" value="0" />
             @*   <div class="txtright alpha grid_3">
                 <p>
                     <cite class="red">*</cite><strong>供求：</strong>
@@ -44,9 +44,7 @@
                 </p>
             </div>
             <div class="omega grid_17">
-                <select id="catagroy">
-                    <option value="0">--请选择物品类别--</option>
-                </select>
+                @Html.DropDownList("catagroy")               
             </div>
             <div class="clear">
             </div>
@@ -93,7 +91,9 @@
             </div>
             <div class="omega grid_17">
                 <select id="area">
-                   
+                </select>
+                &nbsp;&nbsp;
+                <select id="city" class="hide">
                 </select>
             </div>
             <div class="clear">
@@ -107,8 +107,8 @@
                 </p>
             </div>
             <div class="omega grid_17">
-                <select id="goodconditon">
-                    <option value="0">--请选择新旧程度--</option>
+                <select id="goodsconditon">
+                   
                 </select>
             </div>
             <div class="clear">
@@ -173,6 +173,17 @@
 <script type="text/javascript">
     $(document).ready(function () {
         //GetArea
+        AjaxController.GetAreaData();
+        AjaxController.BindAreaChange();
+        AjaxController.GetGoodsConditionData();
+    });
+
+
+    var AjaxController = AjaxController || {};
+    AjaxController.GetChannelDetailData = function () {
+        
+    }
+    AjaxController.GetAreaData = function () {
         $.ajax({
             url: "/Ajax/Aera",
             type: "POST",
@@ -184,8 +195,46 @@
             error: function () {
                 $("#area").html("<option value='0'>服务异常，请稍后重试</option>");
             }
-        })
-
-    });
-
+        });
+    }
+    AjaxController.BindAreaChange = function () {
+        $("#area").change(function () {
+            var value = $("#area").attr("value") || 0;
+            if (value != 0) {
+                $("#city").removeClass("hide");
+                AjaxController.GetCityData();
+            }
+            else {
+                $("#city").addClass("hide");
+            }
+        });
+    };
+    AjaxController.GetCityData = function () {
+        $.ajax({
+            url: "/Ajax/City?areaId=" + $("#area").find("option:selected").val(),
+            type: "POST",
+            dataType: "json",
+            data: {},
+            success: function (data) {
+                $("#city").html(data);
+            },
+            error: function () {
+                $("#city").html("<option value='0'>服务异常，请稍后重试</option>");
+            }
+        });
+    };
+    AjaxController.GetGoodsConditionData = function () {
+        $.ajax({
+            url: "/Ajax/GoodsCondition",
+            type: "POST",
+            dataType: "json",
+            data: {},
+            success: function (data) {
+                $("#goodsconditon").html(data);
+            },
+            error: function () {
+                $("#area").html("<option value='0'>服务异常，请稍后重试</option>");
+            }
+        });
+    };
 </script>

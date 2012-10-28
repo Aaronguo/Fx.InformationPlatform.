@@ -4,32 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Fx.Entity.FxSite;
+using Fx.Infrastructure;
 
 namespace Fx.Domain.FxSite
 {
-    public class ChannelService : IService.IChannelService, IDisposable
+    public class ChannelService :  BaseIService<SiteContent>,IService.IChannelService, IDisposable
     {
-        SiteContent content = new SiteContent();
-
-        private bool isDispose = false;
-
         public ChannelService()
         {
-
+            this.content = new SiteContent();
         }
 
         public List<Channel> GetAllChannels()
         {
-            return content.Channels.ToList();
-        }
-
-        public void Dispose()
-        {
-            if (!isDispose)
-            {
-                content.Dispose();
-                isDispose = true;
-            }
+            return content.Channels.OrderBy(r=>r.Sorted).ToList();
         }
     }
 }

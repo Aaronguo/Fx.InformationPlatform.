@@ -22,5 +22,7 @@ namespace Fx.Entity.FxSite
         /// 频道列表简介
         /// </summary>
         public string Description { get; set; }
+
+        public virtual int Sorted { get; set; }
     }
 }

@@ -4,16 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Fx.Domain.FxSite.IService;
+using Fx.Infrastructure;
 
 namespace Fx.Domain.FxSite
 {
     /// <summary>
     /// 发布信息Ajax服务
     /// </summary>
-    public class PublishAjaxService : IPageAjax, IDisposable
+    public class PublishAjaxService : BaseIService<SiteContent>, IPageAjax, IDisposable
     {
-        SiteContent content = new SiteContent();
-        private bool isDispose = false;
+        public PublishAjaxService()
+        {
+            this.content = new SiteContent();
+        }
 
         public List<Entity.FxSite.Area> GetAreas()
         {
@@ -22,17 +25,12 @@ namespace Fx.Domain.FxSite
 
         public List<Entity.FxSite.City> GetCitys(int AreaId)
         {
-            throw new NotImplementedException();
+            return content.Cities.Where(r => r.AreaID == AreaId).OrderBy(r => r.Sorted).ToList();
         }
 
-
-        public void Dispose()
+        public List<Entity.FxSite.GoodsCondition> GoodsConditions()
         {
-            if (!isDispose)
-            {
-                content.Dispose();
-                isDispose = true;
-            }
+            return content.GoodsConditions.OrderBy(r => r.Sorted).ToList();
         }
     }
 }

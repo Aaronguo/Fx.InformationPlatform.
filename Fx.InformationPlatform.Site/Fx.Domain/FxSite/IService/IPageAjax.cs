@@ -16,5 +16,11 @@ namespace Fx.Domain.FxSite.IService
         /// </summary>
         /// <returns></returns>
         List<City> GetCitys(int AreaId);
+
+        /// <summary>
+        /// 获取物品信息新旧程度相关信息
+        /// </summary>
+        /// <returns></returns>
+        List<GoodsCondition> GoodsConditions();
     }
 }

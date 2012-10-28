@@ -22,7 +22,7 @@ namespace Fx.Domain
         public SiteContent()
             : base(System.Configuration.ConfigurationManager.ConnectionStrings["fxdbone-sqlserver"].ToString())
         {
-
+           
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -71,11 +71,13 @@ namespace Fx.Domain
 
         //Site
         public DbSet<Area> Areas { get; set; }
-
         public DbSet<City> Cities { get; set; }
 
-        public DbSet<Channel> Channels { get; set; }//不在新增ChannelList和ChannelListDetail
+        public DbSet<Channel> Channels { get; set; }
+        public DbSet<ChannelList> ChannelLists { get; set; }
 
 
+        //
+        public DbSet<GoodsCondition> GoodsConditions { get; set; }
     }
 }

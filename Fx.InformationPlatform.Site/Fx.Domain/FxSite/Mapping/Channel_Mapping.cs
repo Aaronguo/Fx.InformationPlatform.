@@ -22,6 +22,8 @@ namespace Fx.Domain.FxSite.Mapping
               this.Property(t => t.ChannelId).HasColumnName("ChannelId");
               this.Property(t => t.ChannelName).HasColumnName("ChannelName").HasMaxLength(20);
               this.Property(t => t.Description).HasColumnName("Description").HasMaxLength(256);
+              this.HasMany(r => r.ChannelLists).WithRequired();
+
          }
     }
 }

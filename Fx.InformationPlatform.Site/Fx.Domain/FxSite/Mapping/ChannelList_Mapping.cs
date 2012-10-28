@@ -9,19 +9,20 @@
 
 namespace Fx.Domain.FxSite.Mapping
 {
-    #pragma warning disable 1573
+#pragma warning disable 1573
     using System.Data.Entity.ModelConfiguration;
     using Fx.Entity.FxSite;
-    
+
     internal partial class ChannelList_Mapping : EntityTypeConfiguration<ChannelList>
     {
         public ChannelList_Mapping()
-        {                        
-              this.HasKey(t => t.ChannelListId);
-              this.ToTable("ChannelList", "Site");
-              this.Property(t => t.ChannelListId).HasColumnName("ChannelListId");
-              this.Property(t => t.ChannelListName).HasColumnName("ChannelListName").HasMaxLength(20);
-              this.Property(t => t.Description).HasColumnName("Description").HasMaxLength(256);
-         }
+        {
+            this.HasKey(t => t.ChannelListId);
+            this.ToTable("ChannelList", "Site");
+            this.Property(t => t.ChannelListId).HasColumnName("ChannelListId");
+            this.Property(t => t.ChannelListName).HasColumnName("ChannelListName").HasMaxLength(20);
+            this.Property(t => t.Description).HasColumnName("Description").HasMaxLength(256);
+            this.HasMany(r => r.ChannelListDetails).WithRequired();
+        }
     }
 }

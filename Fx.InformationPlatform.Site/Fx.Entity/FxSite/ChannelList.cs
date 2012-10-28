@@ -34,6 +34,8 @@ namespace Fx.Entity.FxSite
 
         public string RoutePars { get; set; }
 
-        public ICollection<ChannelListDetail> ChannelListDetails { get; set; }
+        public virtual int Sorted { get; set; }
+
+        public virtual ICollection<ChannelListDetail> ChannelListDetails { get; set; }
     }
 }

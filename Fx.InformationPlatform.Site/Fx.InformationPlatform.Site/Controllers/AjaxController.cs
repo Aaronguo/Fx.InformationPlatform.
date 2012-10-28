@@ -16,7 +16,7 @@ namespace Fx.InformationPlatform.Site.Controllers
             this.publishService = publishService;
         }
 
-        [OutputCache(Duration = 60)]
+        [OutputCache(Duration = 3600)]
         public ActionResult Aera()
         {
             if (Request.IsAjaxRequest())
@@ -34,5 +34,41 @@ namespace Fx.InformationPlatform.Site.Controllers
             }
         }
 
+        [OutputCache(Duration = 3600)]
+        public ActionResult City(int areaId)
+        {
+            if (Request.IsAjaxRequest() && areaId > 0)
+            {
+                string show = "<option value=\"0\">--请选择详细地址--</option>";
+                var list = publishService.GetCitys(areaId);
+                var json = from p in list
+                           select string.Format("<option value=\"{0}\">{1}</option>", p.CityId, p.CityName);
+
+                return Json(show + string.Join("", json), JsonRequestBehavior.DenyGet);
+            }
+            else
+            {
+                return new ContentResult() { Content = "Access Forbidden!" };
+            }
+        }
+
+
+        [OutputCache(Duration = 3600)]
+        public ActionResult GoodsCondition()
+        {
+            if (Request.IsAjaxRequest())
+            {
+                string show = "<option value=\"0\">--请选择新旧程度--</option>";
+                var list = publishService.GoodsConditions();
+                var json = from p in list
+                           select string.Format("<option value=\"{0}\">{1}</option>", p.GoodsConditionId, p.GoodsConditionName);
+
+                return Json(show + string.Join("", json), JsonRequestBehavior.DenyGet);
+            }
+            else
+            {
+                return new ContentResult() { Content = "Access Forbidden!" };
+            }
+        }
     }
 }
