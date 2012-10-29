@@ -43,7 +43,6 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Web" />
@@ -71,6 +70,10 @@
     <Compile Include="Account\IService\IAccountService.cs" />
     <Compile Include="Account\AccountContext.cs" />
     <Compile Include="DomainResult.cs" />
+    <Compile Include="FxGoods\FxGoodsContext.cs" />
+    <Compile Include="FxGoods\FxPublishGoodService.cs" />
+    <Compile Include="FxGoods\FxGoodsInitializer.cs" />
+    <Compile Include="FxGoods\IService\IPublishGoods.cs" />
     <Compile Include="FxSite\ChannelService.cs" />
     <Compile Include="FxSite\FxSiteContext.cs" />
     <Compile Include="FxSite\FxSiteInitializer.cs" />
@@ -86,7 +89,7 @@
     <Compile Include="FxSite\Mapping\ELMAH_Error_Mapping.cs" />
     <Compile Include="FxSite\PublishAjaxService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SiteContent.cs" />
+    <Compile Include="SiteContext.cs" />
     <Compile Include="SiteInitializer.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -6,11 +6,11 @@ using Fx.Infrastructure;
 
 namespace Fx.Domain.Account
 {
-    public class UserAccountService : BaseIService<SiteContent>, IService.IAccountService
+    public class UserAccountService : BaseIService<SiteContext>, IService.IAccountService
     {
         public UserAccountService()
         {
-            this.content = new SiteContent();
+            this.content = new SiteContext();
         }
 
 

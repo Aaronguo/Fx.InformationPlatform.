@@ -9,18 +9,19 @@ using Fx.Domain.Account.Mapping.Other;
 using Fx.Domain.FxSite.Mapping;
 using Fx.Entity.FxSite;
 using Fx.Entity.MemberShip;
+using Fx.Infrastructure.Db;
 
 namespace Fx.Domain
 {
-    public class SiteContent : DbContext
+    public class SiteContext : DbContext
     {
-        static SiteContent()
+        static SiteContext()
         {
             System.Data.Entity.Database.SetInitializer(new SiteInitializer());
         }
 
-        public SiteContent()
-            : base(System.Configuration.ConfigurationManager.ConnectionStrings["fxdbone-sqlserver"].ToString())
+        public SiteContext()
+            : base(Connection.CreateConnection(FxConnection.FxSite),false)
         {
            
         }

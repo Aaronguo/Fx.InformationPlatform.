@@ -122,6 +122,7 @@
     <Compile Include="Controllers\HouseController.cs" />
     <Compile Include="Controllers\PagelinkController.cs" />
     <Compile Include="Controllers\PublishController.cs" />
+    <Compile Include="Controllers\PublishGoodsController.cs" />
     <Compile Include="Framework\ChannelLocation.cs" />
     <Compile Include="Framework\ElmahHandledErrorLoggerFilter.cs" />
     <Compile Include="Framework\StaticHelper.cs" />
@@ -131,10 +132,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\aspnet-Fx.InformationPlatform.Site-20121013215011.mdf" />
-    <Content Include="App_Data\aspnet-Fx.InformationPlatform.Site-20121013215011_log.ldf">
-      <DependentUpon>aspnet-Fx.InformationPlatform.Site-20121013215011.mdf</DependentUpon>
-    </Content>
     <Content Include="App_Readme\Elmah.SqlServer.sql" />
     <Content Include="App_Readme\Elmah.SqlServer.txt" />
     <Content Include="App_Readme\Elmah.txt" />
@@ -251,8 +248,10 @@
     <Content Include="Views\Goods\Partial\Flow.cshtml" />
     <Content Include="Views\Publish\Partial\Channel.cshtml" />
     <Content Include="Views\Shared\_LayoutClean.cshtml" />
+    <Content Include="Views\PublishGoods\Get.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Upload\HeadPicture\" />
   </ItemGroup>
   <ItemGroup>

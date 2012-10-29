@@ -8,11 +8,11 @@ using Fx.Infrastructure;
 
 namespace Fx.Domain.FxSite
 {
-    public class ChannelService :  BaseIService<SiteContent>,IService.IChannelService, IDisposable
+    public class ChannelService :  BaseIService<SiteContext>,IService.IChannelService, IDisposable
     {
         public ChannelService()
         {
-            this.content = new SiteContent();
+            this.content = new SiteContext();
         }
 
         public List<Channel> GetAllChannels()

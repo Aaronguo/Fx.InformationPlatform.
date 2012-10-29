@@ -8,11 +8,11 @@ using Fx.Infrastructure;
 
 namespace Fx.Domain.FxSite
 {
-    public class GoodsService : BaseIService<SiteContent>, IGoods, IDisposable
+    public class GoodsService : BaseIService<SiteContext>, IGoods, IDisposable
     {
         public GoodsService()
         {
-            this.content = new SiteContent();
+            this.content = new SiteContext();
         }
 
         public List<Entity.FxSite.ChannelListDetail> GetChannelDetail(string ControllerName, string ActionName)

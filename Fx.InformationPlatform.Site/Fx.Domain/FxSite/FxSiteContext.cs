@@ -23,7 +23,7 @@ namespace Fx.Domain.FxSite
         }
 
         public FxSiteContext()
-            : base(System.Configuration.ConfigurationManager.ConnectionStrings["fx.site"].ToString())
+            : base()
         {
             throw new NotImplementedException("因Hosting的变化，只有一个数据库，所以请勿使用");
         }

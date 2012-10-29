@@ -8,9 +8,9 @@ using Fx.Entity.FxSite;
 
 namespace Fx.Domain
 {
-    public class SiteInitializer : CreateDatabaseIfNotExists<SiteContent>
+    public class SiteInitializer : CreateDatabaseIfNotExists<SiteContext>
     {
-        protected override void Seed(SiteContent context)
+        protected override void Seed(SiteContext context)
         {
             base.Seed(context);
 

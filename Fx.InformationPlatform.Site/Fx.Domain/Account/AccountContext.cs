@@ -26,7 +26,7 @@ namespace Fx.Domain.Account
         }
 
         public AccountContext()
-            : base(System.Configuration.ConfigurationManager.ConnectionStrings["fx.userdb"].ToString())
+            : base()
         {
             throw new NotImplementedException("因Hosting的变化，只有一个数据库，所以请勿使用");
         }

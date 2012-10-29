@@ -39,6 +39,7 @@ namespace Fx.InformationPlatform.Site.App_Start
             container.Register<Fx.Domain.FxSite.IService.IChannelService, Fx.Domain.FxSite.ChannelService>();
             container.Register<Fx.Domain.FxSite.IService.IPageAjax, Fx.Domain.FxSite.PublishAjaxService>();
             container.Register<Fx.Domain.FxSite.IService.IGoods, Fx.Domain.FxSite.GoodsService>();
+            container.Register<Fx.Domain.FxGoods.IService.IPublishGoods, Fx.Domain.FxGoods.FxPublishGoodService>();
             // For instance:
             // container.Register<IUserRepository, SqlUserRepository>();
         }

@@ -11,11 +11,11 @@ namespace Fx.Domain.FxSite
     /// <summary>
     /// 发布信息Ajax服务
     /// </summary>
-    public class PublishAjaxService : BaseIService<SiteContent>, IPageAjax, IDisposable
+    public class PublishAjaxService : BaseIService<SiteContext>, IPageAjax, IDisposable
     {
         public PublishAjaxService()
         {
-            this.content = new SiteContent();
+            this.content = new SiteContext();
         }
 
         public List<Entity.FxSite.Area> GetAreas()
