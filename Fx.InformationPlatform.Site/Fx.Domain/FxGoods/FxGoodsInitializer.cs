@@ -8,7 +8,7 @@ using Fx.Entity.FxGoods;
 
 namespace Fx.Domain.FxGoods
 {
-    public class FxGoodsInitializer : DropCreateDatabaseAlways<FxGoodsContext>
+    public class FxGoodsInitializer : CreateDatabaseIfNotExists<FxGoodsContext>
     {
         protected override void Seed(FxGoodsContext context)
         {
