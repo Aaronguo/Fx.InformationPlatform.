@@ -10,7 +10,7 @@ namespace Fx.Entity.FxGoods
     {
         public Publish()
         {
-            this.CreatedTime = DateTime.Now;
+            this.CreateTime = DateTime.Now;
         }
 
         public string PublishUserEmail { get; set; }
@@ -31,7 +31,7 @@ namespace Fx.Entity.FxGoods
         /// <summary>
         /// 创建时间
         /// </summary>
-        public DateTime CreatedTime { get; set; }
+        public DateTime CreateTime { get; set; }
 
         //public virtual ICollection<PublishImage> PublishImages { get; set; }
     }

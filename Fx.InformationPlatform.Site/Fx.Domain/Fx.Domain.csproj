@@ -74,7 +74,6 @@
     <Compile Include="FxGoods\FxPublishGoodService.cs" />
     <Compile Include="FxGoods\FxGoodsInitializer.cs" />
     <Compile Include="FxGoods\IService\IPublishGoods.cs" />
-    <Compile Include="FxGoods\Mapping\Carpublishinfo_Mapping.cs" />
     <Compile Include="FxSite\ChannelService.cs" />
     <Compile Include="FxSite\FxSiteContext.cs" />
     <Compile Include="FxSite\FxSiteInitializer.cs" />
