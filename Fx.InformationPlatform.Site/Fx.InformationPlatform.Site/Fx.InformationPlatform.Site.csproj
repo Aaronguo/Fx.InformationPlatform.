@@ -123,6 +123,7 @@
     <Compile Include="Controllers\PagelinkController.cs" />
     <Compile Include="Controllers\PublishController.cs" />
     <Compile Include="Controllers\PublishGoodsController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Framework\ChannelLocation.cs" />
     <Compile Include="Framework\ElmahHandledErrorLoggerFilter.cs" />
     <Compile Include="Framework\StaticHelper.cs" />
@@ -130,14 +131,37 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Upload\FilesStatus.cs" />
+    <Compile Include="Upload\UploadHandler.ashx.cs">
+      <DependentUpon>UploadHandler.ashx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Readme\Elmah.SqlServer.sql" />
     <Content Include="App_Readme\Elmah.SqlServer.txt" />
     <Content Include="App_Readme\Elmah.txt" />
+    <Content Include="Content\FileUpload\canvas-to-blob.min.js" />
+    <Content Include="Content\FileUpload\html5.js" />
+    <Content Include="Content\FileUpload\jquery-ui-1.8.11.js" />
+    <Content Include="Content\FileUpload\jquery-ui-1.8.11.min.js">
+      <DependentUpon>jquery-ui-1.8.11.js</DependentUpon>
+    </Content>
+    <Content Include="Content\FileUpload\jquery.fileupload-ip.js" />
+    <Content Include="Content\FileUpload\jquery.fileupload-ui.css" />
+    <Content Include="Content\FileUpload\jquery.fileupload-ui.js" />
+    <Content Include="Content\FileUpload\jquery.fileupload.js" />
+    <Content Include="Content\FileUpload\jquery.iframe-transport.js" />
+    <Content Include="Content\FileUpload\load-image.min.js" />
+    <Content Include="Content\FileUpload\locale.js" />
+    <Content Include="Content\FileUpload\main.js" />
+    <Content Include="Content\FileUpload\tmpl.min.js" />
     <Content Include="Content\images\arrowhead.gif" />
+    <Content Include="Content\images\generalFile.png" />
+    <Content Include="Content\images\glyphicons-halflings-white.png" />
+    <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\logo.jpg" />
     <Content Include="Content\images\logo_v2.png" />
+    <Content Include="Content\images\progressbar.gif" />
     <Content Include="Content\images\publish.gif" />
     <Content Include="Content\js\Flash\bcastr.swf" />
     <Content Include="Content\js\Flash\images\02.jpg" />
@@ -249,9 +273,12 @@
     <Content Include="Views\Publish\Partial\Channel.cshtml" />
     <Content Include="Views\Shared\_LayoutClean.cshtml" />
     <Content Include="Views\PublishGoods\Get.cshtml" />
+    <Content Include="Test\Index.cshtml" />
+    <Content Include="Upload\UploadHandler.ashx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Files\" />
     <Folder Include="Upload\HeadPicture\" />
   </ItemGroup>
   <ItemGroup>
