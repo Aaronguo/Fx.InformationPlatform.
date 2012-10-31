@@ -9,7 +9,7 @@ namespace Fx.Entity.FxSite
     /// <summary>
     /// 频道分类明细
     /// </summary>
-    public class ChannelListDetail
+    public class ChannelListDetail:IAction
     {
         public int ChannelListDetailId { get; set; }
 
@@ -24,5 +24,11 @@ namespace Fx.Entity.FxSite
         public string Description { get; set; }
 
         public virtual int Sorted { get; set; }
+
+        public string ControllerName { get; set; }
+
+        public string ActionName { get; set; }
+
+        public string RoutePars { get; set; }
     }
 }

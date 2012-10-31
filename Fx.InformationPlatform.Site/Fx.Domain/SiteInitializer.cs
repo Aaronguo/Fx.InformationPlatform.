@@ -570,7 +570,7 @@ namespace Fx.Domain
                      Sorted=1
                 },
                 new Channel(){
-                     ChannelName="汽车交易",
+                     ChannelName="车辆交易",
                      Description="",
                      ControllerName="Car",
                      ActionName="Index",
@@ -597,35 +597,43 @@ namespace Fx.Domain
                      ChannelListDetails=new List<ChannelListDetail>(){
                          new ChannelListDetail(){
                             ChannelListDetailName="手机",
-                             Sorted=1,
+                            Sorted=1,
+                            ActionName="Phone"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="电脑",
-                             Sorted=2,
+                            Sorted=2,
+                            ActionName="Computer"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="数码摄像器材",
-                             Sorted=3,
+                            Sorted=3,
+                            ActionName="DigitalCamera"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="电脑配件",
-                             Sorted=4,
+                            Sorted=4,
+                            ActionName="ComputerAccessories"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="游戏机",
-                             Sorted=5,
+                            Sorted=5,
+                            ActionName="PlayStations"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="游戏机配件",
-                             Sorted=6,
+                            Sorted=6,
+                            ActionName="PSAccessories"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="手机配件",
-                             Sorted=7,
+                            Sorted=7,
+                            ActionName="PhoneAccessories"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="其他",
-                             Sorted=8,
+                            Sorted=8,
+                            ActionName="Other"
                          },
                      }
                 },
@@ -633,36 +641,53 @@ namespace Fx.Domain
                      ChannelListName="居家用品",
                      Description="",
                      ControllerName=channels[0].ControllerName,
-                     ActionName="Publish",
+                     ActionName="HomeSupplies",
                      Sorted=2,
                      ChannelListDetails=new List<ChannelListDetail>(){
                          new ChannelListDetail(){
                             ChannelListDetailName="家具",
-                             Sorted=1,
+                            Sorted=1,
+                            ActionName="Furniture"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="厨房家电",
-                             Sorted=2,
+                            Sorted=2,
+                            ActionName="KitchenAppliances"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="视听家电",
-                             Sorted=3,
+                            Sorted=3,
+                            ActionName="AudioAppliances"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="餐具/厨具",
-                             Sorted=4,
+                            Sorted=4,
+                            ActionName="KitchenDinningWares"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="工艺品/摆设",
-                             Sorted=5,
+                            Sorted=5,
+                            ActionName="Decoration"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="其他家电",
-                             Sorted=6,
+                            Sorted=6,
+                            ActionName="OtherElectronics"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="运动器材",
-                             Sorted=7
+                            Sorted=7,
+                            ActionName="GymEquipment"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="单车",
+                            Sorted=8,
+                            ActionName="Bike"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="其他",
+                            Sorted=9,
+                            ActionName="Other"
                          },
                      }
                 },
@@ -670,52 +695,84 @@ namespace Fx.Domain
                      ChannelListName="衣服鞋包",
                      Description="",
                      ControllerName=channels[0].ControllerName,
-                     ActionName="Publish",
+                     ActionName="Fashion",
                      Sorted=3,
                      ChannelListDetails=new List<ChannelListDetail>(){
                          new ChannelListDetail(){
                             ChannelListDetailName="衣服",
-                             Sorted=1,
+                            Sorted=1,
+                            ActionName="Clothing"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="鞋子",
-                             Sorted=2,
+                            Sorted=2,
+                            ActionName="Shoes"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="箱包",
-                             Sorted=3,
+                            Sorted=3,
+                            ActionName="Bag"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="首饰",
-                             Sorted=4,
-                         }
+                            Sorted=4,
+                            ActionName="Accessories"
+                         },
+                         new ChannelListDetail(){
+                            ChannelListDetailName="其他",
+                            Sorted=5,
+                            ActionName="Other"
+                         },
                      }
                 },
                 new ChannelList(){
                      ChannelListName="文化生活",
                      Description="",
                      ControllerName=channels[0].ControllerName,
-                     ActionName="Publish",
+                     ActionName="CultureLife",
                      Sorted=4,
                      ChannelListDetails=new List<ChannelListDetail>(){
                          new ChannelListDetail(){
-                            ChannelListDetailName="衣服",
-                             Sorted=1,
+                            ChannelListDetailName="乐器",
+                            Sorted=1,
+                            ActionName="MusicInstruments"
                          },
                          new ChannelListDetail(){
-                            ChannelListDetailName="鞋子",
-                             Sorted=2,
+                            ChannelListDetailName="印刷品",
+                            Sorted=2,
+                            ActionName="Books"
                          },
                          new ChannelListDetail(){
-                            ChannelListDetailName="箱包",
-                             Sorted=3,
+                            ChannelListDetailName="玩具模型",
+                            Sorted=3,
+                            ActionName="Books"
                          },
                          new ChannelListDetail(){
-                            ChannelListDetailName="首饰",
-                             Sorted=4,
+                            ChannelListDetailName="文具",
+                            Sorted=4,
+                            ActionName="Stationary"
+                         },
+                          new ChannelListDetail(){
+                            ChannelListDetailName="其他",
+                            Sorted=5,
+                            ActionName="Other"
                          }
                      }
                 },
+                new ChannelList(){
+                     ChannelListName="其他",
+                     Description="",
+                     ControllerName=channels[0].ControllerName,
+                     ActionName="Other",
+                     Sorted=5,
+                     ChannelListDetails=new List<ChannelListDetail>(){
+                         new ChannelListDetail(){
+                            ChannelListDetailName="Other",
+                            Sorted=1,
+                            ActionName="Other"
+                         }
+                     }
+                }
             };
             goodsList.ForEach(r => channels[0].ChannelLists.Add(r));
             #endregion
@@ -726,64 +783,78 @@ namespace Fx.Domain
                      ChannelListName="二手汽车",
                      Description="",
                      ControllerName=channels[1].ControllerName,
-                     ActionName="Publish",
+                     ActionName="SecondHandCar",
                      Sorted=1,
                      ChannelListDetails=new List<ChannelListDetail>(){
                          new ChannelListDetail(){
                             ChannelListDetailName="奥迪",
-                             Sorted=1,
+                            Sorted=1,
+                            ActionName="Audi"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="宝马",
-                             Sorted=2,
+                            Sorted=2,
+                            ActionName="BMW"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="别克",
-                             Sorted=3,
+                            Sorted=3,
+                            ActionName="Buick"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="雪铁龙",
-                             Sorted=4,
+                            Sorted=4,
+                            ActionName="Citroen"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="福特",
-                             Sorted=5,
+                            Sorted=5,
+                            ActionName="Ford"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="本田",
-                             Sorted=6,
+                            Sorted=6,
+                            ActionName="Honda"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="丰田",
-                             Sorted=7,
+                            Sorted=7,
+                            ActionName="Toyota"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="日产",
-                             Sorted=8,
+                            Sorted=8,
+                            ActionName="Nissan"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="MINI",
-                             Sorted=9,
+                            Sorted=9,
+                            ActionName="MINI"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="奔驰",
-                             Sorted=10,
+                            Sorted=10,
+                            ActionName="MercedesBenz"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="标致",
-                             Sorted=11,
+                            Sorted=11,
+                            ActionName="Peugeot"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="大众",
-                             Sorted=12,
+                            Sorted=12,
+                            ActionName="VW"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="沃尔沃",
-                             Sorted=13,
+                            Sorted=13,
+                            ActionName="Volvo"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="其他品牌",
-                             Sorted=14,
+                            Sorted=14,
+                            ActionName="Other"
                          },
                      }
                 },
@@ -791,20 +862,23 @@ namespace Fx.Domain
                      ChannelListName="汽车配件",
                      Description="",
                      ControllerName=channels[1].ControllerName,
-                     ActionName="Publish",
+                     ActionName="CarAccessories",
                      Sorted=2,
                      ChannelListDetails=new List<ChannelListDetail>(){
                          new ChannelListDetail(){
                             ChannelListDetailName="GPS",
-                             Sorted=1,
+                            Sorted=1,
+                            ActionName="GPS"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="汽车装饰",
-                             Sorted=2,
+                            Sorted=2,
+                            ActionName="Cardecoration"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="其他",
-                             Sorted=3,
+                            Sorted=3,
+                            ActionName="Ohter"
                          }
                      }
                 }
@@ -818,24 +892,28 @@ namespace Fx.Domain
                      ChannelListName="商业用房",
                      Description="",
                      ControllerName=channels[2].ControllerName,
-                     ActionName="Publish",
+                     ActionName="CommercialProperties",
                      Sorted=1,
                      ChannelListDetails=new List<ChannelListDetail>(){
                          new ChannelListDetail(){
                             ChannelListDetailName="展销商铺",
-                             Sorted=1,
+                            Sorted=1,
+                            ActionName="Shop"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="饮食商铺",
-                             Sorted=2,
+                            Sorted=2,
+                            ActionName="Restaurants"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="仓库",
-                             Sorted=3,
+                            Sorted=3,
+                            ActionName="Warehouse"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="办公室",
-                             Sorted=4,
+                            Sorted=4,
+                            ActionName="Office"
                          }
                      }
                 },
@@ -843,20 +921,23 @@ namespace Fx.Domain
                      ChannelListName="居住用房",
                      Description="",
                      ControllerName=channels[2].ControllerName,
-                     ActionName="Publish",
+                     ActionName="Properties",
                      Sorted=2,
                      ChannelListDetails=new List<ChannelListDetail>(){
                          new ChannelListDetail(){
                             ChannelListDetailName="House",
-                             Sorted=1,
+                            Sorted=1,
+                            ActionName="House"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="Flat",
-                             Sorted=2,
+                            Sorted=2,
+                            ActionName="Flat"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="学生公寓",
-                             Sorted=3,
+                            Sorted=3,
+                            ActionName="StudentAparment"
                          }
                      }
                 }
