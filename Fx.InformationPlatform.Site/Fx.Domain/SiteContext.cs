@@ -21,7 +21,7 @@ namespace Fx.Domain
         }
 
         public SiteContext()
-            : base(Connection.CreateConnection(FxConnection.FxSite),false)
+            : base(Connection.CreateConnection(FxConnection.FxSite),true)
         {
            
         }

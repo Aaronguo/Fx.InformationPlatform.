@@ -8,16 +8,16 @@ using Fx.Infrastructure;
 
 namespace Fx.Domain.FxSite
 {
-    public class ChannelService :  BaseIService<SiteContext>,IService.IChannelService, IDisposable
+    public class ChannelService : BaseIService<SiteContext>, IService.IChannelService, IDisposable
     {
         public ChannelService()
         {
-            this.content = new SiteContext();
+            this.content = new Lazy<SiteContext>(() => new SiteContext());
         }
 
         public List<Channel> GetAllChannels()
         {
-            return content.Channels.OrderBy(r=>r.Sorted).ToList();
+            return content.Value.Channels.OrderBy(r => r.Sorted).ToList();
         }
     }
 }

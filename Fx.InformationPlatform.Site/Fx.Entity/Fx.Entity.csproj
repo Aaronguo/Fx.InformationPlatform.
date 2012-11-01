@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account\RegisterUser.cs" />
-    <Compile Include="FxGoods\CarPublishInfo.cs" />
+    <Compile Include="FxGoods\GoodsTransferInfo.cs" />
     <Compile Include="FxSite\Area.cs" />
     <Compile Include="FxSite\Channel.cs" />
     <Compile Include="FxSite\ChannelList.cs" />
@@ -51,6 +51,7 @@
     <Compile Include="FxSite\ELMAHError.cs" />
     <Compile Include="FxSite\GoodsCondition.cs" />
     <Compile Include="IAction.cs" />
+    <Compile Include="IPublishAction.cs" />
     <Compile Include="MemberShip\Applications.cs" />
     <Compile Include="MemberShip\Membership.cs" />
     <Compile Include="MemberShip\OtherInformation.cs" />

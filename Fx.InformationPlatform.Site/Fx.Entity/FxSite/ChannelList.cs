@@ -9,7 +9,7 @@ namespace Fx.Entity.FxSite
     /// <summary>
     /// 频道列表
     /// </summary>
-    public class ChannelList:IAction
+    public class ChannelList : IAction, IPublishAction
     {
         public ChannelList()
         {
@@ -37,5 +37,9 @@ namespace Fx.Entity.FxSite
         public virtual int Sorted { get; set; }
 
         public virtual ICollection<ChannelListDetail> ChannelListDetails { get; set; }
+
+        public string TransferController { get; set; }
+
+        public string BuyController { get; set; }
     }
 }

@@ -61,7 +61,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 string show = "<option value=\"0\">--请选择新旧程度--</option>";
                 var list = publishService.GoodsConditions();
                 var json = from p in list
-                           select string.Format("<option value=\"{0}\">{1}</option>", p.GoodsConditionId, p.GoodsConditionName);
+                           select string.Format("<option value=\"{0}\" extend=\"{1}\" message=\"{2}\" >{3}</option>", p.GoodsConditionId, p.IsHasMessage.ToString().ToUpper(),p.PlaceHolder,p.GoodsConditionName);
 
                 return Json(show + string.Join("", json), JsonRequestBehavior.DenyGet);
             }

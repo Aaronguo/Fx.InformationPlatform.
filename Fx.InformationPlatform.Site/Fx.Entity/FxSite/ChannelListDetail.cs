@@ -9,7 +9,7 @@ namespace Fx.Entity.FxSite
     /// <summary>
     /// 频道分类明细
     /// </summary>
-    public class ChannelListDetail:IAction
+    public class ChannelListDetail : IAction
     {
         public int ChannelListDetailId { get; set; }
 

@@ -19,13 +19,13 @@ namespace FxDomain.FxGoods.Mapping
     using System.Data.Entity.Infrastructure;
     using Fx.Entity.FxGoods;
 
-    internal partial class Carpublishinfo_Mapping : EntityTypeConfiguration<CarPublishInfo>
+    internal partial class GoodsTransferInfo_Mapping : EntityTypeConfiguration<GoodsTransferInfo>
     {
-        public Carpublishinfo_Mapping()
+        public GoodsTransferInfo_Mapping()
         {					
-    		this.HasKey(t => t.CarPublishInfoId);		
-    		this.ToTable("Carpublishinfo", "Goods");
-    		this.Property(t => t.CarPublishInfoId).HasColumnName("CarPublishInfoId");
+    		this.HasKey(t => t.GoodsTransferInfoId);
+            this.ToTable("GoodsTransferInfo", "Goods");
+            this.Property(t => t.GoodsTransferInfoId).HasColumnName("GoodsTransferInfoId");
     		this.Property(t => t.PublishUserEmail).HasColumnName("PublishUserEmail").HasMaxLength(128).HasColumnType("varchar");
             this.Property(t => t.PublishTitle).HasColumnName("PublishTitle").HasMaxLength(128).HasColumnType("varchar");
     		this.Property(t => t.Price).HasColumnName("Price");

@@ -5,6 +5,8 @@ namespace Fx.Domain.FxSite.IService
 {
     public interface IGoods
     {
-        List<ChannelListDetail> GetChannelDetail(string ControllerName, string ActionName);
+        List<ChannelListDetail> GetChannelTransferDetail(string ControllerName, string ActionName);
+
+        List<ChannelListDetail> GetChannelBuyDetail(string ControllerName, string ActionName);
     }
 }

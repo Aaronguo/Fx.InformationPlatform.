@@ -1,0 +1,7 @@
+﻿@model List<Fx.Entity.FxSite.Channel>
+@{
+    Layout = "~/Views/Shared/_LayoutClean.cshtml";
+    ViewBag.Title = "免费发布信息";
+}
+@Html.Partial("Partial/Flow")
+@Html.Partial("Partial/Channel",Model)

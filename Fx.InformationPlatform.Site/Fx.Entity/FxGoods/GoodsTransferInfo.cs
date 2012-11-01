@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Fx.Entity.FxGoods
 {
-    public class CarPublishInfo : Publish
+    public class GoodsTransferInfo : Publish
     {
-        public int CarPublishInfoId { get; set; }
+        public int GoodsTransferInfoId { get; set; }
     }
 }

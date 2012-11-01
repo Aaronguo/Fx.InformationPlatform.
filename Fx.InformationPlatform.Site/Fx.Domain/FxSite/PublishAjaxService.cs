@@ -15,22 +15,22 @@ namespace Fx.Domain.FxSite
     {
         public PublishAjaxService()
         {
-            this.content = new SiteContext();
+            this.content = new Lazy<SiteContext>(() => new SiteContext());
         }
 
         public List<Entity.FxSite.Area> GetAreas()
         {
-            return content.Areas.OrderBy(r => r.Sorted).ToList();
+            return content.Value.Areas.OrderBy(r => r.Sorted).ToList();
         }
 
         public List<Entity.FxSite.City> GetCitys(int AreaId)
         {
-            return content.Cities.Where(r => r.AreaID == AreaId).OrderBy(r => r.Sorted).ToList();
+            return content.Value.Cities.Where(r => r.AreaID == AreaId).OrderBy(r => r.Sorted).ToList();
         }
 
         public List<Entity.FxSite.GoodsCondition> GoodsConditions()
         {
-            return content.GoodsConditions.OrderBy(r => r.Sorted).ToList();
+            return content.Value.GoodsConditions.OrderBy(r => r.Sorted).ToList();
         }
     }
 }

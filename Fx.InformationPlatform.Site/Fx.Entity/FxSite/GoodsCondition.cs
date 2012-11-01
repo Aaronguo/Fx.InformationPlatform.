@@ -18,5 +18,15 @@ namespace Fx.Entity.FxSite
         public string Description { get; set; }
 
         public virtual int Sorted { get; set; }
+
+        /// <summary>
+        /// 是否需要一些填写扩展信息
+        /// </summary>
+        public bool IsHasMessage { get; set; }
+
+        /// <summary>
+        /// 扩展信息填写要求
+        /// </summary>
+        public string PlaceHolder { get; set; }
     }
 }

@@ -115,15 +115,18 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AjaxController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BuyController.cs" />
     <Compile Include="Controllers\CaptchaController.cs" />
     <Compile Include="Controllers\CarController.cs" />
+    <Compile Include="Controllers\GoodsBuyController.cs" />
     <Compile Include="Controllers\GoodsController.cs" />
+    <Compile Include="Controllers\GoodsTransferController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HouseController.cs" />
     <Compile Include="Controllers\PagelinkController.cs" />
-    <Compile Include="Controllers\PublishController.cs" />
     <Compile Include="Controllers\PublishGoodsController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\TransferController.cs" />
     <Compile Include="Framework\ChannelLocation.cs" />
     <Compile Include="Framework\ElmahHandledErrorLoggerFilter.cs" />
     <Compile Include="Framework\StaticHelper.cs" />
@@ -170,6 +173,10 @@
     <Content Include="Content\js\Flash\images\01.jpg" />
     <Content Include="Content\js\Flash\xml\bcastr.xml" />
     <Content Include="Content\js\instant.js" />
+    <Content Include="Content\js\Pluggin\jquery.placeholder.js" />
+    <Content Include="Content\js\Pluggin\jquery.placeholder.min.js">
+      <DependentUpon>jquery.placeholder.js</DependentUpon>
+    </Content>
     <Content Include="Content\js\plugins.js" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -266,15 +273,22 @@
     <Content Include="Views\Account\LoginOff.cshtml" />
     <Content Include="Views\Shared\_Logo.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
-    <Content Include="Views\Publish\Index.cshtml" />
-    <Content Include="Views\Publish\Partial\Flow.cshtml" />
     <Content Include="Views\Goods\Electronics.cshtml" />
     <Content Include="Views\Goods\Partial\Flow.cshtml" />
-    <Content Include="Views\Publish\Partial\Channel.cshtml" />
     <Content Include="Views\Shared\_LayoutClean.cshtml" />
     <Content Include="Views\PublishGoods\Get.cshtml" />
     <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Upload\UploadHandler.ashx" />
+    <Content Include="Views\Transfer\Index.cshtml" />
+    <Content Include="Views\Transfer\Partial\Channel.cshtml" />
+    <Content Include="Views\Transfer\Partial\Flow.cshtml" />
+    <Content Include="Views\Buy\Index.cshtml" />
+    <Content Include="Views\Buy\Partial\Channel.cshtml" />
+    <Content Include="Views\Buy\Partial\Flow.cshtml" />
+    <Content Include="Views\GoodsBuy\Electronics.cshtml" />
+    <Content Include="Views\GoodsBuy\Partial\Flow.cshtml" />
+    <Content Include="Views\GoodsTransfer\Electronics.cshtml" />
+    <Content Include="Views\GoodsTransfer\Partial\Flow.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

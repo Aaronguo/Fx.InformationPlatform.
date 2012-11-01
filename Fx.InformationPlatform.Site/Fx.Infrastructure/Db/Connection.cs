@@ -10,24 +10,24 @@ namespace Fx.Infrastructure.Db
     public class Connection
     {
         static Dictionary<int, DbConnection> dbCatalogs = new Dictionary<int, DbConnection>();
+        static List<Lazy<DbConnection>> lazyList = new List<Lazy<DbConnection>>();
 
         static Connection()
         {
-            DbConnection car = new MySql.Data.MySqlClient.MySqlConnection(ConfigurationManager.ConnectionStrings["fx.car-mysql"].ToString());
-            DbConnection goods = new MySql.Data.MySqlClient.MySqlConnection(ConfigurationManager.ConnectionStrings["fx.goods-mysql"].ToString());
-            DbConnection house = new MySql.Data.MySqlClient.MySqlConnection(ConfigurationManager.ConnectionStrings["fx.house-mysql"].ToString());
-           
-            DbConnection site = new System.Data.SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings["fx.site-sqlserver"].ToString());
-            dbCatalogs[(int)FxConnection.FxCar] = car;
-            dbCatalogs[(int)FxConnection.FxHouse] = house;
-            dbCatalogs[(int)FxConnection.FxGoods] = goods;
-            dbCatalogs[(int)FxConnection.FxSite] = site;
-
+            Lazy<DbConnection> car = new Lazy<DbConnection>(() => new MySql.Data.MySqlClient.MySqlConnection(ConfigurationManager.ConnectionStrings["fx.car-mysql"].ToString()));
+            Lazy<DbConnection> goods = new Lazy<DbConnection>(() => new MySql.Data.MySqlClient.MySqlConnection(ConfigurationManager.ConnectionStrings["fx.goods-mysql"].ToString()));
+            Lazy<DbConnection> house = new Lazy<DbConnection>(() => new MySql.Data.MySqlClient.MySqlConnection(ConfigurationManager.ConnectionStrings["fx.house-mysql"].ToString()));
+            Lazy<DbConnection> site = new Lazy<DbConnection>(() => new System.Data.SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings["fx.site-sqlserver"].ToString()));
+            lazyList.Add(car);
+            lazyList.Add(house);
+            lazyList.Add(goods);
+            lazyList.Add(site);
         }
         public static DbConnection CreateConnection(FxConnection dbCatalog)
         {
-            int index = (int)dbCatalog;
-            return dbCatalogs[index];
+             int index = (int)dbCatalog;
+             Lazy<DbConnection> connection = lazyList[index];
+             return connection.Value; ;
         }
     }
 

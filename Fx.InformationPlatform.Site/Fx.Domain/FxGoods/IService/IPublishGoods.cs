@@ -4,6 +4,6 @@ namespace Fx.Domain.FxGoods.IService
 {
    public interface IPublishGoods
     {
-        CarPublishInfo Get(string Email);
+        GoodsTransferInfo Get(string Email);
     }
 }

@@ -12,13 +12,26 @@ namespace Fx.Domain.FxSite
     {
         public GoodsService()
         {
-            this.content = new SiteContext();
+            this.content = new Lazy<SiteContext>(() => new SiteContext());
         }
 
-        public List<Entity.FxSite.ChannelListDetail> GetChannelDetail(string ControllerName, string ActionName)
+        public List<Entity.FxSite.ChannelListDetail> GetChannelBuyDetail(string ControllerName, string ActionName)
         {
-            var channelList = content.ChannelLists.Where(
-                r => r.ControllerName == ControllerName && r.ActionName == ActionName).FirstOrDefault();
+            var channelList = content.Value.ChannelLists.Where(
+                r => r.BuyController == ControllerName && r.ActionName == ActionName).FirstOrDefault();
+            if (channelList != null)
+            {
+                var details = channelList.ChannelListDetails.OrderBy(r => r.Sorted).ToList();
+                return details;
+            }
+            return new List<Entity.FxSite.ChannelListDetail>();
+        }
+
+
+        public List<Entity.FxSite.ChannelListDetail> GetChannelTransferDetail(string ControllerName, string ActionName)
+        {
+            var channelList = content.Value.ChannelLists.Where(
+                r => r.TransferController == ControllerName && r.ActionName == ActionName).FirstOrDefault();
             if (channelList != null)
             {
                 var details = channelList.ChannelListDetails.OrderBy(r => r.Sorted).ToList();

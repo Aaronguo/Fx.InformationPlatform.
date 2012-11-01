@@ -18,5 +18,12 @@
         <div class="clear"></div>
         @Html.Partial("_Footer")
     </div>
+     @* @RenderSection("scripts", required: false)*@
+    <!--JS Pluggin-->
+        <!--解决因IE Placeholder bug-->
+    <script type="text/javascript" src="@Url.Content("~/Content/js/Pluggin/jquery.placeholder.min.js")"></script>    
+    <script>
+        $('input[placeholder], textarea[placeholder]').placeholder();
+    </script>
 </body>
 </html>

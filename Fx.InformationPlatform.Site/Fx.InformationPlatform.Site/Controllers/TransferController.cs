@@ -10,10 +10,10 @@ namespace Fx.InformationPlatform.Site.Controllers
     /// <summary>
     /// 发布信息
     /// </summary>
-    public class PublishController : Controller
+    public class TransferController : Controller
     {
         IChannelService channelService;
-        public PublishController(IChannelService channelService)
+        public TransferController(IChannelService channelService)
         {
             this.channelService = channelService;
         }

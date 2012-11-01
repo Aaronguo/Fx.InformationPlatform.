@@ -586,6 +586,7 @@ namespace Fx.Domain
             };
 
 
+
             #region 物品交易
             var goodsList = new List<ChannelList>() { 
                 new ChannelList(){
@@ -774,6 +775,8 @@ namespace Fx.Domain
                      }
                 }
             };
+            goodsList.ForEach(r => r.TransferController = r.ControllerName + "Transfer");
+            goodsList.ForEach(r => r.BuyController = r.ControllerName + "Buy");
             goodsList.ForEach(r => channels[0].ChannelLists.Add(r));
             #endregion
 
@@ -883,6 +886,8 @@ namespace Fx.Domain
                      }
                 }
             };
+            carList.ForEach(r => r.TransferController = r.ControllerName + "Transfer");
+            carList.ForEach(r => r.BuyController = r.ControllerName + "Buy");
             carList.ForEach(r => channels[1].ChannelLists.Add(r));
             #endregion
 
@@ -942,6 +947,8 @@ namespace Fx.Domain
                      }
                 }
             };
+            houseList.ForEach(r => r.TransferController = r.ControllerName + "Transfer");
+            houseList.ForEach(r => r.BuyController = r.ControllerName + "Buy");
             houseList.ForEach(r => channels[2].ChannelLists.Add(r));
             #endregion
 
@@ -961,28 +968,38 @@ namespace Fx.Domain
             #region 二手物品新旧信息建立
             var goodsConditons = new List<GoodsCondition>() { 
                 new GoodsCondition(){
-                     GoodsConditionName="未开封，配件齐全，全新",
+                     GoodsConditionName="至少未开封，配件齐全，全新",
                      Description="未开封，配件齐全",
+                     IsHasMessage=false,
+                     PlaceHolder="",
                      Sorted=1
                 },
                 new GoodsCondition(){
-                     GoodsConditionName="无磨损，配件齐全，功能齐全",
+                     GoodsConditionName="至少无磨损，配件齐全，功能齐全",
                      Description="无磨损，配件齐全",
+                     IsHasMessage=false,
+                     PlaceHolder="",
                      Sorted=2
                 },
                 new GoodsCondition(){
-                     GoodsConditionName="有磨损或配件不齐全，功能齐全",
+                     GoodsConditionName="至少有磨损或配件不齐全，功能齐全",
                      Description="有磨损或配件不齐全",
+                     IsHasMessage=true,
+                     PlaceHolder="请填写磨损或配件问题",
                      Sorted=3
                 },
                 new GoodsCondition(){
-                     GoodsConditionName="配件齐全，部分功能不可用",
+                     GoodsConditionName="至少配件齐全，部分功能不可用",
                      Description="配件齐全",
+                     IsHasMessage=true,
+                     PlaceHolder="请填写功能问题",
                      Sorted=4
                 },
                 new GoodsCondition(){
-                     GoodsConditionName="配件不全，部分功能不可用",
+                     GoodsConditionName="至少配件不全，部分功能不可用",
                      Description="配件不全",
+                     IsHasMessage=true,
+                     PlaceHolder="请填写配件以及功能问题",
                      Sorted=5
                 },
             };

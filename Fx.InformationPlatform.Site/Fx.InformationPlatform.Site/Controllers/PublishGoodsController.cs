@@ -26,7 +26,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Get()
         {
-            CarPublishInfo car = goodService.Get("117822597@163.com");
+            GoodsTransferInfo car = goodService.Get("117822597@163.com");
             return View(car);
         }
     }

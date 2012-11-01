@@ -8,14 +8,14 @@ namespace Fx.Infrastructure
 {
     public abstract class BaseIService<TContent> : IDisposable where TContent : IDisposable
     { 
-        protected TContent content;
+        protected Lazy<TContent> content;
         private bool isDispose = false;
 
         public void Dispose()
         {
-            if (!isDispose && content != null)
+            if (!isDispose && content.Value != null)
             {
-                content.Dispose();
+                content.Value.Dispose();
                 isDispose = true;
             }
         }

@@ -10,7 +10,7 @@ namespace Fx.Domain.Account
     {
         public UserAccountService()
         {
-            this.content = new SiteContext();
+            this.content = new Lazy<SiteContext>(() => new SiteContext());
         }
 
 
@@ -39,8 +39,8 @@ namespace Fx.Domain.Account
                     MembershipCreateStatus createStatus;
                     Membership.CreateUser(entity.Email, entity.Password, entity.Email, null, null, true, null, out createStatus);
                     if (createStatus == MembershipCreateStatus.Success)
-                    {                        
-                        var user = content.Users.Where(r => r.UserName == entity.Users.UserName).First();
+                    {
+                        var user = content.Value.Users.Where(r => r.UserName == entity.Users.UserName).First();
                         var otherInformation = new Fx.Entity.MemberShip.OtherInformation();
                         otherInformation.Mobile = entity.MobilePIN;
                         otherInformation.QQ = entity.OtherInformations.QQ;
@@ -50,10 +50,10 @@ namespace Fx.Domain.Account
                         otherInformation.NickName = entity.OtherInformations.NickName;
                         otherInformation.ApplicationId = user.ApplicationId;
                         otherInformation.UserId = user.UserId;
-                        var rEntity = content.OtherInformations.Add(otherInformation);
+                        var rEntity = content.Value.OtherInformations.Add(otherInformation);
                         try
                         {
-                            content.SaveChanges();
+                            content.Value.SaveChanges();
                         }
                         catch (Exception)
                         {
@@ -179,7 +179,7 @@ namespace Fx.Domain.Account
 
         public int GetUserCount()
         {
-            return this.content.Users.Count();
+            return this.content.Value.Users.Count();
         }
     }
 }

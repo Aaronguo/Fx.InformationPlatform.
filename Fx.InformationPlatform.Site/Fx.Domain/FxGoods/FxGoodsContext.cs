@@ -28,9 +28,9 @@ namespace Fx.Domain.FxGoods
         {
             base.OnModelCreating(modelBuilder);
             //modelBuilder.Conventions.Remove<IncludeMetadataConvention>();
-            modelBuilder.Configurations.Add(new Carpublishinfo_Mapping());
+            modelBuilder.Configurations.Add(new GoodsTransferInfo_Mapping());
         }
 
-        public DbSet<CarPublishInfo> CarPublishInfos { get; set; }
+        public DbSet<GoodsTransferInfo> GoodsTransferInfos { get; set; }
     }
 }

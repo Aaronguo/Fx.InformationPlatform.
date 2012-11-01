@@ -1,0 +1,148 @@
+﻿@model List<Fx.Entity.FxSite.Channel>
+<div class="grid_24">
+    &nbsp;
+</div>
+<div class="grid_24">
+    <div class="grid_24">
+        &nbsp;
+        <input id="flow" type="hidden" value="0" />
+        <input id="selectcatindex" type="hidden" value="0" />
+    </div>
+    <div class="publishborder" style="padding-bottom: 40px; height: 325px;">
+        <div class="alpha grid_4 txtright">
+            <cite class="red">*</cite><strong>选择类目：</strong>
+        </div>
+        <div class="grid_4">
+            <div id="selectcat" class="selects-cat selects-box selectData boxheight publishborder">
+                @* <a href="#" class="on">物品交易</a> <a href="#">车辆买卖</a> <a href="#">房屋租售</a>*@
+                @foreach (var item in Model)
+                {
+                    <a href="#">
+                        @item.ChannelName
+                    </a>
+                }
+            </div>
+        </div>
+        <div class="omega grid_15 boxheight">
+            <div class="alpha grid_1">
+                <div class="grid_1 alpha halfmiddleheight">
+                </div>
+                <div class="grid_1 alpha">
+                    <span class="icon">
+                        <img src="/Content/images/arrowhead.gif" />
+                    </span>
+                </div>
+            </div>
+            <div id="selectdetail" class="omega grid_14">
+                @foreach (var channel in Model)
+                {
+                    <div class="hide boxheight publishborder">
+                        @foreach (var channelList in channel.ChannelLists)
+                        {                           
+                            @Html.ActionLink(channelList.ChannelListName, channelList.ActionName, channelList.BuyController, channelList.RoutePars, null);
+                        }
+                    </div>
+                }
+            </div>
+            @*<div id="selectdetail" class="omega grid_14">
+                @foreach (var channel in Model)
+                {
+                    <div class="hide boxheight publishborder">
+                        @foreach (var channelList in channel.ChannelLists)
+                        {                           
+                            @Html.ActionLink(channelList.ChannelListName, channelList.ActionName, channelList.ControllerName, channelList.RoutePars, null);
+                        }
+                    </div>
+                }
+            </div>*@
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+
+
+
+
+
+
+<style type="text/css">
+   
+
+    .selects-cat
+    {
+        width: 120px;
+        overflow: hidden;
+    }
+
+    .selects-box
+    {
+        width: 130px;
+    }
+
+        .selects-box a.on
+        {
+            background: #D1E98E;
+        }
+
+        .selects-box a
+        {
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            padding: 0 10px;
+            color: #333;
+        }
+
+
+
+
+
+    .boxheight
+    {
+        height: 316px;
+    }
+
+    .halfmiddleheight
+    {
+        height: 150px;
+    }
+
+    .boxheight a
+    {
+        width: 110px;
+        float: left;
+        display: block;
+        height: 30px;
+        line-height: 30px;
+        padding: 0 10px;
+        color: #333;
+    }
+
+        .boxheight a:hover
+        {
+            text-decoration: none;
+            background: #EEE;
+        }
+</style>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#selectcat > a").eq(0).addClass("on");
+        $("#selectdetail > div").eq(0).toggleClass("hide");
+        $("#selectcat > a").click(function () {
+            var indexold = document.getElementById("selectcatindex").value;
+            var indexnow = $(this).index();
+            if (indexold != indexnow) {
+                var preva = $("#selectcat  a").eq(indexold);
+                var prevDiv = $("#selectdetail  div").eq(indexold);
+                var currentDiv = $("#selectdetail  div").eq(indexnow);
+                $(this).addClass("on");
+                preva.toggleClass("on");
+                prevDiv.toggleClass("hide");
+                currentDiv.toggleClass("hide");
+                document.getElementById("selectcatindex").value = indexnow;
+            }
+        });
+    });
+</script>
