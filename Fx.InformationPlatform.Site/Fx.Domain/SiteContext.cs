@@ -21,7 +21,7 @@ namespace Fx.Domain
         }
 
         public SiteContext()
-            : base(Connection.CreateConnection(FxConnection.FxSite),true)
+            : base("fx.site-sqlserver")//Connection.CreateConnection(FxConnection.FxSite),true
         {
            
         }

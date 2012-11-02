@@ -14,14 +14,14 @@ namespace Fx.Infrastructure.Db
 
         static Connection()
         {
-            Lazy<DbConnection> car = new Lazy<DbConnection>(() => new MySql.Data.MySqlClient.MySqlConnection(ConfigurationManager.ConnectionStrings["fx.car-mysql"].ToString()));
-            Lazy<DbConnection> goods = new Lazy<DbConnection>(() => new MySql.Data.MySqlClient.MySqlConnection(ConfigurationManager.ConnectionStrings["fx.goods-mysql"].ToString()));
-            Lazy<DbConnection> house = new Lazy<DbConnection>(() => new MySql.Data.MySqlClient.MySqlConnection(ConfigurationManager.ConnectionStrings["fx.house-mysql"].ToString()));
-            Lazy<DbConnection> site = new Lazy<DbConnection>(() => new System.Data.SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings["fx.site-sqlserver"].ToString()));
-            lazyList.Add(car);
-            lazyList.Add(house);
-            lazyList.Add(goods);
-            lazyList.Add(site);
+            //Lazy<DbConnection> car = new Lazy<DbConnection>(() => new MySql.Data.MySqlClient.MySqlConnection(ConfigurationManager.ConnectionStrings["fx.car-mysql"].ToString()));
+            //Lazy<DbConnection> goods = new Lazy<DbConnection>(() => new MySql.Data.MySqlClient.MySqlConnection(ConfigurationManager.ConnectionStrings["fx.goods-mysql"].ToString()));
+            //Lazy<DbConnection> house = new Lazy<DbConnection>(() => new MySql.Data.MySqlClient.MySqlConnection(ConfigurationManager.ConnectionStrings["fx.house-mysql"].ToString()));
+            //Lazy<DbConnection> site = new Lazy<DbConnection>(() => new System.Data.SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings["fx.site-sqlserver"].ToString()));
+            //lazyList.Add(car);
+            //lazyList.Add(house);
+            //lazyList.Add(goods);
+            //lazyList.Add(site);
         }
         public static DbConnection CreateConnection(FxConnection dbCatalog)
         {

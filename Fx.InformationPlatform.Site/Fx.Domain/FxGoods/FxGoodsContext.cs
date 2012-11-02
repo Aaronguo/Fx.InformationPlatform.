@@ -19,7 +19,7 @@ namespace Fx.Domain.FxGoods
         }
 
         public FxGoodsContext()
-            : base(Connection.CreateConnection(FxConnection.FxGoods), false)
+            : base("fx.goods-mysql")//
         {
 
         }
