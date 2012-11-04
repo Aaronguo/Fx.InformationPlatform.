@@ -1,11 +1,12 @@
 ﻿@{
     Layout = "~/Views/Shared/_LayoutClean.cshtml";
-    ViewBag.Title = "发布信息";
+    ViewBag.Title = "发布二手转让信息";
 }
 @Html.Partial("Partial/Flow")
 <div class="grid_24">
     &nbsp;
 </div>
+<form method="post">
 <div id="publish" class="grid_24">
     <div class="publishborder" style="display: inline; float: left; width: 948px;">
         <div class="grid_20" style="padding: 30px 30px 30px 30px;">
@@ -60,7 +61,7 @@
                 </p>
             </div>
             <div class="omega grid_17">
-                <input id="changegoods" type="checkbox" />
+                <input id="changegoods" type="checkbox" />                
             </div>
             <div class="clear">
             </div>
@@ -141,7 +142,7 @@
 
             <div class="txtright alpha grid_3">
                 <p>
-                    <cite class="red">*</cite><strong>备注：</strong>
+                    <strong>备注：</strong>
                 </p>
             </div>
             <div class="omega grid_17">
@@ -167,7 +168,15 @@
         </div>
     </div>
 </div>
+</form>
 
-<script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("AjaxController/AjaxRequest.js")"></script>
+<script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("Ajax/AjaxGoodsRequest.js")"></script>
+
+<script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("Transfer/TransferGoods.js")"></script>
+
+<script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("Transfer/TransferGoodsEvent.js")"></script>
+
+
+
 
 

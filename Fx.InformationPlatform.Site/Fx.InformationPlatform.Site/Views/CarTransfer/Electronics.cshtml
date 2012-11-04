@@ -1,15 +1,17 @@
 ﻿@{
     Layout = "~/Views/Shared/_LayoutClean.cshtml";
-    ViewBag.Title = "发布二手求购信息";
+    ViewBag.Title = "发布汽车转让信息";
 }
 @Html.Partial("Partial/Flow")
 <div class="grid_24">
     &nbsp;
 </div>
+<form method="post">
 <div id="publish" class="grid_24">
     <div class="publishborder" style="display: inline; float: left; width: 948px;">
         <div class="grid_20" style="padding: 30px 30px 30px 30px;">
             <input id="flow" type="hidden" value="1" />
+
             <div class="txtright alpha grid_3">
                 <p>
                     <cite class="red">*</cite><strong>标题：</strong>
@@ -55,23 +57,6 @@
 
             <div class="txtright alpha grid_3">
                 <p>
-                    <strong>换物：</strong>
-                </p>
-            </div>
-            <div class="omega grid_17">
-                <input id="changegoods" type="checkbox" />
-            </div>
-            <div class="clear">
-            </div>
-            <br />
-
-
-
-
-
-
-            <div class="txtright alpha grid_3">
-                <p>
                     <cite class="red">*</cite><strong>地区：</strong>
                 </p>
             </div>
@@ -91,17 +76,13 @@
 
             <div class="txtright alpha grid_3">
                 <p>
-                    <cite class="red">*</cite><strong>新旧程度：</strong>
+                    <cite class="red">*</cite><strong>年份：</strong>
                 </p>
             </div>
             <div class="omega grid_17">
-                <select id="goodsconditon">
-                    <option value="0">--请选择新旧程度--</option>
+                <select id="carYear">
+                    <option value="0">--请选择生产年份--</option>
                 </select>
-                <br />
-                <br />
-                <input type="text" id="goodsextend" value="" placeholder=""
-                    class="form-input" size="30" maxlength="128" style="border: 1px solid rgb(226, 226, 226); display: none;" />
             </div>
             <div class="clear">
             </div>
@@ -110,14 +91,42 @@
 
             <div class="txtright alpha grid_3">
                 <p>
+                    <cite class="red">*</cite><strong>里程数：</strong>
+                </p>
+            </div>
+            <div class="omega grid_17">
+                <select id="carMileage">
+                    <option value="0">--请选择里程数--</option>
+                    <option value="">100英里以下</option>
+                    <option value="">5000英里以下</option>
+                    <option value="">10000英里以下</option>
+                    <option value="">20000英里以下</option>
+                    <option value="">40000英里以下</option>
+                    <option value="">60000英里以下</option>
+                    <option value="">80000英里以下</option>
+                    <option value="">100000英里以下</option>
+                    <option value="">100000英里以上</option>
+                </select>
+            </div>
+            <div class="clear">
+            </div>
+            <br />
+
+
+
+
+            <div class="txtright alpha grid_3">
+                <p>
                     <cite class="red">*</cite><strong>照片：</strong>
                 </p>
             </div>
             <div class="omega grid_17">
-                <div class="gird_2">正面 <cite class="red">选填</cite></div>
+                <div class="gird_2">正面 <cite class="red">*</cite></div>
                 <input id="facefile" type="file" /><br />
-                <div class="gird_2">其他方位 <cite class="red">选填</cite></div>
-                <input id="otherfile" type="file" /><br />
+                <div class="gird_2">其他方位最少3张 <cite class="red">选填</cite></div>
+                <input id="otherfile1" type="file" /><br />
+                <input id="otherfile2" type="file" /><br />
+                <input id="otherfile3" type="file" /><br />
                 <div class="gird_2">磨损部位照片 <cite class="red">选填</cite></div>
                 <input id="badfile" type="file" /><br />
             </div>
@@ -139,19 +148,6 @@
             <br />
 
             <div class="txtright alpha grid_3">
-                <p>
-                    <cite class="red">*</cite><strong>备注：</strong>
-                </p>
-            </div>
-            <div class="omega grid_17">
-                <input type="text" id="tag" value=""
-                    class="form-input" size="30" maxlength="100" style="border: 1px solid rgb(226, 226, 226);" />
-            </div>
-            <div class="clear">
-            </div>
-            <br />
-
-            <div class="txtright alpha grid_3">
                 &nbsp;
             </div>
             <div class="omega grid_17">
@@ -166,7 +162,13 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("Ajax/AjaxGoodsRequest.js")"></script>
+</form>
 
-<script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("Buy/BuyBaseEvent.js")"></script>
+<script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("Ajax/AjaxCarRequest.js")"></script>
+
+@*<script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("Transfer/TransferBaseEvent.js")"></script>
+
+<script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("Transfer/TransferGoods.js")"></script>*@
+
+
 
