@@ -127,6 +127,7 @@
     <Compile Include="Controllers\PublishGoodsController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\TransferController.cs" />
+    <Compile Include="Framework\AppSettings.cs" />
     <Compile Include="Framework\ChannelLocation.cs" />
     <Compile Include="Framework\ElmahHandledErrorLoggerFilter.cs" />
     <Compile Include="Framework\StaticHelper.cs" />
@@ -166,6 +167,7 @@
     <Content Include="Content\images\logo_v2.png" />
     <Content Include="Content\images\progressbar.gif" />
     <Content Include="Content\images\publish.gif" />
+    <Content Include="Content\js\AjaxController\AjaxRequest.js" />
     <Content Include="Content\js\Flash\bcastr.swf" />
     <Content Include="Content\js\Flash\images\02.jpg" />
     <Content Include="Content\js\Flash\images\03.jpg" />
@@ -213,6 +215,7 @@
     <Content Include="Config\DataBase.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Config\AppSetting.config" />
     <None Include="Content\js\jquery-1.6.2-vsdoc.js" />
     <Content Include="Content\images\icons.png" />
     <Content Include="Content\images\new-icons.png" />
@@ -325,16 +328,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:9963/</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

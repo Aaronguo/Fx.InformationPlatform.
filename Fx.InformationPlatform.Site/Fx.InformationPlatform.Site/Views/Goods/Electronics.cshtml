@@ -10,21 +10,7 @@
     <div class="publishborder" style="display: inline; float: left; width: 948px;">
         <div class="grid_20" style="padding: 30px 30px 30px 30px;">
             <input id="flow" type="hidden" value="1" />
-            @*   <div class="txtright alpha grid_3">
-                <p>
-                    <cite class="red">*</cite><strong>供求：</strong>
-                </p>
-            </div>
-            <div class="omega grid_17">
-                <label class="radio">
-                    <input name="wanted" type="radio" checked="checked" style="border: 1px solid rgb(226, 226, 226);" />
-                    出售</label>
-                <label class="radio">
-                    <input name="wanted" type="radio" style="border: 1px solid rgb(226, 226, 226);">
-                    求购</label>
-            </div>
-            <div class="clear">
-            </div>*@
+      
             <div class="txtright alpha grid_3">
                 <p>
                     <cite class="red">*</cite><strong>标题：</strong>
@@ -94,7 +80,8 @@
                 <select id="area">
                 </select>
                 <br />
-                <select id="city" class="hide">
+                <select id="city">
+                    <option value="0">--请选择地区--</option>
                 </select>
             </div>
             <div class="clear">
@@ -109,6 +96,7 @@
             </div>
             <div class="omega grid_17">
                 <select id="goodsconditon">
+                    <option value="0">--请选择新旧程度--</option>
                 </select>
                 <br />
                 <br />
@@ -126,7 +114,7 @@
                 </p>
             </div>
             <div class="omega grid_17">
-                <div class="gird_2">正面 <cite class="red">*</cite></div><input id="facefile" type="file" /><br />
+                <div class="gird_2">正面 <cite class="red">选填</cite></div><input id="facefile" type="file" /><br />
                 <div class="gird_2">其他方位 <cite class="red">选填</cite></div><input id="otherfile" type="file" /><br />
                 <div class="gird_2">磨损部位照片 <cite class="red">选填</cite></div><input id="badfile" type="file" /><br />
             </div>

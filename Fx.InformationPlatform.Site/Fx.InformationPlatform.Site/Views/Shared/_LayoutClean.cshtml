@@ -1,15 +1,15 @@
 ﻿<!DOCTYPE html>
 
 <html>
-<head>
+<head>g
     <title>@ViewBag.Title</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="shortcut icon" href="@Url.Content("~/Content/images/favicon.ico")" />
-    <link rel="stylesheet" href="@Url.Content("~/Content/css/960_24_col.css")" />
-    <link href="@Url.Content("~/Content/css/base.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/css/baixing.css")" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="@Url.Content("~/Content/js/jquery-1.7.1.min.js")"></script>
+    <link rel="shortcut icon" href="@Fx.InformationPlatform.Site.AppSettings.ImageDomain("favicon.ico")" />
+    <link rel="stylesheet" href="@Fx.InformationPlatform.Site.AppSettings.CssDomain("960_24_col.css")" />
+    <link href="@Fx.InformationPlatform.Site.AppSettings.CssDomain("base.css")" rel="stylesheet" type="text/css" />
+    <link href="@Fx.InformationPlatform.Site.AppSettings.CssDomain("baixing.css")" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("jquery-1.7.1.min.js")"></script>
 </head>
 <body>
     @Html.Partial("_Navigation")
@@ -18,11 +18,11 @@
         <div class="clear"></div>
         @Html.Partial("_Footer")
     </div>
-     @* @RenderSection("scripts", required: false)*@
+    @* @RenderSection("scripts", required: false)*@
     <!--JS Pluggin-->
-        <!--解决因IE Placeholder bug-->
-    <script type="text/javascript" src="@Url.Content("~/Content/js/Pluggin/jquery.placeholder.min.js")"></script>    
-    <script>
+    <!--解决因IE Placeholder bug-->
+    <script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("Pluggin/jquery.placeholder.min.js")"></script>
+    <script type="text/javascript">
         $('input[placeholder], textarea[placeholder]').placeholder();
     </script>
 </body>

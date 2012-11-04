@@ -10,21 +10,7 @@
     <div class="publishborder" style="display: inline; float: left; width: 948px;">
         <div class="grid_20" style="padding: 30px 30px 30px 30px;">
             <input id="flow" type="hidden" value="1" />
-            @*   <div class="txtright alpha grid_3">
-                <p>
-                    <cite class="red">*</cite><strong>供求：</strong>
-                </p>
-            </div>
-            <div class="omega grid_17">
-                <label class="radio">
-                    <input name="wanted" type="radio" checked="checked" style="border: 1px solid rgb(226, 226, 226);" />
-                    出售</label>
-                <label class="radio">
-                    <input name="wanted" type="radio" style="border: 1px solid rgb(226, 226, 226);">
-                    求购</label>
-            </div>
-            <div class="clear">
-            </div>*@
+
             <div class="txtright alpha grid_3">
                 <p>
                     <cite class="red">*</cite><strong>标题：</strong>
@@ -92,9 +78,11 @@
             </div>
             <div class="omega grid_17">
                 <select id="area">
+                    <option value="0">--请选择地区--</option>
                 </select>
                 <br />
                 <select id="city" class="hide">
+                    <option value="0">--请选择详细地址--</option>
                 </select>
             </div>
             <div class="clear">
@@ -109,6 +97,7 @@
             </div>
             <div class="omega grid_17">
                 <select id="goodsconditon">
+                    <option value="0">--请选择新旧程度--</option>
                 </select>
                 <br />
                 <br />
@@ -126,9 +115,12 @@
                 </p>
             </div>
             <div class="omega grid_17">
-                <div class="gird_2">正面 <cite class="red">*</cite></div><input id="facefile" type="file" /><br />
-                <div class="gird_2">其他方位 <cite class="red">选填</cite></div><input id="otherfile" type="file" /><br />
-                <div class="gird_2">磨损部位照片 <cite class="red">选填</cite></div><input id="badfile" type="file" /><br />
+                <div class="gird_2">正面 <cite class="red">*</cite></div>
+                <input id="facefile" type="file" /><br />
+                <div class="gird_2">其他方位 <cite class="red">选填</cite></div>
+                <input id="otherfile" type="file" /><br />
+                <div class="gird_2">磨损部位照片 <cite class="red">选填</cite></div>
+                <input id="badfile" type="file" /><br />
             </div>
             <div class="clear">
             </div>
@@ -175,93 +167,7 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    $(document).ready(function () {
-        //GetArea
-        AjaxController.GetAreaData();
-        AjaxController.GetGoodsConditionData();
+
+<script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("AjaxController/AjaxRequest.js")"></script>
 
 
-        AjaxController.BindAreaChange();
-        AjaxController.BindGoodsconditonChange();
-    });
-
-
-    var AjaxController = AjaxController || {};
-    //BindData To Control
-    AjaxController.GetAreaData = function () {
-        $.ajax({
-            url: "/Ajax/Aera",
-            type: "POST",
-            dataType: "json",
-            data: {},
-            success: function (data) {
-                $("#area").html(data);
-            },
-            error: function () {
-                $("#area").html("<option value='0'>服务异常，请稍后重试</option>");
-            }
-        });
-    }
-    AjaxController.GetCityData = function () {
-        $.ajax({
-            url: "/Ajax/City?areaId=" + $("#area").find("option:selected").val(),
-            type: "POST",
-            dataType: "json",
-            data: {},
-            success: function (data) {
-                $("#city").html(data);
-            },
-            error: function () {
-                $("#city").html("<option value='0'>服务异常，请稍后重试</option>");
-            }
-        });
-    };
-    AjaxController.GetGoodsConditionData = function () {
-        $.ajax({
-            url: "/Ajax/GoodsCondition",
-            type: "POST",
-            dataType: "json",
-            data: {},
-            success: function (data) {
-                $("#goodsconditon").html(data);
-            },
-            error: function () {
-                $("#area").html("<option value='0'>服务异常，请稍后重试</option>");
-            }
-        });
-    };
-
-    //BindEvent To Control
-    AjaxController.BindAreaChange = function () {
-        $("#area").change(function () {
-            var value = $("#area").attr("value") || 0;
-            if (value != 0) {
-                $("#city").removeClass("hide");
-                AjaxController.GetCityData();
-            }
-            else {
-                $("#city").addClass("hide");
-            }
-        });
-    };
-    AjaxController.BindGoodsconditonChange = function () {
-        $("#goodsconditon").change(function () {
-            var option = $("#goodsconditon option:selected");
-            var value = option.attr("value") || 0;
-            var extend = option.attr("extend");
-            if (value != 0 && extend == "TRUE") {
-                $("#goodsextend").attr("placeholder", option.attr("message"));
-                //解决因JS修改placeholder导致不能即使刷新placeholder 故清空内容 模式聚焦是失焦流程
-                $("#goodsextend").attr("value", "");
-                $("#goodsextend").focus();
-                $("#goodsextend").blur();
-                //最后在显示控件
-                $("#goodsextend").show();
-            }
-            else {
-                $("#goodsextend").hide();
-            }
-        });
-    }
-</script>
