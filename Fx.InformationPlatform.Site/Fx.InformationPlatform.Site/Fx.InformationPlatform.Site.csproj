@@ -265,7 +265,10 @@
     <Content Include="Views\GoodsTransfer\Electronics.cshtml" />
     <Content Include="Views\GoodsTransfer\Partial\Flow.cshtml" />
     <Content Include="Views\PublishGoods\ViewPage1.cshtml" />
-    <Content Include="Views\CarTransfer\Electronics.cshtml" />
+    <Content Include="Views\CarTransfer\Partial\Flow.cshtml" />
+    <Content Include="Views\CarTransfer\SecondHandCar.cshtml" />
+    <Content Include="Views\HouseTransfer\CommercialProperties.cshtml" />
+    <Content Include="Views\HouseTransfer\Partial\Flow.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

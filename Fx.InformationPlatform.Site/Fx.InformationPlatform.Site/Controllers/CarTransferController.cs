@@ -14,7 +14,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                        
         }
         
-        public ActionResult Electronics()
+        public ActionResult SecondHandCar()
         {           
             BindCatagroy();
             return View();

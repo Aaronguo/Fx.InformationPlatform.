@@ -1,0 +1,244 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutClean.cshtml";
+    ViewBag.Title = "发布房租转让信息";
+}
+@Html.Partial("Partial/Flow")
+<div class="grid_24">
+    &nbsp;
+</div>
+<form method="post">
+<div id="publish" class="grid_24">
+    <div class="publishborder" style="display: inline; float: left; width: 948px;">
+        <div class="grid_20" style="padding: 30px 30px 30px 30px;">
+            <input id="flow" type="hidden" value="1" />
+
+            <div class="txtright alpha grid_3">
+                <p>
+                    <cite class="red">*</cite><strong>标题：</strong>
+                </p>
+            </div>
+            <div class="omega grid_17">
+                <input type="text" id="title" value=""
+                    class="form-input" size="30" maxlength="60" style="border: 1px solid rgb(226, 226, 226);" />
+            </div>
+            <div class="clear">
+            </div>
+            <br />
+
+
+            <div class="txtright alpha grid_3">
+                <p>
+                    <cite class="red">*</cite><strong>类别：</strong>
+                </p>
+            </div>
+            <div class="omega grid_17">
+                @Html.DropDownList("catagroy")
+            </div>
+            <div class="clear">
+            </div>
+            <br />
+
+
+            <div class="txtright alpha grid_3">
+                <p>
+                    <cite class="red">*</cite><strong>价格：</strong>
+                </p>
+            </div>
+            <div class="omega grid_17">
+                <input type="text" id="price" value=""
+                    class="form-input" size="30" maxlength="8" style="border: 1px solid rgb(226, 226, 226);" />
+            </div>
+            <div class="clear">
+            </div>
+            <br />
+
+
+            <div class="txtright alpha grid_3">
+                <p>
+                    <cite class="red">*</cite><strong>地区：</strong>
+                </p>
+            </div>
+            <div class="omega grid_17">
+                <select id="area">
+                    <option value="0">--请选择地区--</option>
+                </select>
+                <br />
+                <select id="city" class="hide">
+                    <option value="0">--请选择详细地址--</option>
+                </select>
+            </div>
+            <div class="clear">
+            </div>
+            <br />
+
+
+
+            <div class="txtright alpha grid_3">
+                <p>
+                    <cite class="red">*</cite><strong>邮编：</strong>
+                </p>
+            </div>
+            <div class="omega grid_17">
+                <input type="text" id="postcode" value="" placeholder=""
+                    class="form-input" size="30" maxlength="10" style="border: 1px solid rgb(226, 226, 226);" />
+            </div>
+            <div class="clear">
+            </div>
+            <br />
+
+
+            <div class="txtright alpha grid_3">
+                <p>
+                    <cite class="red">*</cite><strong>详细地址：</strong>
+                </p>
+            </div>
+            <div class="omega grid_17">
+                <input type="text" id="roadname" value="" placeholder=""
+                    class="form-input" size="30" maxlength="256" style="border: 1px solid rgb(226, 226, 226);" />
+                <br /> <br />
+                <input type="text" id="cityname" value="" placeholder=""
+                    class="form-input" size="30" maxlength="256" style="border: 1px solid rgb(226, 226, 226);" />
+            </div>
+            <div class="clear">
+            </div>
+            <br />
+
+
+            <div class="txtright alpha grid_3">
+                <p>
+                    <strong>是否包Bill：</strong>
+                </p>
+            </div>
+            <div class="omega grid_17">
+                <input id="bill" type="checkbox" />
+            </div>
+            <div class="clear">
+            </div>
+            <br />
+
+
+            <div class="txtright alpha grid_3">
+                <p>
+                    <strong>基本家具：</strong>
+                </p>
+            </div>
+            <div class="omega grid_17">
+                <input id="furniture" type="checkbox" />
+            </div>
+            <div class="clear">
+            </div>
+            <br />
+
+            <div class="txtright alpha grid_3">
+                <p>
+                    <strong>房间数：</strong>
+                </p>
+            </div>
+            <div class="omega grid_17">
+               <select id="roomnumber">
+                    <option value="0">--请选择房间数量--</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+            </div>
+            <div class="clear">
+            </div>
+            <br />
+
+
+
+
+            <div class="txtright alpha grid_3">
+                <p>
+                    <cite class="red">*</cite><strong>新旧程度：</strong>
+                </p>
+            </div>
+            <div class="omega grid_17">
+                <select id="goodsconditon">
+                    <option value="0">--请选择新旧程度--</option>
+                </select>
+                <br />
+                <br />
+                <input type="text" id="goodsextend" value="" placeholder=""
+                    class="form-input" size="30" maxlength="128" style="border: 1px solid rgb(226, 226, 226); display: none;" />
+            </div>
+            <div class="clear">
+            </div>
+            <br />
+
+
+            <div class="txtright alpha grid_3">
+                <p>
+                    <cite class="red">*</cite><strong>照片：</strong>
+                </p>
+            </div>
+            <div class="omega grid_17">
+                <div class="gird_2">正面 <cite class="red">*</cite></div>
+                <input id="facefile" type="file" /><br />
+                <div class="gird_2">其他方位 <cite class="red">*至少2张</cite></div>
+                <input id="otherfile" type="file" multiple="multiple" /><br />
+                <div class="gird_2">磨损部位照片 <cite class="red">选填</cite></div>
+                <input id="badfile" type="file" /><br />
+            </div>
+            <div class="clear">
+            </div>
+            <br />
+
+            <div class="txtright alpha grid_3">
+                <p>
+                    <cite class="red">*</cite><strong>邮箱：</strong>
+                </p>
+            </div>
+            <div class="omega grid_17">
+                <input type="text" id="email" value=""
+                    class="form-input" size="30" maxlength="8" style="border: 1px solid rgb(226, 226, 226);" />
+            </div>
+            <div class="clear">
+            </div>
+            <br />
+
+            <div class="txtright alpha grid_3">
+                <p>
+                    <strong>备注：</strong>
+                </p>
+            </div>
+            <div class="omega grid_17">
+                <input type="text" id="tag" value=""
+                    class="form-input" size="30" maxlength="100" style="border: 1px solid rgb(226, 226, 226);" />
+            </div>
+            <div class="clear">
+            </div>
+            <br />
+
+            <div class="txtright alpha grid_3">
+                &nbsp;
+            </div>
+            <div class="omega grid_17">
+                <input type="submit" class="form-submit button button-green" value="免费注册并发布">
+                <span class="p-note">发布即代表您已阅读并同意 
+                        @Html.ActionLink("英淘网用户协议", "Agreement", "Pagelink")
+                    和  @Html.ActionLink("英淘网公约", "Convention", "Pagelink")
+                </span>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+
+@*<script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("Ajax/AjaxGoodsRequest.js")"></script>
+
+<script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("Transfer/TransferGoods.js")"></script>
+
+<script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("Transfer/TransferGoodsEvent.js")"></script>*@
+
+
+
+
+
