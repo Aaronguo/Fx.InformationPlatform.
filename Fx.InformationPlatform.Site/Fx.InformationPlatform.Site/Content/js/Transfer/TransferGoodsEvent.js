@@ -1,6 +1,6 @@
-﻿var transfer = transfer || {};
+﻿var transfergoods = transfer || {};
 
-transfer.BindGoodsconditonChange = function () {
+transfergoods.BindGoodsconditonChange = function () {
     $("#goodsconditon").change(function () {
         var option = $("#goodsconditon option:selected");
         var value = option.attr("value") || 0;
@@ -20,7 +20,22 @@ transfer.BindGoodsconditonChange = function () {
     });
 }
 
+transfergoods.BindChangeGoodsCheckd = function () {
+    $("#changegoods").change(function () {
+        if ($("#changegoods").attr("checked") == "checked") {
+            $("#changegoodsdiv").show();
+        }else {
+            $("#changegoodstxt").val("");
+            $("#changegoodstxt").focus();
+            $("#changegoodstxt").blur();
+            $("#changegoodsdiv").hide();
+        }
+    });
+}
+
+
 
 $(document).ready(function () {
-    transfer.BindGoodsconditonChange();
+    transfergoods.BindGoodsconditonChange();
+    transfergoods.BindChangeGoodsCheckd();
 });

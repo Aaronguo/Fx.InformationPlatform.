@@ -1,0 +1,4 @@
+﻿Fileupload accept :jpg,jpeg,png,gif
+
+
+404：http://www.oschina.net/code/snippet_122189_14980

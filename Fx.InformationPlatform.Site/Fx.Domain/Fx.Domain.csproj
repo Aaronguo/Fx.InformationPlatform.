@@ -71,16 +71,20 @@
     <Compile Include="Account\AccountContext.cs" />
     <Compile Include="DomainResult.cs" />
     <Compile Include="FxGoods\FxGoodsContext.cs" />
-    <Compile Include="FxGoods\FxPublishGoodService.cs" />
+    <Compile Include="FxGoods\FxTransferGoodService.cs" />
     <Compile Include="FxGoods\FxGoodsInitializer.cs" />
-    <Compile Include="FxGoods\IService\IPublishGoods.cs" />
+    <Compile Include="FxGoods\IService\ITransferGoods.cs" />
     <Compile Include="FxGoods\Mapping\GoodsTransferInfo_Mapping.cs" />
+    <Compile Include="FxSite\CarService.cs" />
     <Compile Include="FxSite\ChannelService.cs" />
     <Compile Include="FxSite\FxSiteContext.cs" />
     <Compile Include="FxSite\FxSiteInitializer.cs" />
     <Compile Include="FxSite\GoodsService.cs" />
+    <Compile Include="FxSite\HouseService.cs" />
+    <Compile Include="FxSite\IService\ICar.cs" />
     <Compile Include="FxSite\IService\IChannel.cs" />
     <Compile Include="FxSite\IService\IGoods.cs" />
+    <Compile Include="FxSite\IService\IHouse.cs" />
     <Compile Include="FxSite\IService\IPageAjax.cs" />
     <Compile Include="FxSite\Mapping\Area_Mapping.cs" />
     <Compile Include="FxSite\Mapping\ChannelListDetail_Mapping.cs" />
@@ -103,7 +107,10 @@
       <Name>Fx.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="FxCar\IService\" />
+    <Folder Include="FxCar\Mapping\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

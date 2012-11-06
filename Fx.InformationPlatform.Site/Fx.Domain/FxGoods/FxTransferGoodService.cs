@@ -8,7 +8,7 @@ using Fx.Entity.FxGoods;
 
 namespace Fx.Domain.FxGoods
 {
-    public class FxPublishGoodService : IPublishGoods
+    public class FxTransferGoodService : ITransferGoods
     {
         public Entity.FxGoods.GoodsTransferInfo Get(string Email)
         {

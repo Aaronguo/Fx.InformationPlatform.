@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Fx.Domain.FxSite.IService;
 using Fx.Infrastructure;
+using Fx.Infrastructure.Caching;
 
 namespace Fx.Domain.FxSite
 {
-    public class GoodsService : BaseIService<SiteContext>, IGoods, IDisposable
+    public class HouseService : BaseIService<SiteContext>, IHouse, IDisposable
     {
-        public GoodsService()
+        ICacheManager cachemanager;
+        public HouseService(ICacheManager cachemanager)
         {
             this.content = new Lazy<SiteContext>(() => new SiteContext());
+            this.cachemanager = cachemanager;
         }
 
         public List<Entity.FxSite.ChannelListDetail> GetChannelBuyDetail(string ControllerName, string ActionName)
@@ -38,5 +42,4 @@ namespace Fx.Domain.FxSite
             return new List<Entity.FxSite.ChannelListDetail>();
         }
     }
-
 }

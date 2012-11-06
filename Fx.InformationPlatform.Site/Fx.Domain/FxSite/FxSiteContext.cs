@@ -11,7 +11,6 @@ namespace Fx.Domain.FxSite
 {
     using System;
     using System.Data.Entity;
-    using Fx.Domain.Account.Mapping;
     using Fx.Domain.FxSite.Mapping;
     using Fx.Entity.FxSite; 
 

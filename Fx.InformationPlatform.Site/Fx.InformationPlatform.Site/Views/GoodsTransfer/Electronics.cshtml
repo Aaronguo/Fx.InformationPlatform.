@@ -45,7 +45,7 @@
                 </p>
             </div>
             <div class="omega grid_17">
-                <input type="text" id="price" value=""
+                <input type="text" id="price" value=""  placeholder="默认货币:￡" 
                     class="form-input" size="30" maxlength="8" style="border: 1px solid rgb(226, 226, 226);" />
             </div>
             <div class="clear">
@@ -61,7 +61,12 @@
                 </p>
             </div>
             <div class="omega grid_17">
-                <input id="changegoods" type="checkbox" />                
+                <input id="changegoods" type="checkbox" />
+                <div class="hide" id="changegoodsdiv" >
+                <br />
+                <input type="text" value="" id="changegoodstxt" placeholder="请填写想交换的物品信息"
+                    class="form-input" size="30" maxlength="128" style="border: 1px solid rgb(226, 226, 226); " />  
+                </div>           
             </div>
             <div class="clear">
             </div>
@@ -169,6 +174,8 @@
     </div>
 </div>
 </form>
+
+<script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("Ajax/AjaxBaseRequest.js")"></script>
 
 <script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("Ajax/AjaxGoodsRequest.js")"></script>
 

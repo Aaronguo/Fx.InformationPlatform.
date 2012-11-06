@@ -38,8 +38,17 @@ namespace Fx.InformationPlatform.Site.App_Start
             container.Register<Fx.Domain.Account.IService.IAccountService, Fx.Domain.Account.UserAccountService>();
             container.Register<Fx.Domain.FxSite.IService.IChannelService, Fx.Domain.FxSite.ChannelService>();
             container.Register<Fx.Domain.FxSite.IService.IPageAjax, Fx.Domain.FxSite.PublishAjaxService>();
+
             container.Register<Fx.Domain.FxSite.IService.IGoods, Fx.Domain.FxSite.GoodsService>();
-            container.Register<Fx.Domain.FxGoods.IService.IPublishGoods, Fx.Domain.FxGoods.FxPublishGoodService>();
+            container.Register<Fx.Domain.FxSite.IService.ICar, Fx.Domain.FxSite.CarService>();
+            container.Register<Fx.Domain.FxSite.IService.IHouse, Fx.Domain.FxSite.HouseService>();
+
+            container.Register<Fx.Domain.FxGoods.IService.ITransferGoods, Fx.Domain.FxGoods.FxTransferGoodService>();
+
+
+            //»º´æ·şÎñ
+            container.RegisterSingle<Fx.Infrastructure.Caching.ICacheManager, Fx.Infrastructure.Caching.CacheManager>();
+
             // For instance:
             // container.Register<IUserRepository, SqlUserRepository>();
         }

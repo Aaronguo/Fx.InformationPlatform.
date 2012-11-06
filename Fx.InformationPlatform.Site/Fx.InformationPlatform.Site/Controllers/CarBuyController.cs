@@ -7,10 +7,10 @@ using Fx.Domain.FxSite.IService;
 
 namespace Fx.InformationPlatform.Site.Controllers
 {
-    public class CarTransferController : BaseController
+    public class CarBuyController : BaseController
     {
         ICar carService;
-        public CarTransferController(ICar carService)
+        public CarBuyController(ICar carService)
         {
             this.carService = carService;
         }
@@ -50,7 +50,7 @@ namespace Fx.InformationPlatform.Site.Controllers
         {
             List<SelectListItem> details = new List<SelectListItem>();
             details.Add(new SelectListItem() { Value = "0", Text = "--请选择车辆类别--" });
-            carService.GetChannelTransferDetail(this.ControllerName, this.ActionName).ForEach(r => details.Add(new SelectListItem() { Text = r.ChannelListDetailName, Value = r.ChannelListDetailId.ToString() }));
+            carService.GetChannelBuyDetail(this.ControllerName, this.ActionName).ForEach(r => details.Add(new SelectListItem() { Text = r.ChannelListDetailName, Value = r.ChannelListDetailId.ToString() }));
             return details;
         }
 
@@ -60,7 +60,7 @@ namespace Fx.InformationPlatform.Site.Controllers
         {
             List<SelectListItem> details = new List<SelectListItem>();
             details.Add(new SelectListItem() { Value = "0", Text = "--请选择生产年份--" });
-            carService.GetCarShowYear().ForEach(r => details.Add(new SelectListItem() { Text = r.ToString(), Value = r.ToString() }));
+            carService.GetCarShowYear().ForEach(r => details.Add(new SelectListItem() { Text = r.ToString()+"以后", Value = r.ToString() }));
             return details;
         }
 
@@ -74,7 +74,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 details.Add(new SelectListItem() { Value = item.Key.ToString(), Text = item.Value });
             }
             return details;
-        } 
+        }
         #endregion
     }
 }

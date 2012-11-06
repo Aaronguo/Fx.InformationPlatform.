@@ -2,7 +2,7 @@
 
 namespace Fx.Domain.FxGoods.IService
 {
-   public interface IPublishGoods
+   public interface ITransferGoods
     {
         GoodsTransferInfo Get(string Email);
     }

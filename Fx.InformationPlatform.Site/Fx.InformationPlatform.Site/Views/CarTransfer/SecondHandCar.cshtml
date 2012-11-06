@@ -1,6 +1,6 @@
 ﻿@{
     Layout = "~/Views/Shared/_LayoutClean.cshtml";
-    ViewBag.Title = "发布汽车转让信息";
+    ViewBag.Title = "发布车辆转让信息";
 }
 @Html.Partial("Partial/Flow")
 <div class="grid_24">
@@ -45,7 +45,7 @@
                 </p>
             </div>
             <div class="omega grid_17">
-                <input type="text" id="price" value=""
+                <input type="text" id="price" value="" placeholder="默认货币:￡"
                     class="form-input" size="30" maxlength="8" style="border: 1px solid rgb(226, 226, 226);" />
             </div>
             <div class="clear">
@@ -80,9 +80,7 @@
                 </p>
             </div>
             <div class="omega grid_17">
-                <select id="carYear">
-                    <option value="0">--请选择生产年份--</option>
-                </select>
+                @Html.DropDownList("carYear")
             </div>
             <div class="clear">
             </div>
@@ -95,18 +93,7 @@
                 </p>
             </div>
             <div class="omega grid_17">
-                <select id="carMileage">
-                    <option value="0">--请选择里程数--</option>
-                    <option value="">100英里以下</option>
-                    <option value="">5000英里以下</option>
-                    <option value="">10000英里以下</option>
-                    <option value="">20000英里以下</option>
-                    <option value="">40000英里以下</option>
-                    <option value="">60000英里以下</option>
-                    <option value="">80000英里以下</option>
-                    <option value="">100000英里以下</option>
-                    <option value="">100000英里以上</option>
-                </select>
+                @Html.DropDownList("carMileage")
             </div>
             <div class="clear">
             </div>
@@ -121,12 +108,10 @@
                 </p>
             </div>
             <div class="omega grid_17">
-                <div class="gird_2">正面 <cite class="red">*</cite></div>
+                <div class="gird_2">正面 <cite class="red">必填*</cite></div>
                 <input id="facefile" type="file" /><br />
                 <div class="gird_2">其他方位最少3张 <cite class="red">选填</cite></div>
-                <input id="otherfile1" type="file" /><br />
-                <input id="otherfile2" type="file" /><br />
-                <input id="otherfile3" type="file" /><br />
+                <input id="otherfile" type="file" multiple="multiple" /><br />
                 <div class="gird_2">磨损部位照片 <cite class="red">选填</cite></div>
                 <input id="badfile" type="file" /><br />
             </div>
@@ -142,6 +127,19 @@
             <div class="omega grid_17">
                 <input type="text" id="email" value=""
                     class="form-input" size="30" maxlength="8" style="border: 1px solid rgb(226, 226, 226);" />
+            </div>
+            <div class="clear">
+            </div>
+            <br />
+
+            <div class="txtright alpha grid_3">
+                <p>
+                    <strong>备注：</strong>
+                </p>
+            </div>
+            <div class="omega grid_17">
+                <input type="text" id="tag" value=""
+                    class="form-input" size="30" maxlength="100" style="border: 1px solid rgb(226, 226, 226);" />
             </div>
             <div class="clear">
             </div>
@@ -164,7 +162,9 @@
 </div>
 </form>
 
-<script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("Ajax/AjaxCarRequest.js")"></script>
+<script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("Ajax/AjaxBaseRequest.js")"></script>
+
+@*<script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("Ajax/AjaxCarRequest.js")"></script>*@
 
 @*<script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("Transfer/TransferBaseEvent.js")"></script>
 

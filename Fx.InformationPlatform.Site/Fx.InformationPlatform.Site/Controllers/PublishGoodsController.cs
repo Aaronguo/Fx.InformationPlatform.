@@ -10,9 +10,9 @@ namespace Fx.InformationPlatform.Site.Controllers
 {
     public class PublishGoodsController : Controller
     {
-        IPublishGoods goodService;
+        ITransferGoods goodService;
 
-        public PublishGoodsController(IPublishGoods goodService)
+        public PublishGoodsController(ITransferGoods goodService)
         {
             this.goodService = goodService;
         }
