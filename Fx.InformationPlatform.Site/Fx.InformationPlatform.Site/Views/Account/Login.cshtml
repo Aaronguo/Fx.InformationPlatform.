@@ -38,7 +38,7 @@
                     <label>密码</label>
                 </div>
                 <div class="grid_16 omega p-line">
-                    @Html.TextBoxFor(model => model.Password, new { @class = "input-small" })
+                    @Html.TextBoxFor(model => model.Password, new { @class = "input-small",type="password" })
                     @Html.ValidationMessageFor(model => model.Password)
                 </div>
                 <div class="clear">
@@ -51,7 +51,7 @@
                 </div>
             </div>
             <div class="grid_6 omega">
-                @Html.Partial("Partial/Join")
+                @Html.Partial("Partial/Register")
             </div>
         </div>
 

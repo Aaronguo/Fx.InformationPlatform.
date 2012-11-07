@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Fx.Entity.FxGoods;
 using Fx.Entity.FxSite;
 
 namespace Fx.Domain.FxSite.IService

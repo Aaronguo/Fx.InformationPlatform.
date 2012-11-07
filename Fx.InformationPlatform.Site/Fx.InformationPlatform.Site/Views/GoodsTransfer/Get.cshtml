@@ -1,0 +1,70 @@
+﻿@model Fx.Entity.FxGoods.GoodsTransferInfo
+
+@{
+    ViewBag.Title = "Get";
+}
+
+<h2>Get</h2>
+
+<fieldset>
+    <legend>GoodsTransferInfo</legend>
+
+    <div class="display-label">IsChange</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsChange)
+    </div>
+
+    <div class="display-label">GoodsconditonId</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GoodsconditonId)
+    </div>
+
+    <div class="display-label">PublishUserEmail</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PublishUserEmail)
+    </div>
+
+    <div class="display-label">PublishTitle</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PublishTitle)
+    </div>
+
+    <div class="display-label">Price</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Price)
+    </div>
+
+    <div class="display-label">Mark</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Mark)
+    </div>
+
+    <div class="display-label">ChannelListId</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ChannelListId)
+    </div>
+
+    <div class="display-label">ChannelListDetailId</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ChannelListDetailId)
+    </div>
+
+    <div class="display-label">AreaId</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AreaId)
+    </div>
+
+    <div class="display-label">CityId</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CityId)
+    </div>
+
+    <div class="display-label">CreatedTime</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreatedTime)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.GoodsTransferInfoId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

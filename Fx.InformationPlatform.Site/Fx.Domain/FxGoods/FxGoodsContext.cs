@@ -15,7 +15,7 @@ namespace Fx.Domain.FxGoods
     {
         static FxGoodsContext()
         {
-            System.Data.Entity.Database.SetInitializer(new FxGoodsInitializer());
+           // System.Data.Entity.Database.SetInitializer(new FxGoodsInitializer());
         }
 
         public FxGoodsContext()

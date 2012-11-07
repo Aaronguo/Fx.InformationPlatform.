@@ -144,6 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Note.txt" />
+    <Content Include="App_Data\404.txt" />
     <Content Include="App_Readme\Elmah.SqlServer.sql" />
     <Content Include="App_Readme\Elmah.SqlServer.txt" />
     <Content Include="App_Readme\Elmah.txt" />
@@ -280,6 +281,9 @@
     <Content Include="Views\CarBuy\Partial\Flow.cshtml" />
     <Content Include="Views\HouseBuy\CommercialProperties.cshtml" />
     <Content Include="Views\HouseBuy\Partial\Flow.cshtml" />
+    <Content Include="Views\GoodsTransfer\Save.cshtml" />
+    <Content Include="Views\GoodsTransfer\Get.cshtml" />
+    <Content Include="Views\Account\Partial\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Upload\HeadPicture\" />

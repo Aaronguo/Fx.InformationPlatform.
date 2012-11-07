@@ -10,12 +10,26 @@ namespace Fx.Domain.FxGoods
 {
     public class FxTransferGoodService : ITransferGoods
     {
-        public Entity.FxGoods.GoodsTransferInfo Get(string Email)
+        public Entity.FxGoods.GoodsTransferInfo Get(int  Id)
         {
             using (FxGoodsContext context = new FxGoodsContext())
             {
-                   return context.GoodsTransferInfos.Where(r => r.PublishUserEmail == Email).FirstOrDefault();
+                   return context.GoodsTransferInfos.Where(r => r.GoodsTransferInfoId == Id).FirstOrDefault();
             }
+        }
+
+
+
+
+
+        public bool SaveTransferGoods(GoodsTransferInfo goods)
+        {
+            using (FxGoodsContext context = new FxGoodsContext())
+            {
+                context.GoodsTransferInfos.Add(goods);
+                context.SaveChanges();
+            }
+            return goods.GoodsTransferInfoId > 0;
         }
     }
 }

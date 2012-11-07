@@ -2,8 +2,10 @@
 
 namespace Fx.Domain.FxGoods.IService
 {
-   public interface ITransferGoods
+    public interface ITransferGoods
     {
-        GoodsTransferInfo Get(string Email);
+        GoodsTransferInfo Get(int Id);
+
+        bool SaveTransferGoods(GoodsTransferInfo goods);
     }
 }

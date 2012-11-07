@@ -64,8 +64,9 @@
     <Compile Include="MemberShip\Users.cs" />
     <Compile Include="MemberShip\WebEvent_Events.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PublishEntity.cs" />
+    <Compile Include="TransferEntity.cs" />
     <Compile Include="PublishImage.cs" />
+    <Compile Include="TransferPicture.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\readme.txt" />
