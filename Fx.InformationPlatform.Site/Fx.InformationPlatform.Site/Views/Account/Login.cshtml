@@ -10,42 +10,28 @@
             你好，欢迎加入英淘网
         </p>
         <div class="grid_24">
-            <style>
-                .p-label {
-                    display: inline-block;
-                    width: 120px;
-                    text-align: right;
-                    font-weight: 700;
-                }
-
-                .input-small {
-                    height: 22px;
-                    line-height: 22px;
-                    padding: 0 5px;
-                }
-            </style>
             <div class="grid_18 alpha">
-                <div class="grid_2 alpha p-line p-label">
+                <div class="grid_2 alpha">
                     <label>账号</label>
                 </div>
-                <div class="grid_16 omega p-line">
-                    @Html.TextBoxFor(model => model.Email, new { @class = "input-small" ,placeholder = "abc@abc.com"})
+                <div class="grid_16 omega">
+                    @Html.TextBoxFor(model => model.Email, new { placeholder = "abc@abc.com"})
                     @Html.ValidationMessageFor(model => model.Email)
                 </div>
                 <div class="clear">
                 </div>
-                <div class="grid_2 alpha p-line p-label">
+                <div class="grid_2 alpha">
                     <label>密码</label>
                 </div>
-                <div class="grid_16 omega p-line">
-                    @Html.TextBoxFor(model => model.Password, new { @class = "input-small",type="password" })
+                <div class="grid_16 omega">
+                    @Html.TextBoxFor(model => model.Password, new { type="password" })
                     @Html.ValidationMessageFor(model => model.Password)
                 </div>
                 <div class="clear">
                 </div>
 
-                <div class="p-line p-line-submit">
-                    <label class="p-label"></label>
+                <div>
+                    <label ></label>
                     <input class="btn_green button button-green" type="submit" value="登录">
                     <span style="color: #f00;">@ViewBag.Error</span>
                 </div>

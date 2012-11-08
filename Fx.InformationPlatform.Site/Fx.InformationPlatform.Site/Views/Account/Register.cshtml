@@ -10,109 +10,91 @@
             你好，欢迎加入英淘网
         </p>
         <div class="grid_24">
-            <style>
-                .p-line {
-                    padding: 10px 0;
-                }
-
-                .p-label {
-                    display: inline-block;
-                    width: 120px;
-                    text-align: right;
-                    font-weight: 700;
-                }
-
-                .input-small {
-                    height: 22px;
-                    line-height: 22px;
-                    padding: 0 5px;
-                }
-            </style>
             <div class="grid_18 alpha">
-                <div class="grid_2 alpha p-line p-label">
+                <div class="grid_2 alpha">
                     <label>邮箱</label>
                 </div>
-                <div class="grid_16 omega p-line">
-                    @Html.TextBoxFor(model => model.Email, new { @class = "input-small", placeholder = "邮箱即为用户帐号" })
+                <div class="grid_16 omega">
+                    @Html.TextBoxFor(model => model.Email, new { placeholder = "邮箱即为用户帐号" })
                     @Html.ValidationMessageFor(model => model.Email)   <span style="color: #f00">*必填</span>
                 </div>
                 <div class="clear">
                 </div>
 
 
-                <div class="grid_2 alpha p-line p-label">
+                <div class="grid_2 alpha">
                     <label>密码</label>
                 </div>
-                <div class="grid_16 omega p-line">
-                    @Html.TextBoxFor(model => model.Password, new { @class = "input-small", placeholder = "请输入密码" })
+                <div class="grid_16 omega">
+                    @Html.TextBoxFor(model => model.Password, new { placeholder = "请输入密码" })
                     @Html.ValidationMessageFor(model => model.Password)   <span style="color: #f00">*必填</span>
                 </div>
                 <div class="clear"></div>
 
 
 
-                <div class="grid_2 alpha p-line p-label">
+                <div class="grid_2 alpha">
                     昵称
                 </div>
-                <div class="grid_16 omega p-line">
-                    @Html.TextBoxFor(model => model.NickName, new { @class = "input-small" })
+                <div class="grid_16 omega">
+                    @Html.TextBoxFor(model => model.NickName)
                     @Html.ValidationMessageFor(model => model.NickName)  <span style="color: #f00">*必填</span>
                 </div>
                 <div class="clear">
                 </div>
 
 
-                <div class="grid_2 alpha p-line p-label">
+                <div class="grid_2 alpha">
                     联系方式
                 </div>
-                <div class="grid_16 omega p-line">
-                    @Html.TextBoxFor(model => model.Address, new { @class = "input-small" })
+                <div class="grid_16 omega">
+                    @Html.TextBoxFor(model => model.Address)
                     @Html.ValidationMessageFor(model => model.Address)  <span style="color: #f00">*必填</span>
                 </div>
                 <div class="clear">
                 </div>
 
 
-                <div class="grid_2 alpha p-line p-label">
+                <div class="grid_2 alpha">
                     QQ
                 </div>
-                <div class="grid_16 omega p-line">
-                    @Html.TextBoxFor(model => model.QQ, new { @class = "input-small" })
+                <div class="grid_16 omega">
+                    @Html.TextBoxFor(model => model.QQ)
                     @Html.ValidationMessageFor(model => model.QQ)
                 </div>
                 <div class="clear">
                 </div>
 
 
-                <div class="grid_2 alpha p-line p-label">
+                <div class="grid_2 alpha">
                     <label>手机</label>
                 </div>
-                <div class="grid_16 omega p-line">
-                    @Html.TextBoxFor(model => model.Mobile, new { @class = "input-small" })
+                <div class="grid_16 omega">
+                    @Html.TextBoxFor(model => model.Mobile)
                     @Html.ValidationMessageFor(model => model.Mobile)
                 </div>
                 <div class="clear">
                 </div>
 
-                <div class="grid_2 alpha p-line p-label">
+        @*        <div class="grid_2 alpha">
                     <label>头像</label>
                 </div>
-                <div class="grid_16 omega p-line">
+                <div class="grid_16 omega">
                     <input type="file" name="headPicture" />
                 </div>
                 <div class="clear">
-                </div>
+                </div>*@
 
 
 
-                <div class="grid_2 alpha p-line p-label">
+                <div class="grid_2 alpha">
                     <label>验证码</label>
                 </div>
-                <div class="grid_5 p-line">
-                    @Html.TextBoxFor(model => model.VerificationCode, new { @class = "input-small" })
+                <div class="grid_6">
+                    @Html.TextBoxFor(model => model.VerificationCode)
                 </div>
 
-                <div class="grid_11 omega p-line">
+                <div class="grid_10 omega">
                     <img alt="验证码" id="validimg" src="@Url.Action("CreateImageCode", "Captcha")"  onclick="reloadcode()" />
                 </div>
                 <div class="clear">
@@ -123,8 +105,8 @@
                     <label class="p-label"></label>
                     <small>注册即代表您已阅读并同意<a href="/Pagelink/Agreement/" target="_blank">《英淘网用户协议》</a></small>
                 </div>
-                <div class="p-line p-line-submit">
-                    <label class="p-label"></label>
+                <div>
+                    <label></label>
                     <input class="btn_green button button-green" type="submit" value="免费注册">
                     <span style="color: #f00;">@ViewBag.Error</span>
                 </div>

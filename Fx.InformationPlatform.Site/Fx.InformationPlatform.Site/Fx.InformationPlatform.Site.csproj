@@ -156,6 +156,8 @@
     <Content Include="App_Readme\Elmah.SqlServer.sql" />
     <Content Include="App_Readme\Elmah.SqlServer.txt" />
     <Content Include="App_Readme\Elmah.txt" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\FileUpload\canvas-to-blob.min.js" />
     <Content Include="Content\FileUpload\html5.js" />
     <Content Include="Content\FileUpload\jquery-ui-1.8.11.js" />
