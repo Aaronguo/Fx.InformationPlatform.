@@ -2,3 +2,12 @@
 
 
 404：http://www.oschina.net/code/snippet_122189_14980
+
+
+解决input file多文件件上传的问题。
+http://www.fyneworks.com/jquery/multiple-file-upload/
+
+http://code.google.com/p/swfupload/
+http://www.uploadify.com/
+http://blueimp.github.com/jQuery-File-Upload/
+解决发布页面Ajax请求数据后缓存的问题。

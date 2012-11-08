@@ -44,6 +44,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
     </Reference>
+    <Reference Include="ImageResizer">
+      <HintPath>..\packages\ImageResizer.3.2.4\lib\ImageResizer.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageResizer.Mvc">
+      <HintPath>..\packages\ImageResizer.Mvc.3.2.4\lib\ImageResizer.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="SimpleInjector">
       <HintPath>..\packages\SimpleInjector.1.5.0.12199\lib\net35\SimpleInjector.dll</HintPath>
     </Reference>
@@ -143,8 +149,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\gitlog20121108.txt" />
     <Content Include="App_Data\Note.txt" />
     <Content Include="App_Data\404.txt" />
+    <Content Include="App_Data\PublishNotice.txt" />
     <Content Include="App_Readme\Elmah.SqlServer.sql" />
     <Content Include="App_Readme\Elmah.SqlServer.txt" />
     <Content Include="App_Readme\Elmah.txt" />
@@ -175,7 +183,14 @@
     <Content Include="Content\js\Ajax\AjaxCarRequest.js" />
     <Content Include="Content\js\Ajax\AjaxGoodsRequest.js" />
     <Content Include="Content\js\Ajax\AjaxHouseRequest.js" />
+    <Content Include="Content\js\bootstrap.js" />
+    <Content Include="Content\js\bootstrap.min.js">
+      <DependentUpon>bootstrap.js</DependentUpon>
+    </Content>
     <Content Include="Content\js\Buy\BuyBaseEvent.js" />
+    <Content Include="Content\js\Debug\log4Init.js" />
+    <Content Include="Content\js\Debug\log4javascript1.4.3.js" />
+    <Content Include="Content\js\jquery-1.8.2.min.js" />
     <Content Include="Content\js\Transfer\TransferGoodsEvent.js" />
     <Content Include="Content\js\Flash\bcastr.swf" />
     <Content Include="Content\js\Flash\images\02.jpg" />
@@ -193,6 +208,7 @@
     <Content Include="Content\css\960_24_col.css" />
     <Content Include="Content\css\baixing.css" />
     <Content Include="Content\css\base.css" />
+    <Content Include="Content\js\MutiUpload\MultiFile.js" />
     <Content Include="Global.asax" />
     <Content Include="Config\DataBase.config">
       <SubType>Designer</SubType>
@@ -206,7 +222,6 @@
       <DependentUpon>jquery-1.6.2.js</DependentUpon>
     </Content>
     <None Include="Content\js\jquery.validate-vsdoc.js" />
-    <Content Include="Content\js\jquery-1.7.1.min.js" />
     <Content Include="Content\js\jquery-ui-1.8.11.js" />
     <Content Include="Content\js\jquery-ui-1.8.11.min.js">
       <DependentUpon>jquery-ui-1.8.11.js</DependentUpon>

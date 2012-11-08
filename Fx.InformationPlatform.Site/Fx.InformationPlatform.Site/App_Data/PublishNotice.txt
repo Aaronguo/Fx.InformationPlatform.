@@ -1,0 +1,5 @@
+﻿1 移除View Share的Layout和LayoutClean中的log4javascript的文件引用
+    <script type="text/javascript" src="../../Content/js/Debug/log4javascript1.4.3.js"></script>   
+    <script type="text/javascript" src="../../Content/js/Debug/log4Init.js"></script> 
+
+2
