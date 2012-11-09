@@ -48,6 +48,7 @@ namespace Fx.Domain
             //Site
             modelBuilder.Configurations.Add(new Area_Mapping());
             modelBuilder.Configurations.Add(new City_Mapping());
+            modelBuilder.Configurations.Add(new GoodsConditions_Mapping());
             modelBuilder.Configurations.Add(new Channel_Mapping());
             modelBuilder.Configurations.Add(new ChannelList_Mapping());
             modelBuilder.Configurations.Add(new ChannelListDetail_Mapping());

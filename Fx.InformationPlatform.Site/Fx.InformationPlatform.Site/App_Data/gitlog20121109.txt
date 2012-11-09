@@ -13,6 +13,6 @@
 
 
 注释了base.css中arrow部分相关css
-考虑重构一些表的Mapping信息
+考虑重构一些表的Mapping信息 ok
 考虑重构下flow的width 引入alaph omega，防止因缩小浏览器或者小屏幕尺寸而导致显示问题。
 后续需要找好看的icon库
