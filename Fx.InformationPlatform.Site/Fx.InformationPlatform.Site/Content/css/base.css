@@ -391,11 +391,11 @@ hr{border:none;border-bottom:1px solid #cfcfcf;margin-bottom:10px;*color:pink;*f
 .arrow-up:hover{border-bottom-color:#aaa;}
 .arrow-down:hover{border-top-color:#aaa;*zoom:1;}
 */
-.arrow{display:inline-block;height:0;padding:0!important;border:5px solid transparent;*border-color:pink;font-size:0;width:0;overflow:hidden;*line-height:0;position:relative;top:-5px;vertical-align:text-bottom;*filter:chroma(color=pink);}
+/*.arrow{display:inline-block;height:0;padding:0!important;border:5px solid transparent;*border-color:pink;font-size:0;width:0;overflow:hidden;*line-height:0;position:relative;top:-5px;vertical-align:text-bottom;*filter:chroma(color=pink);}
 .arrow-up, .dropdown-open .arrow-down{border-bottom-color:#aaa;border-top-color: transparent;*border-top-color:pink;}
 .arrow-down, .dropdown-open .arrow-up{border-top-color:#aaa;margin-bottom:-5px;border-bottom-color:transparent;*border-bottom-color:pink;}
 .arrow-up:hover, .dropdown-open .arrow-down:hover{border-bottom-color:#999;border-top-color: transparent;*border-top-color:pink;}
-.arrow-down:hover, .dropdown-open .arrow-up:hover{border-top-color:#999;border-bottom-color:transparent;*border-bottom-color:pink;}
+.arrow-down:hover, .dropdown-open .arrow-up:hover{border-top-color:#999;border-bottom-color:transparent;*border-bottom-color:pink;}*/
 
 /* button 按钮
  * author: linjianfeng@baixing.com

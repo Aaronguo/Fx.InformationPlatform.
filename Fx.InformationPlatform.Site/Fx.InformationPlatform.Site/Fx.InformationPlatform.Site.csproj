@@ -150,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\gitlog20121108.txt" />
+    <Content Include="App_Data\gitlog20121109.txt" />
     <Content Include="App_Data\Note.txt" />
     <Content Include="App_Data\404.txt" />
     <Content Include="App_Data\PublishNotice.txt" />
@@ -176,6 +177,7 @@
     <Content Include="Content\images\arrowhead.gif" />
     <Content Include="Content\images\generalFile.png" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
+    <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\logo.jpg" />
     <Content Include="Content\images\logo_v2.png" />
@@ -189,7 +191,10 @@
     <Content Include="Content\js\bootstrap.min.js">
       <DependentUpon>bootstrap.js</DependentUpon>
     </Content>
-    <Content Include="Content\js\Buy\BuyBaseEvent.js" />
+    <Content Include="Content\js\Buy\BuyGoodsEvent.js" />
+    <Content Include="Content\js\Buy\BuyValidCar.js" />
+    <Content Include="Content\js\Buy\BuyValidGoods.js" />
+    <Content Include="Content\js\Buy\BuyValidHouse.js" />
     <Content Include="Content\js\Debug\log4Init.js" />
     <Content Include="Content\js\Debug\log4javascript1.4.3.js" />
     <Content Include="Content\js\jquery-1.8.2.min.js" />
@@ -206,11 +211,13 @@
       <DependentUpon>jquery.placeholder.js</DependentUpon>
     </Content>
     <Content Include="Content\js\plugins.js" />
-    <Content Include="Content\js\Transfer\TransferGoods.js" />
+    <Content Include="Content\js\Transfer\TransferValidCar.js" />
+    <Content Include="Content\js\Transfer\TransferValidGoods.js" />
     <Content Include="Content\css\960_24_col.css" />
     <Content Include="Content\css\baixing.css" />
     <Content Include="Content\css\base.css" />
     <Content Include="Content\js\MutiUpload\MultiFile.js" />
+    <Content Include="Content\js\Transfer\TransferValidHouse.js" />
     <Content Include="Global.asax" />
     <Content Include="Config\DataBase.config">
       <SubType>Designer</SubType>
@@ -301,6 +308,8 @@
     <Content Include="Views\GoodsTransfer\Save.cshtml" />
     <Content Include="Views\GoodsTransfer\Get.cshtml" />
     <Content Include="Views\Account\Partial\Register.cshtml" />
+    <Content Include="Views\Shared\TransferModal.cshtml" />
+    <Content Include="Views\Shared\BuyModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Upload\HeadPicture\" />

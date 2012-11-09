@@ -19,7 +19,7 @@
             </div>
             <div class="omega grid_17">
                 <input type="text" id="title" value=""
-                    class="form-input" size="30" maxlength="60" style="border: 1px solid rgb(226, 226, 226);" />
+                    class="form-input" size="30" maxlength="128" style="border: 1px solid rgb(226, 226, 226);" />
             </div>
             <div class="clear">
             </div>
@@ -45,7 +45,7 @@
                 </p>
             </div>
             <div class="omega grid_17">
-                <input type="text" id="price" value="" placeholder="默认货币:￡"
+                <input type="text" id="price" value="" placeholder="默认货币:￡,正整数"
                     class="form-input" size="30" maxlength="8" style="border: 1px solid rgb(226, 226, 226);" />
             </div>
             <div class="clear">
@@ -108,12 +108,12 @@
                 </p>
             </div>
             <div class="omega grid_17">
-                <div class="gird_2">正面 <cite class="red">必填*</cite></div>
-                <input id="facefile" type="file" /><br />
-                <div class="gird_2">其他方位最少3张 <cite class="red">选填</cite></div>
-                <input id="otherfile" type="file" multiple="multiple" /><br />
+                <div class="gird_2">其他方位照片 <cite class="red">必填最少1张*</cite></div>
+                <input type="file" class="multi" accept="jpg|jpeg|png|gif|bmp" maxlength="3" minlength="2" name="facefile" id="mainface" /><br />
+                <div class="gird_2">其他方位照片 <cite class="red">最少3张</cite></div>
+                <input type="file" class="multi" accept="jpg|jpeg|png|gif|bmp" maxlength="3" minlength="4" name="otherfile" id="mainother" /><br />
                 <div class="gird_2">磨损部位照片 <cite class="red">选填</cite></div>
-                <input id="badfile" type="file" /><br />
+                <input type="file" class="multi" accept="jpg|jpeg|png|gif|bmp" maxlength="3" minlength="1" name="badfile" id="mainbad"><br />
             </div>
             <div class="clear">
             </div>
@@ -126,7 +126,7 @@
             </div>
             <div class="omega grid_17">
                 <input type="text" id="email" value=""
-                    class="form-input" size="30" maxlength="8" style="border: 1px solid rgb(226, 226, 226);" />
+                    class="form-input" size="30" maxlength="128" style="border: 1px solid rgb(226, 226, 226);" />
             </div>
             <div class="clear">
             </div>
@@ -139,7 +139,7 @@
             </div>
             <div class="omega grid_17">
                 <input type="text" id="tag" value=""
-                    class="form-input" size="30" maxlength="100" style="border: 1px solid rgb(226, 226, 226);" />
+                    class="form-input" size="30" maxlength="128" style="border: 1px solid rgb(226, 226, 226);" />
             </div>
             <div class="clear">
             </div>
@@ -149,7 +149,9 @@
                 &nbsp;
             </div>
             <div class="omega grid_17">
-                <input type="submit" class="form-submit button button-green" value="免费注册并发布">
+                  <input type="submit" class="form-submit button button-green" value="免费注册并发布"
+                    rel="popover" data-placement="left" data-original-title="您的信息填写错误" data-content="" onclick="return transfercar.Submit();"
+                    show="1500" hide="300">
                 <span class="p-note">发布即代表您已阅读并同意 
                         @Html.ActionLink("英淘网用户协议", "Agreement", "Pagelink")
                     和  @Html.ActionLink("英淘网公约", "Convention", "Pagelink")
@@ -161,14 +163,20 @@
     </div>
 </div>
 </form>
+@Html.Partial("TransferModal")
 
 <script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("Ajax/AjaxBaseRequest.js")"></script>
 
+<!--暂时没有汽车频道需要请求的事件 所以注释-->
 @*<script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("Ajax/AjaxCarRequest.js")"></script>*@
 
-@*<script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("Transfer/TransferBaseEvent.js")"></script>
+<script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("Transfer/TransferValidCar.js")"></script>
 
-<script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("Transfer/TransferGoods.js")"></script>*@
+<!--暂时没有换物的事件 所以注释-->
+@*<script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("Transfer/TransferCarEvent.js")"></script>*@
+
+<!--多文件上传解决方案-->
+<script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("MutiUpload/MultiFile.js")"></script>
 
 
 

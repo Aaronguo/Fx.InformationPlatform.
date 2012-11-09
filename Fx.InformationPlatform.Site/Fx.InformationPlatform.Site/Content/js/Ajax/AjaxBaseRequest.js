@@ -15,18 +15,25 @@ AjaxBase.GetAreaData = function () {
     });
 }
 AjaxBase.GetCityData = function () {
-    $.ajax({
-        url: "/Ajax/City?areaId=" + $("#area").find("option:selected").val(),
-        type: "POST",
-        dataType: "json",
-        data: {},
-        success: function (data) {
-            $("#city").html(data);
-        },
-        error: function () {
-            $("#city").html("<option value='0'>服务异常，请稍后刷新重试</option>");
-        }
-    });
+    var index = $("#area").find("option:selected").val();
+    if (!$("#publish").data(index)) {
+        $.ajax({
+            url: "/Ajax/City?areaId=" + $("#area").find("option:selected").val(),
+            type: "POST",
+            dataType: "json",
+            data: {},
+            success: function (data) {
+                $("#publish").data(index,data);
+                $("#city").html(data);
+            },
+            error: function () {
+                $("#city").html("<option value='0'>服务异常，请稍后刷新重试</option>");
+            }
+        });
+    }
+    else {
+        $("#city").html($("#publish").data(index));
+    }
 };
 
 

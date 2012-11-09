@@ -1,6 +1,6 @@
-﻿var buy = buy || {};
+﻿var buygoods = buygoods || {};
 
-buy.BindGoodsconditonChange = function () {
+buygoods.BindGoodsconditonChange = function () {
     $("#goodsconditon").change(function () {
         var option = $("#goodsconditon option:selected");
         var value = option.attr("value") || 0;
@@ -22,5 +22,5 @@ buy.BindGoodsconditonChange = function () {
 
 
 $(document).ready(function () {
-    buy.BindGoodsconditonChange();
+    buygoods.BindGoodsconditonChange();
 });
