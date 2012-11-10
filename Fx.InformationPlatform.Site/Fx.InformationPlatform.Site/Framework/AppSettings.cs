@@ -3,11 +3,20 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
+using Fx.Infrastructure.Caching;
+using SimpleInjector;
 
 namespace Fx.InformationPlatform.Site
 {
     public class AppSettings
     {
+        static ICacheManager cacheService;
+
+        static AppSettings()
+        {
+            cacheService = DependencyResolver.Current.GetService<ICacheManager>();
+        }
         #region Private Methods
 
         private static string GetValue(string Key)
@@ -106,7 +115,7 @@ namespace Fx.InformationPlatform.Site
             get { return GetString("DefaultLanguage", "zh-CN"); }  //en-US
         }
 
-        
+
         public static string JavaScriptDomain(string jsFileorPath)
         {
             return GetString("JavaScriptDomain", "http://localhost:9999/Content/js/") + jsFileorPath;
@@ -123,7 +132,17 @@ namespace Fx.InformationPlatform.Site
             return GetString("ImageDomain", "http://localhost:9999/Content/images/") + imageFileorPath;
         }
 
- 
+        public static string[] PictureMINE()
+        {
+            if (cacheService.Get("FxSitePictureMINE") == null)
+            {
+                cacheService.Insert("FxSitePictureMINE",GetString("PictureMIME","jpg|jpeg|png|gif|bmp"),3600, System.Web.Caching.CacheItemPriority.Normal);
+            }
+            var mines=(cacheService.Get("FxSitePictureMINE") as string).Split('|').ToArray();
+            return mines;
+        }
+
+
 
 
 

@@ -2,7 +2,7 @@
 
 transfergoods.TipMsg = "";
 transfergoods.Submit = function () {
-    $("form:first").submit(function () {
+    $("#transfergoodsform").submit(function () {
         if (transfergoods.ValidTitle() && transfergoods.VaildCatagroy() &&
             transfergoods.ValidPrice() && transfergoods.ValidChangeGoods() &&
             transfergoods.ValidArea() && transfergoods.ValidCity() &&
@@ -10,6 +10,7 @@ transfergoods.Submit = function () {
             transfergoods.ValidOtherfile() && transfergoods.ValidBadfile() &&
             transfergoods.ValidEmail() &&
             transfergoods.ValidTag()) {
+            transfergoods.BuildMVCForm();
             return true;
         }
         //$("input[type='submit']").attr("data-content", transfergoods.TipMsg);
@@ -18,75 +19,110 @@ transfergoods.Submit = function () {
         return false;
     });
 };
+transfergoods.Titile = function () {
+    return $("#title").val();
+}
+
 transfergoods.ValidTitle = function () {
-    var title = $("#title").val();
-    if (title == '') {
+    if (transfergoods.Titile() == '') {
         transfergoods.TipMsg = "标题不能为空";
         return false;
     }
     return true;
 }
 
-transfergoods.VaildCatagroy = function () {
+transfergoods.CatagroyId = function () {
     var option = $("#catagroy option:selected");
-    var value = option.attr("value") || 0;
-    if (value == 0) {
+    return option.attr("value") || 0;
+}
+
+transfergoods.VaildCatagroy = function () {
+    if (transfergoods.CatagroyId() == 0) {
         transfergoods.TipMsg = "请选择物品类别";
         return false;
     }
     return true;
 }
 
+transfergoods.Price = function () {
+    return $("#price").val();
+}
+
 transfergoods.ValidPrice = function () {
     var regex = /^[0-9]*[1-9][0-9]*$/;
-    var price = $("#price").val();
-    if (price == '') {
+    if (transfergoods.Price() == '') {
         transfergoods.TipMsg = "价格不能为空";
         return false;
     }
-    var result = price.match(regex);
+    var result = transfergoods.Price().match(regex);
     if (null == result || 0 == result.length) {
         transfergoods.TipMsg = "价格必须是正整数";
         return false;
     }
     return true;
 }
+
+transfergoods.IsChangeGoods = function () {
+    return $("#changegoods").attr("checked") == "checked";
+}
+
+transfergoods.ChangeGoodsText = function () {
+    return $("changegoodstxt").val();
+}
+
 transfergoods.ValidChangeGoods = function () {
-    if ($("#changegoods").attr("checked") == "checked" && $("changegoodstxt").val() == "") {
+    if (transfergoods.IsChangeGoods() == true && transfergoods.ChangeGoodsText() == "") {
         transfergoods.TipMsg = "您如果想换物，请填写相关信息";
         return false;
     }
     return true;
 }
 
-transfergoods.ValidArea = function () {
+transfergoods.AreaId = function () {
     var option = $("#area option:selected");
-    var value = option.attr("value") || 0;
-    if (value == 0) {
+    return option.attr("value") || 0;
+}
+
+transfergoods.ValidArea = function () {
+   
+    if (transfergoods.AreaId() == 0) {
         transfergoods.TipMsg = "请选择具体的地区";
         return false;
     }
     return true;
 }
 
-transfergoods.ValidCity = function () {
+transfergoods.CityId = function () {
     var option = $("#city option:selected");
-    var value = option.attr("value") || 0;
-    if (value == 0) {
+    return option.attr("value") || 0;
+}
+
+transfergoods.ValidCity = function () {
+  
+    if (transfergoods.CityId() == 0) {
         transfergoods.TipMsg = "请选择详细地址";
         return false;
     }
     return true;
 }
 
-transfergoods.ValidGoodsconditon = function () {
+transfergoods.GoodsConditonId = function () {
     var option = $("#goodsconditon option:selected");
-    var value = option.attr("value") || 0;
-    if (value == 0) {
+    return option.attr("value") || 0;     
+}
+
+transfergoods.GoodsConditionText = function () {
+    return $("#goodsextend").val();
+}
+
+
+transfergoods.ValidGoodsconditon = function () {
+  
+    if (transfergoods.GoodsConditonId() == 0) {
         transfergoods.TipMsg = "请选择新旧程度";
         return false;
     }
-    if (value > 2 && $("#goodsextend").val() == "") {
+    if (transfergoods.GoodsConditonId() > 2 && transfergoods.GoodsConditionText() == "") {
         transfergoods.TipMsg = "请填写相关新旧程度信息";
         return false;
     }
@@ -124,7 +160,7 @@ transfergoods.ValidOtherfile = function () {
 
 transfergoods.ValidBadfile = function () {
     var badfile = $("input[name=badfile]");
-    var badfile = $("#mainbad").attr("minlength");
+    var minlength = $("#mainbad").attr("minlength");
     if (badfile.length == 1 && badfile.length != minlength) {
         transfergoods.TipMsg = "请选择磨损部位照片";
         return false;
@@ -136,15 +172,17 @@ transfergoods.ValidBadfile = function () {
     return true;
 }
 
+transfergoods.Email = function () {
+    return  $("#email").val();
+}
 
 transfergoods.ValidEmail = function () {
-    var regex = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-    var email = $("#email").val();
-    if (email == '') {
+    var regex = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;    
+    if (transfergoods.Email() == '') {
         transfergoods.TipMsg = "邮箱不能为空";
         return false;
     }
-    var result = email.match(regex);
+    var result = transfergoods.Email().match(regex);
     if (null == result || 0 == result.length) {
         transfergoods.TipMsg = "请填写正确的邮箱";
         return false;
@@ -152,12 +190,27 @@ transfergoods.ValidEmail = function () {
     return true;
 }
 
+transfergoods.Tag = function () {
+    return $("#tag").val();
+}
+
 transfergoods.ValidTag = function () {
-    var tag = $("#tag").val();
-    //if (tag == '') {
-    //    return false;
-    //}
     return true;
+}
+
+
+transfergoods.BuildMVCForm = function () {
+    $("#Title").val(transfergoods.Titile());
+    $("#Price").val(transfergoods.Price());
+    $("#CatagroyId").val(transfergoods.CatagroyId());
+    $("#IsChangeGoods").val(transfergoods.IsChangeGoods());
+    $("#ChangeGoodsMsg").val(transfergoods.ChangeGoodsText());
+    $("#AreaId").val(transfergoods.AreaId());
+    $("#CityId").val(transfergoods.CityId());
+    $("#GoodConditionId").val(transfergoods.GoodsConditonId());
+    $("#GoodConditonMsg").val(transfergoods.GoodsConditionText());
+    $("#Email").val(transfergoods.Email());
+    $("#Mark").val(transfergoods.Tag());
 }
 
 $(document).ready(function () {

@@ -12,7 +12,7 @@ namespace Fx.Entity.Account
         [Required(ErrorMessage = "Email不能为空")]
         public string Email { get; set; }
 
-        [MobileCheck(ErrorMessage = "请填写正确的手机号码")]
+        //[MobileCheck(ErrorMessage = "请填写正确的手机号码")]
         [Required(ErrorMessage = "手机号码不能为空")]
         public string Mobile { get; set; }
 

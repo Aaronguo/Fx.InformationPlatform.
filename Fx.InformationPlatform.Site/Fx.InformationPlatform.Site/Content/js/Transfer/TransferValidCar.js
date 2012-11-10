@@ -124,7 +124,7 @@ transfercar.ValidOtherfile = function () {
 
 transfercar.ValidBadfile = function () {
     var badfile = $("input[name=badfile]");
-    var badfile = $("#mainbad").attr("minlength");
+    var minlength = $("#mainbad").attr("minlength");
     if (badfile.length == 1 && badfile.length != minlength) {
         transfercar.TipMsg = "请选择磨损部位照片";
         return false;

@@ -41,7 +41,7 @@ namespace Fx.Domain.Account
                     if (createStatus == MembershipCreateStatus.Success)
                     {
                         var user = content.Value.Users.Where(r => r.UserName == entity.Users.UserName).First();
-                        var otherInformation = new Fx.Entity.MemberShip.OtherInformation();
+                        var otherInformation = new Fx.Entity.MemberShip.OtherInformation();                        
                         otherInformation.Mobile = entity.MobilePIN;
                         otherInformation.QQ = entity.OtherInformations.QQ;
                         otherInformation.Sex = entity.OtherInformations.Sex;
@@ -180,6 +180,12 @@ namespace Fx.Domain.Account
         public int GetUserCount()
         {
             return this.content.Value.Users.Count();
+        }
+
+
+        public Guid GetCurrentUser(string Email)
+        {
+            return this.content.Value.Memberships.Where(r => r.Email == Email).First().UserId;
         }
     }
 }

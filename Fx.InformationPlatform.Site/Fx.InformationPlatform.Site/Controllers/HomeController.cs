@@ -13,7 +13,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Index()
         {
-            //int t = Convert.ToInt32("ds");
+           
             return View();
         }
 

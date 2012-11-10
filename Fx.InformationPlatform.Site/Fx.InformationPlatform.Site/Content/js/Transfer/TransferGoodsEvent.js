@@ -1,4 +1,4 @@
-﻿var transfergoods = transfer || {};
+﻿var transfergoods = transfergoods || {};
 
 transfergoods.BindGoodsconditonChange = function () {
     $("#goodsconditon").change(function () {

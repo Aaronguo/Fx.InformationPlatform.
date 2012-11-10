@@ -139,6 +139,7 @@
     <Compile Include="Framework\ChannelLocation.cs" />
     <Compile Include="Framework\ElmahHandledErrorLoggerFilter.cs" />
     <Compile Include="Framework\StaticHelper.cs" />
+    <Compile Include="Framework\UploadFileHelper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -147,6 +148,7 @@
     <Compile Include="Upload\UploadHandler.ashx.cs">
       <DependentUpon>UploadHandler.ashx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\TransferViewGoods.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\gitlog20121108.txt" />
@@ -154,9 +156,13 @@
     <Content Include="App_Data\Note.txt" />
     <Content Include="App_Data\404.txt" />
     <Content Include="App_Data\PublishNotice.txt" />
+    <Content Include="App_Data\gitlog20121110.txt" />
     <Content Include="App_Readme\Elmah.SqlServer.sql" />
     <Content Include="App_Readme\Elmah.SqlServer.txt" />
     <Content Include="App_Readme\Elmah.txt" />
+    <Content Include="App_Readme\ELmahProc2008.sql" />
+    <Content Include="App_Readme\fxdbone.sql" />
+    <Content Include="App_Readme\membership.sql" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\FileUpload\canvas-to-blob.min.js" />
@@ -179,7 +185,7 @@
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\images\loading.gif" />
-    <Content Include="Content\images\logo.jpg" />
+    <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\logo_v2.png" />
     <Content Include="Content\images\progressbar.gif" />
     <Content Include="Content\images\publish.gif" />
@@ -310,8 +316,17 @@
     <Content Include="Views\Account\Partial\Register.cshtml" />
     <Content Include="Views\Shared\TransferModal.cshtml" />
     <Content Include="Views\Shared\BuyModal.cshtml" />
+    <Content Include="Views\GoodsTransfer\Success.cshtml" />
+    <Content Include="Views\GoodsTransfer\ViewPage1.cshtml" />
+    <Content Include="Views\GoodsTransfer\FaildTransfer.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="UploadImage\Buy\CarImage\" />
+    <Folder Include="UploadImage\Buy\GoodsImage\" />
+    <Folder Include="UploadImage\Buy\HouseImage\" />
+    <Folder Include="UploadImage\Transfer\CarImage\" />
+    <Folder Include="UploadImage\Transfer\GoodsImage\" />
+    <Folder Include="UploadImage\Transfer\HouseImage\" />
     <Folder Include="Upload\HeadPicture\" />
   </ItemGroup>
   <ItemGroup>

@@ -50,8 +50,10 @@
     <Compile Include="Base\BaseIService.cs" />
     <Compile Include="Caching\CacheManager.cs" />
     <Compile Include="Caching\ICacheManager.cs" />
+    <Compile Include="Core\Core.cs" />
     <Compile Include="Data\IRepository.cs" />
     <Compile Include="Db\Connection.cs" />
+    <Compile Include="Files\FileHelper.cs" />
     <Compile Include="Net\IMailManager.cs" />
     <Compile Include="Net\Mail.cs" />
     <Compile Include="Net\MailManager.cs" />
@@ -60,9 +62,7 @@
     <Compile Include="Valide\EmailCheckAttribute.cs" />
     <Compile Include="Valide\MobileCheckAttribute.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Core\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

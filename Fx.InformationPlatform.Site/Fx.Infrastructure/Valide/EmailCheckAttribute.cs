@@ -7,7 +7,7 @@ namespace System.ComponentModel.DataAnnotations
     {
         public override bool IsValid(object value)
         {
-            string match = @"^ \w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$";
+            string match = @"^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$";
             if (value == null || !Regex.IsMatch(value.ToString(), match))
             {
                 return false;

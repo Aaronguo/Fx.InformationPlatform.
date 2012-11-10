@@ -1,24 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Fx.Domain.Account.IService;
 using Fx.Domain.FxGoods.IService;
 using Fx.Domain.FxSite.IService;
 using Fx.Entity;
 using Fx.Entity.FxGoods;
+using Fx.InformationPlatform.Site.ViewModel;
 
 namespace Fx.InformationPlatform.Site.Controllers
 {
+    [Authorize]
     public class GoodsTransferController : BaseController
     {
         IGoods goodsService;
         ITransferGoods transferService;
-        public GoodsTransferController(IGoods goodsService, ITransferGoods transferService)
+        IAccountService accountService;
+        private readonly string transferImagePath = "~/UploadImage/Transfer/GoodsImage";
+
+        public GoodsTransferController(IGoods goodsService,
+            ITransferGoods transferService,
+            IAccountService accountService)
         {
             this.goodsService = goodsService;
             this.transferService = transferService;
+            this.accountService = accountService;
         }
+
 
         public ActionResult Electronics()
         {
@@ -26,49 +37,144 @@ namespace Fx.InformationPlatform.Site.Controllers
             return View();
         }
 
-        public ActionResult Save()
+        [HttpPost]
+        public ActionResult Electronics(TransferViewGoods goods,
+            List<HttpPostedFileBase> facefile, List<HttpPostedFileBase> otherfile, List<HttpPostedFileBase> badfile)
         {
-            var goods = new GoodsTransferInfo()
+            if (BuildGoods(goods, facefile, otherfile, badfile))
             {
-                PublishTitle = "三星i9300手机，全新港版，未拆封，带发票，急转",
-                AreaId = 1,
-                CityId = 1,
-                ChannelListId = 1,
-                ChannelListDetailId = 1,
-                GoodsconditonId = 1,
-                IsChange = false,
-                Pictures = new List<TransferPicture>(){
-                        new  TransferPicture(){
-                             TransferPictureCatagroy= TransferPictureCatagroy.Head,
-                             ImageUrl="Goods/head.jpg"
-                        },
-                        new  TransferPicture(){
-                             TransferPictureCatagroy= TransferPictureCatagroy.Other,
-                             ImageUrl="Goods/other1.jpg"
-                        },
-                        new  TransferPicture(){
-                             TransferPictureCatagroy= TransferPictureCatagroy.Other,
-                             ImageUrl="Goods/other2.jpg"
-                        },
-                        new  TransferPicture(){
-                             TransferPictureCatagroy= TransferPictureCatagroy.Other,
-                             ImageUrl="Goods/other3.jpg"
-                        },
-                        new  TransferPicture(){
-                             TransferPictureCatagroy= TransferPictureCatagroy.Bad,
-                             ImageUrl="Goods/Bad.jpg"
-                        },
-                    },
-                Price = 100,
-                Mark = "Mark1",
-                PublishUserEmail = "117822597@163.com"
-            };
-            bool isSuccess = transferService.SaveTransferGoods(goods);
-            ViewData["lable"] = isSuccess;
+                GoodsTransferInfo transfergoods = MapperGoods(goods);
+                transferService.SaveTransferGoods(transfergoods);
+                return View("Success");
+            } 
+            return View("FaildTransfer");
+        }
+
+        public ActionResult FaildTransfer()
+        {
             return View();
         }
 
 
+        private GoodsTransferInfo MapperGoods(TransferViewGoods goods)
+        {            
+            var info = new GoodsTransferInfo();
+            info.AreaId = goods.AreaId;
+            info.ChangeMsg = goods.ChangeGoodsMsg;
+            info.Controller = this.ControllerName;
+            info.Action = this.ActionName;
+            info.CityId = goods.CityId;
+            info.GoodsConditionMsg = goods.GoodConditonMsg;
+            info.GoodsconditonId = goods.GoodConditionId;
+            info.IsChange = goods.IsChangeGoods;
+            info.Mark = goods.Mark;
+            goods.FaceFiles.ForEach(r => info.Pictures.Add(r));
+            goods.OtherFiles.ForEach(r => info.Pictures.Add(r));
+            goods.BadFiles.ForEach(r => info.Pictures.Add(r));
+            info.Price = goods.Price;
+            info.PublishTitle = goods.Title;
+            info.PublishUserEmail = goods.Email;
+            info.UserAccount = User.Identity.Name;            
+            return info;
+        }
+
+        private bool BuildGoods(TransferViewGoods goods, List<HttpPostedFileBase> facefile, List<HttpPostedFileBase> otherfile, List<HttpPostedFileBase> badfile)
+        {
+            string date = Helper.GetDate();
+            string userid = accountService.GetCurrentUser(User.Identity.Name).ToString();
+            string timestamp;
+            string folder;
+            int random = 1;
+            //图片保存到
+            #region FaceFile
+            foreach (var face in facefile)
+            {
+               
+                if (face.HasFile())
+                {
+                    timestamp = DateTime.Now.GetTimeStamp();
+                    folder = Path.Combine(HttpContext.Server.MapPath(this.transferImagePath),
+                                                   date, userid);
+                    string filePhysicalPath = Path.Combine(HttpContext.Server.MapPath(this.transferImagePath),
+                                                   date, userid, timestamp+random.ToString() + ".jpg");
+                    string fileVirtualPath = string.Format("UploadImage/Transfer/GoodsImage/{0}/{1}/{2}.jpg", date, userid, timestamp);
+                    goods.FaceFiles.Add(new TransferPicture()
+                    {
+                        IsCdn = false,
+                        ImageUrl = fileVirtualPath,
+                        CdnUrl = "",
+                        TransferPictureCatagroy = TransferPictureCatagroy.Head,
+                        PhysicalPath = filePhysicalPath
+                    });
+                    if (!System.IO.File.Exists(folder))
+                    {
+                        System.IO.Directory.CreateDirectory(folder);
+                    }
+                    face.SaveAs(filePhysicalPath);
+                    random++;
+                }
+            } 
+            #endregion
+
+            #region OtherFile
+            foreach (var other in otherfile)
+            {
+                if (other.HasFile())
+                {
+                    timestamp = DateTime.Now.GetTimeStamp();
+                    folder = Path.Combine(HttpContext.Server.MapPath(this.transferImagePath),
+                                                  date, userid);
+                    string filePhysicalPath = Path.Combine(HttpContext.Server.MapPath(this.transferImagePath),
+                                                   date, userid, timestamp + random.ToString() + ".jpg");
+                    string fileVirtualPath = string.Format("UploadImage/Transfer/GoodsImage/{0}/{1}/{2}.jpg", date, userid, timestamp);
+                    goods.FaceFiles.Add(new TransferPicture()
+                    {
+                        IsCdn = false,
+                        ImageUrl = fileVirtualPath,
+                        CdnUrl = "",
+                        TransferPictureCatagroy = TransferPictureCatagroy.Other,
+                        PhysicalPath = filePhysicalPath
+                    });
+                    other.SaveAs(filePhysicalPath);
+                    random++;
+                }
+            } 
+            #endregion
+
+            #region badFile
+            foreach (var bad in badfile)
+            {
+                if (bad.HasFile())
+                {
+                    timestamp = DateTime.Now.GetTimeStamp();
+                    folder = Path.Combine(HttpContext.Server.MapPath(this.transferImagePath),
+                                                  date, userid);
+                    string filePhysicalPath = Path.Combine(HttpContext.Server.MapPath(this.transferImagePath),
+                                                   date, userid, timestamp + random.ToString() + ".jpg");
+                    string fileVirtualPath = string.Format("UploadImage/Transfer/GoodsImage/{0}/{1}/{2}.jpg", date, userid, timestamp);
+                    goods.FaceFiles.Add(new TransferPicture()
+                    {
+                        IsCdn = false,
+                        ImageUrl = fileVirtualPath,
+                        CdnUrl = "",
+                        TransferPictureCatagroy = TransferPictureCatagroy.Bad,
+                        PhysicalPath = filePhysicalPath
+                    });
+                    if (!System.IO.File.Exists(folder))
+                    {
+                        System.IO.Directory.CreateDirectory(folder);
+                    }
+                    bad.SaveAs(filePhysicalPath);
+                    random++;
+                }
+            } 
+            #endregion
+
+            return true;
+        }
+        //UploadImage\Transfer\GoodsImage\20121110\0c6d1603-732f-41e4-bcb7-53939e5afc08\1352557431.jpg
+
+        
         public ActionResult Get(int Id)
         {
             return View(transferService.Get(Id));
@@ -82,6 +188,13 @@ namespace Fx.InformationPlatform.Site.Controllers
             goodsService.GetChannelTransferDetail(this.ControllerName, this.ActionName).ForEach(r => details.Add(new SelectListItem() { Text = r.ChannelListDetailName, Value = r.ChannelListDetailId.ToString() }));
             ViewData["catagroy"] = details;
         }
+
+
+        public ActionResult Success()
+        {
+            return View();
+        }
+
 
 
 

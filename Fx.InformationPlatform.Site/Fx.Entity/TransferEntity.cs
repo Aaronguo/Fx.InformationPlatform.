@@ -36,12 +36,16 @@ namespace Fx.Entity.FxGoods
         /// <summary>
         /// 二级分类Id
         /// </summary>
-        public int ChannelListId { get; set; }
+        //public int ChannelListId { get; set; }
+
+        public string Controller { get; set; }
 
         /// <summary>
         /// 三级分类Id
         /// </summary>
-        public int ChannelListDetailId { get; set; }
+        //public int ChannelListDetailId { get; set; }
+
+        public string Action { get; set; }
 
         /// <summary>
         /// 区域Id
@@ -52,6 +56,11 @@ namespace Fx.Entity.FxGoods
         /// 城市Id
         /// </summary>
         public int CityId { get; set; }
+
+        /// <summary>
+        /// 发布此信息用户的帐号 这里是发布者的Email 因为使用邮箱作为帐号
+        /// </summary>
+        public string UserAccount { get; set; }
 
         /// <summary>
         /// 创建时间

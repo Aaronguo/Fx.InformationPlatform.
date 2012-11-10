@@ -53,9 +53,8 @@ namespace Fx.InformationPlatform.Site.Controllers
             var result = accountService.VaildUser(user.Email, user.Password);
             if (result.isSuccess)
             {
-                //记住登录
+                //记住登录               
                 System.Web.Security.FormsAuthentication.SetAuthCookie(user.Email, true);
-               
                 return RedirectToAction("Index", "Home");
                 //if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
                 //    && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
@@ -89,7 +88,7 @@ namespace Fx.InformationPlatform.Site.Controllers
             {
                 return View("Register", user);
             }
-            if (string.Compare(user.VerificationCode, Session["PictureCode"].ToString(), true) != 0)
+            if (string.Compare(user.VerificationCode, Session["PictureCode"].ToString(),true) != 0)
             {
                 ViewBag.Error = "验证码错误,请重试";
                 return View("Register", user);

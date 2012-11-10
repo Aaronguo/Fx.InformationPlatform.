@@ -11,3 +11,5 @@ drop table dbo.aspnet_Paths
 drop table dbo.aspnet_Applications
 drop table dbo.aspnet_PersonalizationPerUser
 drop table dbo.ELMAH_Error
+
+--OtherInformations_OtherInformationId
