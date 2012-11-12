@@ -4,95 +4,143 @@ transferhouse.TipMsg = "";
 transferhouse.Submit = function () {
     $("form:first").submit(function () {
         if (transferhouse.ValidTitle() && transferhouse.VaildCatagroy() &&
-            transferhouse.ValidPrice() && transferhouse.ValidRoomnumber()&&
+            transferhouse.ValidPrice() &&
             transferhouse.ValidArea() && transferhouse.ValidCity() &&
+            transferhouse.PostCode() && transferhouse.RoadName() &&
+            transferhouse.ValidRoomNumber() &&
             transferhouse.ValidFacefile() &&
             transferhouse.ValidOtherfile() && transferhouse.ValidBadfile() &&
             transferhouse.ValidEmail() &&
             transferhouse.ValidTag()) {
+            transferhouse.BuildMVCForm();
             return true;
         }
         $('#transferModal').modal('show');
         return false;
     });
 };
+
+transferhouse.Titile = function () {
+    return $("#title").val();
+}
+
+
 transferhouse.ValidTitle = function () {
-    var title = $("#title").val();
-    if (title == '') {
+    if (transferhouse.Titile() == '') {
         transferhouse.TipMsg = "标题不能为空";
         return false;
     }
     return true;
 }
 
-transferhouse.VaildCatagroy = function () {
+
+transferhouse.PostCode = function () {
+    return $("#postcode").val();
+}
+
+
+transferhouse.ValidTitle = function () {
+    if (transferhouse.PostCode() == '') {
+        transferhouse.TipMsg = "房屋对应邮编不能为空";
+        return false;
+    }
+    return true;
+}
+
+transferhouse.RoadName = function () {
+    return $("#roadname").val();
+}
+
+
+transferhouse.ValidTitle = function () {
+    if (transferhouse.RoadName() == '') {
+        transferhouse.TipMsg = "详细地址不能为空";
+        return false;
+    }
+    return true;
+}
+
+transferhouse.CatagroyId = function () {
     var option = $("#catagroy option:selected");
-    var value = option.attr("value") || 0;
-    if (value == 0) {
+    return option.attr("value") || 0;
+}
+
+transferhouse.VaildCatagroy = function () {
+    if (transferhouse.CatagroyId() == 0) {
         transferhouse.TipMsg = "请选择物品类别";
         return false;
     }
     return true;
 }
 
+transferhouse.Price = function () {
+    return $("#price").val();
+}
+
 transferhouse.ValidPrice = function () {
     var regex = /^[0-9]*[1-9][0-9]*$/;
-    var price = $("#price").val();
-    if (price == '') {
+    if (transferhouse.Price() == '') {
         transferhouse.TipMsg = "价格不能为空";
         return false;
     }
-    var result = price.match(regex);
+    var result = transferhouse.Price().match(regex);
     if (null == result || 0 == result.length) {
         transferhouse.TipMsg = "价格必须是正整数";
         return false;
     }
-    return true;
 }
 
-transferhouse.ValidRoomnumber = function () {
-    var option = $("#roomnumber option:selected");
-    var value = option.attr("value") || 0;
-    if (value == 0) {
+transferhouse.RoomNumber = function () {
+    var option = $("#RoomNumber option:selected");
+    return option.attr("value") || 0;
+}
+
+transferhouse.ValidRoomNumber = function () {
+    if (transferhouse.RoomNumber() == 0) {
         transferhouse.TipMsg = "请选择具体的房间数量";
         return false;
     }
     return true;
 }
 
-transferhouse.ValidArea = function () {
+transferhouse.Bill = function () {
+    return $("#bill").attr("checked") == "checked";
+}
+
+transferhouse.Furniture = function () {
+    return $("#furniture").attr("checked") == "checked";
+}
+
+
+transferhouse.AreaId = function () {
     var option = $("#area option:selected");
-    var value = option.attr("value") || 0;
-    if (value == 0) {
+    return option.attr("value") || 0;
+}
+
+transferhouse.ValidArea = function () {
+    if (transferhouse.AreaId() == 0) {
         transferhouse.TipMsg = "请选择具体的地区";
         return false;
     }
     return true;
 }
 
-transferhouse.ValidCity = function () {
+transferhouse.CityId = function () {
     var option = $("#city option:selected");
-    var value = option.attr("value") || 0;
-    if (value == 0) {
+    return option.attr("value") || 0;
+}
+
+transferhouse.ValidCity = function () {
+    if (transferhouse.CityId() == 0) {
         transferhouse.TipMsg = "请选择详细地址";
         return false;
     }
     return true;
 }
 
-transferhouse.ValidGoodsconditon = function () {
-    var option = $("#goodsconditon option:selected");
-    var value = option.attr("value") || 0;
-    if (value == 0) {
-        transferhouse.TipMsg = "请选择新旧程度";
-        return false;
-    }
-    if (value > 2 && $("#goodsextend").val() == "") {
-        transferhouse.TipMsg = "请填写相关新旧程度信息";
-        return false;
-    }
-    return true;
-}
+
+
+
 
 transferhouse.ValidFacefile = function () {
     var facefile = $("input[name=facefile]");
@@ -138,14 +186,17 @@ transferhouse.ValidBadfile = function () {
 }
 
 
+transferhouse.Email = function () {
+    return $("#email").val();
+}
+
 transferhouse.ValidEmail = function () {
     var regex = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-    var email = $("#email").val();
-    if (email == '') {
+    if (transferhouse.Email() == '') {
         transferhouse.TipMsg = "邮箱不能为空";
         return false;
     }
-    var result = email.match(regex);
+    var result = transferhouse.Email().match(regex);
     if (null == result || 0 == result.length) {
         transferhouse.TipMsg = "请填写正确的邮箱";
         return false;
@@ -153,17 +204,34 @@ transferhouse.ValidEmail = function () {
     return true;
 }
 
+transferhouse.Tag = function () {
+    return $("#tag").val();
+}
+
 transferhouse.ValidTag = function () {
-    var tag = $("#tag").val();
-    //if (tag == '') {
-    //    return false;
-    //}
     return true;
 }
 
+transferhouse.BuildMVCForm = function () {
+    $("#Title").val(transferhouse.Titile());
+    $("#Price").val(transferhouse.Price());
+    $("#CatagroyId").val(transferhouse.CatagroyId());  
+    $("#AreaId").val(transferhouse.AreaId());
+    $("#CityId").val(transferhouse.CityId());
+    $("#PostCode").val(transferhouse.PostCode());
+    $("#RoadName").val(transferhouse.RoadName());
+    $("#RoomNumber").val(transferhouse.RoomNumber());
+    $("#Bill").attr("checked", $("#bill").attr("checked"));
+    $("#HasFurniture").attr("checked", $("#furniture").attr("checked"));    
+    $("#Email").val(transferhouse.Email());
+    $("#Mark").val(transferhouse.Tag());
+}
+
+
+
 $(document).ready(function () {
     $('#transferModal').on('show', function () {
-        $("#tipmsg").text(transfergoods.TipMsg);
+        $("#tipmsg").text(transferhouse.TipMsg);
     });
 
     $("#transferclose").click(function () {

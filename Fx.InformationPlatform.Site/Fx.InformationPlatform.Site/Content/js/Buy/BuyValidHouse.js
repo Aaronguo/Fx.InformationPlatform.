@@ -10,6 +10,7 @@ buyhouse.Submit = function () {
             buyhouse.ValidOtherfile() && buyhouse.ValidBadfile() &&
             buyhouse.ValidEmail() &&
             buyhouse.ValidTag()) {
+            buyhouse.BuildMVCForm();
             return true;
         }
         $('#buyModal').modal('show');
@@ -151,16 +152,27 @@ buyhouse.ValidEmail = function () {
 }
 
 buyhouse.ValidTag = function () {
-    var tag = $("#tag").val();
-    //if (tag == '') {
-    //    return false;
-    //}
     return true;
+}
+
+buyhouse.BuildMVCForm = function () {
+    $("#Title").val(buyhouse.Titile());
+    $("#Price").val(buyhouse.Price());
+    $("#CatagroyId").val(buyhouse.CatagroyId());
+    $("#AreaId").val(buyhouse.AreaId());
+    $("#CityId").val(buyhouse.CityId());
+    $("#PostCode").val(buyhouse.PostCode());
+    $("#RoadName").val(buyhouse.RoadName());
+    $("#RoomNumber").val(buyhouse.RoomNumber());
+    $("#Bill").attr("checked", $("#bill").attr("checked"));
+    $("#HasFurniture").attr("checked", $("#furniture").attr("checked"));
+    $("#Email").val(buyhouse.Email());
+    $("#Mark").val(buyhouse.Tag());
 }
 
 $(document).ready(function () {
     $('#buyModal').on('show', function () {
-        $("#tipmsg").text(transfergoods.TipMsg);
+        $("#tipmsg").text(buyhouse.TipMsg);
     });
 
     $("#buyclose").click(function () {

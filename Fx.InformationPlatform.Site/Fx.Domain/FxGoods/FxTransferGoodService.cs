@@ -19,9 +19,6 @@ namespace Fx.Domain.FxGoods
         }
 
 
-
-
-
         public bool SaveTransferGoods(GoodsTransferInfo goods)
         {
             using (FxGoodsContext context = new FxGoodsContext())

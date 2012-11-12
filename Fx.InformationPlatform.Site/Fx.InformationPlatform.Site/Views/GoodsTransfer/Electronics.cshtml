@@ -21,7 +21,7 @@
                 </div>
                 <div class="omega grid_17">
                     <input type="text" id="title" value=""
-                        class="form-input" size="30" maxlength="128" />
+                          maxlength="128" />
                 </div>
                 <div class="clear">
                 </div>
@@ -46,9 +46,10 @@
                         <cite class="red">*</cite><strong>价格：</strong>
                     </p>
                 </div>
-                <div class="omega grid_17">
-                    <input type="text" id="price" value="" placeholder="默认货币:￡,正整数"
-                        class="form-input" size="30" maxlength="8" />
+                <div class="omega grid_17 input-append">
+                    <input type="text" id="price" value="" 
+                       style="width:180px;"  maxlength="8" />
+                     <span class="add-on">￡</span>
                 </div>
                 <div class="clear">
                 </div>
@@ -67,7 +68,7 @@
                     <div class="hide" id="changegoodsdiv">
                         <br />
                         <input type="text" value="" id="changegoodstxt" placeholder="请填写想交换的物品信息"
-                            class="form-input" size="30" maxlength="128" style="border: 1px solid rgb(226, 226, 226);" />
+                              maxlength="128" style="border: 1px solid rgb(226, 226, 226);" />
                     </div>
                 </div>
                 <div class="clear">
@@ -110,7 +111,7 @@
                     <br />
                     <br />
                     <input type="text" id="goodsextend" value="" placeholder=""
-                        class="form-input" size="30" maxlength="128" style="border: 1px solid rgb(226, 226, 226); display: none;" />
+                          maxlength="128" style="border: 1px solid rgb(226, 226, 226); display: none;" />
                 </div>
                 <div class="clear">
                 </div>
@@ -141,7 +142,7 @@
                 </div>
                 <div class="omega grid_17">
                     <input type="text" id="email" value=""
-                        class="form-input" size="30" maxlength="128" />
+                          maxlength="128" />
                 </div>
                 <div class="clear">
                 </div>
@@ -154,7 +155,7 @@
                 </div>
                 <div class="omega grid_17">
                     <input type="text" id="tag" value=""
-                        class="form-input" size="30" maxlength="128" />
+                          maxlength="128" />
                 </div>
                 <div class="clear">
                 </div>
@@ -191,11 +192,6 @@
             </div>
         </div>
     </div>
-
-
-   
-
-
 }
 @Html.Partial("TransferModal")
 

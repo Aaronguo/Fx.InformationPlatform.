@@ -1,24 +1,71 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Fx.Domain.Account.IService;
+using Fx.Domain.FxCar.IService;
 using Fx.Domain.FxSite.IService;
+using Fx.Entity.FxCar;
 
 namespace Fx.InformationPlatform.Site.Controllers
 {
     public class CarBuyController : BaseController
     {
         ICar carService;
-        public CarBuyController(ICar carService)
+        IBuyCar buyService;
+        IAccountService accountService;
+        //private readonly string buyImagePath = "~/UploadImage/Buy/CarImage";
+        public CarBuyController(ICar carService ,
+            IBuyCar buyService,
+            IAccountService accountService)
         {
             this.carService = carService;
+            this.buyService = buyService;
+            this.accountService = accountService;
         }
 
         public ActionResult SecondHandCar()
         {
             BindData();
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult SecondHandCar(BuyViewCar car)
+        {
+            if (BuildCar(car))
+            {
+                CarBuyInfo transfergoods = MapperCar(car);
+                buyService.SaveBuyCar(transfergoods);
+                return View("Success");
+            }
+            return View("FaildTransfer");
+        }
+
+        private bool BuildCar(BuyViewCar car)
+        {
+            InitParas();
+            return true;
+        }
+
+        private CarBuyInfo MapperCar(BuyViewCar car)
+        {
+            var info = new CarBuyInfo();
+            info.CarMileage = car.CarMileage;
+            info.CarYear = car.CarYear;          
+            info.CatagroyId = car.CatagroyId;
+            info.AreaId = car.AreaId;;
+            info.Controller = this.ControllerName;
+            info.Action = this.ActionName;
+            info.CityId = car.CityId;
+            info.Mark = car.Mark;
+            info.Price = (int)car.Price;
+            info.PublishTitle = car.Title;
+            info.PublishUserEmail = car.Email;
+            info.UserAccount = User.Identity.Name;
+            return info;
         }
 
         #region BindData

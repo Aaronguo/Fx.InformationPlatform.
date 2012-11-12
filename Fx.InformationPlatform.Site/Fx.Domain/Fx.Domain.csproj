@@ -69,12 +69,32 @@
     <Compile Include="Account\UserAccountService.cs" />
     <Compile Include="Account\IService\IAccountService.cs" />
     <Compile Include="Account\AccountContext.cs" />
+    <Compile Include="FxCar\Mapping\CarBuyInfo_Mapping.cs" />
+    <Compile Include="FxCar\Mapping\CarTransferInfo_Mapping.cs" />
+    <Compile Include="FxGoods\Mapping\GoodsBuyInfo_Mapping.cs" />
+    <Compile Include="FxGoods\Mapping\GoodsTransferInfo_Mapping.cs" />
+    <Compile Include="FxHouse\Mapping\HouseBuyInfo_Mapping.cs" />
+    <Compile Include="FxHouse\Mapping\HouseTransferInfo_Mapping.cs" />
+    <Compile Include="Mapping\BuyPicture_Mapping.cs" />
     <Compile Include="DomainResult.cs" />
+    <Compile Include="FxCar\FxBuyCarService.cs" />
+    <Compile Include="FxCar\FxCarContext.cs" />
+    <Compile Include="FxCar\FxCarInitializer.cs" />
+    <Compile Include="FxCar\FxTransferCarService.cs" />
+    <Compile Include="FxCar\IService\IBuyCar.cs" />
+    <Compile Include="FxCar\IService\ITransferCar.cs" />
+    <Compile Include="FxGoods\FxBuyGoodsService.cs" />
     <Compile Include="FxGoods\FxGoodsContext.cs" />
     <Compile Include="FxGoods\FxTransferGoodService.cs" />
     <Compile Include="FxGoods\FxGoodsInitializer.cs" />
+    <Compile Include="FxGoods\IService\IBuyGoods.cs" />
     <Compile Include="FxGoods\IService\ITransferGoods.cs" />
-    <Compile Include="FxGoods\Mapping\GoodsTransferInfo_Mapping.cs" />
+    <Compile Include="FxHouse\FxBuyHouseService.cs" />
+    <Compile Include="FxHouse\FxHouseContext.cs" />
+    <Compile Include="FxHouse\FxHouseInitializer.cs" />
+    <Compile Include="FxHouse\FxTransferHouseService.cs" />
+    <Compile Include="FxHouse\IService\IBuyHouse.cs" />
+    <Compile Include="FxHouse\IService\ITransferHouse.cs" />
     <Compile Include="FxSite\CarService.cs" />
     <Compile Include="FxSite\ChannelService.cs" />
     <Compile Include="FxSite\FxSiteContext.cs" />
@@ -97,6 +117,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SiteContext.cs" />
     <Compile Include="SiteInitializer.cs" />
+    <Compile Include="Mapping\TransferPicture_Mapping.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fx.Entity\Fx.Entity.csproj">
@@ -108,10 +129,7 @@
       <Name>Fx.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="FxCar\IService\" />
-    <Folder Include="FxCar\Mapping\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

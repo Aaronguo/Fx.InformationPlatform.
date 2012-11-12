@@ -2,89 +2,126 @@
 
 buygoods.TipMsg = "";
 buygoods.Submit = function () {
-    $("form:first").submit(function () {
+    $("#buygoodsform").submit(function () {
         if (buygoods.ValidTitle() && buygoods.VaildCatagroy() &&
-            buygoods.ValidPrice() && buygoods.ValidChangeGoods() &&
+            buygoods.VaildPriceAndChangeGooods() &&
             buygoods.ValidArea() && buygoods.ValidCity() &&
             buygoods.ValidGoodsconditon() && buygoods.ValidFacefile() &&
             buygoods.ValidOtherfile() && buygoods.ValidBadfile() &&
             buygoods.ValidEmail() &&
             buygoods.ValidTag()) {
+            buygoods.BuildMVCForm();
             return true;
-        }
+        } 
         $('#buyModal').modal('show');
         return false;
     });
 };
+
+buygoods.Titile = function () {
+    return $("#title").val();
+}
+
 buygoods.ValidTitle = function () {
-    var title = $("#title").val();
-    if (title == '') {
+    if (buygoods.Titile() == '') {
         buygoods.TipMsg = "标题不能为空";
         return false;
     }
     return true;
 }
 
-buygoods.VaildCatagroy = function () {
+buygoods.CatagroyId = function () {
     var option = $("#catagroy option:selected");
-    var value = option.attr("value") || 0;
-    if (value == 0) {
+    return option.attr("value") || 0;
+}
+
+buygoods.VaildCatagroy = function () {
+    if (buygoods.CatagroyId() == 0) {
         buygoods.TipMsg = "请选择物品类别";
         return false;
     }
     return true;
 }
 
+buygoods.Price = function () {
+    return $("#price").val();
+}
+
 buygoods.ValidPrice = function () {
     var regex = /^[0-9]*[1-9][0-9]*$/;
-    var price = $("#price").val();
-    if (price == '') {
+    if (buygoods.Price() == '') {
         buygoods.TipMsg = "价格不能为空";
         return false;
     }
-    var result = price.match(regex);
+    var result = buygoods.Price().match(regex);
     if (null == result || 0 == result.length) {
         buygoods.TipMsg = "价格必须是正整数";
         return false;
     }
     return true;
 }
+
+buygoods.IsChangeGoods = function () {
+    return $("#changegoods").attr("checked") == "checked";
+}
+
+buygoods.ChangeGoodsText = function () {
+    return $("changegoodstxt").val();
+}
+
 buygoods.ValidChangeGoods = function () {
-    if ($("#changegoods").attr("checked") == "checked" && $("changegoodstxt").val() == "") {
+    if (buygoods.IsChangeGoods() == true && buygoods.ChangeGoodsText() == "") {
         buygoods.TipMsg = "您如果想换物，请填写相关信息";
         return false;
     }
     return true;
 }
 
-buygoods.ValidArea = function () {
+buygoods.VaildPriceAndChangeGooods = function () {
+    return buygoods.ValidPrice() || buygoods.ValidChangeGoods();
+}
+
+buygoods.AreaId = function () {
     var option = $("#area option:selected");
-    var value = option.attr("value") || 0;
-    if (value == 0) {
+    return option.attr("value") || 0;
+}
+
+buygoods.ValidArea = function () {
+    if (buygoods.AreaId() == 0) {
         buygoods.TipMsg = "请选择具体的地区";
         return false;
     }
     return true;
 }
 
-buygoods.ValidCity = function () {
+buygoods.CityId = function () {
     var option = $("#city option:selected");
-    var value = option.attr("value") || 0;
-    if (value == 0) {
+    return option.attr("value") || 0;
+}
+
+buygoods.ValidCity = function () {
+    if (buygoods.CityId() == 0) {
         buygoods.TipMsg = "请选择详细地址";
         return false;
     }
     return true;
 }
 
-buygoods.ValidGoodsconditon = function () {
+buygoods.GoodsConditonId = function () {
     var option = $("#goodsconditon option:selected");
-    var value = option.attr("value") || 0;
-    if (value == 0) {
+    return option.attr("value") || 0;
+}
+
+buygoods.GoodsConditionText = function () {
+    return $("#goodsextend").val();
+}
+
+buygoods.ValidGoodsconditon = function () {
+    if (buygoods.GoodsConditonId() == 0) {
         buygoods.TipMsg = "请选择新旧程度";
         return false;
     }
-    if (value > 2 && $("#goodsextend").val() == "") {
+    if (buygoods.GoodsConditonId() > 2 && buygoods.GoodsConditionText() == "") {
         buygoods.TipMsg = "请填写相关新旧程度信息";
         return false;
     }
@@ -134,15 +171,17 @@ buygoods.ValidBadfile = function () {
     return true;
 }
 
+buygoods.Email = function () {
+    return $("#email").val();
+}
 
 buygoods.ValidEmail = function () {
     var regex = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-    var email = $("#email").val();
-    if (email == '') {
+    if (buygoods.Email() == '') {
         buygoods.TipMsg = "邮箱不能为空";
         return false;
     }
-    var result = email.match(regex);
+    var result = buygoods.Email().match(regex);
     if (null == result || 0 == result.length) {
         buygoods.TipMsg = "请填写正确的邮箱";
         return false;
@@ -150,17 +189,31 @@ buygoods.ValidEmail = function () {
     return true;
 }
 
-buygoods.ValidTag = function () {
-    var tag = $("#tag").val();
-    //if (tag == '') {
-    //    return false;
-    //}
+buygoods.Tag = function () {
+    return $("#tag").val();
+}
+
+buygoods.ValidTag = function () {  
     return true;
+}
+
+buygoods.BuildMVCForm = function () {
+    $("#Title").val(buygoods.Titile());
+    $("#Price").val(buygoods.Price());
+    $("#CatagroyId").val(buygoods.CatagroyId());
+    $("#IsChangeGoods").attr("checked", $("#changegoods").attr("checked"));
+    $("#ChangeGoodsMsg").val(buygoods.ChangeGoodsText());
+    $("#AreaId").val(buygoods.AreaId());
+    $("#CityId").val(buygoods.CityId());
+    $("#GoodConditionId").val(buygoods.GoodsConditonId());
+    $("#GoodConditonMsg").val(buygoods.GoodsConditionText());
+    $("#Email").val(buygoods.Email());
+    $("#Mark").val(buygoods.Tag());
 }
 
 $(document).ready(function () {
     $('#buyModal').on('show', function () {
-        $("#tipmsg").text(transfergoods.TipMsg);
+        $("#tipmsg").text(buygoods.TipMsg);
     });
 
     $("#buyclose").click(function () {

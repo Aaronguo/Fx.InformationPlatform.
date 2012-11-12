@@ -43,7 +43,17 @@ namespace Fx.InformationPlatform.Site.App_Start
             container.Register<Fx.Domain.FxSite.IService.ICar, Fx.Domain.FxSite.CarService>();
             container.Register<Fx.Domain.FxSite.IService.IHouse, Fx.Domain.FxSite.HouseService>();
 
+            //FxGoods
             container.Register<Fx.Domain.FxGoods.IService.ITransferGoods, Fx.Domain.FxGoods.FxTransferGoodService>();
+            container.Register<Fx.Domain.FxGoods.IService.IBuyGoods, Fx.Domain.FxGoods.FxBuyGoodsService>();
+            
+            //FxCar
+            container.Register<Fx.Domain.FxCar.IService.ITransferCar, Fx.Domain.FxCar.FxTransferCarService>();
+            container.Register<Fx.Domain.FxCar.IService.IBuyCar, Fx.Domain.FxCar.FxBuyCarService>();
+
+            //FxHouse
+            container.Register<Fx.Domain.FxHouse.IService.ITransferHouse, Fx.Domain.FxHouse.FxTransferHouseService>();
+            container.Register<Fx.Domain.FxHouse.IService.IBuyHouse, Fx.Domain.FxHouse.FxBuyHouseService>();
 
 
             //»º´æ·þÎñ

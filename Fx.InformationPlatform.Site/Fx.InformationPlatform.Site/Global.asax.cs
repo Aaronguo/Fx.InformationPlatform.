@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Fx.InformationPlatform.Site.Framework;
 using SimpleInjector;
 using SimpleInjector.Integration.Web.Mvc;
 
@@ -37,8 +38,8 @@ namespace Fx.InformationPlatform.Site
 
         protected void Application_Start()
         {
-            //CreateContainer();
-           
+            System.Web.Mvc.ViewEngines.Engines.Clear();
+            System.Web.Mvc.ViewEngines.Engines.Add(new CsharpRazorViewEngiee());
 
             AreaRegistration.RegisterAllAreas();
 

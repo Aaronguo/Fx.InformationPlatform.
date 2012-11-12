@@ -4,93 +4,115 @@ transfercar.TipMsg = "";
 transfercar.Submit = function () {
     $("form:first").submit(function () {
         if (transfercar.ValidTitle() && transfercar.VaildCatagroy() &&
-            transfercar.ValidPrice() && transfercar.ValidArea() && 
+            transfercar.ValidPrice() && transfercar.ValidArea() &&
             transfercar.ValidCity() && transfercar.ValidYear() &&
             transfercar.ValidMileage() && transfercar.ValidFacefile() &&
             transfercar.ValidOtherfile() && transfercar.ValidBadfile() &&
             transfercar.ValidEmail() &&
             transfercar.ValidTag()) {
+            transfercar.BuildMVCForm();
             return true;
         }
         $('#transferModal').modal('show');
         return false;
     });
 };
+
+transfercar.Titile = function () {
+    return $("#title").val();
+}
+
+
 transfercar.ValidTitle = function () {
-    var title = $("#title").val();
-    if (title == '') {
+    if (transfercar.Titile() == '') {
         transfercar.TipMsg = "标题不能为空";
         return false;
     }
     return true;
 }
 
-transfercar.VaildCatagroy = function () {
+transfercar.CatagroyId = function () {
     var option = $("#catagroy option:selected");
-    var value = option.attr("value") || 0;
-    if (value == 0) {
+    return option.attr("value") || 0;
+}
+
+transfercar.VaildCatagroy = function () {
+    if (transfercar.CatagroyId() == 0) {
         transfercar.TipMsg = "请选择物品类别";
         return false;
     }
     return true;
 }
 
+transfercar.Price = function () {
+    return $("#price").val();
+}
+
 transfercar.ValidPrice = function () {
     var regex = /^[0-9]*[1-9][0-9]*$/;
-    var price = $("#price").val();
-    if (price == '') {
+    if (transfercar.Price() == '') {
         transfercar.TipMsg = "价格不能为空";
         return false;
     }
-    var result = price.match(regex);
+    var result = transfercar.Price().match(regex);
     if (null == result || 0 == result.length) {
         transfercar.TipMsg = "价格必须是正整数";
         return false;
     }
-    return true;
+}
+
+transfercar.AreaId = function () {
+    var option = $("#area option:selected");
+    return option.attr("value") || 0;
 }
 
 transfercar.ValidArea = function () {
-    var option = $("#area option:selected");
-    var value = option.attr("value") || 0;
-    if (value == 0) {
+    if (transfercar.AreaId() == 0) {
         transfercar.TipMsg = "请选择具体的地区";
         return false;
     }
     return true;
 }
 
-transfercar.ValidCity = function () {
+transfercar.CityId = function () {
     var option = $("#city option:selected");
-    var value = option.attr("value") || 0;
-    if (value == 0) {
+    return option.attr("value") || 0;
+}
+
+transfercar.ValidCity = function () {
+    if (transfercar.CityId() == 0) {
         transfercar.TipMsg = "请选择详细地址";
         return false;
     }
     return true;
 }
 
-transfercar.ValidYear = function () {
+transfercar.Year = function () {
     var option = $("#carYear option:selected");
-    var value = option.attr("value") || 0;
-    if (value == 0) {
+    return option.attr("value") || 0;
+}
+
+transfercar.ValidYear = function () {
+
+    if (transfercar.Year() == 0) {
         transfercar.TipMsg = "请选择生产年份";
         return false;
     }
     return true;
 }
 
-transfercar.ValidMileage = function () {
+transfercar.Mileage = function () {
     var option = $("#carMileage option:selected");
-    var value = option.attr("value") || 0;
-    if (value == 0) {
+    return option.attr("value") || 0;
+}
+
+transfercar.ValidMileage = function () {
+    if (transfercar.Mileage() == 0) {
         transfercar.TipMsg = "请选择里程数";
         return false;
     }
     return true;
 }
-
-
 
 
 transfercar.ValidFacefile = function () {
@@ -121,7 +143,6 @@ transfercar.ValidOtherfile = function () {
     return true;
 }
 
-
 transfercar.ValidBadfile = function () {
     var badfile = $("input[name=badfile]");
     var minlength = $("#mainbad").attr("minlength");
@@ -136,15 +157,17 @@ transfercar.ValidBadfile = function () {
     return true;
 }
 
+transfercar.Email = function () {
+    return $("#email").val();
+}
 
 transfercar.ValidEmail = function () {
     var regex = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-    var email = $("#email").val();
-    if (email == '') {
+    if (transfercar.Email() == '') {
         transfercar.TipMsg = "邮箱不能为空";
         return false;
     }
-    var result = email.match(regex);
+    var result = transfercar.Email().match(regex);
     if (null == result || 0 == result.length) {
         transfercar.TipMsg = "请填写正确的邮箱";
         return false;
@@ -152,17 +175,29 @@ transfercar.ValidEmail = function () {
     return true;
 }
 
+transfercar.Tag = function () {
+    return $("#tag").val();
+}
+
 transfercar.ValidTag = function () {
-    var tag = $("#tag").val();
-    //if (tag == '') {
-    //    return false;
-    //}
     return true;
+}
+
+transfercar.BuildMVCForm = function () {
+    $("#Title").val(transfergoods.Titile());
+    $("#Price").val(transfergoods.Price());
+    $("#CatagroyId").val(transfergoods.CatagroyId());
+    $("#AreaId").val(transfergoods.AreaId());
+    $("#CityId").val(transfergoods.CityId());
+    $("#CarYear").val(transfergoods.Year());
+    $("#CarMileage").val(transfergoods.Mileage());
+    $("#Email").val(transfergoods.Email());
+    $("#Mark").val(transfergoods.Tag());
 }
 
 $(document).ready(function () {
     $('#transferModal').on('show', function () {
-        $("#tipmsg").text(transfergoods.TipMsg);
+        $("#tipmsg").text(transfercar.TipMsg);
     });
 
     $("#transferclose").click(function () {

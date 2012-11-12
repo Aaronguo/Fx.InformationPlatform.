@@ -9,12 +9,11 @@ using Fx.Entity.FxGoods;
 
 namespace Fx.Domain.FxGoods
 {
-    public class FxGoodsInitializer : CreateDatabaseIfNotExists<FxGoodsContext>
+    public class FxGoodsInitializer : DropCreateDatabaseAlways<FxGoodsContext>
     {
         protected override void Seed(FxGoodsContext context)
         {
-            base.Seed(context);
-            context.SaveChanges();
+            base.Seed(context);           
         }
     }
 }

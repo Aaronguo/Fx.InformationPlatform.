@@ -4,7 +4,7 @@ transfergoods.TipMsg = "";
 transfergoods.Submit = function () {
     $("#transfergoodsform").submit(function () {
         if (transfergoods.ValidTitle() && transfergoods.VaildCatagroy() &&
-            transfergoods.ValidPrice() && transfergoods.ValidChangeGoods() &&
+            transfergoods.VaildPriceAndChangeGooods() &&
             transfergoods.ValidArea() && transfergoods.ValidCity() &&
             transfergoods.ValidGoodsconditon() && transfergoods.ValidFacefile() &&
             transfergoods.ValidOtherfile() && transfergoods.ValidBadfile() &&
@@ -15,10 +15,14 @@ transfergoods.Submit = function () {
         }
         //$("input[type='submit']").attr("data-content", transfergoods.TipMsg);
         //$("input[type='submit']").popover('show');
-        $('#transferModal').modal('show');
+        $('#transferModal').modal('show');        
         return false;
     });
 };
+
+
+
+
 transfergoods.Titile = function () {
     return $("#title").val();
 }
@@ -78,13 +82,22 @@ transfergoods.ValidChangeGoods = function () {
     return true;
 }
 
+//一个交叉验证的例子 相互依赖
+//有 以物换物 和 以价格交换 两个选项 （要求至少勾选一项）
+//以物换物若被勾选则
+//多出一个文本框供用户填写其想交换的物品。
+transfergoods.VaildPriceAndChangeGooods = function () {
+    return transfergoods.ValidPrice() || transfergoods.ValidChangeGoods();
+}
+
+
+
 transfergoods.AreaId = function () {
     var option = $("#area option:selected");
     return option.attr("value") || 0;
 }
 
 transfergoods.ValidArea = function () {
-   
     if (transfergoods.AreaId() == 0) {
         transfergoods.TipMsg = "请选择具体的地区";
         return false;
@@ -98,7 +111,6 @@ transfergoods.CityId = function () {
 }
 
 transfergoods.ValidCity = function () {
-  
     if (transfergoods.CityId() == 0) {
         transfergoods.TipMsg = "请选择详细地址";
         return false;
@@ -108,7 +120,7 @@ transfergoods.ValidCity = function () {
 
 transfergoods.GoodsConditonId = function () {
     var option = $("#goodsconditon option:selected");
-    return option.attr("value") || 0;     
+    return option.attr("value") || 0;
 }
 
 transfergoods.GoodsConditionText = function () {
@@ -117,7 +129,6 @@ transfergoods.GoodsConditionText = function () {
 
 
 transfergoods.ValidGoodsconditon = function () {
-  
     if (transfergoods.GoodsConditonId() == 0) {
         transfergoods.TipMsg = "请选择新旧程度";
         return false;
@@ -173,11 +184,11 @@ transfergoods.ValidBadfile = function () {
 }
 
 transfergoods.Email = function () {
-    return  $("#email").val();
+    return $("#email").val();
 }
 
 transfergoods.ValidEmail = function () {
-    var regex = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;    
+    var regex = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
     if (transfergoods.Email() == '') {
         transfergoods.TipMsg = "邮箱不能为空";
         return false;
@@ -198,19 +209,19 @@ transfergoods.ValidTag = function () {
     return true;
 }
 
-
+//注意Checkbox
 transfergoods.BuildMVCForm = function () {
     $("#Title").val(transfergoods.Titile());
     $("#Price").val(transfergoods.Price());
     $("#CatagroyId").val(transfergoods.CatagroyId());
-    $("#IsChangeGoods").val(transfergoods.IsChangeGoods());
+    $("#IsChangeGoods").attr("checked",$("#changegoods").attr("checked"));
     $("#ChangeGoodsMsg").val(transfergoods.ChangeGoodsText());
     $("#AreaId").val(transfergoods.AreaId());
     $("#CityId").val(transfergoods.CityId());
     $("#GoodConditionId").val(transfergoods.GoodsConditonId());
     $("#GoodConditonMsg").val(transfergoods.GoodsConditionText());
     $("#Email").val(transfergoods.Email());
-    $("#Mark").val(transfergoods.Tag());
+    $("#Mark").val(transfergoods.Tag());   
 }
 
 $(document).ready(function () {

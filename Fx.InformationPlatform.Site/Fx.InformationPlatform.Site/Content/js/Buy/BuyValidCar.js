@@ -8,6 +8,7 @@ buycar.Submit = function () {
             buycar.ValidArea() && buycar.ValidCity() &&            
             buycar.ValidEmail() &&
             buycar.ValidTag()) {
+            buycar.BuildMVCForm();
             return true;
         }
         $('#buyModal').modal('show');
@@ -90,17 +91,25 @@ buycar.ValidEmail = function () {
     return true;
 }
 
-buycar.ValidTag = function () {
-    var tag = $("#tag").val();
-    //if (tag == '') {
-    //    return false;
-    //}
+buycar.ValidTag = function () {  
     return true;
+}
+
+buycar.BuildMVCForm = function () {
+    $("#Title").val(buycar.Titile());
+    $("#Price").val(buycar.Price());
+    $("#CatagroyId").val(buycar.CatagroyId());
+    $("#AreaId").val(buycar.AreaId());
+    $("#CityId").val(buycar.CityId());
+    $("#CarYear").val(buycar.Year());
+    $("#CarMileage").val(buycar.Mileage());
+    $("#Email").val(buycar.Email());
+    $("#Mark").val(buycar.Tag());
 }
 
 $(document).ready(function () {
     $('#buyModal').on('show', function () {
-        $("#tipmsg").text(transfergoods.TipMsg);
+        $("#tipmsg").text(buycar.TipMsg);
     });
 
     $("#buyclose").click(function () {

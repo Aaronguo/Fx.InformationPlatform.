@@ -7,23 +7,28 @@ namespace Fx.Entity
 {
     public class TransferPicture
     {
-        public int TransferPictureId { get; set; }
+        public virtual int TransferPictureId { get; set; }
 
-        public TransferPictureCatagroy TransferPictureCatagroy { get; set; }
+        public int TransferPictureCatagroy { get; set; }
 
         /// <summary>
         /// 原始根目录
         /// </summary>
-        public string PhysicalPath { get; set; }
+        public virtual string PhysicalPath { get; set; }
 
         public string ImageUrl { get; set; }
 
         public bool IsCdn { get; set; }
 
         public string CdnUrl { get; set; }
+
+        public TransferPicture()
+        {
+            this.IsCdn = false;
+        }
     }
 
-    public enum TransferPictureCatagroy
+    public enum PictureCatagroy
     {
         Head=0,
         Other=1,

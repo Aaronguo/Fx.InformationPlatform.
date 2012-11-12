@@ -7,31 +7,36 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FxDomain.FxGoods.Mapping
+namespace Fx.Domain.FxGoods.Mapping
 {
     #pragma warning disable 1573
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.Data.Common;
-    using System.Data.Entity;
     using System.Data.Entity.ModelConfiguration;
-    using System.Data.Entity.Infrastructure;
     using Fx.Entity.FxGoods;
-
+    
     internal partial class GoodsTransferInfo_Mapping : EntityTypeConfiguration<GoodsTransferInfo>
     {
         public GoodsTransferInfo_Mapping()
-        {					
-    		this.HasKey(t => t.GoodsTransferInfoId);
-            this.ToTable("GoodsTransferInfo", "Goods");
-            this.Property(t => t.GoodsTransferInfoId).HasColumnName("GoodsTransferInfoId");
-    		this.Property(t => t.PublishUserEmail).HasColumnName("PublishUserEmail").HasMaxLength(128).HasColumnType("varchar");
-            this.Property(t => t.PublishTitle).HasColumnName("PublishTitle").HasMaxLength(128).HasColumnType("varchar");
-    		this.Property(t => t.Price).HasColumnName("Price");
-            this.Property(t => t.Mark).HasColumnName("Mark").HasMaxLength(128).HasColumnType("varchar");
-    		this.Property(t => t.CreatedTime).HasColumnName("CreatedTime");
-    	}
+        {                        
+              this.HasKey(t => t.GoodsTransferInfoId);        
+              this.ToTable("GoodsTransferInfo","Goods");
+              this.Property(t => t.GoodsTransferInfoId).HasColumnName("GoodsTransferInfoId");
+              this.Property(t => t.GoodsconditonId).HasColumnName("GoodsconditonId");
+              this.Property(t => t.GoodsConditionMsg).HasColumnName("GoodsConditionMsg");
+              this.Property(t => t.PublishTitle).HasColumnName("PublishTitle");
+              this.Property(t => t.CatagroyId).HasColumnName("CatagroyId");
+              this.Property(t => t.Price).HasColumnName("Price");
+              this.Property(t => t.IsChange).HasColumnName("IsChange");
+              this.Property(t => t.ChangeMsg).HasColumnName("ChangeMsg");
+              this.Property(t => t.AreaId).HasColumnName("AreaId");
+              this.Property(t => t.CityId).HasColumnName("CityId");
+              this.Property(t => t.PublishUserEmail).HasColumnName("PublishUserEmail");
+              this.Property(t => t.Mark).HasColumnName("Mark");
+              this.Property(t => t.Controller).HasColumnName("Controller");
+              this.Property(t => t.Action).HasColumnName("Action");
+              this.Property(t => t.UserAccount).HasColumnName("UserAccount");
+              this.Property(t => t.CreatedTime).HasColumnName("CreatedTime");
+              this.Property(t => t.IsDelete).HasColumnName("IsDelete");
+              this.Property(t => t.IsPublish).HasColumnName("IsPublish");
+         }
     }
 }
-

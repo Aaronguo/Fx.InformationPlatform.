@@ -137,6 +137,7 @@
     <Compile Include="Controllers\TransferController.cs" />
     <Compile Include="Framework\AppSettings.cs" />
     <Compile Include="Framework\ChannelLocation.cs" />
+    <Compile Include="Framework\CsharpRazorViewEngiee.cs" />
     <Compile Include="Framework\ElmahHandledErrorLoggerFilter.cs" />
     <Compile Include="Framework\StaticHelper.cs" />
     <Compile Include="Framework\UploadFileHelper.cs" />
@@ -148,11 +149,17 @@
     <Compile Include="Upload\UploadHandler.ashx.cs">
       <DependentUpon>UploadHandler.ashx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\BuyViewCar.cs" />
+    <Compile Include="ViewModel\BuyViewGoods.cs" />
+    <Compile Include="ViewModel\BuyViewHouse.cs" />
+    <Compile Include="ViewModel\TransferViewCar.cs" />
     <Compile Include="ViewModel\TransferViewGoods.cs" />
+    <Compile Include="ViewModel\TransferViewHouse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\gitlog20121108.txt" />
     <Content Include="App_Data\gitlog20121109.txt" />
+    <Content Include="App_Data\gitlog20121112.txt" />
     <Content Include="App_Data\Note.txt" />
     <Content Include="App_Data\404.txt" />
     <Content Include="App_Data\PublishNotice.txt" />
@@ -186,7 +193,7 @@
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\logo.png" />
-    <Content Include="Content\images\logo_v2.png" />
+    <Content Include="Content\images\logobig.jpg" />
     <Content Include="Content\images\progressbar.gif" />
     <Content Include="Content\images\publish.gif" />
     <Content Include="Content\js\Ajax\AjaxBaseRequest.js" />
@@ -319,6 +326,8 @@
     <Content Include="Views\GoodsTransfer\Success.cshtml" />
     <Content Include="Views\GoodsTransfer\ViewPage1.cshtml" />
     <Content Include="Views\GoodsTransfer\FaildTransfer.cshtml" />
+    <Content Include="Views\GoodsBuy\ViewPage1.cshtml" />
+    <Content Include="Views\GoodsBuy\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UploadImage\Buy\CarImage\" />

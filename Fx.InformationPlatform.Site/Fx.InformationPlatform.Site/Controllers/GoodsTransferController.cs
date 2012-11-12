@@ -46,7 +46,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 GoodsTransferInfo transfergoods = MapperGoods(goods);
                 transferService.SaveTransferGoods(transfergoods);
                 return View("Success");
-            } 
+            }
             return View("FaildTransfer");
         }
 
@@ -57,8 +57,9 @@ namespace Fx.InformationPlatform.Site.Controllers
 
 
         private GoodsTransferInfo MapperGoods(TransferViewGoods goods)
-        {            
+        {
             var info = new GoodsTransferInfo();
+            info.CatagroyId = goods.CatagroyId;
             info.AreaId = goods.AreaId;
             info.ChangeMsg = goods.ChangeGoodsMsg;
             info.Controller = this.ControllerName;
@@ -71,39 +72,40 @@ namespace Fx.InformationPlatform.Site.Controllers
             goods.FaceFiles.ForEach(r => info.Pictures.Add(r));
             goods.OtherFiles.ForEach(r => info.Pictures.Add(r));
             goods.BadFiles.ForEach(r => info.Pictures.Add(r));
-            info.Price = goods.Price;
+            info.Price = (int)goods.Price;
             info.PublishTitle = goods.Title;
             info.PublishUserEmail = goods.Email;
-            info.UserAccount = User.Identity.Name;            
+            info.UserAccount = User.Identity.Name;
             return info;
         }
 
         private bool BuildGoods(TransferViewGoods goods, List<HttpPostedFileBase> facefile, List<HttpPostedFileBase> otherfile, List<HttpPostedFileBase> badfile)
         {
+            InitParas();
             string date = Helper.GetDate();
             string userid = accountService.GetCurrentUser(User.Identity.Name).ToString();
             string timestamp;
             string folder;
             int random = 1;
+            string fileVirtualPathTemplate = transferImagePath + "/{0}/{1}/{2}.jpg";
             //图片保存到
             #region FaceFile
             foreach (var face in facefile)
             {
-               
+
                 if (face.HasFile())
                 {
                     timestamp = DateTime.Now.GetTimeStamp();
                     folder = Path.Combine(HttpContext.Server.MapPath(this.transferImagePath),
                                                    date, userid);
                     string filePhysicalPath = Path.Combine(HttpContext.Server.MapPath(this.transferImagePath),
-                                                   date, userid, timestamp+random.ToString() + ".jpg");
-                    string fileVirtualPath = string.Format("UploadImage/Transfer/GoodsImage/{0}/{1}/{2}.jpg", date, userid, timestamp);
+                                                   date, userid, timestamp + random.ToString() + ".jpg");
+                    string fileVirtualPath = string.Format(fileVirtualPathTemplate, date, userid, timestamp);
                     goods.FaceFiles.Add(new TransferPicture()
                     {
-                        IsCdn = false,
                         ImageUrl = fileVirtualPath,
                         CdnUrl = "",
-                        TransferPictureCatagroy = TransferPictureCatagroy.Head,
+                        TransferPictureCatagroy = (int)PictureCatagroy.Head,
                         PhysicalPath = filePhysicalPath
                     });
                     if (!System.IO.File.Exists(folder))
@@ -113,7 +115,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                     face.SaveAs(filePhysicalPath);
                     random++;
                 }
-            } 
+            }
             #endregion
 
             #region OtherFile
@@ -126,19 +128,18 @@ namespace Fx.InformationPlatform.Site.Controllers
                                                   date, userid);
                     string filePhysicalPath = Path.Combine(HttpContext.Server.MapPath(this.transferImagePath),
                                                    date, userid, timestamp + random.ToString() + ".jpg");
-                    string fileVirtualPath = string.Format("UploadImage/Transfer/GoodsImage/{0}/{1}/{2}.jpg", date, userid, timestamp);
-                    goods.FaceFiles.Add(new TransferPicture()
+                    string fileVirtualPath = string.Format(fileVirtualPathTemplate, date, userid, timestamp);
+                    goods.OtherFiles.Add(new TransferPicture()
                     {
-                        IsCdn = false,
                         ImageUrl = fileVirtualPath,
                         CdnUrl = "",
-                        TransferPictureCatagroy = TransferPictureCatagroy.Other,
+                        TransferPictureCatagroy = (int)PictureCatagroy.Other,
                         PhysicalPath = filePhysicalPath
                     });
                     other.SaveAs(filePhysicalPath);
                     random++;
                 }
-            } 
+            }
             #endregion
 
             #region badFile
@@ -151,13 +152,12 @@ namespace Fx.InformationPlatform.Site.Controllers
                                                   date, userid);
                     string filePhysicalPath = Path.Combine(HttpContext.Server.MapPath(this.transferImagePath),
                                                    date, userid, timestamp + random.ToString() + ".jpg");
-                    string fileVirtualPath = string.Format("UploadImage/Transfer/GoodsImage/{0}/{1}/{2}.jpg", date, userid, timestamp);
-                    goods.FaceFiles.Add(new TransferPicture()
+                    string fileVirtualPath = string.Format(fileVirtualPathTemplate, date, userid, timestamp);
+                    goods.BadFiles.Add(new TransferPicture()
                     {
-                        IsCdn = false,
                         ImageUrl = fileVirtualPath,
                         CdnUrl = "",
-                        TransferPictureCatagroy = TransferPictureCatagroy.Bad,
+                        TransferPictureCatagroy = (int)PictureCatagroy.Bad,
                         PhysicalPath = filePhysicalPath
                     });
                     if (!System.IO.File.Exists(folder))
@@ -167,14 +167,13 @@ namespace Fx.InformationPlatform.Site.Controllers
                     bad.SaveAs(filePhysicalPath);
                     random++;
                 }
-            } 
+            }
             #endregion
 
             return true;
         }
-        //UploadImage\Transfer\GoodsImage\20121110\0c6d1603-732f-41e4-bcb7-53939e5afc08\1352557431.jpg
 
-        
+
         public ActionResult Get(int Id)
         {
             return View(transferService.Get(Id));
@@ -194,9 +193,5 @@ namespace Fx.InformationPlatform.Site.Controllers
         {
             return View();
         }
-
-
-
-
     }
 }

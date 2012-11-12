@@ -7,13 +7,12 @@ using Fx.Entity;
 namespace Fx.InformationPlatform.Site.ViewModel
 {
     public class TransferViewGoods
-    {
-       
+    {       
         public string Title { get; set; }
 
         public int CatagroyId { get; set; }
 
-        public int Price { get; set; }
+        public decimal Price { get; set; }
 
         public bool IsChangeGoods { get; set; }
 
@@ -49,6 +48,5 @@ namespace Fx.InformationPlatform.Site.ViewModel
             OtherFiles = new List<TransferPicture>();
             BadFiles = new List<TransferPicture>();
         }
-
     }
 }

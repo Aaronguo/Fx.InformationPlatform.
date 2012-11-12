@@ -42,7 +42,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account\RegisterUser.cs" />
+    <Compile Include="BuyPicture.cs" />
+    <Compile Include="FxCar\CarBase.cs" />
+    <Compile Include="FxCar\CarBuyInfo.cs" />
+    <Compile Include="FxCar\CarTransferInfo.cs" />
+    <Compile Include="FxGoods\GoodBuyInfo.cs" />
     <Compile Include="FxGoods\GoodsTransferInfo.cs" />
+    <Compile Include="FxHouse\HouseBase.cs" />
+    <Compile Include="FxHouse\HouseBuyInfo.cs" />
+    <Compile Include="FxHouse\HouseTransferInfo.cs" />
     <Compile Include="FxSite\Area.cs" />
     <Compile Include="FxSite\Channel.cs" />
     <Compile Include="FxSite\ChannelList.cs" />
@@ -51,6 +59,7 @@
     <Compile Include="FxSite\ELMAHError.cs" />
     <Compile Include="FxSite\GoodsCondition.cs" />
     <Compile Include="IAction.cs" />
+    <Compile Include="IInfo.cs" />
     <Compile Include="IPublishAction.cs" />
     <Compile Include="MemberShip\Applications.cs" />
     <Compile Include="MemberShip\Membership.cs" />
@@ -64,7 +73,7 @@
     <Compile Include="MemberShip\Users.cs" />
     <Compile Include="MemberShip\WebEvent_Events.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TransferEntity.cs" />
+    <Compile Include="FxGoods\GoodsBase.cs" />
     <Compile Include="PublishImage.cs" />
     <Compile Include="TransferPicture.cs" />
   </ItemGroup>

@@ -20,7 +20,22 @@ buygoods.BindGoodsconditonChange = function () {
     });
 }
 
+buygoods.BindChangeGoodsCheckd = function () {
+    $("#changegoods").change(function () {
+        if ($("#changegoods").attr("checked") == "checked") {
+            $("#changegoodsdiv").show();
+        } else {
+            $("#changegoodstxt").val("");
+            $("#changegoodstxt").focus();
+            $("#changegoodstxt").blur();
+            $("#changegoodsdiv").hide();
+        }
+    });
+}
+
+
 
 $(document).ready(function () {
     buygoods.BindGoodsconditonChange();
+    buygoods.BindChangeGoodsCheckd();
 });

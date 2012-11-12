@@ -1,44 +1,27 @@
 ﻿<!--logo和搜索框-->
-<div class="grid_24 ">
+<form>
+<div class="grid_24">
     <div class="grid_8 alpha">
-        <img src="/Content/images/logo.png" width="120" height="39" />
+        <img src="@Fx.InformationPlatform.Site.AppSettings.ImageDomain("logobig.jpg")" width="220" height="120"  />
     </div>
     <div class="grid_16 omega">
-        <form class="">
-        <div class="searchcenter navbar-search pull-left form form-search">
-            <input type="text" class="search-query" placeholder="Search">
-            <div class="btn-group">
-                <button class="btn dropdown-toggle" id="logochose">二手物品</button>
-                <button  class="btn btn-success">查找</button>
-                <ul id="searchmenu" class="dropdown-menu" style="margin-left:-60px">
-                    <li><a href="#">二手物品</a></li>
-                    <li><a href="#">汽车交易</a></li>
-                    <li><a href="#">房屋租赁</a></li>
-                </ul>
-               
+        <div>
+            <div class="searchcenter navbar-search pull-left form form-search" style="padding-top:40px;">
+                <input type="text" class="search-query" placeholder="Search">
+                <div class="btn-group">
+                    <button class="btn dropdown-toggle" id="logochose">二手物品</button>
+                    <button class="btn btn-success">查找</button>
+                    <ul id="searchmenu" class="dropdown-menu" style="margin-left: -60px">
+                        <li><a href="#">二手物品</a></li>
+                        <li><a href="#">汽车交易</a></li>
+                        <li><a href="#">房屋租赁</a></li>
+                    </ul>
+                </div>
             </div>
-
-
-
-            @* <form action="/root/" class="form form-search">
-            <input type="" title="请输入类别名字或者关键字" placeholder="请输入类别名字或者关键字" class="form-input" />
-              <div class="form-select">
-                <span class="form-select-selected">全站搜索</span>
-                <ul class="form-select-menu">
-                    <li data-action="/root/">全站搜索</li>
-                    <li data-action="/ershou/">物品交易</li>
-                    <li data-action="/cheliang/">车辆买卖</li>
-                    <li data-action="/fang/">房屋租售</li>
-                </ul>
-                <span><input type="submit" value="搜索" class="form-submit button button-grey" /></span>                 
-            </div>
-            <input type="submit" value="搜索" class="form-submit button button-grey" />
-            </form>*@
-            <!-- .form -->
         </div>
-        </form>
     </div>
 </div>
+</form>
 
 <script type="text/javascript">
     $(document).ready(function () {
