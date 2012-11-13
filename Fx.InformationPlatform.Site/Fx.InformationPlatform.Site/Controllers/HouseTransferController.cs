@@ -15,25 +15,20 @@ namespace Fx.InformationPlatform.Site.Controllers
 {
     public class HouseTransferController : BaseController
     {
-        IHouse houseService;        
-        ITransferHouse buyService;
+        IHouse houseService;
+        ITransferHouse transferService;
         IAccountService accountService;
-        private readonly string transferImagePath = "~/UploadImage/Transfer/HouseImage";
         public HouseTransferController(IHouse houseService,
             ITransferHouse buyService,
             IAccountService accountService)
         {
             this.houseService = houseService;
-            this.buyService = buyService;
+            this.transferService = buyService;
             this.accountService = accountService;
         }
-        public HouseTransferController(IHouse houseService)
-        {
-            this.houseService = houseService;
-        }
-        
+
         public ActionResult CommercialProperties()
-        {           
+        {
             BindCatagroy();
             return View();
         }
@@ -46,7 +41,7 @@ namespace Fx.InformationPlatform.Site.Controllers
             if (BuildHouse(house, facefile, otherfile, badfile))
             {
                 HouseTransferInfo transferhouse = MapperHouse(house);
-                buyService.SaveTransferHouse(transferhouse);
+                transferService.SaveTransferHouse(transferhouse);
                 return View("Success");
             }
             return View("FaildTransfer");
@@ -71,6 +66,7 @@ namespace Fx.InformationPlatform.Site.Controllers
             info.Action = this.ActionName;
             info.CityId = house.CityId;
             info.Mark = house.Mark;
+            info.RoomNumber = house.RoomNumber;
             house.FaceFiles.ForEach(r => info.Pictures.Add(r));
             house.OtherFiles.ForEach(r => info.Pictures.Add(r));
             house.BadFiles.ForEach(r => info.Pictures.Add(r));
@@ -84,12 +80,7 @@ namespace Fx.InformationPlatform.Site.Controllers
         private bool BuildHouse(TransferViewHouse house, List<HttpPostedFileBase> facefile, List<HttpPostedFileBase> otherfile, List<HttpPostedFileBase> badfile)
         {
             InitParas();
-            string date = Helper.GetDate();
-            string userid = accountService.GetCurrentUser(User.Identity.Name).ToString();
-            string timestamp;
-            string folder;
-            int random = 1;
-            string fileVirtualPathTemplate = transferImagePath + "/{0}/{1}/{2}.jpg";
+            string pictureName;
             //图片保存到
             #region FaceFile
             foreach (var face in facefile)
@@ -97,25 +88,15 @@ namespace Fx.InformationPlatform.Site.Controllers
 
                 if (face.HasFile())
                 {
-                    timestamp = DateTime.Now.GetTimeStamp();
-                    folder = Path.Combine(HttpContext.Server.MapPath(this.transferImagePath),
-                                                   date, userid);
-                    string filePhysicalPath = Path.Combine(HttpContext.Server.MapPath(this.transferImagePath),
-                                                   date, userid, timestamp + random.ToString() + ".jpg");
-                    string fileVirtualPath = string.Format(fileVirtualPathTemplate, date, userid, timestamp);
+                    pictureName = GetPictureName();
                     house.FaceFiles.Add(new TransferPicture()
                     {
-                        ImageUrl = fileVirtualPath,
+                        ImageUrl = GetVirtualPath() + pictureName,
                         CdnUrl = "",
                         TransferPictureCatagroy = (int)PictureCatagroy.Head,
-                        PhysicalPath = filePhysicalPath
+                        PhysicalPath = GetPhysicalPath() + pictureName
                     });
-                    if (!System.IO.File.Exists(folder))
-                    {
-                        System.IO.Directory.CreateDirectory(folder);
-                    }
-                    face.SaveAs(filePhysicalPath);
-                    random++;
+                    SaveFile(face, GetPhysicalPath(), GetPhysicalPath() + pictureName);
                 }
             }
             #endregion
@@ -125,21 +106,15 @@ namespace Fx.InformationPlatform.Site.Controllers
             {
                 if (other.HasFile())
                 {
-                    timestamp = DateTime.Now.GetTimeStamp();
-                    folder = Path.Combine(HttpContext.Server.MapPath(this.transferImagePath),
-                                                  date, userid);
-                    string filePhysicalPath = Path.Combine(HttpContext.Server.MapPath(this.transferImagePath),
-                                                   date, userid, timestamp + random.ToString() + ".jpg");
-                    string fileVirtualPath = string.Format(fileVirtualPathTemplate, date, userid, timestamp);
+                    pictureName = GetPictureName();
                     house.OtherFiles.Add(new TransferPicture()
                     {
-                        ImageUrl = fileVirtualPath,
+                        ImageUrl = GetVirtualPath() + pictureName,
                         CdnUrl = "",
-                        TransferPictureCatagroy = (int)PictureCatagroy.Other,
-                        PhysicalPath = filePhysicalPath
+                        TransferPictureCatagroy = (int)PictureCatagroy.Head,
+                        PhysicalPath = GetPhysicalPath() + pictureName
                     });
-                    other.SaveAs(filePhysicalPath);
-                    random++;
+                    SaveFile(other, GetPhysicalPath(), GetPhysicalPath() + pictureName);
                 }
             }
             #endregion
@@ -149,25 +124,15 @@ namespace Fx.InformationPlatform.Site.Controllers
             {
                 if (bad.HasFile())
                 {
-                    timestamp = DateTime.Now.GetTimeStamp();
-                    folder = Path.Combine(HttpContext.Server.MapPath(this.transferImagePath),
-                                                  date, userid);
-                    string filePhysicalPath = Path.Combine(HttpContext.Server.MapPath(this.transferImagePath),
-                                                   date, userid, timestamp + random.ToString() + ".jpg");
-                    string fileVirtualPath = string.Format(fileVirtualPathTemplate, date, userid, timestamp);
+                    pictureName = GetPictureName();
                     house.BadFiles.Add(new TransferPicture()
                     {
-                        ImageUrl = fileVirtualPath,
+                        ImageUrl = GetVirtualPath() + pictureName,
                         CdnUrl = "",
-                        TransferPictureCatagroy = (int)PictureCatagroy.Bad,
-                        PhysicalPath = filePhysicalPath
+                        TransferPictureCatagroy = (int)PictureCatagroy.Head,
+                        PhysicalPath = GetPhysicalPath() + pictureName
                     });
-                    if (!System.IO.File.Exists(folder))
-                    {
-                        System.IO.Directory.CreateDirectory(folder);
-                    }
-                    bad.SaveAs(filePhysicalPath);
-                    random++;
+                    SaveFile(bad, GetPhysicalPath(), GetPhysicalPath() + pictureName);
                 }
             }
             #endregion
@@ -186,5 +151,62 @@ namespace Fx.InformationPlatform.Site.Controllers
             ViewData["catagroy"] = details;
         }
 
+        #region UpLoad
+        private readonly string transferPhysicalImagePath = @"UploadImage\Transfer\HouseImage\";
+        private readonly string transferVirtualImagePath = "UploadImage/Transfer/HouseImage/";
+
+
+        private string GetPhysicalPath()
+        {
+            return string.Format(@"{0}{1}{2}\{3}\", HttpContext.Server.MapPath("../"), transferPhysicalImagePath, GetDate(), GetUserId());
+        }
+
+        private string GetVirtualPath()
+        {
+            return string.Format("{0}{1}/{2}/", transferVirtualImagePath, GetDate(), GetUserId());
+        }
+
+
+        string userId;
+        private string GetUserId()
+        {
+            if (string.IsNullOrEmpty(userId))
+            {
+                userId = accountService.GetCurrentUser(User.Identity.Name).ToString();
+            }
+            return userId;
+        }
+
+        string date;
+        private string GetDate()
+        {
+            if (string.IsNullOrEmpty(date))
+            {
+                date = Helper.GetDate();
+            }
+            return date;
+        }
+
+
+        int pictureCount = 100;
+        string timestamp = DateTime.Now.GetTimeStamp();
+
+        private string GetPictureName()
+        {
+            string pictureName = string.Format("{0}{1}.jpg", timestamp, pictureCount);
+            pictureCount++;
+            return pictureName;
+
+        }
+
+        public void SaveFile(HttpPostedFileBase file, string folderPath, string filePath)
+        {
+            if (!System.IO.File.Exists(folderPath))
+            {
+                System.IO.Directory.CreateDirectory(folderPath);
+            }
+            file.SaveAs(filePath);
+        }
+        #endregion
     }
 }

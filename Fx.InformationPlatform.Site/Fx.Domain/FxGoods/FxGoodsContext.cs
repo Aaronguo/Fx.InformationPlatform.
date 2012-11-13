@@ -21,7 +21,7 @@ namespace Fx.Domain.FxGoods
         }
 
         public FxGoodsContext()
-            : base("fx.goods-mysql")//
+            : base("fx.goods-mysql")
         {
 
         }

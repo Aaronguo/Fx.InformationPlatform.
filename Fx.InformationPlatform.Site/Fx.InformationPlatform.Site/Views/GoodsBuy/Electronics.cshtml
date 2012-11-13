@@ -1,4 +1,4 @@
-﻿@model Fx.Entity.FxGoods.GoodsBuyInfo
+﻿@model Fx.InformationPlatform.Site.ViewModel.BuyViewGoods
 @{
     Layout = "~/Views/Shared/_LayoutClean.cshtml";
     ViewBag.Title = "发布二手求购信息";
@@ -121,11 +121,11 @@
                 </div>
                 <div class="omega grid_17">
                     <div class="gird_2">正面照片 <cite class="red">选填</cite></div>
-                    <input type="file" class="multi" accept="jpg|jpeg|png|gif|bmp" maxlength="3" minlength="1" name="facefile" id="mainface" /><br />
+                    <input type="file" class="multi" accept="jpg|jpeg|png|gif|bmp" maxlength="1" minlength="1" name="facefile" id="mainface" /><br />
                     <div class="gird_2">其他方位照片 <cite class="red">选填</cite></div>
-                    <input type="file" class="multi" accept="jpg|jpeg|png|gif|bmp" maxlength="3" minlength="1" name="otherfile" id="mainother" /><br />
+                    <input type="file" class="multi" accept="jpg|jpeg|png|gif|bmp" maxlength="1" minlength="1" name="otherfile" id="mainother" /><br />
                     <div class="gird_2">磨损部位照片 <cite class="red">选填</cite></div>
-                    <input type="file" class="multi" accept="jpg|jpeg|png|gif|bmp" maxlength="3" minlength="1" name="badfile" id="mainbad"><br />
+                    <input type="file" class="multi" accept="jpg|jpeg|png|gif|bmp" maxlength="1" minlength="1" name="badfile" id="mainbad"><br />
                 </div>
                 <div class="clear">
                 </div>
@@ -162,15 +162,17 @@
                 </div>
 
                 <div style="display: none;">
-                    @Html.EditorFor(model => model.IsChange)
-                    @Html.EditorFor(model => model.ChangeMsg)
+                    @Html.EditorFor(model => model.Title)
                     @Html.EditorFor(model => model.CatagroyId)
-                    @Html.EditorFor(model => model.PublishUserEmail)
-                    @Html.EditorFor(model => model.PublishTitle)
                     @Html.EditorFor(model => model.Price)
-                    @Html.EditorFor(model => model.Mark)
+                    @Html.EditorFor(model => model.IsChangeGoods)
+                    @Html.EditorFor(model => model.ChangeGoodsMsg)
                     @Html.EditorFor(model => model.AreaId)
                     @Html.EditorFor(model => model.CityId)
+                    @Html.EditorFor(model => model.GoodConditionId)
+                    @Html.EditorFor(model => model.GoodConditonMsg)
+                    @Html.EditorFor(model => model.Email)
+                    @Html.EditorFor(model => model.Mark)
                 </div>
 
                 <div class="omega grid_17">

@@ -13,11 +13,11 @@ namespace Fx.Domain.FxHouse
     {
         static FxHouseContext()
         {
-            System.Data.Entity.Database.SetInitializer(new FxHouseInitializer());
+            //System.Data.Entity.Database.SetInitializer(new FxHouseInitializer());
         }
 
         public FxHouseContext()
-            : base("fx.house-mysql")//
+            : base("fx.house-mysql")
         {
 
         }

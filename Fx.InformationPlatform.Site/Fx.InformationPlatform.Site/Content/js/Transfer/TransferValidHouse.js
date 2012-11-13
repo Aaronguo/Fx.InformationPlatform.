@@ -2,11 +2,11 @@
 
 transferhouse.TipMsg = "";
 transferhouse.Submit = function () {
-    $("form:first").submit(function () {
+    $("#transferhouseform").submit(function () {
         if (transferhouse.ValidTitle() && transferhouse.VaildCatagroy() &&
             transferhouse.ValidPrice() &&
             transferhouse.ValidArea() && transferhouse.ValidCity() &&
-            transferhouse.PostCode() && transferhouse.RoadName() &&
+            transferhouse.ValidPostCode() && transferhouse.ValidRoadName() &&
             transferhouse.ValidRoomNumber() &&
             transferhouse.ValidFacefile() &&
             transferhouse.ValidOtherfile() && transferhouse.ValidBadfile() &&
@@ -20,13 +20,13 @@ transferhouse.Submit = function () {
     });
 };
 
-transferhouse.Titile = function () {
+transferhouse.Title = function () {
     return $("#title").val();
 }
 
 
 transferhouse.ValidTitle = function () {
-    if (transferhouse.Titile() == '') {
+    if (transferhouse.Title() == '') {
         transferhouse.TipMsg = "标题不能为空";
         return false;
     }
@@ -39,7 +39,7 @@ transferhouse.PostCode = function () {
 }
 
 
-transferhouse.ValidTitle = function () {
+transferhouse.ValidPostCode = function () {
     if (transferhouse.PostCode() == '') {
         transferhouse.TipMsg = "房屋对应邮编不能为空";
         return false;
@@ -52,7 +52,7 @@ transferhouse.RoadName = function () {
 }
 
 
-transferhouse.ValidTitle = function () {
+transferhouse.ValidRoadName = function () {
     if (transferhouse.RoadName() == '') {
         transferhouse.TipMsg = "详细地址不能为空";
         return false;
@@ -88,10 +88,11 @@ transferhouse.ValidPrice = function () {
         transferhouse.TipMsg = "价格必须是正整数";
         return false;
     }
+    return true;
 }
 
 transferhouse.RoomNumber = function () {
-    var option = $("#RoomNumber option:selected");
+    var option = $("#roomnumber option:selected");
     return option.attr("value") || 0;
 }
 
@@ -213,7 +214,7 @@ transferhouse.ValidTag = function () {
 }
 
 transferhouse.BuildMVCForm = function () {
-    $("#Title").val(transferhouse.Titile());
+    $("#Title").val(transferhouse.Title());
     $("#Price").val(transferhouse.Price());
     $("#CatagroyId").val(transferhouse.CatagroyId());  
     $("#AreaId").val(transferhouse.AreaId());
@@ -226,7 +227,6 @@ transferhouse.BuildMVCForm = function () {
     $("#Email").val(transferhouse.Email());
     $("#Mark").val(transferhouse.Tag());
 }
-
 
 
 $(document).ready(function () {

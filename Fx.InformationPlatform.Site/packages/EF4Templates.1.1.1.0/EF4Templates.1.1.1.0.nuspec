@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>EF4Templates</id>
+    <version>1.1.1.0</version>
+    <title>EF4Templates</title>
+    <authors>Rick Ratayczak</authors>
+    <owners>Rick Ratayczak</owners>
+    <licenseUrl>http://ef4templates.codeplex.com/license</licenseUrl>
+    <projectUrl>http://ef4templates.codeplex.com/</projectUrl>
+    <iconUrl>http://dl.compdj.com/images/EF4Templates200x200.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>EF4 Templates uses T4toolbox to generate Repositories, Unit of work, POCO self-tracking entities that can be unit tested, along with validation for WPF, Silverlight RIA services and ASP.NET/ASP.NET MVC. They also generate an ODATA service with authentication for usage with WPF.</description>
+    <summary>EF4 Templates uses T4toolbox to generate Repositories, Unit of work, POCO self-tracking entities that can be unit tested, along with validation for WPF, Silverlight RIA services and ASP.NET/ASP.NET MVC. They also generate an ODATA service with authentication for usage with WPF.</summary>
+    <tags>T4 Entity-Framework EF4 .net40</tags>
+  </metadata>
+</package>

@@ -2,7 +2,7 @@
 
 transfercar.TipMsg = "";
 transfercar.Submit = function () {
-    $("form:first").submit(function () {
+    $("#transfercarform").submit(function () {
         if (transfercar.ValidTitle() && transfercar.VaildCatagroy() &&
             transfercar.ValidPrice() && transfercar.ValidArea() &&
             transfercar.ValidCity() && transfercar.ValidYear() &&
@@ -18,13 +18,13 @@ transfercar.Submit = function () {
     });
 };
 
-transfercar.Titile = function () {
+transfercar.Title = function () {
     return $("#title").val();
 }
 
 
 transfercar.ValidTitle = function () {
-    if (transfercar.Titile() == '') {
+    if (transfercar.Title() == '') {
         transfercar.TipMsg = "标题不能为空";
         return false;
     }
@@ -59,6 +59,7 @@ transfercar.ValidPrice = function () {
         transfercar.TipMsg = "价格必须是正整数";
         return false;
     }
+    return true;
 }
 
 transfercar.AreaId = function () {
@@ -93,7 +94,6 @@ transfercar.Year = function () {
 }
 
 transfercar.ValidYear = function () {
-
     if (transfercar.Year() == 0) {
         transfercar.TipMsg = "请选择生产年份";
         return false;
@@ -184,15 +184,15 @@ transfercar.ValidTag = function () {
 }
 
 transfercar.BuildMVCForm = function () {
-    $("#Title").val(transfergoods.Titile());
-    $("#Price").val(transfergoods.Price());
-    $("#CatagroyId").val(transfergoods.CatagroyId());
-    $("#AreaId").val(transfergoods.AreaId());
-    $("#CityId").val(transfergoods.CityId());
-    $("#CarYear").val(transfergoods.Year());
-    $("#CarMileage").val(transfergoods.Mileage());
-    $("#Email").val(transfergoods.Email());
-    $("#Mark").val(transfergoods.Tag());
+    $("#Title").val(transfercar.Title());
+    $("#Price").val(transfercar.Price());
+    $("#CatagroyId").val(transfercar.CatagroyId());
+    $("#AreaId").val(transfercar.AreaId());
+    $("#CityId").val(transfercar.CityId());
+    $("#CarYear").val(transfercar.Year());
+    $("#CarMileage").val(transfercar.Mileage());
+    $("#Email").val(transfercar.Email());
+    $("#Mark").val(transfercar.Tag());
 }
 
 $(document).ready(function () {

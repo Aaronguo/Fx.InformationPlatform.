@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Fx.InformationPlatform.Site.ViewModel.BuyViewHouse
+@{
     Layout = "~/Views/Shared/_LayoutClean.cshtml";
     ViewBag.Title = "发布房租求购信息";
 }
@@ -141,6 +142,20 @@
                 <div class="clear">
                 </div>
                 <br />
+
+                <div style="display: none;">
+                    @Html.EditorFor(model => model.Title)
+                    @Html.EditorFor(model => model.CatagroyId)
+                    @Html.EditorFor(model => model.Price)
+                    @Html.EditorFor(model => model.AreaId)
+                    @Html.EditorFor(model => model.CityId)
+                    @Html.EditorFor(model => model.RoomNumber)
+                    @Html.EditorFor(model => model.Bill)
+                    @Html.EditorFor(model => model.HasFurniture)
+                    @Html.EditorFor(model => model.Email)
+                    @Html.EditorFor(model => model.Mark)
+                </div>
+
 
                 <div class="txtright alpha grid_3">
                     &nbsp;

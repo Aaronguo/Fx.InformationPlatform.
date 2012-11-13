@@ -2,12 +2,10 @@
 
 buyhouse.TipMsg = "";
 buyhouse.Submit = function () {
-    $("form:first").submit(function () {
+    $("#buyhouseform").submit(function () {
         if (buyhouse.ValidTitle() && buyhouse.VaildCatagroy() &&
-            buyhouse.ValidPrice() && buyhouse.ValidChangeGoods() &&
-            buyhouse.ValidArea() && buyhouse.ValidCity() &&
-            buyhouse.ValidGoodsconditon() && buyhouse.ValidFacefile() &&
-            buyhouse.ValidOtherfile() && buyhouse.ValidBadfile() &&
+            buyhouse.ValidPrice() &&
+            buyhouse.ValidArea() && buyhouse.ValidCity() &&          
             buyhouse.ValidEmail() &&
             buyhouse.ValidTag()) {
             buyhouse.BuildMVCForm();
@@ -17,133 +15,112 @@ buyhouse.Submit = function () {
         return false;
     });
 };
+buyhouse.Title = function () {
+    return $("#title").val();
+}
+
+
 buyhouse.ValidTitle = function () {
-    var title = $("#title").val();
-    if (title == '') {
+    if (buyhouse.Title() == '') {
         buyhouse.TipMsg = "标题不能为空";
         return false;
     }
     return true;
 }
 
-buyhouse.VaildCatagroy = function () {
+
+buyhouse.CatagroyId = function () {
     var option = $("#catagroy option:selected");
-    var value = option.attr("value") || 0;
-    if (value == 0) {
+    return option.attr("value") || 0;
+}
+
+buyhouse.VaildCatagroy = function () {
+    if (buyhouse.CatagroyId() == 0) {
         buyhouse.TipMsg = "请选择物品类别";
         return false;
     }
     return true;
 }
 
+buyhouse.Price = function () {
+    return $("#price").val();
+}
+
 buyhouse.ValidPrice = function () {
     var regex = /^[0-9]*[1-9][0-9]*$/;
-    var price = $("#price").val();
-    if (price == '') {
+    if (buyhouse.Price() == '') {
         buyhouse.TipMsg = "价格不能为空";
         return false;
     }
-    var result = price.match(regex);
+    var result = buyhouse.Price().match(regex);
     if (null == result || 0 == result.length) {
         buyhouse.TipMsg = "价格必须是正整数";
         return false;
     }
     return true;
 }
-buyhouse.ValidChangeGoods = function () {
-    if ($("#changegoods").attr("checked") == "checked" && $("changegoodstxt").val() == "") {
-        buyhouse.TipMsg = "您如果想换物，请填写相关信息";
+
+buyhouse.RoomNumber = function () {
+    var option = $("#roomnumber option:selected");
+    return option.attr("value") || 0;
+}
+
+buyhouse.ValidRoomNumber = function () {
+    if (buyhouse.RoomNumber() == 0) {
+        buyhouse.TipMsg = "请选择具体的房间数量";
         return false;
     }
     return true;
 }
 
-buyhouse.ValidArea = function () {
+buyhouse.Bill = function () {
+    return $("#bill").attr("checked") == "checked";
+}
+
+buyhouse.Furniture = function () {
+    return $("#furniture").attr("checked") == "checked";
+}
+
+
+buyhouse.AreaId = function () {
     var option = $("#area option:selected");
-    var value = option.attr("value") || 0;
-    if (value == 0) {
+    return option.attr("value") || 0;
+}
+
+buyhouse.ValidArea = function () {
+    if (buyhouse.AreaId() == 0) {
         buyhouse.TipMsg = "请选择具体的地区";
         return false;
     }
     return true;
 }
 
-buyhouse.ValidCity = function () {
+buyhouse.CityId = function () {
     var option = $("#city option:selected");
-    var value = option.attr("value") || 0;
-    if (value == 0) {
+    return option.attr("value") || 0;
+}
+
+buyhouse.ValidCity = function () {
+    if (buyhouse.CityId() == 0) {
         buyhouse.TipMsg = "请选择详细地址";
         return false;
     }
     return true;
 }
 
-buyhouse.ValidGoodsconditon = function () {
-    var option = $("#goodsconditon option:selected");
-    var value = option.attr("value") || 0;
-    if (value == 0) {
-        buyhouse.TipMsg = "请选择新旧程度";
-        return false;
-    }
-    if (value > 2 && $("#goodsextend").val() == "") {
-        buyhouse.TipMsg = "请填写相关新旧程度信息";
-        return false;
-    }
-    return true;
+
+
+buyhouse.Email = function () {
+    return $("#email").val();
 }
-
-buyhouse.ValidFacefile = function () {
-    var facefile = $("input[name=facefile]");
-    var minlength = $("#mainface").attr("minlength");
-    if (facefile.length == 1 && facefile.length != minlength) {
-        buyhouse.TipMsg = "请选择物品正面照片";
-        return false;
-    }
-    if (facefile.length < minlength) {
-        buyhouse.TipMsg = "图片的数量至少是：" + minlength;
-        return false;
-    }
-    return true;
-}
-
-buyhouse.ValidOtherfile = function () {
-    var otherfile = $("input[name=otherfile]");
-    var minlength = $("#mainother").attr("minlength");
-    if (otherfile.length == 1 && otherfile.length != minlength) {
-        buyhouse.TipMsg = "请选择物品其他方位照片";
-        return false;
-    }
-    if (otherfile.length < minlength) {
-        buyhouse.TipMsg = "图片的数量至少是：" + minlength;
-        return false;
-    }
-    return true;
-}
-
-
-buyhouse.ValidBadfile = function () {
-    var badfile = $("input[name=badfile]");
-    var badfile = $("#mainbad").attr("minlength");
-    if (badfile.length == 1 && badfile.length != minlength) {
-        buyhouse.TipMsg = "请选择磨损部位照片";
-        return false;
-    }
-    if (badfile.length < minlength) {
-        buyhouse.TipMsg = "图片的数量至少是：" + minlength;
-        return false;
-    }
-    return true;
-}
-
 
 buyhouse.ValidEmail = function () {
     var regex = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-    var email = $("#email").val();
-    if (email == '') {
+    if (buyhouse.Email() == '') {
         buyhouse.TipMsg = "邮箱不能为空";
         return false;
     }
-    var result = email.match(regex);
+    var result = buyhouse.Email().match(regex);
     if (null == result || 0 == result.length) {
         buyhouse.TipMsg = "请填写正确的邮箱";
         return false;
@@ -151,18 +128,20 @@ buyhouse.ValidEmail = function () {
     return true;
 }
 
+buyhouse.Tag = function () {
+    return $("#tag").val();
+}
+
 buyhouse.ValidTag = function () {
     return true;
 }
 
 buyhouse.BuildMVCForm = function () {
-    $("#Title").val(buyhouse.Titile());
+    $("#Title").val(buyhouse.Title());
     $("#Price").val(buyhouse.Price());
     $("#CatagroyId").val(buyhouse.CatagroyId());
     $("#AreaId").val(buyhouse.AreaId());
     $("#CityId").val(buyhouse.CityId());
-    $("#PostCode").val(buyhouse.PostCode());
-    $("#RoadName").val(buyhouse.RoadName());
     $("#RoomNumber").val(buyhouse.RoomNumber());
     $("#Bill").attr("checked", $("#bill").attr("checked"));
     $("#HasFurniture").attr("checked", $("#furniture").attr("checked"));

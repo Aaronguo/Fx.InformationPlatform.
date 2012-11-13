@@ -16,7 +16,6 @@ namespace Fx.InformationPlatform.Site.Controllers
         IHouse houseService;        
         IBuyHouse buyService;
         IAccountService accountService;
-        //private readonly string buyImagePath = "~/UploadImage/Buy/HouseImage";
         public HouseBuyController(IHouse houseService, 
             IBuyHouse buyService,
             IAccountService accountService)
@@ -57,7 +56,8 @@ namespace Fx.InformationPlatform.Site.Controllers
             info.Bill = house.Bill;
             info.HasFurniture = house.HasFurniture;
             info.CatagroyId = house.CatagroyId;
-            info.AreaId = house.AreaId; ;
+            info.AreaId = house.AreaId;
+            info.RoomNumber = house.RoomNumber;
             info.Controller = this.ControllerName;
             info.Action = this.ActionName;
             info.CityId = house.CityId;
@@ -66,6 +66,7 @@ namespace Fx.InformationPlatform.Site.Controllers
             info.PublishTitle = house.Title;
             info.PublishUserEmail = house.Email;
             info.UserAccount = User.Identity.Name;
+
             return info;
         }
 

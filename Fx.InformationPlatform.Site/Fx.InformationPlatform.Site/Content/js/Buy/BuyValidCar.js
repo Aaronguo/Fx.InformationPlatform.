@@ -2,88 +2,172 @@
 
 buycar.TipMsg = "";
 buycar.Submit = function () {
-    $("form:first").submit(function () {
+    $("#buycarform").submit(function () {
         if (buycar.ValidTitle() && buycar.VaildCatagroy() &&
-            buycar.ValidPrice() && buycar.ValidChangeGoods() &&
-            buycar.ValidArea() && buycar.ValidCity() &&            
+            buycar.ValidPrice() && buycar.ValidArea() &&
+            buycar.ValidCity() && buycar.ValidYear() &&
+            buycar.ValidMileage() && buycar.ValidFacefile() &&
+            buycar.ValidOtherfile() && buycar.ValidBadfile() &&
             buycar.ValidEmail() &&
             buycar.ValidTag()) {
             buycar.BuildMVCForm();
             return true;
         }
-        $('#buyModal').modal('show');
+        $('#transferModal').modal('show');
         return false;
     });
 };
+
+buycar.Title = function () {
+    return $("#title").val();
+}
+
+
 buycar.ValidTitle = function () {
-    var title = $("#title").val();
-    if (title == '') {
+    if (buycar.Title() == '') {
         buycar.TipMsg = "标题不能为空";
         return false;
     }
     return true;
 }
 
-buycar.VaildCatagroy = function () {
+buycar.CatagroyId = function () {
     var option = $("#catagroy option:selected");
-    var value = option.attr("value") || 0;
-    if (value == 0) {
+    return option.attr("value") || 0;
+}
+
+buycar.VaildCatagroy = function () {
+    if (buycar.CatagroyId() == 0) {
         buycar.TipMsg = "请选择物品类别";
         return false;
     }
     return true;
 }
 
+buycar.Price = function () {
+    return $("#price").val();
+}
+
 buycar.ValidPrice = function () {
     var regex = /^[0-9]*[1-9][0-9]*$/;
-    var price = $("#price").val();
-    if (price == '') {
+    if (buycar.Price() == '') {
         buycar.TipMsg = "价格不能为空";
         return false;
     }
-    var result = price.match(regex);
+    var result = buycar.Price().match(regex);
     if (null == result || 0 == result.length) {
         buycar.TipMsg = "价格必须是正整数";
         return false;
     }
     return true;
 }
-buycar.ValidChangeGoods = function () {
-    if ($("#changegoods").attr("checked") == "checked" && $("changegoodstxt").val() == "") {
-        buycar.TipMsg = "您如果想换物，请填写相关信息";
-        return false;
-    }
-    return true;
+
+buycar.AreaId = function () {
+    var option = $("#area option:selected");
+    return option.attr("value") || 0;
 }
 
 buycar.ValidArea = function () {
-    var option = $("#area option:selected");
-    var value = option.attr("value") || 0;
-    if (value == 0) {
+    if (buycar.AreaId() == 0) {
         buycar.TipMsg = "请选择具体的地区";
         return false;
     }
     return true;
 }
 
-buycar.ValidCity = function () {
+buycar.CityId = function () {
     var option = $("#city option:selected");
-    var value = option.attr("value") || 0;
-    if (value == 0) {
+    return option.attr("value") || 0;
+}
+
+buycar.ValidCity = function () {
+    if (buycar.CityId() == 0) {
         buycar.TipMsg = "请选择详细地址";
         return false;
     }
     return true;
 }
 
+buycar.Year = function () {
+    var option = $("#carYear option:selected");
+    return option.attr("value") || 0;
+}
+
+buycar.ValidYear = function () {
+    if (buycar.Year() == 0) {
+        buycar.TipMsg = "请选择生产年份";
+        return false;
+    }
+    return true;
+}
+
+buycar.Mileage = function () {
+    var option = $("#carMileage option:selected");
+    return option.attr("value") || 0;
+}
+
+buycar.ValidMileage = function () {
+    if (buycar.Mileage() == 0) {
+        buycar.TipMsg = "请选择里程数";
+        return false;
+    }
+    return true;
+}
+
+
+buycar.ValidFacefile = function () {
+    var facefile = $("input[name=facefile]");
+    var minlength = $("#mainface").attr("minlength");
+    if (facefile.length == 1 && facefile.length != minlength) {
+        buycar.TipMsg = "请选择物品正面照片";
+        return false;
+    }
+    if (facefile.length < minlength) {
+        buycar.TipMsg = "图片的数量至少是：" + minlength;
+        return false;
+    }
+    return true;
+}
+
+buycar.ValidOtherfile = function () {
+    var otherfile = $("input[name=otherfile]");
+    var minlength = $("#mainother").attr("minlength");
+    if (otherfile.length == 1 && otherfile.length != minlength) {
+        buycar.TipMsg = "请选择物品其他方位照片";
+        return false;
+    }
+    if (otherfile.length < minlength) {
+        buycar.TipMsg = "图片的数量至少是：" + minlength;
+        return false;
+    }
+    return true;
+}
+
+buycar.ValidBadfile = function () {
+    var badfile = $("input[name=badfile]");
+    var minlength = $("#mainbad").attr("minlength");
+    if (badfile.length == 1 && badfile.length != minlength) {
+        buycar.TipMsg = "请选择磨损部位照片";
+        return false;
+    }
+    if (badfile.length < minlength) {
+        buycar.TipMsg = "图片的数量至少是：" + minlength;
+        return false;
+    }
+    return true;
+}
+
+buycar.Email = function () {
+    return $("#email").val();
+}
+
 buycar.ValidEmail = function () {
     var regex = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-    var email = $("#email").val();
-    if (email == '') {
+    if (buycar.Email() == '') {
         buycar.TipMsg = "邮箱不能为空";
         return false;
     }
-    var result = email.match(regex);
+    var result = buycar.Email().match(regex);
     if (null == result || 0 == result.length) {
         buycar.TipMsg = "请填写正确的邮箱";
         return false;
@@ -91,12 +175,16 @@ buycar.ValidEmail = function () {
     return true;
 }
 
-buycar.ValidTag = function () {  
+buycar.Tag = function () {
+    return $("#tag").val();
+}
+
+buycar.ValidTag = function () {
     return true;
 }
 
 buycar.BuildMVCForm = function () {
-    $("#Title").val(buycar.Titile());
+    $("#Title").val(buycar.Title());
     $("#Price").val(buycar.Price());
     $("#CatagroyId").val(buycar.CatagroyId());
     $("#AreaId").val(buycar.AreaId());

@@ -18,12 +18,12 @@ buygoods.Submit = function () {
     });
 };
 
-buygoods.Titile = function () {
+buygoods.Title = function () {
     return $("#title").val();
 }
 
 buygoods.ValidTitle = function () {
-    if (buygoods.Titile() == '') {
+    if (buygoods.Title() == '') {
         buygoods.TipMsg = "标题不能为空";
         return false;
     }
@@ -66,7 +66,7 @@ buygoods.IsChangeGoods = function () {
 }
 
 buygoods.ChangeGoodsText = function () {
-    return $("changegoodstxt").val();
+    return $("#changegoodstxt").val();
 }
 
 buygoods.ValidChangeGoods = function () {
@@ -159,7 +159,7 @@ buygoods.ValidOtherfile = function () {
 
 buygoods.ValidBadfile = function () {
     var badfile = $("input[name=badfile]");
-    var badfile = $("#mainbad").attr("minlength");
+    var minlength = $("#mainbad").attr("minlength");
     if (badfile.length == 1 && badfile.length != minlength) {
         buygoods.TipMsg = "请选择磨损部位照片";
         return false;
@@ -198,7 +198,7 @@ buygoods.ValidTag = function () {
 }
 
 buygoods.BuildMVCForm = function () {
-    $("#Title").val(buygoods.Titile());
+    $("#Title").val(buygoods.Title());
     $("#Price").val(buygoods.Price());
     $("#CatagroyId").val(buygoods.CatagroyId());
     $("#IsChangeGoods").attr("checked", $("#changegoods").attr("checked"));

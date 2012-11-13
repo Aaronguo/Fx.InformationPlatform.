@@ -13,6 +13,7 @@ namespace Fx.Entity.FxGoods
             this.CreatedTime = DateTime.Now;
             this.IsDelete = false;
             this.IsPublish = false;
+            this.InfoProcessState = (int)ProcessState.Commit;
         }
 
         /// <summary>
@@ -87,6 +88,8 @@ namespace Fx.Entity.FxGoods
         /// 是否发布
         /// </summary>
         public virtual bool IsPublish { get; set; }
+
+        public int InfoProcessState { get; set; }
 
         /// <summary>
         /// 二级分类Id

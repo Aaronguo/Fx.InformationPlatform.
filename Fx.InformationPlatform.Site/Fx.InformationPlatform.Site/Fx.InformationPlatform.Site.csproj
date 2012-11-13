@@ -140,7 +140,9 @@
     <Compile Include="Framework\CsharpRazorViewEngiee.cs" />
     <Compile Include="Framework\ElmahHandledErrorLoggerFilter.cs" />
     <Compile Include="Framework\StaticHelper.cs" />
+    <Compile Include="Framework\T4Helper.cs" />
     <Compile Include="Framework\UploadFileHelper.cs" />
+    <Compile Include="Framework\UploadPath.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -235,7 +237,9 @@
     <Content Include="Config\DataBase.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Config\AppSetting.config" />
+    <Content Include="Config\AppSetting.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Content\js\jquery-1.6.2-vsdoc.js" />
     <Content Include="Content\images\icons.png" />
     <Content Include="Content\images\new-icons.png" />
@@ -328,6 +332,12 @@
     <Content Include="Views\GoodsTransfer\FaildTransfer.cshtml" />
     <Content Include="Views\GoodsBuy\ViewPage1.cshtml" />
     <Content Include="Views\GoodsBuy\Success.cshtml" />
+    <Content Include="Views\CarTransfer\Success.cshtml" />
+    <Content Include="Views\HouseBuy\Success.cshtml" />
+    <Content Include="Views\HouseTransfer\Success.cshtml" />
+    <Content Include="Views\CarBuy\Success.cshtml" />
+    <Content Include="Views\CarTransfer\ViewPage1.cshtml" />
+    <Content Include="Views\HouseTransfer\ViewPage1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UploadImage\Buy\CarImage\" />
@@ -354,6 +364,9 @@
       <Project>{41138e06-4c15-4641-9207-d0bf5c9f32da}</Project>
       <Name>Fx.Infrastructure</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

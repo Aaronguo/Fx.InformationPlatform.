@@ -21,8 +21,8 @@ namespace Fx.InformationPlatform.Site.Tests.DbCreate
         [TestMethod]
         public void CreateHouse()
         {
-            System.Data.Entity.Database.SetInitializer(new FxHouseInitializer());
-            FxHouseContext context = new FxHouseContext("fx.house-sqlserver");
+            //System.Data.Entity.Database.SetInitializer(new FxHouseInitializer());
+            FxHouseContext context = new FxHouseContext("fx.house-mysql");
             context.HouseBuyInfos.Add(new Fx.Entity.FxHouse.HouseBuyInfo()
             {
                 Action = "Action",
@@ -71,8 +71,8 @@ namespace Fx.InformationPlatform.Site.Tests.DbCreate
         [TestMethod]
         public void CreateCar()
         {
-            System.Data.Entity.Database.SetInitializer(new FxCarInitializer());
-            FxCarContext context = new FxCarContext("fx.car-sqlserver");
+            //System.Data.Entity.Database.SetInitializer(new FxCarInitializer());
+            FxCarContext context = new FxCarContext("fx.car-mysql");
             context.CarTransferInfos.Add(new Entity.FxCar.CarTransferInfo()
             {
                 Action = "Action",
@@ -118,8 +118,8 @@ namespace Fx.InformationPlatform.Site.Tests.DbCreate
         [TestMethod]
         public void CreateGoods()
         {
-            System.Data.Entity.Database.SetInitializer(new FxGoodsInitializer());
-            FxGoodsContext context = new FxGoodsContext("fx.goods-sqlserver");
+            //System.Data.Entity.Database.SetInitializer(new FxGoodsInitializer());
+            FxGoodsContext context = new FxGoodsContext("fx.goods-mysql");
             context.GoodsTransferInfos.Add(new Entity.FxGoods.GoodsTransferInfo()
             {
                 Action = "Action",

@@ -23,7 +23,7 @@ namespace Fx.InformationPlatform.Site.Controllers
         //
         // GET: /Account/
 
-        public ActionResult Index()
+        public  ActionResult Index()
         {
             //accountService.AddUser(new Entity.Membership()
             //{
@@ -35,19 +35,19 @@ namespace Fx.InformationPlatform.Site.Controllers
 
 
         [HttpGet]
-        public ActionResult Profile()
+        public  ActionResult Profile()
         {
             return View();
         }
 
         [HttpGet]
-        public ActionResult Login()
+        public  ActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Login(RegisterUser user)
+        public  ActionResult Login(RegisterUser user)
         {
 
             var result = accountService.VaildUser(user.Email, user.Password);
@@ -74,13 +74,13 @@ namespace Fx.InformationPlatform.Site.Controllers
         }
 
         [HttpGet]
-        public ActionResult Register()
+        public  ActionResult Register()
         {
             return View();
         }
 
 
-        public ActionResult Register(RegisterUser user)
+        public  ActionResult Register(RegisterUser user)
         {
             if (!ModelState.IsValid || user == null ||
                 user.VerificationCode == null || user.Email == null
@@ -128,7 +128,7 @@ namespace Fx.InformationPlatform.Site.Controllers
         /// 注销用户
         /// </summary>
         /// <returns></returns>
-        public ActionResult LoginOff()
+        public  ActionResult LoginOff()
         {
             System.Web.Security.FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");

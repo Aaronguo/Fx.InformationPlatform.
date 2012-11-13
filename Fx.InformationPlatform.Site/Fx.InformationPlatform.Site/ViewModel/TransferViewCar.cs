@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Fx.Entity;
 
-namespace Fx.InformationPlatform.Site
+namespace Fx.InformationPlatform.Site.ViewModel
 {
     public class TransferViewCar
     {

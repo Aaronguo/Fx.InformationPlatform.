@@ -13,6 +13,7 @@ namespace Fx.InformationPlatform.Site.Controllers
         protected string RoutePars { get; private set; }
 
 
+
         public virtual void InitParas()
         {
             ActionName = this.ActionName();

@@ -34,5 +34,22 @@ namespace Fx.Entity
         /// 是否发布
         /// </summary>
         bool IsPublish { get; set; }
+
+
+        int InfoProcessState { get; set; }
+    }
+
+    public enum ProcessState
+    {
+        Commit = 0,
+        //Authorizing = 1,
+        AuthorizeSuccess = 2,//关键词过滤证过成功
+        AuthorizeFaild = 3,//关键词过滤认证失败
+        //PictureProcessing = 4,
+        PictureProcessdSuccessd = 5,//图片压缩成功
+        PictureProcessdFailed = 6,//图片压缩失败
+        PictrueCdnSuccessd = 8,//图片CDN成功
+        PictrueCdnFailed = 9,//图片CDN失败
+        End = 10,//流程成功
     }
 }

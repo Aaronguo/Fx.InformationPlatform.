@@ -12,6 +12,7 @@ namespace Fx.Entity.FxHouse
             this.CreatedTime = DateTime.Now;
             this.IsDelete = false;
             this.IsPublish = false;
+            this.InfoProcessState = (int)ProcessState.Commit;
         }
 
         /// <summary>
@@ -75,7 +76,7 @@ namespace Fx.Entity.FxHouse
         /// <summary>
         /// 创建时间
         /// </summary>
-        public DateTime CreatedTime { get; set; }
+        public virtual DateTime CreatedTime { get; set; }
 
         /// <summary>
         /// 是否逻辑删除
@@ -86,5 +87,7 @@ namespace Fx.Entity.FxHouse
         /// 是否发布
         /// </summary>
         public virtual bool IsPublish { get; set; }
+
+        public int InfoProcessState { get; set; }
     }
 }

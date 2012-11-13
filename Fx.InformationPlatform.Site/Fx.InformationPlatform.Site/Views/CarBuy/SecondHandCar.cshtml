@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Fx.InformationPlatform.Site.ViewModel.BuyViewCar
+@{
     Layout = "~/Views/Shared/_LayoutClean.cshtml";
     ViewBag.Title = "发布车辆求购信息";
 }
@@ -127,6 +128,19 @@
                 <div class="clear">
                 </div>
                 <br />
+
+                <div style="display: none;">
+                    @Html.EditorFor(model => model.Title)
+                    @Html.EditorFor(model => model.CatagroyId)
+                    @Html.EditorFor(model => model.Price)
+                    @Html.EditorFor(model => model.AreaId)
+                    @Html.EditorFor(model => model.CityId)
+                    @Html.EditorFor(model => model.CarYear)
+                    @Html.EditorFor(model => model.CarMileage)
+                    @Html.EditorFor(model => model.Email)
+                    @Html.EditorFor(model => model.Mark)
+                </div>
+
 
                 <div class="txtright alpha grid_3">
                     &nbsp;

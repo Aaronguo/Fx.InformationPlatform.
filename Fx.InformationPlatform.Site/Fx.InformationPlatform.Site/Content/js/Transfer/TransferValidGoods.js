@@ -23,12 +23,12 @@ transfergoods.Submit = function () {
 
 
 
-transfergoods.Titile = function () {
+transfergoods.Title = function () {
     return $("#title").val();
 }
 
 transfergoods.ValidTitle = function () {
-    if (transfergoods.Titile() == '') {
+    if (transfergoods.Title() == '') {
         transfergoods.TipMsg = "标题不能为空";
         return false;
     }
@@ -71,7 +71,7 @@ transfergoods.IsChangeGoods = function () {
 }
 
 transfergoods.ChangeGoodsText = function () {
-    return $("changegoodstxt").val();
+    return $("#changegoodstxt").val();              
 }
 
 transfergoods.ValidChangeGoods = function () {
@@ -211,7 +211,7 @@ transfergoods.ValidTag = function () {
 
 //注意Checkbox
 transfergoods.BuildMVCForm = function () {
-    $("#Title").val(transfergoods.Titile());
+    $("#Title").val(transfergoods.Title());
     $("#Price").val(transfergoods.Price());
     $("#CatagroyId").val(transfergoods.CatagroyId());
     $("#IsChangeGoods").attr("checked",$("#changegoods").attr("checked"));

@@ -8,6 +8,7 @@ using Fx.Domain.Account.IService;
 using Fx.Domain.FxCar.IService;
 using Fx.Domain.FxSite.IService;
 using Fx.Entity.FxCar;
+using Fx.InformationPlatform.Site.ViewModel;
 
 namespace Fx.InformationPlatform.Site.Controllers
 {
@@ -16,7 +17,6 @@ namespace Fx.InformationPlatform.Site.Controllers
         ICar carService;
         IBuyCar buyService;
         IAccountService accountService;
-        //private readonly string buyImagePath = "~/UploadImage/Buy/CarImage";
         public CarBuyController(ICar carService ,
             IBuyCar buyService,
             IAccountService accountService)
@@ -37,8 +37,8 @@ namespace Fx.InformationPlatform.Site.Controllers
         {
             if (BuildCar(car))
             {
-                CarBuyInfo transfergoods = MapperCar(car);
-                buyService.SaveBuyCar(transfergoods);
+                CarBuyInfo buycar = MapperCar(car);
+                buyService.SaveBuyCar(buycar);
                 return View("Success");
             }
             return View("FaildTransfer");
@@ -64,7 +64,7 @@ namespace Fx.InformationPlatform.Site.Controllers
             info.Price = (int)car.Price;
             info.PublishTitle = car.Title;
             info.PublishUserEmail = car.Email;
-            info.UserAccount = User.Identity.Name;
+            info.UserAccount = User.Identity.Name;            
             return info;
         }
 

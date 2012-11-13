@@ -1,4 +1,4 @@
-﻿namespace Fx.InformationPlatform.Site
+﻿namespace Fx.InformationPlatform.Site.ViewModel
 {
     public class BuyViewCar
     {

@@ -12,6 +12,7 @@ namespace Fx.Entity.FxCar
             this.CreatedTime = DateTime.Now;
             this.IsDelete = false;
             this.IsPublish = false;
+            this.InfoProcessState = (int)ProcessState.Commit;
         }
 
         /// <summary>
@@ -84,5 +85,7 @@ namespace Fx.Entity.FxCar
         /// 是否发布
         /// </summary>
         public virtual bool IsPublish { get; set; }
+
+        public int InfoProcessState { get; set; }
     }
 }
