@@ -15,7 +15,5 @@ namespace Fx.Entity.FxCar
         {          
             this.Pictures = new List<TransferPicture>();
         }
-
-        public virtual ICollection<CarTransferLog> Logs { get; set; }
     }
 }

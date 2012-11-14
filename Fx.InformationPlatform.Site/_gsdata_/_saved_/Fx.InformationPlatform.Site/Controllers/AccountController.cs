@@ -90,7 +90,7 @@ namespace Fx.InformationPlatform.Site.Controllers
             }
             if (string.Compare(user.VerificationCode, Session["PictureCode"].ToString(),true) != 0)
             {
-                ViewBag.VerificationCode = "验证码错误,请重试";
+                ViewBag.Error = "验证码错误,请重试";
                 return View("Register", user);
             }
             var membershipuser = new Membership();

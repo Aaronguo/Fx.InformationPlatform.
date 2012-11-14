@@ -8,7 +8,5 @@ namespace Fx.Entity.FxCar
     public class CarBuyInfo : CarBase
     {
         public int CarBuyInfoId { get; set; }
-
-        public virtual ICollection<CarBuyLog> Logs { get; set; }
     }
 }

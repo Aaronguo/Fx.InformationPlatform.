@@ -13,7 +13,7 @@ using Fx.Infrastructure.Db;
 
 namespace Fx.Domain
 {
-    public class SiteContext : DbContext, IDisposable
+    public class SiteContext : DbContext
     {
         static SiteContext()
         {
@@ -21,7 +21,7 @@ namespace Fx.Domain
         }
 
         public SiteContext()
-            : base("fx.site-sqlserver")
+            : base("fx.site-sqlserver")//Connection.CreateConnection(FxConnection.FxSite),true
         {
            
         }

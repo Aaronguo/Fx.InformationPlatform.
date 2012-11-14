@@ -16,11 +16,6 @@ namespace Fx.InformationPlatform.Site.Controllers
             return View();
         }
 
-        public ActionResult Float()
-        {
-            return View();
-        }
-
 
 
     }

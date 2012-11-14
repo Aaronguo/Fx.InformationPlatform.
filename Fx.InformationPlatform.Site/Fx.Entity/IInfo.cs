@@ -41,15 +41,55 @@ namespace Fx.Entity
 
     public enum ProcessState
     {
+        /// <summary>
+        /// 待审核
+        /// </summary>
         Commit = 0,
         //Authorizing = 1,
-        AuthorizeSuccess = 2,//关键词过滤证过成功
-        AuthorizeFaild = 3,//关键词过滤认证失败
+        /// <summary>
+        /// 关键词过滤证过成功
+        /// </summary>
+        AuthorizeSuccess = 2,
+        /// <summary>
+        /// 关键词过滤认证失败
+        /// </summary>
+        AuthorizeFaild = 3,//
         //PictureProcessing = 4,
-        PictureProcessdSuccessd = 5,//图片压缩成功
-        PictureProcessdFailed = 6,//图片压缩失败
-        PictrueCdnSuccessd = 8,//图片CDN成功
-        PictrueCdnFailed = 9,//图片CDN失败
-        End = 10,//流程成功
+        /// <summary>
+        /// 图片压缩成功
+        /// </summary>
+        PictureProcessdSuccessd = 5,//
+        /// <summary>
+        /// 图片压缩失败
+        /// </summary>
+        PictureProcessdFailed = 6,
+        /// <summary>
+        /// 图片CDN成功
+        /// </summary>
+        PictrueCdnSuccessd = 8,//
+        /// <summary>
+        /// 图片CDN失败
+        /// </summary>
+        PictrueCdnFailed = 9,        
+        /// <summary>
+        /// Job完成
+        /// </summary>
+        JobSuccess=10,        
+        /// <summary>
+        /// 已发布
+        /// </summary>
+        Publish=11,
+        /// <summary>
+        /// 延长展示时间
+        /// </summary>
+        Delay=12,
+        /// <summary>
+        /// 流程结束  不再进行任何处理
+        /// </summary>       
+        End = 99,
+
+
     }
-}
+}			
+
+

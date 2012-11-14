@@ -258,7 +258,6 @@
     </Content>
     <Content Include="Content\js\modernizr-2.0.6-development-only.js" />
     <Content Include="Content\images\favicon.ico" />
-    <Content Include="Views\Test\shoes.jpg" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -339,7 +338,6 @@
     <Content Include="Views\CarBuy\Success.cshtml" />
     <Content Include="Views\CarTransfer\ViewPage1.cshtml" />
     <Content Include="Views\HouseTransfer\ViewPage1.cshtml" />
-    <Content Include="Views\Test\Float.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UploadImage\Buy\CarImage\" />

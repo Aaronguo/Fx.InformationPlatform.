@@ -69,8 +69,6 @@
     <Compile Include="Account\UserAccountService.cs" />
     <Compile Include="Account\IService\IAccountService.cs" />
     <Compile Include="Account\AccountContext.cs" />
-    <Compile Include="FxCar\CarJobService.cs" />
-    <Compile Include="FxCar\IService\ICarBuyJob.cs" />
     <Compile Include="FxCar\Mapping\CarBuyInfo_Mapping.cs" />
     <Compile Include="FxCar\Mapping\CarTransferInfo_Mapping.cs" />
     <Compile Include="FxGoods\Mapping\GoodsBuyInfo_Mapping.cs" />
@@ -132,14 +130,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /V "$(TargetDir)\Fx.Domain.dll" "D:\Github\FxInformationJob\packages\Fx\Fx.Domain\Fx.Domain.dll"
-copy /V "$(TargetDir)\Fx.Domain.pdb" "D:\Github\FxInformationJob\packages\Fx\Fx.Domain\Fx.Domain.pdb"</PostBuildEvent>
-  </PropertyGroup>
-  <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
+    <PostBuildEvent>"$(SolutionDir)packages\EntityFramework.Patterns.0.7\tools\Afterthought.Amender.exe" "$(TargetPath)" "$(TargetDir)EntityFramework.Patterns.dll"
+</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -9,7 +9,7 @@ using Fx.Entity.FxHouse;
 
 namespace Fx.Domain.FxHouse
 {
-    public class FxHouseContext : DbContext, IDisposable
+    public class FxHouseContext : DbContext
     {
         static FxHouseContext()
         {

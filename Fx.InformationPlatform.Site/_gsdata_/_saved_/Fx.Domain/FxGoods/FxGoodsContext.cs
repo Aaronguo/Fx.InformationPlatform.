@@ -6,13 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Fx.Domain.FxGoods.Mapping;
+using Fx.Domain.FxGoods.Mapping;
 using Fx.Domain.Mapping;
 using Fx.Entity.FxGoods;
 using Fx.Infrastructure.Db;
 
 namespace Fx.Domain.FxGoods
 {
-    public class FxGoodsContext : DbContext, IDisposable
+    public class FxGoodsContext : DbContext
     {
         static FxGoodsContext()
         {

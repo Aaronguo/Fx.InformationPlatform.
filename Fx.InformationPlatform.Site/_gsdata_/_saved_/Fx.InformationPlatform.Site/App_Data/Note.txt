@@ -11,7 +11,3 @@ http://code.google.com/p/swfupload/
 http://www.uploadify.com/
 http://blueimp.github.com/jQuery-File-Upload/
 解决发布页面Ajax请求数据后缓存的问题。
-
-
-
-需要添加帖子处理的流程状态

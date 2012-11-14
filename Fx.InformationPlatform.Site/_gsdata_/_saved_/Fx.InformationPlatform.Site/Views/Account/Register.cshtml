@@ -16,7 +16,7 @@
                 </div>
                 <div class="grid_16 omega">
                     @Html.TextBoxFor(model => model.Email, new { placeholder = "邮箱即为用户帐号" })
-                    @Html.ValidationMessageFor(model => model.Email)   <span style="color: #f00">*必填</span>                    
+                    @Html.ValidationMessageFor(model => model.Email)   <span style="color: #f00">*必填</span>
                 </div>
                 <div class="clear">
                 </div>
@@ -76,13 +76,22 @@
                 <div class="clear">
                 </div>
 
+        @*        <div class="grid_2 alpha">
+                    <label>头像</label>
+                </div>
+                <div class="grid_16 omega">
+                    <input type="file" name="headPicture" />
+                </div>
+                <div class="clear">
+                </div>*@
+
+
 
                 <div class="grid_2 alpha">
                     <label>验证码</label>
                 </div>
                 <div class="grid_6">
                     @Html.TextBoxFor(model => model.VerificationCode)
-                    <span style="color: #f00;">@ViewBag.VerificationCode</span>
                 </div>
 
                 <div class="grid_10 omega">

@@ -45,9 +45,7 @@
     <Compile Include="BuyPicture.cs" />
     <Compile Include="FxCar\CarBase.cs" />
     <Compile Include="FxCar\CarBuyInfo.cs" />
-    <Compile Include="FxCar\CarBuyLog.cs" />
     <Compile Include="FxCar\CarTransferInfo.cs" />
-    <Compile Include="FxCar\CarTransferLog.cs" />
     <Compile Include="FxGoods\GoodBuyInfo.cs" />
     <Compile Include="FxGoods\GoodsTransferInfo.cs" />
     <Compile Include="FxHouse\HouseBase.cs" />

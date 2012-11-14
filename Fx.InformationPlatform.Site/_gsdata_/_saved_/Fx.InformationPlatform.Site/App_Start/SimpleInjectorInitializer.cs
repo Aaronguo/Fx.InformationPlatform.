@@ -59,8 +59,6 @@ namespace Fx.InformationPlatform.Site.App_Start
             //»º´æ·þÎñ
             container.RegisterSingle<Fx.Infrastructure.Caching.ICacheManager, Fx.Infrastructure.Caching.CacheManager>();
 
-           
-
             // For instance:
             // container.Register<IUserRepository, SqlUserRepository>();
         }
