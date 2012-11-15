@@ -123,5 +123,15 @@ namespace Fx.InformationPlatform.Site.Controllers
             return details;
         }
         #endregion
+
+
+        //Test
+        public ActionResult Test()
+        {
+            Fx.Domain.FxCar.CarBuyJobService job = new Domain.FxCar.CarBuyJobService();
+            bool res= job.AuthorizeSuccess(1);
+            return Json(res);
+        }
+
     }
 }

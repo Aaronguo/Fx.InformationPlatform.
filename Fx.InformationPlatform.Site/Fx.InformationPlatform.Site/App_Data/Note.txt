@@ -15,3 +15,7 @@ http://blueimp.github.com/jQuery-File-Upload/
 
 
 需要添加帖子处理的流程状态
+
+
+
+copy /V "$(TargetDir)\Fx.Domain.dll" "D:\Github\FxInformationJob\packages\Fx\Fx.Domain\Fx.Domain.dll"

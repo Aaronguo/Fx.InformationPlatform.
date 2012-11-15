@@ -69,8 +69,11 @@
     <Compile Include="Account\UserAccountService.cs" />
     <Compile Include="Account\IService\IAccountService.cs" />
     <Compile Include="Account\AccountContext.cs" />
-    <Compile Include="FxCar\CarJobService.cs" />
-    <Compile Include="FxCar\IService\ICarBuyJob.cs" />
+    <Compile Include="FxCar\IService\ITransferCar.cs" />
+    <Compile Include="FxCar\JobImp\CarBuyJobService.cs" />
+    <Compile Include="FxCar\JobImp\CarTransferJobService.cs" />
+    <Compile Include="FxCar\IService\Job\ICarBuyJob.cs" />
+    <Compile Include="FxCar\IService\Job\ICarTransferJob.cs" />
     <Compile Include="FxCar\Mapping\CarBuyInfo_Mapping.cs" />
     <Compile Include="FxCar\Mapping\CarTransferInfo_Mapping.cs" />
     <Compile Include="FxGoods\Mapping\GoodsBuyInfo_Mapping.cs" />
@@ -84,7 +87,6 @@
     <Compile Include="FxCar\FxCarInitializer.cs" />
     <Compile Include="FxCar\FxTransferCarService.cs" />
     <Compile Include="FxCar\IService\IBuyCar.cs" />
-    <Compile Include="FxCar\IService\ITransferCar.cs" />
     <Compile Include="FxGoods\FxBuyGoodsService.cs" />
     <Compile Include="FxGoods\FxGoodsContext.cs" />
     <Compile Include="FxGoods\FxTransferGoodService.cs" />
@@ -134,8 +136,7 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /V "$(TargetDir)\Fx.Domain.dll" "D:\Github\FxInformationJob\packages\Fx\Fx.Domain\Fx.Domain.dll"
-copy /V "$(TargetDir)\Fx.Domain.pdb" "D:\Github\FxInformationJob\packages\Fx\Fx.Domain\Fx.Domain.pdb"</PostBuildEvent>
+    <PostBuildEvent>copy /V "$(TargetDir)\Fx.Domain.dll" "E:\Program Files\GitHubWorkspace\net\FxInformationJob\FxInformationJob\FxInformationJob\packages\Fx\Fx.Domain\Fx.Domain.dll"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>

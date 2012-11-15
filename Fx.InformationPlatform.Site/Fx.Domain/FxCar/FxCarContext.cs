@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using Fx.Domain.FxCar.Mapping;
 using Fx.Domain.Mapping;
+using Fx.Entity;
 using Fx.Entity.FxCar;
 
 namespace Fx.Domain.FxCar
@@ -38,5 +39,7 @@ namespace Fx.Domain.FxCar
 
         public DbSet<CarTransferInfo> CarTransferInfos { get; set; }
         public DbSet<CarBuyInfo> CarBuyInfos { get; set; }
+
+        public DbSet<PictureCdnError> PictureCdnErrors { get; set; }
     }
 }
