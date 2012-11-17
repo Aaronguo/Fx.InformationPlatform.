@@ -35,6 +35,33 @@ namespace Fx.InformationPlatform.Site.App_Start
             // and remove the SimpleInjectorMVC3 and SimpleInjectorMVC3Extensions class from the App_Start
             // folder.
             //#error Register your services here (remove this line).
+            InitSiteContainer(container);
+            InitTaskContainer(container);
+
+        }
+
+        private static void InitTaskContainer(Container container)
+        {
+
+            //container.RegisterSingle<Fx.Infrastructure.Caching.ICacheManager, Fx.Infrastructure.Caching.CacheManager>();
+            container.RegisterSingle<FxTask.AppSettings>();
+            container.RegisterSingle<FxTask.Filter>();
+
+            //FxTaskFxCar
+            container.Register<Fx.Domain.FxCar.IService.ICarBuyJob, Fx.Domain.FxCar.CarBuyJobService>();
+            container.Register<Fx.Domain.FxCar.IService.ICarTransferJob, Fx.Domain.FxCar.CarTransferJobService>();
+
+            //FxTaskFxGoods
+            container.Register<Fx.Domain.FxGoods.IService.IGoodsBuyJob, Fx.Domain.FxGoods.GoodsBuyJobService>();
+            container.Register<Fx.Domain.FxGoods.IService.IGoodsTransferJob, Fx.Domain.FxGoods.GoodsTransferJobService>();
+
+            //FxTaskFxHouse
+            container.Register<Fx.Domain.FxHouse.IService.IHouseBuyJob, Fx.Domain.FxHouse.HouseBuyJobService>();
+            container.Register<Fx.Domain.FxHouse.IService.IHouseTransferJob, Fx.Domain.FxHouse.HouseTransferJobService>();
+        }
+
+        private static void InitSiteContainer(Container container)
+        {
             container.Register<Fx.Domain.Account.IService.IAccountService, Fx.Domain.Account.UserAccountService>();
             container.Register<Fx.Domain.FxSite.IService.IChannelService, Fx.Domain.FxSite.ChannelService>();
             container.Register<Fx.Domain.FxSite.IService.IPageAjax, Fx.Domain.FxSite.PublishAjaxService>();
@@ -46,7 +73,7 @@ namespace Fx.InformationPlatform.Site.App_Start
             //FxGoods
             container.Register<Fx.Domain.FxGoods.IService.ITransferGoods, Fx.Domain.FxGoods.FxTransferGoodService>();
             container.Register<Fx.Domain.FxGoods.IService.IBuyGoods, Fx.Domain.FxGoods.FxBuyGoodsService>();
-            
+
             //FxCar
             container.Register<Fx.Domain.FxCar.IService.ITransferCar, Fx.Domain.FxCar.FxTransferCarService>();
             container.Register<Fx.Domain.FxCar.IService.IBuyCar, Fx.Domain.FxCar.FxBuyCarService>();
@@ -58,11 +85,6 @@ namespace Fx.InformationPlatform.Site.App_Start
 
             //»º´æ·þÎñ
             container.RegisterSingle<Fx.Infrastructure.Caching.ICacheManager, Fx.Infrastructure.Caching.CacheManager>();
-
-           
-
-            // For instance:
-            // container.Register<IUserRepository, SqlUserRepository>();
         }
     }
 }
