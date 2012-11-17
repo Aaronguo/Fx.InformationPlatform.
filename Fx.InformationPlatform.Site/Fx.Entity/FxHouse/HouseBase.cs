@@ -89,5 +89,7 @@ namespace Fx.Entity.FxHouse
         public virtual bool IsPublish { get; set; }
 
         public int InfoProcessState { get; set; }
+
+        public string ErrorMsg { get; set; }
     }
 }

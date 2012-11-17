@@ -5,8 +5,10 @@ using System.Text;
 
 namespace Fx.Entity.FxHouse
 {
-   public class HouseBuyInfo:HouseBase
+    public class HouseBuyInfo : HouseBase
     {
-       public int HouseBuyInfoId { get; set; }
+        public int HouseBuyInfoId { get; set; }
+
+        public virtual ICollection<HouseBuyLog> Logs { get; set; }
     }
 }

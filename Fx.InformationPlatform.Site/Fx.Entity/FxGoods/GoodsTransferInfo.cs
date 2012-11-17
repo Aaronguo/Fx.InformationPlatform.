@@ -33,6 +33,8 @@ namespace Fx.Entity.FxGoods
 
         public virtual List<TransferPicture> Pictures { get; set; }
 
+        public virtual ICollection<GoodsTransferLog> Logs { get; set; }
+
         public GoodsTransferInfo()
         {          
             this.Pictures = new List<TransferPicture>();

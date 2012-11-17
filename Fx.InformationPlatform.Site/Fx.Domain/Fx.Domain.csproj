@@ -76,8 +76,16 @@
     <Compile Include="FxCar\IService\Job\ICarTransferJob.cs" />
     <Compile Include="FxCar\Mapping\CarBuyInfo_Mapping.cs" />
     <Compile Include="FxCar\Mapping\CarTransferInfo_Mapping.cs" />
+    <Compile Include="FxGoods\IService\Job\IGoodsBuyJob.cs" />
+    <Compile Include="FxGoods\IService\Job\IGoodsTransferJob.cs" />
+    <Compile Include="FxGoods\JobImp\GoodsBuyJobService.cs" />
+    <Compile Include="FxGoods\JobImp\GoodsTransferJobService.cs" />
     <Compile Include="FxGoods\Mapping\GoodsBuyInfo_Mapping.cs" />
     <Compile Include="FxGoods\Mapping\GoodsTransferInfo_Mapping.cs" />
+    <Compile Include="FxHouse\IService\Job\IHouseBuyJob.cs" />
+    <Compile Include="FxHouse\IService\Job\IHouseTransferJob.cs" />
+    <Compile Include="FxHouse\JobImp\HouseBuyJobService.cs" />
+    <Compile Include="FxHouse\JobImp\HouseTransferJobService.cs" />
     <Compile Include="FxHouse\Mapping\HouseBuyInfo_Mapping.cs" />
     <Compile Include="FxHouse\Mapping\HouseTransferInfo_Mapping.cs" />
     <Compile Include="Mapping\BuyPicture_Mapping.cs" />

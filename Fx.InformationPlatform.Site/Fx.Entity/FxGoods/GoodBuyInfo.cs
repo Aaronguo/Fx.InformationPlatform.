@@ -21,6 +21,8 @@ namespace Fx.Entity.FxGoods
 
         public virtual List<BuyPicture> Pictures { get; set; }
 
+        public virtual ICollection<GoodsBuyLog> Logs { get; set; }
+
         public GoodsBuyInfo()
         {
             this.Pictures = new List<BuyPicture>();

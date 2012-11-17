@@ -7,11 +7,13 @@ namespace Fx.Domain.FxCar.IService
 {
     public interface ICarBuyJob
     {
+        bool Authorizing(int carId);
+
         bool AuthorizeSuccess(int carId);
 
-        bool AuthorizeFaild(int carId);
+        bool AuthorizeFaild(int carId, string msg);
 
-        bool Publish(int carId);     
+        bool Publish(int carId);
 
         bool Delay(int carId);
 

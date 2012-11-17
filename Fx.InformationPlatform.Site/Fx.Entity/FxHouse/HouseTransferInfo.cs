@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Fx.Entity.FxHouse
 {
-    public class HouseTransferInfo:HouseBase
+    public class HouseTransferInfo : HouseBase
     {
         public int HouseTransferInfoId { get; set; }
 
@@ -20,6 +20,8 @@ namespace Fx.Entity.FxHouse
         public string RoadName { get; set; }
 
         public virtual List<TransferPicture> Pictures { get; set; }
+
+        public virtual ICollection<HouseTransferLog> Logs { get; set; }
 
         public HouseTransferInfo()
         {

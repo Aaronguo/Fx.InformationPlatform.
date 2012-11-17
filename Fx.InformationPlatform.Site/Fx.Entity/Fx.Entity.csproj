@@ -49,10 +49,14 @@
     <Compile Include="FxCar\CarTransferInfo.cs" />
     <Compile Include="FxCar\CarTransferLog.cs" />
     <Compile Include="FxGoods\GoodBuyInfo.cs" />
+    <Compile Include="FxGoods\GoodsBuyLog.cs" />
     <Compile Include="FxGoods\GoodsTransferInfo.cs" />
+    <Compile Include="FxGoods\GoodsTransferLog.cs" />
     <Compile Include="FxHouse\HouseBase.cs" />
     <Compile Include="FxHouse\HouseBuyInfo.cs" />
+    <Compile Include="FxHouse\HouseBuyLog.cs" />
     <Compile Include="FxHouse\HouseTransferInfo.cs" />
+    <Compile Include="FxHouse\HouseTransferLog.cs" />
     <Compile Include="FxSite\Area.cs" />
     <Compile Include="FxSite\Channel.cs" />
     <Compile Include="FxSite\ChannelList.cs" />

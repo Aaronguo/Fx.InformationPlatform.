@@ -5,15 +5,19 @@ using System.Text;
 
 namespace Fx.Domain.FxCar.IService
 {
-   public interface ICarTransferJob
+    public interface ICarTransferJob
     {
+        bool Authorizing(int carId);
+
         bool AuthorizeSuccess(int carId);
 
-        bool AuthorizeFaild(int carId);        
+        bool AuthorizeFaild(int carId, string msg);
 
         //bool PictureProcessdSuccessd(int carId);
 
         //bool PictureProcessdFailed(int carId,string erroMsg);
+
+        bool PictrueCdning(int carId);
 
         bool PictrueCdnSuccessd(int carId);
 

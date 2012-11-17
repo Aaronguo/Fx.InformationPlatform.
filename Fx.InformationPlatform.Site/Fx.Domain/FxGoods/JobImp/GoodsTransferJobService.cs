@@ -1,0 +1,197 @@
+﻿using System;
+using System.Linq;
+using Fx.Domain.FxGoods.IService;
+using Fx.Entity;
+
+namespace Fx.Domain.FxGoods
+{
+    public class GoodsTransferJobService : IGoodsTransferJob
+    {
+        public bool Authorizing(int goodsId)
+        {
+            using (var context = new FxGoodsContext())
+            {
+                var goods = context.GoodsTransferInfos.Where(r => r.GoodsTransferInfoId == goodsId).FirstOrDefault();
+                if (goods != null)
+                {
+                    goods.InfoProcessState = (int)ProcessState.Authorizing;
+                    goods.Logs.Add(new Entity.FxGoods.GoodsTransferLog()
+                    {
+                        OperteName = Enum.GetName(typeof(ProcessState), ProcessState.Authorizing)
+                    });
+                    return context.SaveChanges() > 0;
+                }
+            }
+            return false;
+        }
+
+        public bool AuthorizeSuccess(int goodsId)
+        {
+            using (var context = new FxGoodsContext())
+            {
+                var goods = context.GoodsTransferInfos.Where(r => r.GoodsTransferInfoId == goodsId).FirstOrDefault();
+                if (goods != null)
+                {
+                    goods.InfoProcessState = (int)ProcessState.AuthorizeSuccess;
+                    goods.Logs.Add(new Entity.FxGoods.GoodsTransferLog()
+                    {
+                        OperteName = Enum.GetName(typeof(ProcessState), ProcessState.AuthorizeSuccess)
+                    });
+                    return context.SaveChanges() > 0;
+                }
+            }
+            return false;
+        }
+
+        public bool AuthorizeFaild(int goodsId,string msg)
+        {
+            using (var context = new FxGoodsContext())
+            {
+                var goods = context.GoodsTransferInfos.Where(r => r.GoodsTransferInfoId == goodsId).FirstOrDefault();
+                if (goods != null)
+                {
+                    goods.InfoProcessState = (int)ProcessState.AuthorizeFaild;
+                    goods.ErrorMsg = msg;
+                    goods.Logs.Add(new Entity.FxGoods.GoodsTransferLog()
+                    {
+                        OperteName = Enum.GetName(typeof(ProcessState), ProcessState.AuthorizeFaild)
+                    });
+                    return context.SaveChanges() > 0;
+                }
+            }
+            return false;
+        }
+
+        public bool PictrueCdning(int goodsId)
+        {
+            using (var context = new FxGoodsContext())
+            {
+                var goods = context.GoodsTransferInfos.Where(r => r.GoodsTransferInfoId == goodsId).FirstOrDefault();
+                if (goods != null)
+                {
+                    goods.InfoProcessState = (int)ProcessState.PictrueCdning;
+                    goods.Logs.Add(new Entity.FxGoods.GoodsTransferLog()
+                    {
+                        OperteName = Enum.GetName(typeof(ProcessState), ProcessState.PictrueCdning)
+                    });
+                    return context.SaveChanges() > 0;
+                }
+            }
+            return false;
+        }
+
+        public bool PictrueCdnSuccessd(int goodsId)
+        {
+            using (var context = new FxGoodsContext())
+            {
+                var goods = context.GoodsTransferInfos.Where(r => r.GoodsTransferInfoId == goodsId).FirstOrDefault();
+                if (goods != null)
+                {
+                    goods.InfoProcessState = (int)ProcessState.PictrueCdnSuccessd;
+                    goods.Logs.Add(new Entity.FxGoods.GoodsTransferLog()
+                    {
+                        OperteName = Enum.GetName(typeof(ProcessState), ProcessState.PictrueCdnSuccessd)
+                    });
+                    return context.SaveChanges() > 0;
+                }
+            }
+            return false;
+        }
+
+        public bool PictrueCdnFailed(int goodsId, string errorMsg)
+        {
+            using (var context = new FxGoodsContext())
+            {
+                var goods = context.GoodsTransferInfos.Where(r => r.GoodsTransferInfoId == goodsId).FirstOrDefault();
+                if (goods != null)
+                {
+                    goods.InfoProcessState = (int)ProcessState.PictrueCdnFailed;
+                    goods.Logs.Add(new Entity.FxGoods.GoodsTransferLog()
+                    {
+                        OperteName = Enum.GetName(typeof(ProcessState), ProcessState.PictrueCdnFailed)
+                    });
+                    context.PictureCdnErrors.Add(new PictureCdnError()
+                    {
+                        ErorMsg = errorMsg,
+                        ObjectId = goodsId,
+                        SourceType = (int)SoureceCatagry.CarTransfer
+                    });
+                    return context.SaveChanges() > 0;
+                }
+            }
+            return false;
+        }
+
+        public bool JobSuccess(int goodsId)
+        {
+            using (var context = new FxGoodsContext())
+            {
+                var goods = context.GoodsTransferInfos.Where(r => r.GoodsTransferInfoId == goodsId).FirstOrDefault();
+                if (goods != null)
+                {
+                    goods.InfoProcessState = (int)ProcessState.JobSuccess;
+                    goods.Logs.Add(new Entity.FxGoods.GoodsTransferLog()
+                    {
+                        OperteName = Enum.GetName(typeof(ProcessState), ProcessState.JobSuccess)
+                    });
+                    return context.SaveChanges() > 0;
+                }
+            }
+            return false;
+        }
+
+        public bool Publish(int goodsId)
+        {
+            using (var context = new FxGoodsContext())
+            {
+                var goods = context.GoodsTransferInfos.Where(r => r.GoodsTransferInfoId == goodsId).FirstOrDefault();
+                if (goods != null)
+                {
+                    goods.InfoProcessState = (int)ProcessState.Publish;
+                    goods.Logs.Add(new Entity.FxGoods.GoodsTransferLog()
+                    {
+                        OperteName = Enum.GetName(typeof(ProcessState), ProcessState.Publish)
+                    });
+                    return context.SaveChanges() > 0;
+                }
+            }
+            return false;
+        }
+
+        public bool Delay(int goodsId)
+        {
+            using (var context = new FxGoodsContext())
+            {
+                var goods = context.GoodsTransferInfos.Where(r => r.GoodsTransferInfoId == goodsId).FirstOrDefault();
+                if (goods != null)
+                {
+                    goods.InfoProcessState = (int)ProcessState.Delay;
+                    goods.Logs.Add(new Entity.FxGoods.GoodsTransferLog()
+                    {
+                        OperteName = Enum.GetName(typeof(ProcessState), ProcessState.Delay)
+                    });
+                    return context.SaveChanges() > 0;
+                }
+            }
+            return false;
+        }
+
+        public bool End(int goodsId)
+        {
+            using (var context = new FxGoodsContext())
+            {
+                var goods = context.GoodsTransferInfos.Where(r => r.GoodsTransferInfoId == goodsId).FirstOrDefault();
+                if (goods != null)
+                {
+                    goods.InfoProcessState = (int)ProcessState.End;
+                    goods.Logs.Add(new Entity.FxGoods.GoodsTransferLog()
+                    {
+                        OperteName = Enum.GetName(typeof(ProcessState), ProcessState.End)
+                    });
+                    return context.SaveChanges() > 0;
+                }
+            }
+            return false;
+        }
+    }
+}

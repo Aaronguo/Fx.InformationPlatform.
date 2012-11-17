@@ -9,6 +9,24 @@ namespace Fx.Domain.FxCar
 {
     public class CarTransferJobService : ICarTransferJob
     {
+        public bool Authorizing(int carId)
+        {
+            using (var context = new FxCarContext())
+            {
+                var car = context.CarTransferInfos.Where(r => r.CarTransferInfoId == carId).FirstOrDefault();
+                if (car != null)
+                {
+                    car.InfoProcessState = (int)ProcessState.Authorizing;
+                    car.Logs.Add(new Entity.FxCar.CarTransferLog()
+                    {
+                        OperteName = Enum.GetName(typeof(ProcessState), ProcessState.Authorizing)
+                    });
+                    return context.SaveChanges() > 0;
+                }
+            }
+            return false;
+        }
+
         public bool AuthorizeSuccess(int carId)
         {
             using (var context = new FxCarContext())
@@ -27,7 +45,7 @@ namespace Fx.Domain.FxCar
             return false;
         }
 
-        public bool AuthorizeFaild(int carId)
+        public bool AuthorizeFaild(int carId,string msg)
         {
             using (var context = new FxCarContext())
             {
@@ -35,6 +53,7 @@ namespace Fx.Domain.FxCar
                 if (car != null)
                 {
                     car.InfoProcessState = (int)ProcessState.AuthorizeFaild;
+                    car.ErrorMsg = msg;
                     car.Logs.Add(new Entity.FxCar.CarTransferLog()
                     {
                         OperteName = Enum.GetName(typeof(ProcessState), ProcessState.AuthorizeFaild)
@@ -43,7 +62,25 @@ namespace Fx.Domain.FxCar
                 }
             }
             return false;
-        }      
+        }
+
+        public bool PictrueCdning(int carId)
+        {
+            using (var context = new FxCarContext())
+            {
+                var car = context.CarTransferInfos.Where(r => r.CarTransferInfoId == carId).FirstOrDefault();
+                if (car != null)
+                {
+                    car.InfoProcessState = (int)ProcessState.PictrueCdning;
+                    car.Logs.Add(new Entity.FxCar.CarTransferLog()
+                    {
+                        OperteName = Enum.GetName(typeof(ProcessState), ProcessState.PictrueCdning)
+                    });
+                    return context.SaveChanges() > 0;
+                }
+            }
+            return false;
+        }
 
         public bool PictrueCdnSuccessd(int carId)
         {
@@ -158,5 +195,9 @@ namespace Fx.Domain.FxCar
             }
             return false;
         }
+
+
+
+       
     }
 }

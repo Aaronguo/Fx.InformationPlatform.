@@ -87,5 +87,7 @@ namespace Fx.Entity.FxCar
         public virtual bool IsPublish { get; set; }
 
         public int InfoProcessState { get; set; }
+
+        public string ErrorMsg { get; set; }
     }
 }

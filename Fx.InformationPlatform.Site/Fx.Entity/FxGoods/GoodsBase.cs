@@ -91,6 +91,8 @@ namespace Fx.Entity.FxGoods
 
         public int InfoProcessState { get; set; }
 
+        public string ErrorMsg { get; set; }
+
         /// <summary>
         /// 二级分类Id
         /// </summary>

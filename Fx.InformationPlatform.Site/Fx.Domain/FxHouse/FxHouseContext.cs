@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using Fx.Domain.FxHouse.Mapping;
 using Fx.Domain.Mapping;
+using Fx.Entity;
 using Fx.Entity.FxHouse;
 
 namespace Fx.Domain.FxHouse
@@ -38,5 +39,6 @@ namespace Fx.Domain.FxHouse
 
         public DbSet<HouseTransferInfo> HouseTransferInfos { get; set; }
         public DbSet<HouseBuyInfo> HouseBuyInfos { get; set; }
+        public DbSet<PictureCdnError> PictureCdnErrors { get; set; }
     }
 }

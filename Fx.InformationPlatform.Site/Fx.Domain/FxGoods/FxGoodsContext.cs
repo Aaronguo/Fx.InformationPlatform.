@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Fx.Domain.FxGoods.Mapping;
 using Fx.Domain.Mapping;
+using Fx.Entity;
 using Fx.Entity.FxGoods;
 using Fx.Infrastructure.Db;
 
@@ -42,5 +43,6 @@ namespace Fx.Domain.FxGoods
 
         public DbSet<GoodsTransferInfo> GoodsTransferInfos { get; set; }
         public DbSet<GoodsBuyInfo> GoodsBuyInfos { get; set; }
+        public DbSet<PictureCdnError> PictureCdnErrors { get; set; }
     }
 }
