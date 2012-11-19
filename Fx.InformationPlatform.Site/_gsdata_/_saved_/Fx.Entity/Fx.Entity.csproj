@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DFF0501C-DCFF-4D13-A6EF-BFA9404E09DC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Fx.Entity</RootNamespace>
+    <AssemblyName>Fx.Entity</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account\RegisterUser.cs" />
+    <Compile Include="BuyPicture.cs" />
+    <Compile Include="FxCar\CarBase.cs" />
+    <Compile Include="FxCar\CarBuyInfo.cs" />
+    <Compile Include="FxCar\CarBuyLog.cs" />
+    <Compile Include="FxCar\CarTransferInfo.cs" />
+    <Compile Include="FxCar\CarTransferLog.cs" />
+    <Compile Include="FxGoods\GoodBuyInfo.cs" />
+    <Compile Include="FxGoods\GoodsBuyLog.cs" />
+    <Compile Include="FxGoods\GoodsTransferInfo.cs" />
+    <Compile Include="FxGoods\GoodsTransferLog.cs" />
+    <Compile Include="FxHouse\HouseBase.cs" />
+    <Compile Include="FxHouse\HouseBuyInfo.cs" />
+    <Compile Include="FxHouse\HouseBuyLog.cs" />
+    <Compile Include="FxHouse\HouseTransferInfo.cs" />
+    <Compile Include="FxHouse\HouseTransferLog.cs" />
+    <Compile Include="FxSite\Area.cs" />
+    <Compile Include="FxSite\Channel.cs" />
+    <Compile Include="FxSite\ChannelList.cs" />
+    <Compile Include="FxSite\ChannelListDetail.cs" />
+    <Compile Include="FxSite\City.cs" />
+    <Compile Include="FxSite\ELMAHError.cs" />
+    <Compile Include="FxSite\GoodsCondition.cs" />
+    <Compile Include="IAction.cs" />
+    <Compile Include="IInfo.cs" />
+    <Compile Include="IPublishAction.cs" />
+    <Compile Include="MemberShip\Applications.cs" />
+    <Compile Include="MemberShip\Membership.cs" />
+    <Compile Include="MemberShip\OtherInformation.cs" />
+    <Compile Include="MemberShip\Paths.cs" />
+    <Compile Include="MemberShip\PersonalizationAllUsers.cs" />
+    <Compile Include="MemberShip\PersonalizationPerUser.cs" />
+    <Compile Include="MemberShip\Profile.cs" />
+    <Compile Include="MemberShip\Roles.cs" />
+    <Compile Include="MemberShip\SchemaVersions.cs" />
+    <Compile Include="MemberShip\Users.cs" />
+    <Compile Include="MemberShip\WebEvent_Events.cs" />
+    <Compile Include="PictureCdnError.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FxGoods\GoodsBase.cs" />
+    <Compile Include="PublishImage.cs" />
+    <Compile Include="TransferPicture.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Fx.Infrastructure\Fx.Infrastructure.csproj">
+      <Project>{41138e06-4c15-4641-9207-d0bf5c9f32da}</Project>
+      <Name>Fx.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy /V "$(TargetDir)\Fx.Entity.dll" "E:\Program Files\GitHubWorkspace\net\FxInformationJob\FxInformationJob\FxInformationJob\packages\Fx\Fx.Entity\Fx.Entity.dll"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

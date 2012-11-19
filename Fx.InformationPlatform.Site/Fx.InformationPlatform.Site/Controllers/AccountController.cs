@@ -53,8 +53,8 @@ namespace Fx.InformationPlatform.Site.Controllers
             var result = accountService.VaildUser(user.Email, user.Password);
             if (result.isSuccess)
             {
-                //记住登录               
-                System.Web.Security.FormsAuthentication.SetAuthCookie(user.Email, true);
+                //记住登录                
+                System.Web.Security.FormsAuthentication.SetAuthCookie(user.Email, true);              
                 return RedirectToAction("Index", "Home");
                 //if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
                 //    && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))

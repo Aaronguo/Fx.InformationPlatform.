@@ -17,5 +17,11 @@ namespace Fx.InformationPlatform.Site.Controllers
             return View();
         }
 
+
+
+        public ActionResult GoodsShow()
+        {
+            return View();
+        }
     }
 }

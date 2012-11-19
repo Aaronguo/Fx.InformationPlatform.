@@ -14,7 +14,7 @@ using Fx.InformationPlatform.Site.ViewModel;
 namespace Fx.InformationPlatform.Site.Controllers
 {
     [Authorize]
-    public class GoodsBuyController : BaseController
+    public class GoodsBuyController : BaseController, ISiteJob
     {
         IGoods goodsService;
         IBuyGoods buyService;
@@ -34,6 +34,29 @@ namespace Fx.InformationPlatform.Site.Controllers
             return View();
         }
 
+        public ActionResult HomeSupplies()
+        {
+            BindCatagroy();
+            return View();
+        }
+
+        public ActionResult Fashion()
+        {
+            BindCatagroy();
+            return View();
+        }
+
+        public ActionResult CultureLife()
+        {
+            BindCatagroy();
+            return View();
+        }
+
+        public ActionResult Other()
+        {
+            BindCatagroy();
+            return View();
+        }
 
         private void BindCatagroy()
         {
@@ -49,10 +72,47 @@ namespace Fx.InformationPlatform.Site.Controllers
         public ActionResult Electronics(BuyViewGoods goods,
             List<HttpPostedFileBase> facefile, List<HttpPostedFileBase> otherfile, List<HttpPostedFileBase> badfile)
         {
+            return PublishGoods(goods, facefile, otherfile, badfile);
+        }
+
+        [HttpPost]
+        public ActionResult HomeSupplies(BuyViewGoods goods,
+            List<HttpPostedFileBase> facefile, List<HttpPostedFileBase> otherfile, List<HttpPostedFileBase> badfile)
+        {
+            return PublishGoods(goods, facefile, otherfile, badfile);
+        }
+
+        [HttpPost]
+        public ActionResult Fashion(BuyViewGoods goods,
+            List<HttpPostedFileBase> facefile, List<HttpPostedFileBase> otherfile, List<HttpPostedFileBase> badfile)
+        {
+            return PublishGoods(goods, facefile, otherfile, badfile);
+        }
+
+        [HttpPost]
+        public ActionResult CultureLife(BuyViewGoods goods,
+            List<HttpPostedFileBase> facefile, List<HttpPostedFileBase> otherfile, List<HttpPostedFileBase> badfile)
+        {
+            return PublishGoods(goods, facefile, otherfile, badfile);
+        }
+
+        [HttpPost]
+        public ActionResult Other(BuyViewGoods goods,
+            List<HttpPostedFileBase> facefile, List<HttpPostedFileBase> otherfile, List<HttpPostedFileBase> badfile)
+        {
+            return PublishGoods(goods, facefile, otherfile, badfile);
+        }
+
+
+
+
+        private ActionResult PublishGoods(BuyViewGoods goods, List<HttpPostedFileBase> facefile, List<HttpPostedFileBase> otherfile, List<HttpPostedFileBase> badfile)
+        {
             if (BuildGoods(goods, facefile, otherfile, badfile))
             {
                 GoodsBuyInfo transfergoods = MapperGoods(goods);
                 buyService.SaveBuyGoods(transfergoods);
+                RunJob();
                 return View("Success");
             }
             return View("FaildTransfer");
@@ -199,8 +259,16 @@ namespace Fx.InformationPlatform.Site.Controllers
                 System.IO.Directory.CreateDirectory(folderPath);
             }
             file.SaveAs(filePath);
-        } 
+        }
         #endregion
 
+
+        public void RunJob()
+        {
+            new System.Threading.Thread(() =>
+            {
+                new FxTask.FxGoods.Buy.GoodsBuyJobLoad();
+            }).Start();
+        }
     }
 }

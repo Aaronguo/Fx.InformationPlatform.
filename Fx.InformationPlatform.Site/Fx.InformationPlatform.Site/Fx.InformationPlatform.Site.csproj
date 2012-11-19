@@ -47,6 +47,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
     </Reference>
+    <Reference Include="FluentEmail">
+      <HintPath>..\packages\fluent-email.1.1.0\lib\net40\FluentEmail.dll</HintPath>
+    </Reference>
     <Reference Include="FxTask">
       <HintPath>..\packages\FxTask\FxTask.dll</HintPath>
     </Reference>
@@ -77,8 +80,23 @@
     <Reference Include="Microsoft.Practices.Unity.Interception">
       <HintPath>..\packages\FxTask\Other\Enterprise\Microsoft.Practices.Unity.Interception.dll</HintPath>
     </Reference>
+    <Reference Include="MySql.Data, Version=6.5.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MySQL Connector Net 6.5.4\Assemblies\v4.0\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data.Entity, Version=6.5.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MySQL Connector Net 6.5.4\Assemblies\v4.0\MySql.Data.Entity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Web, Version=6.5.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MySQL Connector Net 6.5.4\Assemblies\v4.0\MySql.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Quartz">
-      <HintPath>..\packages\FxTask\Other\Quartz.NET-2.0\bin\4.0\release\Quartz\Quartz.dll</HintPath>
+      <HintPath>..\packages\Quartz.NET-2.0\bin\4.0\release\Quartz\Quartz.dll</HintPath>
     </Reference>
     <Reference Include="SimpleInjector">
       <HintPath>..\packages\SimpleInjector.1.5.0.12199\lib\net35\SimpleInjector.dll</HintPath>
@@ -156,6 +174,9 @@
     <Compile Include="Controllers\CarBuyController.cs" />
     <Compile Include="Controllers\CarTransferController.cs" />
     <Compile Include="Controllers\GoodsBuyController.cs" />
+    <Compile Include="Controllers\GoodsChoseController.cs" />
+    <Compile Include="Controllers\GoodsController.cs" />
+    <Compile Include="Controllers\GoodsTransferShowController.cs" />
     <Compile Include="Controllers\GoodsTransferController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HouseBuyController.cs" />
@@ -169,6 +190,7 @@
     <Compile Include="Framework\ChannelLocation.cs" />
     <Compile Include="Framework\CsharpRazorViewEngiee.cs" />
     <Compile Include="Framework\ElmahHandledErrorLoggerFilter.cs" />
+    <Compile Include="Framework\ISiteJob.cs" />
     <Compile Include="Framework\StaticHelper.cs" />
     <Compile Include="Framework\T4Helper.cs" />
     <Compile Include="Framework\UploadFileHelper.cs" />
@@ -204,6 +226,34 @@
     <Content Include="App_Readme\membership.sql" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\images\arrowhead.gif" />
+    <Content Include="Content\css\images\car.png" />
+    <Content Include="Content\css\images\favicon.ico" />
+    <Content Include="Content\css\images\generalFile.png" />
+    <Content Include="Content\css\images\glyphicons-halflings-white.png" />
+    <Content Include="Content\css\images\glyphicons-halflings.png" />
+    <Content Include="Content\css\images\goods.png" />
+    <Content Include="Content\css\images\house.png" />
+    <Content Include="Content\css\images\icons.png" />
+    <Content Include="Content\css\images\loading.gif" />
+    <Content Include="Content\css\images\logo.png" />
+    <Content Include="Content\css\images\logobig.png" />
+    <Content Include="Content\css\images\new-icons.png" />
+    <Content Include="Content\css\images\oval-blue-left.gif" />
+    <Content Include="Content\css\images\oval-blue-right.gif" />
+    <Content Include="Content\css\images\oval-gray-left.gif" />
+    <Content Include="Content\css\images\oval-gray-right.gif" />
+    <Content Include="Content\css\images\oval-green-left.gif" />
+    <Content Include="Content\css\images\oval-green-right.gif" />
+    <Content Include="Content\css\images\oval-orange-left.gif" />
+    <Content Include="Content\css\images\oval-orange-right.gif" />
+    <Content Include="Content\css\images\oval-red-left.gif" />
+    <Content Include="Content\css\images\oval-red-right.gif" />
+    <Content Include="Content\css\images\progressbar.gif" />
+    <Content Include="Content\css\images\publish.gif" />
+    <Content Include="Content\css\images\yuan.png" />
+    <Content Include="Content\css\images\右广270_250.png" />
+    <Content Include="Content\css\images\左广390_250.png" />
     <Content Include="Content\FileUpload\canvas-to-blob.min.js" />
     <Content Include="Content\FileUpload\html5.js" />
     <Content Include="Content\FileUpload\jquery-ui-1.8.11.js" />
@@ -219,15 +269,41 @@
     <Content Include="Content\FileUpload\locale.js" />
     <Content Include="Content\FileUpload\main.js" />
     <Content Include="Content\FileUpload\tmpl.min.js" />
+    <Content Include="Content\images\1.jpg" />
+    <Content Include="Content\images\64X64.jpg" />
+    <Content Include="Content\images\goods\goodline1.jpg" />
+    <Content Include="Content\images\goods\goods.jpg" />
+    <Content Include="Content\images\goods\goodsline2.jpg" />
+    <Content Include="Content\images\goods\goodsline3.jpg" />
+    <Content Include="Content\images\goods\goodsline4.jpg" />
+    <Content Include="Content\images\goods\goodsline5.jpg" />
+    <Content Include="Content\images\goods\goodsline6.jpg" />
+    <Content Include="Content\images\logobig.png" />
     <Content Include="Content\images\arrowhead.gif" />
     <Content Include="Content\images\generalFile.png" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\logo.png" />
-    <Content Include="Content\images\logobig.jpg" />
+    <Content Include="Content\images\oval-blue-left.gif" />
+    <Content Include="Content\images\oval-blue-right.gif" />
+    <Content Include="Content\images\oval-gray-left.gif" />
+    <Content Include="Content\images\oval-gray-right.gif" />
+    <Content Include="Content\images\oval-green-left.gif" />
+    <Content Include="Content\images\oval-green-right.gif" />
+    <Content Include="Content\images\oval-orange-left.gif" />
+    <Content Include="Content\images\oval-orange-right.gif" />
+    <Content Include="Content\images\oval-red-left.gif" />
+    <Content Include="Content\images\oval-red-right.gif" />
     <Content Include="Content\images\progressbar.gif" />
     <Content Include="Content\images\publish.gif" />
+    <Content Include="Content\images\yuan.png" />
+    <Content Include="Content\images\右广270_250.png" />
+    <Content Include="Content\images\ad190_80.png" />
+    <Content Include="Content\images\左广390_250.png" />
+    <Content Include="Content\images\house.png" />
+    <Content Include="Content\images\goods.png" />
+    <Content Include="Content\images\car.png" />
     <Content Include="Content\js\Ajax\AjaxBaseRequest.js" />
     <Content Include="Content\js\Ajax\AjaxCarRequest.js" />
     <Content Include="Content\js\Ajax\AjaxGoodsRequest.js" />
@@ -259,7 +335,7 @@
     <Content Include="Content\js\Transfer\TransferValidCar.js" />
     <Content Include="Content\js\Transfer\TransferValidGoods.js" />
     <Content Include="Content\css\960_24_col.css" />
-    <Content Include="Content\css\baixing.css" />
+    <Content Include="Content\css\customize.css" />
     <Content Include="Content\css\base.css" />
     <Content Include="Content\js\MutiUpload\MultiFile.js" />
     <Content Include="Content\js\Transfer\TransferValidHouse.js" />
@@ -373,6 +449,25 @@
     <Content Include="Views\CarTransfer\ViewPage1.cshtml" />
     <Content Include="Views\HouseTransfer\ViewPage1.cshtml" />
     <Content Include="Views\Test\Float.cshtml" />
+    <Content Include="Views\Home\GoodsShow.cshtml" />
+    <Content Include="Views\Shared\_LayoutShow.cshtml" />
+    <Content Include="Views\Shared\_LogoShow.cshtml" />
+    <Content Include="Views\GoodsTransferShow\Index.cshtml" />
+    <Content Include="Views\GoodsChose\Index.cshtml" />
+    <Content Include="Views\Goods\Index.cshtml" />
+    <Content Include="Views\GoodsTransfer\HomeSupplies.cshtml" />
+    <Content Include="Views\GoodsTransfer\Fashion.cshtml" />
+    <Content Include="Views\GoodsTransfer\CultureLife.cshtml" />
+    <Content Include="Views\GoodsTransfer\Other.cshtml" />
+    <Content Include="Views\GoodsBuy\CultureLife.cshtml" />
+    <Content Include="Views\GoodsBuy\Fashion.cshtml" />
+    <Content Include="Views\GoodsBuy\HomeSupplies.cshtml" />
+    <Content Include="Views\GoodsBuy\Other.cshtml" />
+    <Content Include="Views\CarTransfer\CarAccessories.cshtml" />
+    <Content Include="Views\CarBuy\CarAccessories.cshtml" />
+    <Content Include="Views\HouseTransfer\Properties.cshtml" />
+    <Content Include="Views\HouseBuy\Properties.cshtml" />
+    <Content Include="Views\Shared\_JiaThis.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UploadImage\Buy\CarImage\" />

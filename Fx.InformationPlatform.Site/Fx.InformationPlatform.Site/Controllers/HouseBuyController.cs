@@ -11,7 +11,7 @@ using Fx.InformationPlatform.Site.ViewModel;
 
 namespace Fx.InformationPlatform.Site.Controllers
 {
-    public class HouseBuyController : BaseController
+    public class HouseBuyController : BaseController,ISiteJob
     {
         IHouse houseService;        
         IBuyHouse buyService;
@@ -31,14 +31,32 @@ namespace Fx.InformationPlatform.Site.Controllers
             return View();
         }
 
+        public ActionResult Properties()
+        {
+            BindCatagroy();
+            return View();
+        }
+        
 
         [HttpPost]
         public ActionResult CommercialProperties(BuyViewHouse house)
+        {
+            return PublishHouse(house);
+        }
+
+        [HttpPost]
+        public ActionResult Properties(BuyViewHouse house)
+        {
+            return PublishHouse(house);
+        }
+
+        private ActionResult PublishHouse(BuyViewHouse house)
         {
             if (BuildHouse(house))
             {
                 HouseBuyInfo transferhouse = MapperCar(house);
                 buyService.SaveBuyHouse(transferhouse);
+                RunJob();
                 return View("Success");
             }
             return View("FaildTransfer");
@@ -81,5 +99,13 @@ namespace Fx.InformationPlatform.Site.Controllers
             ViewData["catagroy"] = details;
         }
 
+
+        public void RunJob()
+        {
+            new System.Threading.Thread(() =>
+            {
+                new FxTask.FxHouse.Buy.HouseBuyJobLoad();
+            }).Start();
+        }
     }
 }

@@ -13,7 +13,7 @@ using Fx.InformationPlatform.Site.ViewModel;
 
 namespace Fx.InformationPlatform.Site.Controllers
 {
-    public class HouseTransferController : BaseController
+    public class HouseTransferController : BaseController,ISiteJob
     {
         IHouse houseService;
         ITransferHouse transferService;
@@ -38,10 +38,16 @@ namespace Fx.InformationPlatform.Site.Controllers
         public ActionResult CommercialProperties(TransferViewHouse house,
             List<HttpPostedFileBase> facefile, List<HttpPostedFileBase> otherfile, List<HttpPostedFileBase> badfile)
         {
+            return PublishGoods(house, facefile, otherfile, badfile);
+        }
+
+        private ActionResult PublishGoods(TransferViewHouse house, List<HttpPostedFileBase> facefile, List<HttpPostedFileBase> otherfile, List<HttpPostedFileBase> badfile)
+        {
             if (BuildHouse(house, facefile, otherfile, badfile))
             {
                 HouseTransferInfo transferhouse = MapperHouse(house);
                 transferService.SaveTransferHouse(transferhouse);
+                RunJob();
                 return View("Success");
             }
             return View("FaildTransfer");
@@ -208,5 +214,13 @@ namespace Fx.InformationPlatform.Site.Controllers
             file.SaveAs(filePath);
         }
         #endregion
+
+        public void RunJob()
+        {
+            new System.Threading.Thread(() =>
+            {
+                new FxTask.FxHouse.Transfer.HouseTransferJobLoad();
+            }).Start();
+        }
     }
 }

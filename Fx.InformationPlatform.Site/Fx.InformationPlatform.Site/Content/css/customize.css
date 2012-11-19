@@ -1,0 +1,316 @@
+﻿#topbar {
+    height: 28px;
+    line-height: 28px;
+    background: #FBFBFB;
+    border-bottom: 1px solid #EBEBEB;
+    position: relative;
+    z-index: 999;
+    color: #999;
+}
+
+
+.p-line {
+    padding: 10px 0;
+}
+
+.txtcenter {
+    text-align: center;
+}
+
+
+.txtright {
+    text-align: right;
+}
+
+
+
+.publishborder {
+    border: 1px solid #DDD;
+}
+
+.ytbg {
+    background-color: #8A0018;
+}
+
+.orange {
+    color: #EC6E0B;
+    font-family: Tahoma;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+
+
+.yuan {
+    background-image: url(images/yuan.png);
+    background-repeat: no-repeat;
+    width: 70px;
+    height: 70px;
+}
+
+.yta {
+    -moz-box-shadow: inset 0px 1px 0px 0px #d9fbbe;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #d9fbbe;
+    box-shadow: inset 0px 1px 0px 0px #d9fbbe;
+    background-color: transparent;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    border: 1px solid #83c41a;
+    display: inline-block;
+    color: #605d5d;
+    font-size: 12px;
+    padding: 3px 5px;
+    text-decoration: none;
+    text-shadow: 1px 1px 0px #86ae47;
+}
+
+    .yta:active {
+        position: relative;
+        top: 1px;
+    }
+
+    .yta:hover {
+        color: #605d5d;
+        text-decoration: underline;
+    }
+
+
+.ytared {
+    -moz-box-shadow: inset 0px 1px 0px 0px #d9fbbe;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #d9fbbe;
+    box-shadow: inset 0px 1px 0px 0px #d9fbbe;
+    background-color: transparent;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    border: 1px solid red;
+    display: inline-block;
+    color: #605d5d;
+    font-family: arial;
+    font-size: 10px;
+    padding: 3px 5px;
+    text-decoration: none;
+    text-shadow: 1px 1px 0px #86ae47;
+}
+
+    .ytared:active {
+        position: relative;
+        top: 1px;
+    }
+
+    .ytared:hover {
+        color: #605d5d;
+        text-decoration: underline;
+    }
+
+
+
+
+a.ovalbutton {
+    background: transparent url('images/oval-blue-left.gif') no-repeat top left;
+    display: block;
+    float: left;
+    font: normal 13px Tahoma; /* Change 13px as desired */
+    line-height: 16px; /* This value + 4px + 4px (top and bottom padding of SPAN) must equal height of button background (default is 24px) */
+    height: 24px; /* Height of button background height */
+    padding-left: 11px; /* Width of left menu image */
+    text-decoration: none;
+    margin: 2px 2px;
+}
+
+a:link.ovalbutton, a:visited.ovalbutton, a:active.ovalbutton {
+    color: #494949; /*button text color*/
+}
+
+a.ovalbutton span {
+    background: transparent url('images/oval-blue-right.gif') no-repeat top right;
+    display: block;
+    padding: 4px 11px 4px 0; /*Set 11px below to match value of 'padding-left' value above*/
+}
+
+a.ovalbutton:hover { /* Hover state CSS */
+    background-position: bottom left;
+}
+
+    a.ovalbutton:hover span { /* Hover state CSS */
+        background-position: bottom right;
+        color: black;
+    }
+
+a.redbutton {
+    background: transparent url('images/oval-red-left.gif') no-repeat top left;
+    display: block;
+    float: left;
+    font: normal 13px Tahoma; /* Change 13px as desired */
+    line-height: 16px; /* This value + 4px + 4px (top and bottom padding of SPAN) must equal height of button background (default is 24px) */
+    height: 24px; /* Height of button background height */
+    padding-left: 11px; /* Width of left menu image */
+    text-decoration: none;
+    margin: 2px 2px;
+}
+
+a:link.redbutton, a:visited.redbutton, a:active.redbutton {
+    color: #494949; /*button text color*/
+}
+
+a.redbutton span {
+    background: transparent url('images/oval-red-right.gif') no-repeat top right;
+    display: block;
+    padding: 4px 11px 4px 0; /*Set 11px below to match value of 'padding-left' value above*/
+}
+
+a.redbutton:hover { /* Hover state CSS */
+    background-position: bottom left;
+}
+
+    a.redbutton:hover span { /* Hover state CSS */
+        background-position: bottom right;
+        color: black;
+    }
+
+    
+    
+    
+a.greenbutton {
+    background: transparent url('images/oval-green-left.gif') no-repeat top left;
+    display: block;
+    float: left;
+    font: normal 13px Tahoma; /* Change 13px as desired */
+    line-height: 16px; /* This value + 4px + 4px (top and bottom padding of SPAN) must equal height of button background (default is 24px) */
+    height: 24px; /* Height of button background height */
+    padding-left: 11px; /* Width of left menu image */
+    text-decoration: none;
+    margin: 2px 2px;
+}
+
+a:link.greenbutton, a:visited.greenbutton, a:active.greenbutton {
+    color: #494949; /*button text color*/
+}
+
+a.greenbutton span {
+    background: transparent url('images/oval-green-right.gif') no-repeat top right;
+    display: block;
+    padding: 4px 11px 4px 0; /*Set 11px below to match value of 'padding-left' value above*/
+}
+
+a.greenbutton:hover { /* Hover state CSS */
+    background-position: bottom left;
+}
+
+    a.greenbutton:hover span { /* Hover state CSS */
+        background-position: bottom right;
+        color: black;
+    }
+    
+    
+    
+a.orangebutton {
+    background: transparent url('images/oval-orange-left.gif') no-repeat top left;
+    display: block;
+    float: left;
+    font: normal 13px Tahoma; /* Change 13px as desired */
+    line-height: 16px; /* This value + 4px + 4px (top and bottom padding of SPAN) must equal height of button background (default is 24px) */
+    height: 24px; /* Height of button background height */
+    padding-left: 11px; /* Width of left menu image */
+    text-decoration: none;
+    margin: 2px 2px;
+}
+
+a:link.orangebutton, a:visited.orangebutton, a:active.orangebutton {
+    color: #494949; /*button text color*/
+}
+
+a.orangebutton span {
+    background: transparent url('images/oval-orange-right.gif') no-repeat top right;
+    display: block;
+    padding: 4px 11px 4px 0; /*Set 11px below to match value of 'padding-left' value above*/
+}
+
+a.orangebutton:hover { /* Hover state CSS */
+    background-position: bottom left;
+}
+
+    a.orangebutton:hover span { /* Hover state CSS */
+        background-position: bottom right;
+        color: black;
+    } 
+    
+    
+    
+ a.graybutton {
+    background: transparent url('images/oval-gray-left.gif') no-repeat top left;
+    display: block;
+    float: left;
+    font: normal 13px Tahoma; /* Change 13px as desired */
+    line-height: 16px; /* This value + 4px + 4px (top and bottom padding of SPAN) must equal height of button background (default is 24px) */
+    height: 24px; /* Height of button background height */
+    padding-left: 11px; /* Width of left menu image */
+    text-decoration: none;
+    margin: 2px 2px;
+}
+
+a:link.graybutton, a:visited.graybutton, a:active.graybutton {
+    color: #494949; /*button text color*/
+}
+
+a.graybutton span {
+    background: transparent url('images/oval-gray-right.gif') no-repeat top right;
+    display: block;
+    padding: 4px 11px 4px 0; /*Set 11px below to match value of 'padding-left' value above*/
+}
+
+a.graybutton:hover { /* Hover state CSS */
+    background-position: bottom left;
+}
+
+    a.graybutton:hover span { /* Hover state CSS */
+        background-position: bottom right;
+        color: black;
+    } 
+    
+    
+
+
+.buttonwrapper { /* Container you can use to surround a CSS button to clear float */
+    overflow: hidden; /*See: http://www.quirksmode.org/css/clearing.html */
+    width: 100%;
+}
+
+
+/*.blue {
+    background: transparent url('images/oval-blue-left.gif') no-repeat top left;
+}
+
+.green {
+    background: transparent url('images/oval-green-left.gif') no-repeat top left;
+}
+
+.red {
+    background: transparent url('images/oval-red-right.gif') no-repeat top right;
+}
+
+.orange1 {
+    background: transparent url('images/oval-orange-right.gif') no-repeat top right;
+}*/
+
+
+
+
+#ytfooter a {
+    color:white;
+}
+
+
+.bd {
+border-bottom: #8B8B87 1px solid;
+border-left: #CCCCC6 1px solid;
+padding-bottom: 0px;
+padding-left: 11px;
+padding-right: 11px;
+zoom: 1;
+background: white;
+border-top: #CCCCC6 1px solid;
+border-right: #CCCCC6 1px solid;
+padding-top: 10px;
+}

@@ -13,7 +13,7 @@ using Fx.InformationPlatform.Site.ViewModel;
 
 namespace Fx.InformationPlatform.Site.Controllers
 {
-    public class CarTransferController : BaseController
+    public class CarTransferController : BaseController, ISiteJob
     {
         ICar carService;
         ITransferCar transferService;
@@ -34,15 +34,35 @@ namespace Fx.InformationPlatform.Site.Controllers
             return View();
         }
 
+        public ActionResult CarAccessories()
+        {
+            BindData();
+            return View();
+        }
+        
+
 
         [HttpPost]
         public ActionResult SecondHandCar(TransferViewCar car,
             List<HttpPostedFileBase> facefile, List<HttpPostedFileBase> otherfile, List<HttpPostedFileBase> badfile)
         {
+            return PublishCar(car, facefile, otherfile, badfile);
+        }
+
+        [HttpPost]
+        public ActionResult CarAccessories(TransferViewCar car,
+            List<HttpPostedFileBase> facefile, List<HttpPostedFileBase> otherfile, List<HttpPostedFileBase> badfile)
+        {
+            return PublishCar(car, facefile, otherfile, badfile);
+        }
+
+        private ActionResult PublishCar(TransferViewCar car, List<HttpPostedFileBase> facefile, List<HttpPostedFileBase> otherfile, List<HttpPostedFileBase> badfile)
+        {
             if (BuildCar(car, facefile, otherfile, badfile))
             {
                 CarTransferInfo transfercar = MapperCar(car);
                 transferService.SaveTransferCar(transfercar);
+                RunJob();
                 return View("Success");
             }
             return View("FaildTransfer");
@@ -83,7 +103,6 @@ namespace Fx.InformationPlatform.Site.Controllers
             #region FaceFile
             foreach (var face in facefile)
             {
-
                 if (face.HasFile())
                 {
                     pictureName = GetPictureName();
@@ -254,5 +273,13 @@ namespace Fx.InformationPlatform.Site.Controllers
             file.SaveAs(filePath);
         }
         #endregion
+
+        public void RunJob()
+        {
+            new System.Threading.Thread(() =>
+            {
+                new FxTask.FxCar.Transfer.CarTransferJobLoad();
+            }).Start();
+        }
     }
 }

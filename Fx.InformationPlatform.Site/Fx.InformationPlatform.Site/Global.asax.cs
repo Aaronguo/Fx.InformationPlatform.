@@ -45,28 +45,10 @@ namespace Fx.InformationPlatform.Site
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
-
-            new FxTask.QuartzLoadProvider().Load();
+            if (!Fx.InformationPlatform.Site.T4Helper.IsDebug)
+            {
+                new FxTask.QuartzLoadProvider().Load();
+            }
         }
-
-        //private static void CreateContainer()
-        //{
-        //    // 1. Create a new Simple Injector container
-        //    var container = new Container();
-
-        //    // 2. Configure the container (register)
-        //    container.Register<Fx.Domain.Account.IService.IAccountService, Fx.Domain.Account.UserAccountService>();
-
-        //    //container.RegisterSingle<ILogger>(() => new CompositeLogger(
-        //    //    container.GetInstance<DatabaseLogger>(),
-        //    //    container.GetInstance<MailLogger>()
-        //    //));
-
-        //    // 3. Optionally verify the container's configuration.
-        //    container.Verify();
-
-        //    // 4. Register the container as MVC3 IDependencyResolver.
-        //    DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));            
-        //}
     }
 }

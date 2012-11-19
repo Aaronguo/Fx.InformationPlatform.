@@ -26,7 +26,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        var flowindex = document.getElementById('flow').value;
+        var flowindex = document.getElementById('flow').value || 0;
         $("#flows li").eq(flowindex).addClass("flow-item-current");
     });
 </script>

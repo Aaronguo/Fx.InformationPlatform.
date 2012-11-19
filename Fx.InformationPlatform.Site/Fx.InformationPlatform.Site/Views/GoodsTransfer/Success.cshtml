@@ -1,6 +1,34 @@
 ﻿@{
-    ViewBag.Title = "Success";
+    Layout = "~/Views/Shared/_LayoutClean.cshtml";
+    ViewBag.Title = "发布成功";
 }
+@Html.Partial("Partial/Flow")
+<div class="grid_24">
+    &nbsp;
+    <input id="flow" type="hidden" value="2" />
+</div>
+<div class="grid_24">
+    <div class="publishborder typo" style="height: 450px; padding:30px 0 30px 60px;">
 
-<h2>Success</h2>
-保存成功
+        <h2>您的信息已经初步发布成功，由于包含较多图片处理，请耐心等待系统审核.........</h2>
+
+        <h3>注意事项</h3>
+        您已成功发布信息,请稍等几分钟，系统会自动审核您的信息，<br />
+        如果处理过程中包含但不限于以下情况，那么您的帖子将会发布审核失败,<br />
+        如：发布的信息敏感字符，图片格式，图片无效等。<br />
+        您可以在<a href="#">已发布帖子</a>中得到相关提示信息，删除并重新发布信息。<br />
+        我们会在后续的过程收集相关信息并优化发布流程，对您带来的不便我们表示歉意。<br />
+        <br />
+        对于已审核的帖子，从您看见页面起，帖子将会最多保存40天，您可以在最后5天内对帖子进行续期。<br />
+        如果您想置顶您的信息，您可以联系我们。
+
+        <h3>联系我们</h3>
+
+        英淘网还在内测中，如果问题可以联系我们,Email:<a href="mailto:customerservice@yingtao.co.uk">英淘网客服</a>.
+        我们将会在第一时间处理您的信息。
+        谢谢关注和支持。
+    </div>
+</div>
+<div class="grid_24">
+    &nbsp;
+</div>

@@ -27,11 +27,4 @@ namespace Fx.Entity
             this.IsCdn = false;
         }
     }
-
-    public enum PictureCatagroy
-    {
-        Head=0,
-        Other=1,
-        Bad=2
-    }
 }

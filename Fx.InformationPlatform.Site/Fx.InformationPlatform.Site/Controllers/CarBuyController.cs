@@ -12,7 +12,7 @@ using Fx.InformationPlatform.Site.ViewModel;
 
 namespace Fx.InformationPlatform.Site.Controllers
 {
-    public class CarBuyController : BaseController
+    public class CarBuyController : BaseController, ISiteJob
     {
         ICar carService;
         IBuyCar buyService;
@@ -32,17 +32,41 @@ namespace Fx.InformationPlatform.Site.Controllers
             return View();
         }
 
+        public ActionResult CarAccessories()
+        {
+            BindData();
+            return View();
+        }
+        
+
         [HttpPost]
         public ActionResult SecondHandCar(BuyViewCar car)
+        {
+            return PublishCar(car);
+        }
+
+
+        [HttpPost]
+        public ActionResult CarAccessories(BuyViewCar car)
+        {
+            return PublishCar(car);
+        }
+
+
+        private ActionResult PublishCar(BuyViewCar car)
         {
             if (BuildCar(car))
             {
                 CarBuyInfo buycar = MapperCar(car);
                 buyService.SaveBuyCar(buycar);
+                RunJob();
                 return View("Success");
             }
             return View("FaildTransfer");
         }
+
+
+
 
         private bool BuildCar(BuyViewCar car)
         {
@@ -133,5 +157,13 @@ namespace Fx.InformationPlatform.Site.Controllers
             return Json(res);
         }
 
+
+        public void RunJob()
+        {
+            new System.Threading.Thread(() =>
+            {
+                new FxTask.FxCar.Buy.CarBuyJobLoad();
+            }).Start();
+        }
     }
 }

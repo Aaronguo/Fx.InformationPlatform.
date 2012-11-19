@@ -23,8 +23,6 @@ namespace Fx.InformationPlatform.Site
             return controller.RouteData.Route.GetRouteData(controller.HttpContext).Values["controller"] as string;
         }
 
-
-
         public static string GetTimeStamp(this DateTime t)
         {
             TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);

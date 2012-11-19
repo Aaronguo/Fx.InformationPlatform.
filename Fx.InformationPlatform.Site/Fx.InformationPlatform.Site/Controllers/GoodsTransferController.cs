@@ -14,7 +14,7 @@ using Fx.InformationPlatform.Site.ViewModel;
 namespace Fx.InformationPlatform.Site.Controllers
 {
     [Authorize]
-    public class GoodsTransferController : BaseController
+    public class GoodsTransferController : BaseController, ISiteJob
     {
         IGoods goodsService;
         ITransferGoods transferService;
@@ -37,14 +37,74 @@ namespace Fx.InformationPlatform.Site.Controllers
             return View();
         }
 
+        public ActionResult HomeSupplies()
+        {
+            BindCatagroy();
+            return View();
+        }
+
+        public ActionResult Fashion()
+        {
+            BindCatagroy();
+            return View();
+        }
+
+        public ActionResult CultureLife()
+        {
+            BindCatagroy();
+            return View();
+        }
+
+        public ActionResult Other()
+        {
+            BindCatagroy();
+            return View();
+        }
+
+
         [HttpPost]
         public ActionResult Electronics(TransferViewGoods goods,
             List<HttpPostedFileBase> facefile, List<HttpPostedFileBase> otherfile, List<HttpPostedFileBase> badfile)
+        {
+            return PublishGoods(goods, facefile, otherfile, badfile);
+        }
+
+        [HttpPost]
+        public ActionResult HomeSupplies(TransferViewGoods goods,
+            List<HttpPostedFileBase> facefile, List<HttpPostedFileBase> otherfile, List<HttpPostedFileBase> badfile)
+        {
+            return PublishGoods(goods, facefile, otherfile, badfile);
+        }
+
+        [HttpPost]
+        public ActionResult Fashion(TransferViewGoods goods,
+            List<HttpPostedFileBase> facefile, List<HttpPostedFileBase> otherfile, List<HttpPostedFileBase> badfile)
+        {
+            return PublishGoods(goods, facefile, otherfile, badfile);
+        }
+
+        [HttpPost]
+        public ActionResult CultureLife(TransferViewGoods goods,
+            List<HttpPostedFileBase> facefile, List<HttpPostedFileBase> otherfile, List<HttpPostedFileBase> badfile)
+        {
+            return PublishGoods(goods, facefile, otherfile, badfile);
+        }
+
+        [HttpPost]
+        public ActionResult Other(TransferViewGoods goods,
+            List<HttpPostedFileBase> facefile, List<HttpPostedFileBase> otherfile, List<HttpPostedFileBase> badfile)
+        {
+            return PublishGoods(goods, facefile, otherfile, badfile);
+        }
+
+
+        private ActionResult PublishGoods(TransferViewGoods goods, List<HttpPostedFileBase> facefile, List<HttpPostedFileBase> otherfile, List<HttpPostedFileBase> badfile)
         {
             if (BuildGoods(goods, facefile, otherfile, badfile))
             {
                 GoodsTransferInfo transfergoods = MapperGoods(goods);
                 transferService.SaveTransferGoods(transfergoods);
+                RunJob();
                 return View("Success");
             }
             return View("FaildTransfer");
@@ -219,7 +279,15 @@ namespace Fx.InformationPlatform.Site.Controllers
                 System.IO.Directory.CreateDirectory(folderPath);
             }
             file.SaveAs(filePath);
-        } 
+        }
         #endregion
+
+        public void RunJob()
+        {
+            new System.Threading.Thread(() =>
+            {
+                new FxTask.FxGoods.Transfer.GoodsTransferJobLoad();
+            }).Start();
+        }
     }
 }
