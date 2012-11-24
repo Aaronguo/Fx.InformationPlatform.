@@ -18,23 +18,25 @@ namespace Fx.Domain.FxCar.Mapping
         public CarBuyInfo_Mapping()
         {                        
               this.HasKey(t => t.CarBuyInfoId);        
-              this.ToTable("CarBuyInfo","Car");
+              this.ToTable("CarBuyInfo", "Car");
               this.Property(t => t.CarBuyInfoId).HasColumnName("CarBuyInfoId");
-              this.Property(t => t.PublishTitle).HasColumnName("PublishTitle");
+              this.Property(t => t.PublishTitle).HasColumnName("PublishTitle").HasMaxLength(128);
               this.Property(t => t.CatagroyId).HasColumnName("CatagroyId");
               this.Property(t => t.Price).HasColumnName("Price");
               this.Property(t => t.AreaId).HasColumnName("AreaId");
               this.Property(t => t.CityId).HasColumnName("CityId");
               this.Property(t => t.CarYear).HasColumnName("CarYear");
               this.Property(t => t.CarMileage).HasColumnName("CarMileage");
-              this.Property(t => t.PublishUserEmail).HasColumnName("PublishUserEmail");
-              this.Property(t => t.Mark).HasColumnName("Mark");
-              this.Property(t => t.Controller).HasColumnName("Controller");
-              this.Property(t => t.Action).HasColumnName("Action");
-              this.Property(t => t.UserAccount).HasColumnName("UserAccount");
+              this.Property(t => t.PublishUserEmail).HasColumnName("PublishUserEmail").HasMaxLength(128);
+              this.Property(t => t.Mark).HasColumnName("Mark").HasMaxLength(256);
+              this.Property(t => t.Controller).HasColumnName("Controller").HasMaxLength(32);
+              this.Property(t => t.Action).HasColumnName("Action").HasMaxLength(32);
+              this.Property(t => t.UserAccount).HasColumnName("UserAccount").HasMaxLength(128);
               this.Property(t => t.CreatedTime).HasColumnName("CreatedTime");
               this.Property(t => t.IsDelete).HasColumnName("IsDelete");
               this.Property(t => t.IsPublish).HasColumnName("IsPublish");
+              this.Property(t => t.InfoProcessState).HasColumnName("InfoProcessState");
+              this.Property(t => t.ErrorMsg).HasColumnName("ErrorMsg").HasMaxLength(256);
          }
     }
 }

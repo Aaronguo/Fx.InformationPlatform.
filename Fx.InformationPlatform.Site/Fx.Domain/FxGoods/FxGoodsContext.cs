@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Fx.Domain.FxGoods.Mapping;
-using Fx.Domain.Mapping;
 using Fx.Entity;
 using Fx.Entity.FxGoods;
-using Fx.Infrastructure.Db;
 
 namespace Fx.Domain.FxGoods
 {
@@ -35,10 +28,20 @@ namespace Fx.Domain.FxGoods
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Configurations.Add(new GoodsBuyInfo_Mapping());
-            modelBuilder.Configurations.Add(new GoodsTransferInfo_Mapping());
-            modelBuilder.Configurations.Add(new TransferPicture_Mapping());
+            //modelBuilder.Configurations.Add(new GoodsBuyInfo_Mapping());
+            //modelBuilder.Configurations.Add(new GoodsTransferInfo_Mapping());
+            //modelBuilder.Configurations.Add(new TransferPicture_Mapping());
+            //modelBuilder.Configurations.Add(new BuyPicture_Mapping());
+
+
             modelBuilder.Configurations.Add(new BuyPicture_Mapping());
+            modelBuilder.Configurations.Add(new GoodsBuyInfo_Mapping());
+            modelBuilder.Configurations.Add(new GoodsBuyLogs_Mapping());
+            modelBuilder.Configurations.Add(new GoodsTransferInfo_Mapping());
+            modelBuilder.Configurations.Add(new GoodsTransferLogs_Mapping());
+            modelBuilder.Configurations.Add(new PictureCdnErrors_Mapping());
+            modelBuilder.Configurations.Add(new TransferPicture_Mapping());
+
         }
 
         public DbSet<GoodsTransferInfo> GoodsTransferInfos { get; set; }

@@ -13,7 +13,7 @@ namespace Fx.Entity.FxCar
 
        public string Source { get; set; }
 
-       public DateTime OperteTime { get; set; }
+       public virtual DateTime OperteTime { get; set; }
 
        public CarBuyLog()
        {

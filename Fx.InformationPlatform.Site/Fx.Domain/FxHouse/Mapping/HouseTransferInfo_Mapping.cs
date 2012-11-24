@@ -18,11 +18,11 @@ namespace Fx.Domain.FxHouse.Mapping
         public HouseTransferInfo_Mapping()
         {                        
               this.HasKey(t => t.HouseTransferInfoId);        
-              this.ToTable("HouseTransferInfo","House");
+              this.ToTable("HouseTransferInfo", "House");
               this.Property(t => t.HouseTransferInfoId).HasColumnName("HouseTransferInfoId");
-              this.Property(t => t.PostCode).HasColumnName("PostCode");
-              this.Property(t => t.RoadName).HasColumnName("RoadName");
-              this.Property(t => t.PublishTitle).HasColumnName("PublishTitle");
+              this.Property(t => t.PostCode).HasColumnName("PostCode").HasMaxLength(32);
+              this.Property(t => t.RoadName).HasColumnName("RoadName").HasMaxLength(128);
+              this.Property(t => t.PublishTitle).HasColumnName("PublishTitle").HasMaxLength(128);
               this.Property(t => t.CatagroyId).HasColumnName("CatagroyId");
               this.Property(t => t.Price).HasColumnName("Price");
               this.Property(t => t.AreaId).HasColumnName("AreaId");
@@ -30,14 +30,16 @@ namespace Fx.Domain.FxHouse.Mapping
               this.Property(t => t.Bill).HasColumnName("Bill");
               this.Property(t => t.HasFurniture).HasColumnName("HasFurniture");
               this.Property(t => t.RoomNumber).HasColumnName("RoomNumber");
-              this.Property(t => t.PublishUserEmail).HasColumnName("PublishUserEmail");
-              this.Property(t => t.Mark).HasColumnName("Mark");
-              this.Property(t => t.Controller).HasColumnName("Controller");
-              this.Property(t => t.Action).HasColumnName("Action");
-              this.Property(t => t.UserAccount).HasColumnName("UserAccount");
+              this.Property(t => t.PublishUserEmail).HasColumnName("PublishUserEmail").HasMaxLength(128);
+              this.Property(t => t.Mark).HasColumnName("Mark").HasMaxLength(256);
+              this.Property(t => t.Controller).HasColumnName("Controller").HasMaxLength(32);
+              this.Property(t => t.Action).HasColumnName("Action").HasMaxLength(32);
+              this.Property(t => t.UserAccount).HasColumnName("UserAccount").HasMaxLength(128);
               this.Property(t => t.CreatedTime).HasColumnName("CreatedTime");
               this.Property(t => t.IsDelete).HasColumnName("IsDelete");
               this.Property(t => t.IsPublish).HasColumnName("IsPublish");
+              this.Property(t => t.InfoProcessState).HasColumnName("InfoProcessState");
+              this.Property(t => t.ErrorMsg).HasColumnName("ErrorMsg").HasMaxLength(256);
          }
     }
 }

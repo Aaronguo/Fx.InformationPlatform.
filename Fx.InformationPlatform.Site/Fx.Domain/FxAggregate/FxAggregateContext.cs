@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
+using Fx.Domain.FxAggregate.Mapping;
 using Fx.Entity.FxAggregate;
 
 namespace Fx.Domain.FxAggregate
@@ -29,7 +30,7 @@ namespace Fx.Domain.FxAggregate
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            //modelBuilder.Configurations.Add(new CarBuyInfo_Mapping());
+            modelBuilder.Configurations.Add(new Favorites_Mapping());
         }
 
         public DbSet<Favorite> Favorites { get; set; }

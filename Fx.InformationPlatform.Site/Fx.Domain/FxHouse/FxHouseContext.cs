@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
 using Fx.Domain.FxHouse.Mapping;
-using Fx.Domain.Mapping;
 using Fx.Entity;
 using Fx.Entity.FxHouse;
 
@@ -33,7 +29,10 @@ namespace Fx.Domain.FxHouse
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Configurations.Add(new HouseBuyInfo_Mapping());
+            modelBuilder.Configurations.Add(new HouseBuyLogs_Mapping());
             modelBuilder.Configurations.Add(new HouseTransferInfo_Mapping());
+            modelBuilder.Configurations.Add(new HouseTransferLogs_Mapping());
+            modelBuilder.Configurations.Add(new PictureCdnErrors_Mapping());
             modelBuilder.Configurations.Add(new TransferPicture_Mapping());
         }
 

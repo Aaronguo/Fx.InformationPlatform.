@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
 using Fx.Domain.FxCar.Mapping;
-using Fx.Domain.Mapping;
 using Fx.Entity;
 using Fx.Entity.FxCar;
 
@@ -31,9 +27,12 @@ namespace Fx.Domain.FxCar
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder); 
             modelBuilder.Configurations.Add(new CarBuyInfo_Mapping());
+            modelBuilder.Configurations.Add(new CarBuyLogs_Mapping());
             modelBuilder.Configurations.Add(new CarTransferInfo_Mapping());
+            modelBuilder.Configurations.Add(new CarTransferLogs_Mapping());
+            modelBuilder.Configurations.Add(new PictureCdnErrors_Mapping());
             modelBuilder.Configurations.Add(new TransferPicture_Mapping());
         }
 

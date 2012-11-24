@@ -76,7 +76,7 @@ namespace Fx.Entity.FxHouse
         /// <summary>
         /// 创建时间
         /// </summary>
-        public virtual DateTime CreatedTime { get; set; }
+        public DateTime CreatedTime { get; set; }
 
         /// <summary>
         /// 是否逻辑删除
