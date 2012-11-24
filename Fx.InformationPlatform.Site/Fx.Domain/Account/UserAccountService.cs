@@ -29,7 +29,7 @@ namespace Fx.Domain.Account
             }
         }
 
-        public DomainResult AddUser(Entity.MemberShip.Membership entity)
+        public DomainResult AddUser(Entity.MemberShip.Membership entity,Entity.MemberShip.OtherInformation other)
         {
             if (!IsExistUser(entity.Users.UserName).isSuccess)
             {
@@ -41,16 +41,9 @@ namespace Fx.Domain.Account
                     if (createStatus == MembershipCreateStatus.Success)
                     {
                         var user = content.Value.Users.Where(r => r.UserName == entity.Users.UserName).First();
-                        var otherInformation = new Fx.Entity.MemberShip.OtherInformation();                        
-                        otherInformation.Mobile = entity.MobilePIN;
-                        otherInformation.QQ = entity.OtherInformations.QQ;
-                        otherInformation.Sex = entity.OtherInformations.Sex;
-                        otherInformation.Address = entity.OtherInformations.Address;
-                        otherInformation.HeadPicture = entity.OtherInformations.HeadPicture;
-                        otherInformation.NickName = entity.OtherInformations.NickName;
-                        otherInformation.ApplicationId = user.ApplicationId;
-                        otherInformation.UserId = user.UserId;
-                        var rEntity = content.Value.OtherInformations.Add(otherInformation);
+                        other.ApplicationId = user.ApplicationId;
+                        other.UserId = user.UserId;
+                        var rEntity = content.Value.OtherInformations.Add(other);
                         try
                         {
                             content.Value.SaveChanges();
@@ -90,6 +83,12 @@ namespace Fx.Domain.Account
                 try
                 {
                     Membership.DeleteUser(entity.Users.UserName);
+                    var other = this.content.Value.OtherInformations.Where(r => r.Email == entity.Users.UserName).FirstOrDefault();
+                    if (other != null)
+                    {
+                        this.content.Value.OtherInformations.Remove(other);
+                        this.content.Value.SaveChanges();
+                    }                    
                 }
                 catch (Exception ex)
                 {

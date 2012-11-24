@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using Fx.Domain.Base.IService;
@@ -7,7 +8,7 @@ using Fx.Entity.FxCar;
 
 namespace Fx.Domain.FxCar.Search
 {
-    public class CarTransferSearchService : ISiteSearch<CarTransferInfo>
+    public class CarTransferSearchService : ISiteSearch<CarTransferInfo>,IHomeSearch<CarTransferInfo>
     {
         public List<CarTransferInfo> SearchByKey(string key, int page)
         {
@@ -129,6 +130,24 @@ namespace Fx.Domain.FxCar.Search
                     }
                 }
             }
+        }
+
+        public List<CarTransferInfo> SearchLatestForHome(int count)
+        {
+            using (var content = new FxCarContext())
+            {
+                return content.CarTransferInfos.Include(r => r.Pictures).OrderByDescending(r => r.CreatedTime).Take(count).ToList();
+            }
+        }
+
+        public List<CarTransferInfo> SearchHottestForHome(int count)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CarTransferInfo> SearchTopshowForHome(int count)
+        {
+            throw new NotImplementedException();
         }
     }
 }

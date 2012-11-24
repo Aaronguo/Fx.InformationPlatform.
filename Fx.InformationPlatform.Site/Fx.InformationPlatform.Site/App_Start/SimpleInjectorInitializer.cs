@@ -36,9 +36,20 @@ namespace Fx.InformationPlatform.Site.App_Start
             // folder.
             //#error Register your services here (remove this line).
             InitSiteContainer(container);
+            InitSearchContainer(container);
+            InitCacheContainer(container);
             InitTaskContainer(container);
 
         }
+
+        private static void InitCacheContainer(Container container)
+        {
+            container.RegisterSingle<FxCacheService.FxGoods.GoodsCache>();
+            container.RegisterSingle<FxCacheService.FxHouse.HouseCache>();
+            container.RegisterSingle<FxCacheService.FxCar.CarCache>();
+        }
+
+
 
         private static void InitTaskContainer(Container container)
         {
@@ -59,6 +70,25 @@ namespace Fx.InformationPlatform.Site.App_Start
             container.Register<Fx.Domain.FxHouse.IService.IHouseBuyJob, Fx.Domain.FxHouse.HouseBuyJobService>();
             container.Register<Fx.Domain.FxHouse.IService.IHouseTransferJob, Fx.Domain.FxHouse.HouseTransferJobService>();
         }
+
+        private static void InitSearchContainer(Container container)
+        {
+            //FxGoodsSearch
+            container.RegisterSingle<Fx.Domain.Base.IService.IHomeSearch<Fx.Entity.FxGoods.GoodsTransferInfo>,
+                Fx.Domain.FxGoods.Search.GoodsTransferSearchService>();
+
+
+            //FxCarSearch
+            container.RegisterSingle<Fx.Domain.Base.IService.IHomeSearch<Fx.Entity.FxCar.CarTransferInfo>,
+             Fx.Domain.FxCar.Search.CarTransferSearchService>();
+
+            //FxHouseSearch
+            container.RegisterSingle<Fx.Domain.Base.IService.IHomeSearch<Fx.Entity.FxHouse.HouseTransferInfo>,
+             Fx.Domain.FxHouse.Search.HouseTransferSearchService>();
+
+
+        }
+
 
         private static void InitSiteContainer(Container container)
         {

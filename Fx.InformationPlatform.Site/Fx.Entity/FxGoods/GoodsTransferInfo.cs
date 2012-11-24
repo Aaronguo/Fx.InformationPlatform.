@@ -38,6 +38,7 @@ namespace Fx.Entity.FxGoods
         public GoodsTransferInfo()
         {          
             this.Pictures = new List<TransferPicture>();
+            this.Logs = new List<GoodsTransferLog>();
         }
     }
 }

@@ -11,11 +11,13 @@ namespace Fx.Entity.FxCar
 
         public virtual List<TransferPicture> Pictures { get; set; }
 
-        public CarTransferInfo()
-        {          
-            this.Pictures = new List<TransferPicture>();
-        }
 
         public virtual ICollection<CarTransferLog> Logs { get; set; }
+
+        public CarTransferInfo()
+        {
+            this.Pictures = new List<TransferPicture>();
+            this.Logs = new List<CarTransferLog>();
+        }
     }
 }

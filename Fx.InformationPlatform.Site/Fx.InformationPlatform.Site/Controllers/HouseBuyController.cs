@@ -11,6 +11,7 @@ using Fx.InformationPlatform.Site.ViewModel;
 
 namespace Fx.InformationPlatform.Site.Controllers
 {
+     [Authorize]
     public class HouseBuyController : BaseController,ISiteJob
     {
         IHouse houseService;        

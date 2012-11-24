@@ -42,7 +42,6 @@ namespace Fx.Domain.Account.Mapping
               this.Property(t => t.Comment).HasColumnName("Comment");
               this.HasRequired(t => t.Applications).WithMany(t => t.Membership).HasForeignKey(d => d.ApplicationId);
               this.HasRequired(t => t.Users).WithOptional(t => t.Membership);
-              this.HasOptional(t => t.OtherInformations);
          }
     }
 }

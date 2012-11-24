@@ -2,4 +2,5 @@
     <script type="text/javascript" src="../../Content/js/Debug/log4javascript1.4.3.js"></script>   
     <script type="text/javascript" src="../../Content/js/Debug/log4Init.js"></script> 
 
-2 需要在aspnet_Membership表中添加一列OtherInformations_OtherInformationId
+2 需要在aspnet_Membership表中添加一列OtherInformation_OtherInformationId  int
+添加和OtherInformation的主外键关系：

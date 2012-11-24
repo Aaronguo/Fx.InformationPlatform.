@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Fx.InformationPlatform.Site.ViewModel.HomeModel
+@{
     ViewBag.Title = "【英淘网】 -免费发布信息-英国汽车,二手,房屋信息门户";
 }
 
@@ -95,7 +96,10 @@
     <div class="clear"></div>
 </div>
 <div class="clear"></div>
+
 <div class="interval_30"></div>
+
+<!--二手-->
 <div class="grid_24">
     <div class="grid_5 alpha">
         <div class="hot_tags">
@@ -113,75 +117,44 @@
         </div>
     </div>
     <div class="grid_1 width_cus">-</div>
+    <!--最新-->
     <div class="grid_6">
         <div class="topLoop" id="sliders_1" style="height: 304px; width: 230px;">
             <div class="hd"><a class="next"></a><a class="prev"></a></div>
             <div class="bd">
                 <ul class="picList">
-                    <li>
-                        <div class="pic">
-                            <div class="img_cons_wks_common">
-                                <div class="tits_btm_coms_index">最新发布</div>
-                                <div class="interval_line_c"></div>
-                                <a href="#" class="imgs_a">
-                                    <img src="Content/images/test1.jpg" /></a>
-                                <div class="tits_btm_coms_index names_btm"><a href="#">价格、名字</a></div>
+                    @foreach (var item in Model.GoodsTransferInfos)
+                    {
+                        foreach (var picture in item.Pictures)
+                        {
+                            if (picture.TransferPictureCatagroy == (int)Fx.Entity.PictureCatagroy.Head)
+                            {
+                        <li>
+                            <div class="pic">
+                                <div class="img_cons_wks_common">
+                                    <div class="tits_btm_coms_index">最新发布</div>
+                                    <div class="interval_line_c"></div>
+                                    <a href="#" class="imgs_a">
+                                        <img src="@Fx.InformationPlatform.Site.AppSettings.ImageUploadCdnDomain(picture.ImageUrl)" />
+                                        <img src="Content/images/test1.jpg" />
+                                    </a>
+                                    <div class="tits_btm_coms_index names_btm">
+                                        <a href="#">
+                                            @item.Price
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="title"><a href="">效果图4</a></div>
-                    </li>
-                    <li>
-                        <div class="pic">
-                            <div class="img_cons_wks_common">
-                                <div class="tits_btm_coms_index">最新发布</div>
-                                <div class="interval_line_c"></div>
-                                <a href="#" class="imgs_a">
-                                    <img src="Content/images/test1.jpg" /></a>
-                                <div class="tits_btm_coms_index names_btm"><a href="#">价格、名字</a></div>
-                            </div>
-                        </div>
-                        <div class="title"><a href="">效果图4</a></div>
-                    </li>
-                    <li>
-                        <div class="pic">
-                            <div class="img_cons_wks_common">
-                                <div class="tits_btm_coms_index">最新发布</div>
-                                <div class="interval_line_c"></div>
-                                <a href="#" class="imgs_a">
-                                    <img src="Content/images/tss3.png" /></a>
-                                <div class="tits_btm_coms_index names_btm"><a href="#">价格、名字</a></div>
-                            </div>
-                        </div>
-                        <div class="title"><a href="">效果图4</a></div>
-                    </li>
-                    <li>
-                        <div class="pic">
-                            <div class="img_cons_wks_common">
-                                <div class="tits_btm_coms_index">最新发布</div>
-                                <div class="interval_line_c"></div>
-                                <a href="#" class="imgs_a">
-                                    <img src="Content/images/tss2.png" /></a>
-                                <div class="tits_btm_coms_index names_btm"><a href="#">价格、名字</a></div>
-                            </div>
-                        </div>
-                        <div class="title"><a href="">效果图4</a></div>
-                    </li>
-                    <li>
-                        <div class="pic">
-                            <div class="img_cons_wks_common">
-                                <div class="tits_btm_coms_index">最新发布</div>
-                                <div class="interval_line_c"></div>
-                                <a href="#" class="imgs_a">
-                                    <img src="Content/images/tss5.png" /></a>
-                                <div class="tits_btm_coms_index names_btm"><a href="#">价格、名字</a></div>
-                            </div>
-                        </div>
-                        <div class="title"><a href="">效果图4</a></div>
-                    </li>
+                        </li>
+                            }
+                        }
+                    }
                 </ul>
             </div>
         </div>
     </div>
+
+    <!--热门-->
     <div class="grid_6">
         <div class="topLoop" id="sliders_2" style="height: 304px; width: 230px;">
             <div class="hd"><a class="next"></a><a class="prev"></a></div>
@@ -251,6 +224,8 @@
             </div>
         </div>
     </div>
+    
+    <!--置顶-->
     <div class="grid_6 omega">
         <div class="topLoop" id="sliders_3" style="height: 304px; width: 230px;">
             <div class="hd"><a class="next"></a><a class="prev"></a></div>
@@ -322,7 +297,10 @@
     </div>
     <div class="clear"></div>
 </div>
+
 <div class="interval_20"></div>
+
+<!--广告-->
 <div class="grid_24">
     <div class="grid_4 alpha">
         <div class="common_six_grids">
@@ -362,7 +340,10 @@
     </div>
     <div class="clear"></div>
 </div>
+
 <div class="interval_30"></div>
+
+<!--汽车-->
 <div class="grid_24">
     <div class="grid_5 alpha">
         <div class="hot_tags">
@@ -379,76 +360,47 @@
             </div>
         </div>
     </div>
+
     <div class="grid_1 width_cus">-</div>
+
+     <!--最新-->
     <div class="grid_6">
         <div class="topLoop" id="sliders_4" style="height: 304px; width: 230px;">
             <div class="hd"><a class="next"></a><a class="prev"></a></div>
             <div class="bd">
                 <ul class="picList">
-                    <li>
-                        <div class="pic">
-                            <div class="img_cons_wks_common">
-                                <div class="tits_btm_coms_index">最新发布</div>
-                                <div class="interval_line_c"></div>
-                                <a href="#" class="imgs_a">
-                                    <img src="Content/images/tss6.png" /></a>
-                                <div class="tits_btm_coms_index names_btm"><a href="#">价格、名字</a></div>
+                    @foreach (var item in Model.CarTransferInfos)
+                    {
+                        foreach (var picture in item.Pictures)
+                        {
+                            if (picture.TransferPictureCatagroy == (int)Fx.Entity.PictureCatagroy.Head)
+                            {
+                        <li>
+                            <div class="pic">
+                                <div class="img_cons_wks_common">
+                                    <div class="tits_btm_coms_index">最新发布</div>
+                                    <div class="interval_line_c"></div>
+                                    <a href="#" class="imgs_a">
+                                        <img src="@Fx.InformationPlatform.Site.AppSettings.ImageUploadCdnDomain(picture.ImageUrl)" />
+                                        <img src="Content/images/test1.jpg" />
+                                    </a>
+                                    <div class="tits_btm_coms_index names_btm">
+                                        <a href="#">
+                                            @item.Price
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="title"><a href="">效果图4</a></div>
-                    </li>
-                    <li>
-                        <div class="pic">
-                            <div class="img_cons_wks_common">
-                                <div class="tits_btm_coms_index">最新发布</div>
-                                <div class="interval_line_c"></div>
-                                <a href="#" class="imgs_a">
-                                    <img src="Content/images/test1.jpg" /></a>
-                                <div class="tits_btm_coms_index names_btm"><a href="#">价格、名字</a></div>
-                            </div>
-                        </div>
-                        <div class="title"><a href="">效果图4</a></div>
-                    </li>
-                    <li>
-                        <div class="pic">
-                            <div class="img_cons_wks_common">
-                                <div class="tits_btm_coms_index">最新发布</div>
-                                <div class="interval_line_c"></div>
-                                <a href="#" class="imgs_a">
-                                    <img src="Content/images/tss3.png" /></a>
-                                <div class="tits_btm_coms_index names_btm"><a href="#">价格、名字</a></div>
-                            </div>
-                        </div>
-                        <div class="title"><a href="">效果图4</a></div>
-                    </li>
-                    <li>
-                        <div class="pic">
-                            <div class="img_cons_wks_common">
-                                <div class="tits_btm_coms_index">最新发布</div>
-                                <div class="interval_line_c"></div>
-                                <a href="#" class="imgs_a">
-                                    <img src="Content/images/tss2.png" /></a>
-                                <div class="tits_btm_coms_index names_btm"><a href="#">价格、名字</a></div>
-                            </div>
-                        </div>
-                        <div class="title"><a href="">效果图4</a></div>
-                    </li>
-                    <li>
-                        <div class="pic">
-                            <div class="img_cons_wks_common">
-                                <div class="tits_btm_coms_index">最新发布</div>
-                                <div class="interval_line_c"></div>
-                                <a href="#" class="imgs_a">
-                                    <img src="Content/images/tss5.png" /></a>
-                                <div class="tits_btm_coms_index names_btm"><a href="#">价格、名字</a></div>
-                            </div>
-                        </div>
-                        <div class="title"><a href="">效果图4</a></div>
-                    </li>
+                        </li>
+                            }
+                        }
+                    }
                 </ul>
             </div>
         </div>
     </div>
+
+     <!--热门-->
     <div class="grid_6">
         <div class="topLoop" id="sliders_5" style="height: 304px; width: 230px;">
             <div class="hd"><a class="next"></a><a class="prev"></a></div>
@@ -518,6 +470,8 @@
             </div>
         </div>
     </div>
+    
+     <!--置顶-->
     <div class="grid_6 omega">
         <div class="topLoop" id="sliders_6" style="height: 304px; width: 230px;">
             <div class="hd"><a class="next"></a><a class="prev"></a></div>
@@ -589,7 +543,10 @@
     </div>
     <div class="clear"></div>
 </div>
+
 <div class="interval_20"></div>
+
+<!--广告-->
 <div class="grid_24">
     <div class="grid_4 alpha">
         <div class="common_six_grids">
@@ -629,8 +586,12 @@
     </div>
     <div class="clear"></div>
 </div>
+
 <div class="interval_30"></div>
+
+<!--房屋-->
 <div class="grid_24">
+    <!--标签-->
     <div class="grid_5 alpha">
         <div class="hot_tags">
             <div class="thing_deal_tops">
@@ -646,77 +607,48 @@
             </div>
         </div>
     </div>
+
     <div class="grid_1 width_cus">-</div>
+
+    <!--最新-->
     <div class="grid_6">
         <div class="topLoop" id="sliders_7" style="height: 304px; width: 230px;">
             <div class="hd"><a class="next"></a><a class="prev"></a></div>
             <div class="bd">
                 <ul class="picList">
-                    <li>
-                        <div class="pic">
-                            <div class="img_cons_wks_common">
-                                <div class="tits_btm_coms_index">最新发布</div>
-                                <div class="interval_line_c"></div>
-                                <a href="#" class="imgs_a">
-                                    <img src="Content/images/tss1.png" /></a>
-                                <div class="tits_btm_coms_index names_btm"><a href="#">价格、名字</a></div>
+                   @foreach (var item in Model.HouseTransferInfos)
+                    {
+                        foreach (var picture in item.Pictures)
+                        {
+                            if (picture.TransferPictureCatagroy == (int)Fx.Entity.PictureCatagroy.Head)
+                            {
+                        <li>
+                            <div class="pic">
+                                <div class="img_cons_wks_common">
+                                    <div class="tits_btm_coms_index">最新发布</div>
+                                    <div class="interval_line_c"></div>
+                                    <a href="#" class="imgs_a">
+                                        <img src="@Fx.InformationPlatform.Site.AppSettings.ImageUploadCdnDomain(picture.ImageUrl)" />
+                                        <img src="Content/images/test1.jpg" />
+                                    </a>
+                                    <div class="tits_btm_coms_index names_btm">
+                                        <a href="#">
+                                            @item.Price
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="title"><a href="">效果图4</a></div>
-                    </li>
-                    <li>
-                        <div class="pic">
-                            <div class="img_cons_wks_common">
-                                <div class="tits_btm_coms_index">最新发布</div>
-                                <div class="interval_line_c"></div>
-                                <a href="#" class="imgs_a">
-                                    <img src="Content/images/test1.jpg" /></a>
-                                <div class="tits_btm_coms_index names_btm"><a href="#">价格、名字</a></div>
-                            </div>
-                        </div>
-                        <div class="title"><a href="">效果图4</a></div>
-                    </li>
-                    <li>
-                        <div class="pic">
-                            <div class="img_cons_wks_common">
-                                <div class="tits_btm_coms_index">最新发布</div>
-                                <div class="interval_line_c"></div>
-                                <a href="#" class="imgs_a">
-                                    <img src="Content/images/tss3.png" /></a>
-                                <div class="tits_btm_coms_index names_btm"><a href="#">价格、名字</a></div>
-                            </div>
-                        </div>
-                        <div class="title"><a href="">效果图4</a></div>
-                    </li>
-                    <li>
-                        <div class="pic">
-                            <div class="img_cons_wks_common">
-                                <div class="tits_btm_coms_index">最新发布</div>
-                                <div class="interval_line_c"></div>
-                                <a href="#" class="imgs_a">
-                                    <img src="Content/images/tss2.png" /></a>
-                                <div class="tits_btm_coms_index names_btm"><a href="#">价格、名字</a></div>
-                            </div>
-                        </div>
-                        <div class="title"><a href="">效果图4</a></div>
-                    </li>
-                    <li>
-                        <div class="pic">
-                            <div class="img_cons_wks_common">
-                                <div class="tits_btm_coms_index">最新发布</div>
-                                <div class="interval_line_c"></div>
-                                <a href="#" class="imgs_a">
-                                    <img src="Content/images/tss5.png" /></a>
-                                <div class="tits_btm_coms_index names_btm"><a href="#">价格、名字</a></div>
-                            </div>
-                        </div>
-                        <div class="title"><a href="">效果图4</a></div>
-                    </li>
+                        </li>
+                            }
+                        }
+                    }
                 </ul>
             </div>
         </div>
 
     </div>
+    
+    <!--热门-->
     <div class="grid_6">
         <div class="topLoop" id="sliders_8" style="height: 304px; width: 230px;">
             <div class="hd"><a class="next"></a><a class="prev"></a></div>
@@ -786,6 +718,8 @@
             </div>
         </div>
     </div>
+    
+    <!--置顶-->
     <div class="grid_6 omega">
         <div class="topLoop" id="sliders_9" style="height: 304px; width: 230px;">
             <div class="hd"><a class="next"></a><a class="prev"></a></div>

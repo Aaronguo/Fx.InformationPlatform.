@@ -132,6 +132,13 @@ namespace Fx.InformationPlatform.Site
             return GetString("ImageDomain", "http://localhost:9999/Content/images/") + imageFileorPath;
         }
 
+        public static string ImageUploadCdnDomain(string imageFileorPath)
+        {
+            return GetString("ImageUploadCdnDomain", "http://uploadcdn.yingtao.co.uk/") + imageFileorPath;
+        }
+
+
+
         public static string[] PictureMINE()
         {
             if (cacheService.Get("FxSitePictureMINE") == null)
@@ -145,7 +152,7 @@ namespace Fx.InformationPlatform.Site
 
         public static string FormDomain
         {
-            get { return GetString("FormDomain", "yingtao.co.uk"); }  //en-US
+            get { return GetString("FormDomain", "yingtao.co.uk"); }  
         }
 
 

@@ -1005,6 +1005,7 @@ namespace Fx.Domain
             };
             #endregion
             goodsConditons.ForEach(r => context.GoodsConditions.Add(r));
+            context.SaveChanges();
         }
     }
 }

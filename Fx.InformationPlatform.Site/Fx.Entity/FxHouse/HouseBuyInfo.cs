@@ -10,5 +10,10 @@ namespace Fx.Entity.FxHouse
         public int HouseBuyInfoId { get; set; }
 
         public virtual ICollection<HouseBuyLog> Logs { get; set; }
+
+        public HouseBuyInfo()
+        {
+            this.Logs = new List<HouseBuyLog>();
+        }
     }
 }

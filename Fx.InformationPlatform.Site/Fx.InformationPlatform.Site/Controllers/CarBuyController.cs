@@ -12,6 +12,7 @@ using Fx.InformationPlatform.Site.ViewModel;
 
 namespace Fx.InformationPlatform.Site.Controllers
 {
+     [Authorize]
     public class CarBuyController : BaseController, ISiteJob
     {
         ICar carService;

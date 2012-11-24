@@ -39,6 +39,6 @@ namespace Fx.Domain.Base.IService
         /// <param name="asc">是否升序</param>
         /// <param name="key">关键字</param>
         /// <returns></returns>
-        List<T> SearchByDate(int page, bool asc, string key);        
+        List<T> SearchByDate(int page, bool asc, string key);
     }
 }

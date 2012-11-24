@@ -10,7 +10,7 @@ namespace Fx.Domain.Account.IService
 {
     public interface IAccountService
     {
-        DomainResult AddUser(Membership entity);
+        DomainResult AddUser(Membership entity,OtherInformation other);
 
         DomainResult DeleteUser(Membership entity);
 

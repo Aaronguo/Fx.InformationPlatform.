@@ -53,6 +53,9 @@
     <Reference Include="FluentEmail">
       <HintPath>..\packages\fluent-email.1.1.0\lib\net40\FluentEmail.dll</HintPath>
     </Reference>
+    <Reference Include="FxCacheService">
+      <HintPath>..\packages\Fx\FxCacheService\FxCacheService.dll</HintPath>
+    </Reference>
     <Reference Include="FxTask">
       <HintPath>..\packages\FxTask\FxTask.dll</HintPath>
     </Reference>
@@ -210,6 +213,7 @@
     <Compile Include="ViewModel\BuyViewCar.cs" />
     <Compile Include="ViewModel\BuyViewGoods.cs" />
     <Compile Include="ViewModel\BuyViewHouse.cs" />
+    <Compile Include="ViewModel\HomeModel.cs" />
     <Compile Include="ViewModel\TransferViewCar.cs" />
     <Compile Include="ViewModel\TransferViewGoods.cs" />
     <Compile Include="ViewModel\TransferViewHouse.cs" />
@@ -225,8 +229,6 @@
     <Content Include="App_Readme\Elmah.SqlServer.sql" />
     <Content Include="App_Readme\Elmah.SqlServer.txt" />
     <Content Include="App_Readme\Elmah.txt" />
-    <Content Include="App_Readme\ELmahProc2008.sql" />
-    <Content Include="App_Readme\fxdbone.sql" />
     <Content Include="App_Readme\membership.sql" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
@@ -377,7 +379,6 @@
     <Content Include="Content\js\Debug\log4Init.js" />
     <Content Include="Content\js\Debug\log4javascript1.4.3.js" />
     <Content Include="Content\js\jquery-1.8.2.min.js" />
-    <Content Include="Content\js\jquery.pack.js" />
     <Content Include="Content\js\jquery.SuperSlide.js" />
     <Content Include="Content\js\slider.js" />
     <Content Include="Content\js\Transfer\TransferGoodsEvent.js" />

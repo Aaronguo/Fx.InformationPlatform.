@@ -101,18 +101,19 @@ namespace Fx.InformationPlatform.Site.Controllers
             membershipuser.MobilePIN = user.Mobile;
             membershipuser.Email = user.Email;
             membershipuser.Password = user.Password;
-            membershipuser.OtherInformations.Address = user.Address;
-            membershipuser.OtherInformations.Mobile = user.Mobile;
-            membershipuser.OtherInformations.NickName = user.NickName;
-            membershipuser.OtherInformations.QQ = user.QQ;
-            membershipuser.OtherInformations.Sex = SexCatalog.Male;
+            var other = new OtherInformation();
+            other.Address = user.Address;
+            other.Mobile = user.Mobile;
+            other.QQ = user.QQ;
+            other.Sex = SexCatalog.Male;
+
             if (Request.Files["headPicture"].HasFile())
             {
                 string path = AppDomain.CurrentDomain.BaseDirectory + "Upload/HeadPicture/";
                 string filename = Path.GetFileName(Request.Files["headPicture"].FileName);
             }
-            membershipuser.OtherInformations.HeadPicture = user.HeadPicture;
-            var entityResult = accountService.AddUser(membershipuser);
+            other.HeadPicture = user.HeadPicture;
+            var entityResult = accountService.AddUser(membershipuser,other);
             if (entityResult.isSuccess)
             {
                 // 跳转到登录页面

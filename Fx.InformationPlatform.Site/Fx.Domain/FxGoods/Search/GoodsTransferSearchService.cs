@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using Fx.Domain.Base.IService;
 using Fx.Entity.FxGoods;
 
-namespace Fx.Domain.FxGoods
+namespace Fx.Domain.FxGoods.Search
 {
-    public class GoodsTransferSearchService : ISiteSearch<GoodsTransferInfo>, IGoodsSearch<GoodsTransferInfo>
+    public class GoodsTransferSearchService : ISiteSearch<GoodsTransferInfo>, IGoodsSearch<GoodsTransferInfo>, IHomeSearch<GoodsTransferInfo>
     {
         public List<GoodsTransferInfo> SearchByKey(string key, int page)
         {
@@ -231,6 +232,24 @@ namespace Fx.Domain.FxGoods
                     }
                 }
             }
+        }
+
+        public List<GoodsTransferInfo> SearchLatestForHome(int count)
+        {
+            using (var content = new FxGoodsContext())
+            {
+                return content.GoodsTransferInfos.Include(r => r.Pictures).OrderByDescending(r => r.CreatedTime).Take(count).ToList();
+            }
+        }
+
+        public List<GoodsTransferInfo> SearchHottestForHome(int count)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<GoodsTransferInfo> SearchTopshowForHome(int count)
+        {
+            throw new NotImplementedException();
         }
     }
 }

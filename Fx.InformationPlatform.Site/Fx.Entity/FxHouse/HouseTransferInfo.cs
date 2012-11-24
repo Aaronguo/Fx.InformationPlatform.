@@ -26,6 +26,7 @@ namespace Fx.Entity.FxHouse
         public HouseTransferInfo()
         {
             this.Pictures = new List<TransferPicture>();
+            this.Logs = new List<HouseTransferLog>();
         }
     }
 }

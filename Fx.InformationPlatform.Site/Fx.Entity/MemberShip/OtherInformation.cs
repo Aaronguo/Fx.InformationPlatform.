@@ -9,6 +9,8 @@ namespace Fx.Entity.MemberShip
     public class OtherInformation
     {
         public int OtherInformationId { get; set; }
+
+        public string Email { get; set; }
         
         public string QQ { get; set; }
 

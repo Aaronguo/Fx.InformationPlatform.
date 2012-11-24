@@ -40,6 +40,9 @@ namespace Fx.Domain.FxHouse.Mapping
               this.Property(t => t.IsPublish).HasColumnName("IsPublish");
               this.Property(t => t.InfoProcessState).HasColumnName("InfoProcessState");
               this.Property(t => t.ErrorMsg).HasColumnName("ErrorMsg").HasMaxLength(256);
+
+              this.HasMany(r => r.Pictures).WithRequired().WillCascadeOnDelete(true);
+              this.HasMany(r => r.Logs).WithRequired().WillCascadeOnDelete(true);
          }
     }
 }

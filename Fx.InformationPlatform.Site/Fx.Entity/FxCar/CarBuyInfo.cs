@@ -10,5 +10,10 @@ namespace Fx.Entity.FxCar
         public int CarBuyInfoId { get; set; }
 
         public virtual ICollection<CarBuyLog> Logs { get; set; }
+
+        public CarBuyInfo()
+        {
+            this.Logs = new List<CarBuyLog>();
+        }
     }
 }

@@ -13,6 +13,7 @@ using Fx.InformationPlatform.Site.ViewModel;
 
 namespace Fx.InformationPlatform.Site.Controllers
 {
+     [Authorize]
     public class HouseTransferController : BaseController,ISiteJob
     {
         IHouse houseService;
@@ -34,14 +35,31 @@ namespace Fx.InformationPlatform.Site.Controllers
         }
 
 
+        public ActionResult Properties()
+        {
+            BindCatagroy();
+            return View();
+        }
+
+
         [HttpPost]
         public ActionResult CommercialProperties(TransferViewHouse house,
             List<HttpPostedFileBase> facefile, List<HttpPostedFileBase> otherfile, List<HttpPostedFileBase> badfile)
         {
-            return PublishGoods(house, facefile, otherfile, badfile);
+            return PublishHouse(house, facefile, otherfile, badfile);
         }
 
-        private ActionResult PublishGoods(TransferViewHouse house, List<HttpPostedFileBase> facefile, List<HttpPostedFileBase> otherfile, List<HttpPostedFileBase> badfile)
+
+        [HttpPost]
+        public ActionResult Properties(TransferViewHouse house,
+            List<HttpPostedFileBase> facefile, List<HttpPostedFileBase> otherfile, List<HttpPostedFileBase> badfile)
+        {
+            return PublishHouse(house, facefile, otherfile, badfile);
+        }
+
+
+
+        private ActionResult PublishHouse(TransferViewHouse house, List<HttpPostedFileBase> facefile, List<HttpPostedFileBase> otherfile, List<HttpPostedFileBase> badfile)
         {
             if (BuildHouse(house, facefile, otherfile, badfile))
             {

@@ -26,6 +26,7 @@ namespace Fx.Entity.FxGoods
         public GoodsBuyInfo()
         {
             this.Pictures = new List<BuyPicture>();
+            this.Logs = new List<GoodsBuyLog>();
         }
     }
 }
