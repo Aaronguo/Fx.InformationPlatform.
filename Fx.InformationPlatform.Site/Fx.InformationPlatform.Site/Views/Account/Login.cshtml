@@ -9,31 +9,39 @@
         <p class="typo-h1">
             你好，欢迎加入英淘网
         </p>
-        <div class="grid_24">
+        <div class="grid_24" style="height: 300px;">
             <div class="grid_18 alpha">
-                <div class="grid_2 alpha">
+                @* <div class="grid_2 alpha">
                     <label>账号</label>
-                </div>
-                <div class="grid_16 omega">
-                    @Html.TextBoxFor(model => model.Email, new { placeholder = "abc@abc.com"})
+                </div>*@
+               @* <div class="grid_16 omega input-prepend">*@
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-user"></i></span>
+                    @Html.TextBoxFor(model => model.Email, new { placeholder = "abc@abc.com" })
                     @Html.ValidationMessageFor(model => model.Email)
                 </div>
+                @*  </div>*@
                 <div class="clear">
                 </div>
-                <div class="grid_2 alpha">
+                @* <div class="grid_2 alpha">
                     <label>密码</label>
-                </div>
-                <div class="grid_16 omega">
-                    @Html.TextBoxFor(model => model.Password, new { type="password" })
+                </div>*@
+             @*   <div class="grid_16 omega input-prepend">*@
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-lock"></i></span>
+                    @Html.TextBoxFor(model => model.Password, new { type = "password" })
                     @Html.ValidationMessageFor(model => model.Password)
                 </div>
+                @*  </div>*@
                 <div class="clear">
                 </div>
-
                 <div>
-                    <label ></label>
-                    <input class="btn_green button button-green" type="submit" value="登录">
-                    <span style="color: #f00;">@ViewBag.Error</span>
+                    <label></label>
+                    <div class="grid_2 alpha">&nbsp;</div>
+                    <div class="omega">
+                        <input class="btn_green button button-green" type="submit" value="登录">
+                        <span style="color: #f00;">@ViewBag.Error</span>
+                    </div>
                 </div>
             </div>
             <div class="grid_6 omega">

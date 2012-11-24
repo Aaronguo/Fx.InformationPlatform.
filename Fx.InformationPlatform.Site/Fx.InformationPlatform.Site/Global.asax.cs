@@ -31,8 +31,20 @@ namespace Fx.InformationPlatform.Site
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Account", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
+
+            routes.MapRoute(
+                "Buy", // Route name
+                "{controller}/{action}/{id}", // URL with parameters
+                new { controller = "Buy", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+            );
+
+            routes.MapRoute(
+               "Transfer", // Route name
+               "{controller}/{action}/{id}", // URL with parameters
+               new { controller = "Transfer", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+           );
 
         }
 
@@ -47,7 +59,7 @@ namespace Fx.InformationPlatform.Site
             RegisterRoutes(RouteTable.Routes);
             if (!Fx.InformationPlatform.Site.T4Helper.IsDebug)
             {
-                new FxTask.QuartzLoadProvider().Load();
+                //new FxTask.QuartzLoadProvider().Load();
             }
         }
     }

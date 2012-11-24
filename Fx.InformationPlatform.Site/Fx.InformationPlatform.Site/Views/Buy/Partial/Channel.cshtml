@@ -128,7 +128,8 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#selectcat > a").eq(0).addClass("on");
+        var id = document.getElementById('selectcatid').value || 0;
+        $("#selectcat > a").eq(id).addClass("on");
         $("#selectdetail > div").eq(0).toggleClass("hide");
         $("#selectcat > a").click(function () {
             var indexold = document.getElementById("selectcatindex").value;

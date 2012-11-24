@@ -18,7 +18,7 @@ namespace Fx.Domain.FxHouse
         }
 
         public FxHouseContext()
-            : base("fx.house-mysql")
+            : base("fx.house-sqlserver")
         {
 
         }

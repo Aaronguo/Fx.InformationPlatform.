@@ -278,7 +278,7 @@ namespace Fx.InformationPlatform.Site.Controllers
         {
             new System.Threading.Thread(() =>
             {
-                new FxTask.FxCar.Transfer.CarTransferJobLoad();
+                new FxTask.FxCar.Transfer.CarTransferJobLoad().Execute();
             }).Start();
         }
     }

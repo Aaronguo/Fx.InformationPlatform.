@@ -65,7 +65,9 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /V "$(TargetDir)\Fx.Infrastructure.dll" "E:\Program Files\GitHubWorkspace\net\FxInformationJob\FxInformationJob\FxInformationJob\packages\Fx\Fx.Infrastructure\Fx.Infrastructure.dll"</PostBuildEvent>
+    <PostBuildEvent>copy /V "$(TargetDir)\Fx.Infrastructure.dll" "E:\Program Files\GitHubWorkspace\net\FxInformationJob\FxInformationJob\FxInformationJob\packages\Fx\Fx.Infrastructure\Fx.Infrastructure.dll"
+copy /V "$(TargetDir)\Fx.Infrastructure.dll" "E:\Program Files\GitHubWorkspace\net\FxUserCenter\FxUserCenter\FxUserCenter\packages\Fx\Fx.Infrastructure\Fx.Infrastructure.dll"
+copy /V "$(TargetDir)\Fx.Infrastructure.dll" "E:\Program Files\GitHubWorkspace\net\FxCacheService\FxCacheService\FxCacheService\packages\Fx\Fx.Infrastructure\Fx.Infrastructure.dll"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -162,7 +162,7 @@ namespace Fx.InformationPlatform.Site.Controllers
         {
             new System.Threading.Thread(() =>
             {
-                new FxTask.FxCar.Buy.CarBuyJobLoad();
+                new FxTask.FxCar.Buy.CarBuyJobLoad().Execute();
             }).Start();
         }
     }

@@ -284,9 +284,12 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public void RunJob()
         {
+            //new FxTask.FxGoods.Transfer.GoodsTransferJobLoad();
+
+
             new System.Threading.Thread(() =>
             {
-                new FxTask.FxGoods.Transfer.GoodsTransferJobLoad();
+                new FxTask.FxGoods.Transfer.GoodsTransferJobLoad().Execute();
             }).Start();
         }
     }

@@ -104,7 +104,7 @@ namespace Fx.InformationPlatform.Site.Controllers
         {
             new System.Threading.Thread(() =>
             {
-                new FxTask.FxHouse.Buy.HouseBuyJobLoad();
+                new FxTask.FxHouse.Buy.HouseBuyJobLoad().Execute();
             }).Start();
         }
     }

@@ -26,7 +26,8 @@ audio, canvas, video {
 
 /* 要注意表单元素并不继承父级 font 的问题 */
 body, button, input, select, textarea {
-	font: 14px/1.5 'Arial', sans-serif;
+    font-family: '微软雅黑';
+	/*font: 14px/1.5 'Arial', sans-serif;*/
 }
 
 input, select, textarea {
@@ -421,7 +422,7 @@ hr{border:none;border-bottom:1px solid #cfcfcf;margin-bottom:10px;*color:pink;*f
 	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#F0EFEB', endColorstr='#FAF9F5')
 			 chroma(color=black);
 }
-.button-green, .nav{
+.button-green{
 	color:#ffc;
 	border:1px solid #549812;
 	background: #60A00D;
@@ -515,15 +516,15 @@ left:-6px\0;line-height:29px\0;/* solution:win7 ie8 line-height bug */
 /* pagenav 分页
  * author: linjianfeng@baixing.com
  */
-.pagenav{height:24px;}
+/*.pagenav{height:24px;}
 .pagenav a{color:#333;}
 .pagenav-cell{display:inline-block;border:1px solid #cfcfcf;padding:0 10px;height:24px;line-height:24px;float:left;margin-right:5px;}
 .pagenav-cell-ellipsis{border:none;padding:0;}
 .pagenav-cell-current{background:#eee;}
-.pagenav .pagenav-cell-next{background:#5ba533;border-color:#4c8928;color:#fff;}
+.pagenav .pagenav-cell-next{background:#8A0018;border-color:#8A0018;color:#fff;}
 .pagenav-cell:hover{background:#eee;text-decoration:none;}
 .pagenav-cell-ellipsis:hover{background:none;}
-.pagenav .pagenav-cell-next:hover{background:#458324;}
+.pagenav .pagenav-cell-next:hover{background:#8A0018;}*/
 
 /* breadcrumb 面包屑导航
  * author: linjianfeng@baixing.com
@@ -549,9 +550,9 @@ left:-6px\0;line-height:29px\0;/* solution:win7 ie8 line-height bug */
 #glist{margin-left:-20px;_margin-left:-40px;}
 .glist a{color:#333;}
 .glist{margin-left:20px;width:180px;float:left;}
-.glist-title{padding:3px 5px;border-bottom:2px solid #82C727;background:#f7f7f7;}
+.glist-title{padding:3px 5px;border-bottom:2px solid #8A0018;background:#f7f7f7;}
 .glist-title h3{display:inline-block;*display:inline;*zoom:1;line-height:1.5;font-weight:800;}
-.glist-title h3 a{color:green;}
+.glist-title h3 a{color:#8A0018;}
 .glist-title a:hover{color:#888;text-decoration:none;}
 .glist-title cite{font-size:12px;color:#888;}
 .glist-section{
@@ -656,10 +657,10 @@ _position:relative; /* fix 多一只猪的问题 */
 .tab{position:relative;}
 .tab-title{border-bottom:1px solid #cfcfcf;}
 .tab-title-item{display:inline-block;float:left;height:28px;line-height:28px;border:1px solid #cfcfcf;border-bottom-color:#cfcfcf;border-right:0;margin-top:1px;position:relative;z-index:1;top:1px;background:#fbfbfb;}
-.tab-title .active{border-top:2px solid #5ba533;border-bottom-color:#fff;z-index:2;margin-top:0;background:#fff;}
+.tab-title .active{border-top:2px solid #8A0018;border-bottom-color:#fff;z-index:2;margin-top:0;background:#fff;}
 .tab-title-item-last{border-right:1px solid #cfcfcf;}
 .tab-title a{color:#333;padding:0 16px;line-height:28px;}
-.tab-title a:hover{color:#5ba533;text-decoration:none;} 
+.tab-title a:hover{color:#8A0018;text-decoration:none;} 
 .tab-fix{position:absolute;right:0;top:5px;color:#ddd;}
 .tab-fix strong{color:#888;}
 .tab-content{border:1px solid #cfcfcf;border-top:none;padding:10px 15px;}
@@ -718,7 +719,7 @@ _position:relative; /* fix 多一只猪的问题 */
 .dropdown-menu-item{display:inline-block;width:80px;float:left;padding:3px 10px;line-height:1.5;/* prevent overwrite */}
 .dropdown-menu-item:hover, .dropdown-menu-item-hover{background:#EAFDBC;text-decoration:none;cursor:pointer;}
 .dropdown-open .dropdown-menu{display:block;}
-.dropdown-unibody cite{color:#fff;background:#080;display:inline-block;height:12px;padding:0 5px;margin:0 3px;text-align:center;line-height:12px;border-radius:6px;}
+.dropdown-unibody cite{color:#fff;background:#8A0018;display:inline-block;height:12px;padding:0 5px;margin:0 3px;text-align:center;line-height:12px;border-radius:6px;}
 .dropdown-unibody .dropdown-menu{width:100px;margin-top:-4px;margin-top:-3px\9;*margin-top:-4px;*top:25px;color:#333;z-index:2;}
 .dropdown-unibody .dropdown-menu-item{padding:2px 5px 2px 0;width:auto;}
 :root .dropdown-unibody .dropdown-menu{margin-top:-3px\9;}
@@ -731,8 +732,8 @@ _position:relative; /* fix 多一只猪的问题 */
 .dropdown-unibody .dropdown-trigger-active:hover{background:#888;color:#fff;}
 .dropdown-open .dropdown-trigger-active:hover{color:#333;background:#fff;}
 .dropdown-unibody .dropdown-trigger-active:hover cite{background:#fff;color:#333;}
-.dropdown-open cite{background:#080;color:#fff;}
-.dropdown-open .dropdown-trigger-active:hover cite{background:#080;color:#fff;}
+.dropdown-open cite{background:#8A0018;color:#fff;}
+.dropdown-open .dropdown-trigger-active:hover cite{background:#8A0018;color:#fff;}
 .dropdown-open .arrow-down{top:-10px;}
 
 /* Tips + Alert
@@ -761,8 +762,8 @@ _position:relative; /* fix 多一只猪的问题 */
  */
 .flow{margin-left:15px;}
 .flow-item{display:inline-block;*display:inline;*zoom:1;float:left;padding:4px 0;text-align:center;width:309px;margin-right:20px;border:1px solid #cfcfcf;position:relative;margin-left:-15px;background:#f7f7f7;}
-.flow-item-done{border-color:#d9eb9f;background:#fbffed;}
-.flow-item-current{background:#6ab302;border-color:#589803;color:#fff;font-weight:700;}
+.flow-item-done{border-color:#8A0018;background:#fbffed;}
+.flow-item-current{background:#8A0018;border-color:#8A0018;color:#fff;font-weight:700;}
 .flow-item-last{margin-right:0;width: 316px;}
 .flow .diamond{height:20px;width:20px;background:#fff;position:absolute;left:-10px;left:-15px\9;border-right:1px solid #cfcfcf;border-top:1px solid #cfcfcf;top:4px;top:0\9;z-index:2;}
 .flow .diamond-next{left:auto;border:none;background:#f7f7f7;right:-12px;right:-8px\9;*right:-16px;*z-index:3;border-top:1px solid #cfcfcf;border-right:1px solid #cfcfcf;}
@@ -771,10 +772,10 @@ _position:relative; /* fix 多一只猪的问题 */
 
 .flow-item-first .diamond{display:none;}
 .flow-item-first .diamond-next{display:block;}
-.flow-item-done .diamond{border-color:#d9eb9f;background:#fff;}
-.flow-item-done .diamond-next{display:block;background:#fbffed;border-color:#d9eb9f;}
-.flow-item-current .diamond{border-color:#589803;}
-.flow-item-current .diamond-next{background:#6ab302;}
+.flow-item-done .diamond{border-color:#8A0018;background:#fff;}
+.flow-item-done .diamond-next{display:block;background:#fbffed;border-color:#8A0018;}
+.flow-item-current .diamond{border-color:#8A0018;}
+.flow-item-current .diamond-next{background:#8A0018;}
 .flow-item-last .diamond-next{display:none;}
 .flow-item-1{z-index:5;}
 .flow-item-2{z-index:4;}
@@ -810,12 +811,12 @@ _position:relative; /* fix 多一只猪的问题 */
 /* Nav
  * author: linjianfeng@baixing.com
  */
-.nav{border:1px solid #549712;border-bottom:3px solid #498901;padding-left:10px;margin-bottom:10px;}
+/*.nav{border:1px solid #8A0018;border-bottom:3px solid #8A0018;padding-left:10px;margin-bottom:10px;}
 .nav-home{margin-bottom:0;}
 .nav-item{float:left;display:inline-block;float:left;height:35px;overflow:hidden;}
 .nav-item-link{display:inline-block;height:35px;line-height:35px;line-height:38px\9;line-height:34px\0;padding:0 16px;color:#ffc;}
 .win.ie-8 .nav-item-link{line-height:38px;}
-.nav-item-link:hover, .nav-item-current .nav-item-link{color:#fff;background:#498901;border-left:1px solid #3E7B0B;border-right:1px solid #3E7B0B;padding:0 15px;text-decoration:none;}
+.nav-item-link:hover, .nav-item-current .nav-item-link{color:#fff;background:#8A0018;border-left:1px solid #8A0018;border-right:1px solid #8A0018;padding:0 15px;text-decoration:none;}*/
 
 /* Category Box
  * author: linjianfeng@baixing.com
@@ -912,4 +913,4 @@ _position:relative; /* fix 多一只猪的问题 */
  * author: linjianfeng@baixing.com
  */
 .popover{position:absolute;}
-.spar {color:#ABCD72;border-bottom:1px #59A905 solid;background-color: none!important;line-height: 3;border-top:10px solid #fff;}
+.spar {color:#8A0018;border-bottom:1px #8A0018 solid;background-color: none!important;line-height: 3;border-top:10px solid #fff;}

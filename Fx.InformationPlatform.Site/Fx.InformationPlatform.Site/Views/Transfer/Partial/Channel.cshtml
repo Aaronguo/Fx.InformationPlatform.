@@ -66,26 +66,20 @@
 
 
 <style type="text/css">
-   
-
-    .selects-cat
-    {
+    .selects-cat {
         width: 120px;
         overflow: hidden;
     }
 
-    .selects-box
-    {
+    .selects-box {
         width: 130px;
     }
 
-        .selects-box a.on
-        {
+        .selects-box a.on {
             background: #D1E98E;
         }
 
-        .selects-box a
-        {
+        .selects-box a {
             display: block;
             height: 30px;
             line-height: 30px;
@@ -97,18 +91,15 @@
 
 
 
-    .boxheight
-    {
+    .boxheight {
         height: 316px;
     }
 
-    .halfmiddleheight
-    {
+    .halfmiddleheight {
         height: 150px;
     }
 
-    .boxheight a
-    {
+    .boxheight a {
         width: 110px;
         float: left;
         display: block;
@@ -118,8 +109,7 @@
         color: #333;
     }
 
-        .boxheight a:hover
-        {
+        .boxheight a:hover {
             text-decoration: none;
             background: #EEE;
         }
@@ -128,7 +118,8 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#selectcat > a").eq(0).addClass("on");
+        var id = document.getElementById('selectcatid').value || 0;
+        $("#selectcat > a").eq(id).addClass("on");
         $("#selectdetail > div").eq(0).toggleClass("hide");
         $("#selectcat > a").click(function () {
             var indexold = document.getElementById("selectcatindex").value;

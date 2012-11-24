@@ -143,7 +143,10 @@ namespace Fx.InformationPlatform.Site
         }
 
 
-
+        public static string FormDomain
+        {
+            get { return GetString("FormDomain", "yingtao.co.uk"); }  //en-US
+        }
 
 
         //public static double CacheSettingsTimeOut

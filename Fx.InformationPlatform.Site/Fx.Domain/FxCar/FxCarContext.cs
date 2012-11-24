@@ -18,7 +18,7 @@ namespace Fx.Domain.FxCar
         }
 
         public FxCarContext()
-            : base("fx.car-mysql")
+            : base("fx.car-sqlserver")
         {
 
         }

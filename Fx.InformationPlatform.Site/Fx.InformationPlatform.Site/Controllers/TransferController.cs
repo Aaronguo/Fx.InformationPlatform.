@@ -20,8 +20,9 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         //
         // GET: /Publish/
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
+            ViewBag.Select = id;
             return View(channelService.GetAllChannels());
         }
 

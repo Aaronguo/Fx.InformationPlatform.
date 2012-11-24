@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Fx.Domain.Base.IService;
 using Fx.Entity.FxHouse;
 
 namespace Fx.Domain.FxHouse.Search

@@ -1,0 +1,31 @@
+﻿<div class="grid_24">
+    <div class="tab">
+        <ul class="tab-title clearmargin clearfix " id="tabcontrol">            
+            <li class="tab-title-item"><a href="#" datatoggle="tab">已发布的信息</a></li>
+            <li class="tab-title-item"><a href="#" datatoggle="tab">待发布信息</a></li>            
+            <li class="tab-title-item"><a href="#" datatoggle="tab">我的收藏</a></li>
+            <li class="tab-title-item  tab-title-item-last"><a href="Account/Profile" datatoggle="tab">我的私信</a></li>  
+            <li class="tab-title-item">
+                @*@Html.ActionLink("修改资料", "Profile", "Account", new { }, new { datatoggle = "tab" })*@
+                <a href="Account/Profile" datatoggle="tab">修改资料</a>
+            </li>          
+        </ul>
+    </div>
+</div>
+
+@*<input id="tabShow" type="hidden" value="@ViewBag.Tag" />*@
+
+<script>
+    //修正因跳转后 tab的激活窗口的显示问题 class="active"  这个值由后台传入到hidden中 在通过脚本找出 li 元素进行样式添加 
+    //页面中添加tabShow的隐藏域控件，不在从ViewBag.Tag传入，相应移除Controller中的ViewBag.Tag代码 
+    $(document).ready(function () {
+        var id = $('#tabShow').attr('value')|| 0;
+        var lis = $('#tabcontrol>li');
+        var count = lis.size();
+        var li = lis.eq(id);
+        li.addClass('active');
+    });
+</script>
+<script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("plugins.js")"></script>
+
+<script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("instant.js")"></script>

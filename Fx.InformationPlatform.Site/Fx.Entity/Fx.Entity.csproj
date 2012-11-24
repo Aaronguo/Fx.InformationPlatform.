@@ -46,6 +46,7 @@
     <Compile Include="Catagroy\ChannelCatagroy.cs" />
     <Compile Include="Catagroy\PictureCatagroy.cs" />
     <Compile Include="Catagroy\ProcessState.cs" />
+    <Compile Include="FxAggregate\Favorite.cs" />
     <Compile Include="FxCar\CarBase.cs" />
     <Compile Include="FxCar\CarBuyInfo.cs" />
     <Compile Include="FxCar\CarBuyLog.cs" />
@@ -98,7 +99,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /V "$(TargetDir)\Fx.Entity.dll" "E:\Program Files\GitHubWorkspace\net\FxInformationJob\FxInformationJob\FxInformationJob\packages\Fx\Fx.Entity\Fx.Entity.dll"</PostBuildEvent>
+    <PostBuildEvent>copy /V "$(TargetDir)\Fx.Entity.dll" "E:\Program Files\GitHubWorkspace\net\FxInformationJob\FxInformationJob\FxInformationJob\packages\Fx\Fx.Entity\Fx.Entity.dll"
+copy /V "$(TargetDir)\Fx.Entity.dll" "E:\Program Files\GitHubWorkspace\net\FxUserCenter\FxUserCenter\FxUserCenter\packages\Fx\Fx.Entity\Fx.Entity.dll"
+copy /V "$(TargetDir)\Fx.Entity.dll" "E:\Program Files\GitHubWorkspace\net\FxCacheService\FxCacheService\FxCacheService\packages\Fx\Fx.Entity\Fx.Entity.dll"
+</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

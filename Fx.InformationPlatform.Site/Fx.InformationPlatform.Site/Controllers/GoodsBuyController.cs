@@ -267,7 +267,7 @@ namespace Fx.InformationPlatform.Site.Controllers
         {
             new System.Threading.Thread(() =>
             {
-                new FxTask.FxGoods.Buy.GoodsBuyJobLoad();
+                new FxTask.FxGoods.Buy.GoodsBuyJobLoad().Execute();
             }).Start();
         }
     }

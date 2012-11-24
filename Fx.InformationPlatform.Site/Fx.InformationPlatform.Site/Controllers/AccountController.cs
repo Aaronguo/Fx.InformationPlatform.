@@ -13,7 +13,6 @@ namespace Fx.InformationPlatform.Site.Controllers
     public class AccountController : Controller
     {
         private IAccountService accountService;
-
         public AccountController(IAccountService accountService)
         {
             this.accountService = accountService;
@@ -23,48 +22,51 @@ namespace Fx.InformationPlatform.Site.Controllers
         //
         // GET: /Account/
 
-        public  ActionResult Index()
+        public ActionResult Index()
         {
-            //accountService.AddUser(new Entity.Membership()
-            //{
-            //    Users = new Entity.Users() { UserName = "czj" },
-            //    Password = "dsasdsa"
-            //});
             return View();
         }
 
 
         [HttpGet]
-        public  ActionResult Profile()
+        public ActionResult Profile()
         {
             return View();
         }
 
         [HttpGet]
-        public  ActionResult Login()
+        public ActionResult Login()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
         [HttpPost]
-        public  ActionResult Login(RegisterUser user)
+        public ActionResult Login(RegisterUser user, string returnUrl)
         {
 
             var result = accountService.VaildUser(user.Email, user.Password);
             if (result.isSuccess)
             {
-                //记住登录                
-                System.Web.Security.FormsAuthentication.SetAuthCookie(user.Email, true);              
-                return RedirectToAction("Index", "Home");
-                //if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
-                //    && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
-                //{
-                //    return Redirect(returnUrl);
-                //}
-                //else
-                //{
-                //    return RedirectToAction("Index", "Home");
-                //}
+                //创建验证票subdomain  share cookie
+                var ticket = new System.Web.Security.FormsAuthenticationTicket(user.Email, true, 30);
+
+                string authTicket = System.Web.Security.FormsAuthentication.Encrypt(ticket);
+                HttpCookie cookie = new HttpCookie(System.Web.Security.FormsAuthentication.FormsCookieName, authTicket);
+                cookie.Domain = AppSettings.FormDomain;
+                Response.Cookies.Add(cookie);
+                if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
+                    && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
+                {
+                    return Redirect(returnUrl);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
             }
             else
             {
@@ -74,13 +76,13 @@ namespace Fx.InformationPlatform.Site.Controllers
         }
 
         [HttpGet]
-        public  ActionResult Register()
+        public ActionResult Register()
         {
             return View();
         }
 
 
-        public  ActionResult Register(RegisterUser user)
+        public ActionResult Register(RegisterUser user)
         {
             if (!ModelState.IsValid || user == null ||
                 user.VerificationCode == null || user.Email == null
@@ -88,7 +90,7 @@ namespace Fx.InformationPlatform.Site.Controllers
             {
                 return View("Register", user);
             }
-            if (string.Compare(user.VerificationCode, Session["PictureCode"].ToString(),true) != 0)
+            if (string.Compare(user.VerificationCode, Session["PictureCode"].ToString(), true) != 0)
             {
                 ViewBag.VerificationCode = "验证码错误,请重试";
                 return View("Register", user);
@@ -128,9 +130,10 @@ namespace Fx.InformationPlatform.Site.Controllers
         /// 注销用户
         /// </summary>
         /// <returns></returns>
-        public  ActionResult LoginOff()
+        public ActionResult LoginOff()
         {
             System.Web.Security.FormsAuthentication.SignOut();
+            Session.Clear();          
             return RedirectToAction("Index", "Home");
         }
 

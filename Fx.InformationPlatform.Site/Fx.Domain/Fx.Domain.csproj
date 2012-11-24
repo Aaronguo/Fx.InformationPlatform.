@@ -69,7 +69,13 @@
     <Compile Include="Account\UserAccountService.cs" />
     <Compile Include="Account\IService\IAccountService.cs" />
     <Compile Include="Account\AccountContext.cs" />
-    <Compile Include="Base\IInfoFind.cs" />
+    <Compile Include="Base\IService\IGoodsSearch.cs" />
+    <Compile Include="Base\IService\IInfoFind.cs" />
+    <Compile Include="FxAggregate\DbAllService.cs" />
+    <Compile Include="FxAggregate\FavoriteService.cs" />
+    <Compile Include="FxAggregate\FxAggregateContext.cs" />
+    <Compile Include="FxAggregate\IService\IDbAll.cs" />
+    <Compile Include="FxAggregate\IService\IFavorite.cs" />
     <Compile Include="FxCar\IService\ITransferCar.cs" />
     <Compile Include="FxCar\JobImp\CarBuyJobService.cs" />
     <Compile Include="FxCar\JobImp\CarTransferJobService.cs" />
@@ -154,7 +160,9 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /V "$(TargetDir)\Fx.Domain.dll" "E:\Program Files\GitHubWorkspace\net\FxInformationJob\FxInformationJob\FxInformationJob\packages\Fx\Fx.Domain\Fx.Domain.dll"</PostBuildEvent>
+    <PostBuildEvent>copy /V "$(TargetDir)\Fx.Domain.dll" "E:\Program Files\GitHubWorkspace\net\FxInformationJob\FxInformationJob\FxInformationJob\packages\Fx\Fx.Domain\Fx.Domain.dll"
+copy /V "$(TargetDir)\Fx.Domain.dll" "E:\Program Files\GitHubWorkspace\net\FxUserCenter\FxUserCenter\FxUserCenter\packages\Fx\Fx.Domain\Fx.Domain.dll"
+copy /V "$(TargetDir)\Fx.Domain.dll" "E:\Program Files\GitHubWorkspace\net\FxCacheService\FxCacheService\FxCacheService\packages\Fx\Fx.Domain\Fx.Domain.dll"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>

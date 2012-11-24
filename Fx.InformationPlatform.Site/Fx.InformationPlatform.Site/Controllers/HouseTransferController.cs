@@ -219,7 +219,7 @@ namespace Fx.InformationPlatform.Site.Controllers
         {
             new System.Threading.Thread(() =>
             {
-                new FxTask.FxHouse.Transfer.HouseTransferJobLoad();
+                new FxTask.FxHouse.Transfer.HouseTransferJobLoad().Execute();
             }).Start();
         }
     }

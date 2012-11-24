@@ -15,6 +15,7 @@ namespace Fx.InformationPlatform.Site.Tests.DbCreate
             CreateCar();
             CreateHouse();
             CreateGoods();
+            CreateAggregate();
         }
 
 
@@ -22,7 +23,7 @@ namespace Fx.InformationPlatform.Site.Tests.DbCreate
         public void CreateHouse()
         {
             //System.Data.Entity.Database.SetInitializer(new FxHouseInitializer());
-            FxHouseContext context = new FxHouseContext("fx.house-mysql");
+            FxHouseContext context = new FxHouseContext();
             context.HouseBuyInfos.Add(new Fx.Entity.FxHouse.HouseBuyInfo()
             {
                 Action = "Action",
@@ -72,7 +73,7 @@ namespace Fx.InformationPlatform.Site.Tests.DbCreate
         public void CreateCar()
         {
             //System.Data.Entity.Database.SetInitializer(new FxCarInitializer());
-            FxCarContext context = new FxCarContext("fx.car-mysql");
+            FxCarContext context = new FxCarContext();
             context.CarTransferInfos.Add(new Entity.FxCar.CarTransferInfo()
             {
                 Action = "Action",
@@ -119,7 +120,7 @@ namespace Fx.InformationPlatform.Site.Tests.DbCreate
         public void CreateGoods()
         {
             //System.Data.Entity.Database.SetInitializer(new FxGoodsInitializer());
-            FxGoodsContext context = new FxGoodsContext("fx.goods-mysql");
+            FxGoodsContext context = new FxGoodsContext();
             context.GoodsTransferInfos.Add(new Entity.FxGoods.GoodsTransferInfo()
             {
                 Action = "Action",
@@ -171,7 +172,18 @@ namespace Fx.InformationPlatform.Site.Tests.DbCreate
             context.SaveChanges();
         }
 
-
+        [TestMethod]
+        public void CreateAggregate()
+        {
+            Fx.Domain.FxAggregate.FxAggregateContext context = new Domain.FxAggregate.FxAggregateContext();
+            context.Favorites.Add(new Entity.FxAggregate.Favorite()
+            {
+                Title = "",
+                InfoId = 1000,
+                ChannelCatagroy = 1000
+            });
+            context.SaveChanges();
+        }
 
 
     }

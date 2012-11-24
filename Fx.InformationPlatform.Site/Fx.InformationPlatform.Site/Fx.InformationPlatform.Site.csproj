@@ -43,6 +43,9 @@
     <Reference Include="ChenHttp">
       <HintPath>..\packages\FxTask\Other\ChenHttp\ChenHttp.dll</HintPath>
     </Reference>
+    <Reference Include="Common.Logging">
+      <HintPath>..\..\..\..\FxInformationJob\FxInformationJob\FxInformationJob\packages\Quartz.NET-2.0\bin\4.0\release\Quartz\Common.Logging.dll</HintPath>
+    </Reference>
     <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
@@ -167,6 +170,7 @@
   <ItemGroup>
     <Compile Include="App_Start\SimpleInjectorInitializer.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AggregateController.cs" />
     <Compile Include="Controllers\AjaxController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BuyController.cs" />
@@ -226,34 +230,59 @@
     <Content Include="App_Readme\membership.sql" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\images\ad4.jpg" />
+    <Content Include="Content\css\images\adddd.jpg" />
     <Content Include="Content\css\images\arrowhead.gif" />
+    <Content Include="Content\css\images\bj-bd.jpg" />
     <Content Include="Content\css\images\car.png" />
     <Content Include="Content\css\images\favicon.ico" />
     <Content Include="Content\css\images\generalFile.png" />
     <Content Include="Content\css\images\glyphicons-halflings-white.png" />
     <Content Include="Content\css\images\glyphicons-halflings.png" />
+    <Content Include="Content\css\images\glyphicons_020_home.png" />
+    <Content Include="Content\css\images\glyphicons_028_cars.png" />
+    <Content Include="Content\css\images\glyphicons_194_circle_question_mark.png" />
+    <Content Include="Content\css\images\glyphicons_202_shopping_cart.png" />
     <Content Include="Content\css\images\goods.png" />
     <Content Include="Content\css\images\house.png" />
     <Content Include="Content\css\images\icons.png" />
+    <Content Include="Content\css\images\ico_1.png" />
+    <Content Include="Content\css\images\ico_2.png" />
+    <Content Include="Content\css\images\ico_3.png" />
+    <Content Include="Content\css\images\ico_4.png" />
+    <Content Include="Content\css\images\ico_5.png" />
+    <Content Include="Content\css\images\ico_6.png" />
+    <Content Include="Content\css\images\ico_7.png" />
+    <Content Include="Content\css\images\ico_common.png" />
+    <Content Include="Content\css\images\lft_ad.jpg" />
+    <Content Include="Content\css\images\lft_ad1.jpg" />
     <Content Include="Content\css\images\loading.gif" />
-    <Content Include="Content\css\images\logo.png" />
-    <Content Include="Content\css\images\logobig.png" />
+    <Content Include="Content\css\images\mouse_off_bg.png" />
+    <Content Include="Content\css\images\mouse_on_bg.png" />
     <Content Include="Content\css\images\new-icons.png" />
-    <Content Include="Content\css\images\oval-blue-left.gif" />
-    <Content Include="Content\css\images\oval-blue-right.gif" />
-    <Content Include="Content\css\images\oval-gray-left.gif" />
-    <Content Include="Content\css\images\oval-gray-right.gif" />
-    <Content Include="Content\css\images\oval-green-left.gif" />
-    <Content Include="Content\css\images\oval-green-right.gif" />
-    <Content Include="Content\css\images\oval-orange-left.gif" />
-    <Content Include="Content\css\images\oval-orange-right.gif" />
-    <Content Include="Content\css\images\oval-red-left.gif" />
-    <Content Include="Content\css\images\oval-red-right.gif" />
     <Content Include="Content\css\images\progressbar.gif" />
-    <Content Include="Content\css\images\publish.gif" />
+    <Content Include="Content\css\images\r_b.png" />
+    <Content Include="Content\css\images\search_bg.gif" />
+    <Content Include="Content\css\images\search_btn.gif" />
+    <Content Include="Content\css\images\search_btn.jpg" />
+    <Content Include="Content\css\images\search_btn1.gif" />
+    <Content Include="Content\css\images\select_list_bg.png" />
+    <Content Include="Content\css\images\select_list_bg_btm.gif" />
+    <Content Include="Content\css\images\select_list_bg_btm.png" />
+    <Content Include="Content\css\images\select_list_bg_mid.png" />
+    <Content Include="Content\css\images\select_list_bg_mid_ie6.gif" />
+    <Content Include="Content\css\images\select_list_bg_mid_ie6.png" />
+    <Content Include="Content\css\images\select_list_bg_top.gif" />
+    <Content Include="Content\css\images\select_list_bg_top.png" />
+    <Content Include="Content\css\images\tag_off_bg.jpg" />
+    <Content Include="Content\css\images\tag_on_bg.jpg" />
+    <Content Include="Content\css\images\tf_lft_btn.gif" />
+    <Content Include="Content\css\images\tf_lft_btn.png" />
+    <Content Include="Content\css\images\tf_rit_btn.gif" />
+    <Content Include="Content\css\images\tf_rit_btn.png" />
+    <Content Include="Content\css\images\top_btn_btns.gif" />
+    <Content Include="Content\css\images\top_btn_btns.png" />
     <Content Include="Content\css\images\yuan.png" />
-    <Content Include="Content\css\images\右广270_250.png" />
-    <Content Include="Content\css\images\左广390_250.png" />
     <Content Include="Content\FileUpload\canvas-to-blob.min.js" />
     <Content Include="Content\FileUpload\html5.js" />
     <Content Include="Content\FileUpload\jquery-ui-1.8.11.js" />
@@ -269,38 +298,67 @@
     <Content Include="Content\FileUpload\locale.js" />
     <Content Include="Content\FileUpload\main.js" />
     <Content Include="Content\FileUpload\tmpl.min.js" />
-    <Content Include="Content\images\1.jpg" />
     <Content Include="Content\images\64X64.jpg" />
-    <Content Include="Content\images\goods\goodline1.jpg" />
-    <Content Include="Content\images\goods\goods.jpg" />
-    <Content Include="Content\images\goods\goodsline2.jpg" />
-    <Content Include="Content\images\goods\goodsline3.jpg" />
-    <Content Include="Content\images\goods\goodsline4.jpg" />
-    <Content Include="Content\images\goods\goodsline5.jpg" />
-    <Content Include="Content\images\goods\goodsline6.jpg" />
-    <Content Include="Content\images\logobig.png" />
+    <Content Include="Content\images\ad4.jpg" />
+    <Content Include="Content\images\adddd.jpg" />
+    <Content Include="Content\images\glyphicons_020_home.png" />
+    <Content Include="Content\images\glyphicons_028_cars.png" />
+    <Content Include="Content\images\glyphicons_194_circle_question_mark.png" />
+    <Content Include="Content\images\glyphicons_202_shopping_cart.png" />
+    <Content Include="Content\images\ico_1.png" />
+    <Content Include="Content\images\ico_2.png" />
+    <Content Include="Content\images\ico_3.png" />
+    <Content Include="Content\images\ico_4.png" />
+    <Content Include="Content\images\ico_5.png" />
+    <Content Include="Content\images\ico_6.png" />
+    <Content Include="Content\images\ico_7.png" />
+    <Content Include="Content\images\ico_common.png" />
+    <Content Include="Content\images\lft_ad.jpg" />
+    <Content Include="Content\images\lft_ad1.jpg" />
     <Content Include="Content\images\arrowhead.gif" />
     <Content Include="Content\images\generalFile.png" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\logo.png" />
-    <Content Include="Content\images\oval-blue-left.gif" />
-    <Content Include="Content\images\oval-blue-right.gif" />
-    <Content Include="Content\images\oval-gray-left.gif" />
-    <Content Include="Content\images\oval-gray-right.gif" />
-    <Content Include="Content\images\oval-green-left.gif" />
-    <Content Include="Content\images\oval-green-right.gif" />
-    <Content Include="Content\images\oval-orange-left.gif" />
-    <Content Include="Content\images\oval-orange-right.gif" />
-    <Content Include="Content\images\oval-red-left.gif" />
-    <Content Include="Content\images\oval-red-right.gif" />
+    <Content Include="Content\images\l_b.png" />
+    <Content Include="Content\images\l_t.png" />
+    <Content Include="Content\images\mouse_off_bg.png" />
+    <Content Include="Content\images\mouse_on_bg.png" />
     <Content Include="Content\images\progressbar.gif" />
-    <Content Include="Content\images\publish.gif" />
+    <Content Include="Content\images\rit_ad.jpg" />
+    <Content Include="Content\images\rit_ad1.jpg" />
+    <Content Include="Content\images\r_b.png" />
+    <Content Include="Content\images\r_t.png" />
+    <Content Include="Content\images\search_bg.gif" />
+    <Content Include="Content\images\search_btn.gif" />
+    <Content Include="Content\images\search_btn.jpg" />
+    <Content Include="Content\images\search_btn1.gif" />
+    <Content Include="Content\images\search_select_btn.png" />
+    <Content Include="Content\images\select_list_bg.png" />
+    <Content Include="Content\images\select_list_bg_btm.gif" />
+    <Content Include="Content\images\select_list_bg_btm.png" />
+    <Content Include="Content\images\select_list_bg_mid.png" />
+    <Content Include="Content\images\select_list_bg_mid_ie6.gif" />
+    <Content Include="Content\images\select_list_bg_mid_ie6.png" />
+    <Content Include="Content\images\select_list_bg_top.gif" />
+    <Content Include="Content\images\select_list_bg_top.png" />
+    <Content Include="Content\images\tag_off_bg.jpg" />
+    <Content Include="Content\images\tag_on_bg.jpg" />
+    <Content Include="Content\images\test1.jpg" />
+    <Content Include="Content\images\tf_lft_btn.gif" />
+    <Content Include="Content\images\tf_lft_btn.png" />
+    <Content Include="Content\images\tf_rit_btn.gif" />
+    <Content Include="Content\images\tf_rit_btn.png" />
+    <Content Include="Content\images\thing_deal.jpg" />
+    <Content Include="Content\images\top_btn_btns.gif" />
+    <Content Include="Content\images\top_btn_btns.png" />
+    <Content Include="Content\images\tss1.png" />
+    <Content Include="Content\images\tss2.png" />
+    <Content Include="Content\images\tss3.png" />
+    <Content Include="Content\images\tss5.png" />
+    <Content Include="Content\images\tss6.png" />
     <Content Include="Content\images\yuan.png" />
-    <Content Include="Content\images\右广270_250.png" />
-    <Content Include="Content\images\ad190_80.png" />
-    <Content Include="Content\images\左广390_250.png" />
     <Content Include="Content\images\house.png" />
     <Content Include="Content\images\goods.png" />
     <Content Include="Content\images\car.png" />
@@ -319,6 +377,9 @@
     <Content Include="Content\js\Debug\log4Init.js" />
     <Content Include="Content\js\Debug\log4javascript1.4.3.js" />
     <Content Include="Content\js\jquery-1.8.2.min.js" />
+    <Content Include="Content\js\jquery.pack.js" />
+    <Content Include="Content\js\jquery.SuperSlide.js" />
+    <Content Include="Content\js\slider.js" />
     <Content Include="Content\js\Transfer\TransferGoodsEvent.js" />
     <Content Include="Content\js\Flash\bcastr.swf" />
     <Content Include="Content\js\Flash\images\02.jpg" />
@@ -349,6 +410,7 @@
     <Content Include="Config\JobException.config" />
     <Content Include="Config\JobLog.config" />
     <Content Include="Config\Resizer.config" />
+    <Content Include="Config\Machine.config" />
     <None Include="Content\js\jquery-1.6.2-vsdoc.js" />
     <Content Include="Content\images\icons.png" />
     <Content Include="Content\images\new-icons.png" />
@@ -391,7 +453,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\Partial\Left.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Nav.cshtml" />
@@ -468,6 +529,10 @@
     <Content Include="Views\HouseTransfer\Properties.cshtml" />
     <Content Include="Views\HouseBuy\Properties.cshtml" />
     <Content Include="Views\Shared\_JiaThis.cshtml" />
+    <Content Include="Views\Aggregate\Publish.cshtml" />
+    <Content Include="Views\Aggregate\Partial\Tab.cshtml" />
+    <Content Include="Views\Aggregate\Partial\Test.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UploadImage\Buy\CarImage\" />
@@ -517,6 +582,10 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

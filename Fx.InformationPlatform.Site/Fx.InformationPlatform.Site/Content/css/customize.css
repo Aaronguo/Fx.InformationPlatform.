@@ -22,6 +22,9 @@
     text-align: right;
 }
 
+.clearmargin {
+    margin:0;
+}
 
 
 .publishborder {
@@ -105,212 +108,122 @@
     }
 
 
+  /*--by other---*/
+li{ list-style-position:outside; vertical-align:bottom; list-style:none;}
+a{ color:black; text-decoration:none; font-family:'微软雅黑';}
 
 
-a.ovalbutton {
-    background: transparent url('images/oval-blue-left.gif') no-repeat top left;
-    display: block;
-    float: left;
-    font: normal 13px Tahoma; /* Change 13px as desired */
-    line-height: 16px; /* This value + 4px + 4px (top and bottom padding of SPAN) must equal height of button background (default is 24px) */
-    height: 24px; /* Height of button background height */
-    padding-left: 11px; /* Width of left menu image */
-    text-decoration: none;
-    margin: 2px 2px;
-}
-
-a:link.ovalbutton, a:visited.ovalbutton, a:active.ovalbutton {
-    color: #494949; /*button text color*/
-}
-
-a.ovalbutton span {
-    background: transparent url('images/oval-blue-right.gif') no-repeat top right;
-    display: block;
-    padding: 4px 11px 4px 0; /*Set 11px below to match value of 'padding-left' value above*/
-}
-
-a.ovalbutton:hover { /* Hover state CSS */
-    background-position: bottom left;
-}
-
-    a.ovalbutton:hover span { /* Hover state CSS */
-        background-position: bottom right;
-        color: black;
-    }
-
-a.redbutton {
-    background: transparent url('images/oval-red-left.gif') no-repeat top left;
-    display: block;
-    float: left;
-    font: normal 13px Tahoma; /* Change 13px as desired */
-    line-height: 16px; /* This value + 4px + 4px (top and bottom padding of SPAN) must equal height of button background (default is 24px) */
-    height: 24px; /* Height of button background height */
-    padding-left: 11px; /* Width of left menu image */
-    text-decoration: none;
-    margin: 2px 2px;
-}
-
-a:link.redbutton, a:visited.redbutton, a:active.redbutton {
-    color: #494949; /*button text color*/
-}
-
-a.redbutton span {
-    background: transparent url('images/oval-red-right.gif') no-repeat top right;
-    display: block;
-    padding: 4px 11px 4px 0; /*Set 11px below to match value of 'padding-left' value above*/
-}
-
-a.redbutton:hover { /* Hover state CSS */
-    background-position: bottom left;
-}
-
-    a.redbutton:hover span { /* Hover state CSS */
-        background-position: bottom right;
-        color: black;
-    }
-
-    
-    
-    
-a.greenbutton {
-    background: transparent url('images/oval-green-left.gif') no-repeat top left;
-    display: block;
-    float: left;
-    font: normal 13px Tahoma; /* Change 13px as desired */
-    line-height: 16px; /* This value + 4px + 4px (top and bottom padding of SPAN) must equal height of button background (default is 24px) */
-    height: 24px; /* Height of button background height */
-    padding-left: 11px; /* Width of left menu image */
-    text-decoration: none;
-    margin: 2px 2px;
-}
-
-a:link.greenbutton, a:visited.greenbutton, a:active.greenbutton {
-    color: #494949; /*button text color*/
-}
-
-a.greenbutton span {
-    background: transparent url('images/oval-green-right.gif') no-repeat top right;
-    display: block;
-    padding: 4px 11px 4px 0; /*Set 11px below to match value of 'padding-left' value above*/
-}
-
-a.greenbutton:hover { /* Hover state CSS */
-    background-position: bottom left;
-}
-
-    a.greenbutton:hover span { /* Hover state CSS */
-        background-position: bottom right;
-        color: black;
-    }
-    
-    
-    
-a.orangebutton {
-    background: transparent url('images/oval-orange-left.gif') no-repeat top left;
-    display: block;
-    float: left;
-    font: normal 13px Tahoma; /* Change 13px as desired */
-    line-height: 16px; /* This value + 4px + 4px (top and bottom padding of SPAN) must equal height of button background (default is 24px) */
-    height: 24px; /* Height of button background height */
-    padding-left: 11px; /* Width of left menu image */
-    text-decoration: none;
-    margin: 2px 2px;
-}
-
-a:link.orangebutton, a:visited.orangebutton, a:active.orangebutton {
-    color: #494949; /*button text color*/
-}
-
-a.orangebutton span {
-    background: transparent url('images/oval-orange-right.gif') no-repeat top right;
-    display: block;
-    padding: 4px 11px 4px 0; /*Set 11px below to match value of 'padding-left' value above*/
-}
-
-a.orangebutton:hover { /* Hover state CSS */
-    background-position: bottom left;
-}
-
-    a.orangebutton:hover span { /* Hover state CSS */
-        background-position: bottom right;
-        color: black;
-    } 
-    
-    
-    
- a.graybutton {
-    background: transparent url('images/oval-gray-left.gif') no-repeat top left;
-    display: block;
-    float: left;
-    font: normal 13px Tahoma; /* Change 13px as desired */
-    line-height: 16px; /* This value + 4px + 4px (top and bottom padding of SPAN) must equal height of button background (default is 24px) */
-    height: 24px; /* Height of button background height */
-    padding-left: 11px; /* Width of left menu image */
-    text-decoration: none;
-    margin: 2px 2px;
-}
-
-a:link.graybutton, a:visited.graybutton, a:active.graybutton {
-    color: #494949; /*button text color*/
-}
-
-a.graybutton span {
-    background: transparent url('images/oval-gray-right.gif') no-repeat top right;
-    display: block;
-    padding: 4px 11px 4px 0; /*Set 11px below to match value of 'padding-left' value above*/
-}
-
-a.graybutton:hover { /* Hover state CSS */
-    background-position: bottom left;
-}
-
-    a.graybutton:hover span { /* Hover state CSS */
-        background-position: bottom right;
-        color: black;
-    } 
-    
-    
+.logo{ display:block; width:190px; height:63px; overflow:hidden;}
+.logo{ display:block; width:190px; height:63px; border:0px;}
+.logo_img{ border:0px;}
+.logo_reg_mem{ display:block; width:70px; height:28px; line-height:28px; overflow:hidden; text-align:center; background-color:#f2f2f2;}
+.logo_reg_mem:hover{ background-color:#dbdbdb;}
+.logo_reg_mem a{ font-size:12px; font-family:微软雅黑; color:#050505;}
+.search_wks{ height:62px; line-height:62px; width:710px;}
+.search_wks div.txts{ height:44px; line-height:44px; width:390px; text-align:left; padding:0px; margin:0px; border:0px; background:none; float:left;  background-image:url(../images/search_bg.gif); margin-top:15px; overflow:hidden}
+.search_wks div.txts input{ display:block; height:22px; line-height:22px; overflow:hidden; width:345px; text-align:left; background:none; padding:0px; margin:0px auto; margin-top:10px; border:0px; font-family:微软雅黑; color:#333333;}
+.search_wks div.txts input.normals{ display:block; height:22px; line-height:22px; overflow:hidden; width:345px; text-align:left; background:none; padding:0px; margin:0px auto; margin-top:10px; border:0px; font-family:微软雅黑; color:#333333; font-style:normal;}
+.search_wks div.buttons{ display:block; width:150px; height:32px; line-height:32px; float:left; background-image:url(../images/search_btn.jpg); background-repeat:no-repeat; background-position:0px -5px; margin-top:20px; margin-right:66px; _margin-right:33px;}
+.search_wks div.buttons input{ display:block; height:22px; width:50px; border:0px; margin:0px; padding:0px; background:none; cursor:pointer;}
 
 
-.buttonwrapper { /* Container you can use to surround a CSS button to clear float */
-    overflow: hidden; /*See: http://www.quirksmode.org/css/clearing.html */
-    width: 100%;
-}
+#nav_wk{margin-top:35px; height:35px; background-color:#9d261d;}
+#nav_wk a{ display:block; height:35px; font-family:微软雅黑; line-height:35px; float:left; margin-right:30px; padding:0px 10px 0px 10px; color:white; font-size:16px; overflow:hidden;}
+#nav_wk a:hover{ background-color:#b94a48; color:#f3edd2;}
+.pb_li_info_rows{ width:210px; height:28px; line-height:28px; border-bottom:1px #ebebeb solid; background-color:#f5f5f5; display:block; padding-left:20px; margin-top:5px; cursor:pointer;}
+.pb_li_info_rows:hover{ background-color:#dbdbdb;}
+.pb_li_info_rows .imgs_icons{ display:block; height:18px; width:22px; overflow:hidden; float:left; margin-top:5px;}
+.pb_li_info_rows .word_info{ float:left; display:block; height:28px; line-height:28px; width:135px; text-align:left; font-size:12px; font-family:微软雅黑; color:#535353; overflow:hidden; margin-left:50px;}
+.pb_li_info_rows .datas_w{ display:block; height:28px; line-height:28px; width:40px; font-family:Arial, Helvetica, sans-serif; text-align:left; color:#535353; font-size:13px; float:left; margin-left:5px; overflow:hidden;}
+.hot_tags{ height:300px; width:188px; border:1px #e6e5e5 solid; overflow:hidden; text-align:center; border-top:3px #9d261d solid;}
+.thing_deal_tops{ width:190px; height:190px;}
+.thing_deal_tops img{ width:190px; height:190px; display:block; border:0px;}
+.thing_deal_hot_tag{ height:101px; width:188px; overflow:hidden;}
+.thing_deal_hot_tag .tits{ height:18px; line-height:18px; margin-top:15px; overflow:hidden; padding-left:10px; font-size:13px; font-family:微软雅黑; color:#000000; text-align:left;}
+.interval_line_c{ display:block; height:1px; width:160px; margin:0px auto; border-bottom:1px #e0dfdf solid; overflow:hidden;}
+.thing_deal_hot_tag .tdht_cons{ padding-left:10px; overflow:hidden; height:auto;}
+.thing_deal_hot_tag .tdht_cons a{ display:block; height:23px; line-height:23px; margin-top:10px; margin-right:15px; overflow:hidden; background-image:url(../images/tag_off_bg.jpg); float:left; text-align:center; font-size:13px; font-family:微软雅黑; color:#000000; width:70px;}
+.thing_deal_hot_tag .tdht_cons a:hover{ background-image:url(../images/tag_on_bg.jpg); color:white;}
 
+.img_cons_wks_common{ height:300px; width:188px; overflow:hidden; text-align:center;}
+.tits_btm_coms_index{ width:178px; padding:0px 5px 0px 5px; height:40px; line-height:40px; overflow:hidden; text-align:center; color:black; font-family:微软雅黑; font-size:13px;}
+.names_btm{ background-color:#f8efe7;}
+.img_cons_wks_common .imgs_a{ display:block; height:200px; width:188px; overflow:hidden; margin:9px 0px 10px 0px;}
+.img_cons_wks_common .imgs_a img{ display:block; height:200px; width:188px; border:0px;}
+.scroll_tops_btns_c{ display:block; height:26px; width:26px; background-image:url(../images/top_btn_btns.gif); background-position:-72px 0px; margin-top:90px;}
+.scroll_tops_btns_c_end{ display:block; height:26px; width:26px; background-image:url(../images/top_btn_btns.gif); background-position:-108px 0px; margin-top:90px;}
+.scroll_btms_btns_c{ display:block; height:26px; width:26px; background-image:url(../images/top_btn_btns.gif); background-position:0px 0px; margin-top:60px;}
+.scroll_btms_btns_c_end{ display:block; height:26px; width:26px; background-image:url(../images/top_btn_btns.gif); background-position:-36px 0px; margin-top:60px;}
+.common_six_grids{ width:148px; height:88px; overflow:hidden; border:1px #e6e5e5 solid;}
+.common_six_grids a img{ display:block; height:88px; width:148px; border:0px;}
 
-/*.blue {
-    background: transparent url('images/oval-blue-left.gif') no-repeat top left;
-}
+/*Top Flash Start*/
+.box { width: 710px; height: 269px; overflow: hidden; position: relative; margin: 0px auto 0; background:none; }
+.box ol { position: absolute; left: 505px; bottom:6px; z-index: 5; }
+.box ol li { float: left; margin-right: 6px; display: inline; cursor: pointer; padding:0; color:#000; font-family: arial; font-size: 14px; overflow:hidden; width:23px; height:23px; line-height:26px; font-weight:bold; text-align:center; background-color:#cccccc; color:black;}
+.box .active { padding:0px; position: relative; bottom: 0px; background-color:#d80808; color:white; }
+.box ul { position: absolute; top: 0; left: 0; z-index: 1; }
+.box ul li { width:710px; height: 269px; float: left; text-align:left; display:block;}
+.box ul li a .img1{ display:block; width:430px; height: 269px; border:0px;}
+.box ul li a .img2{ display:block; width:270px; height: 269px; border:0px;}
+.box p { width: 28px; height: 269px; cursor: pointet; display:block;}
+.box .left_bss{ display:none; top:0px; left:0px; position:absolute; width:28px; height:269px; z-index:99999999; background-image:url(../images/mouse_off_bg.png);}
+.box .right_bss { display:none; top:0px; left:682px; position:absolute; width:28px; height:269px; z-index:99999999; background-image:url(../images/mouse_off_bg.png);}
+.box .left_bss .prev { background-image:url(../images/tf_lft_btn.png); _background-image:url(../images/tf_lft_btn.gif); background-repeat:no-repeat; background-position:5px 121px; cursor:pointer;}
+.box .right_bss .next { background-image:url(../images/tf_rit_btn.png);  _background-image:url(../images/tf_rit_btn.gif);  background-repeat:no-repeat; background-position:5px 121px; cursor:pointer;}
+/*Top Flash End*/
 
-.green {
-    background: transparent url('images/oval-green-left.gif') no-repeat top left;
-}
+/*Content Scroll Start*/
+.topLoop{ overflow:hidden; position:relative; width:190px;height:304px;} 
+.topLoop .hd{ overflow:hidden; position:absolute; height:300px; width:30px; left:200px; top:0px; z-index:88;} 
+.topLoop .hd .prev{ display:block; height:26px; width:26px; background-image:url(../images/top_btn_btns.gif); background-position:-36px 0px; margin-top:60px; cursor:pointer;} 
+.topLoop .hd .next{ display:block; height:26px; width:26px; background-image:url(../images/top_btn_btns.gif); background-position:-108px 0px; margin-top:90px; cursor:pointer;}
+.topLoop .hd .prev:hover{ background-position:0px 0px;}
+.topLoop .hd .next:hover{ background-position:-72px 0px;} 
 
-.red {
-    background: transparent url('images/oval-red-right.gif') no-repeat top right;
-}
+.topLoop .bd{ padding:0px; height:300px; width:188px; border:1px #e6e5e5 solid; height:300px; border-top:3px #9d261d solid; +float:left; _float:left;} 
+.topLoop .bd ul{ overflow:hidden; zoom:1; float:left;} 
+.picList li{ width:188px; float:left;} 
 
-.orange1 {
-    background: transparent url('images/oval-orange-right.gif') no-repeat top right;
-}*/
+/*Content Scroll end*/
 
 
 
+/*Top Option Start*/
+.mod_select{position:relative;left:-20px;_left:-40px;top:1px;font-familY:Arial, Helvetica, sans-serif; z-index:100000000000;}
+.mod_select ul{margin:0;padding:0;}
+.mod_select ul li{list-style-type:none;float:left;margin-left:20px;height:24px;}
+.select_label{color:#982F4D;float:left;line-height:24px;padding-right:10px;font-size:12px;font-weight:700;}
+.select_box{float:left;border:solid 0px #EDE7D6;color:#444;position:relative; left:0px; top:0px; text-align:left; cursor:pointer;width:162px;background-image:url(../images/search_select_btn.png);font-size:12px; height:30px; line-height:30px;}
+.search_btns_top{display:inline-block; position:absolute;right:13px;_right:0px;top:0px; width:60px; background:none; height:30px; cursor:pointer; border:0px; padding:0px; margin:0px; z-index:9999999; display:block;}
+.select_txt{display:inline-block;padding-left:10px;width:135px;line-height:28px;height:28px;cursor:text;overflow:hidden; font-size:14px; font-family:微软雅黑;}
+.option{width:194px;;border:solid 0px #EDE7D6;position:absolute;top:30px;left:-60px;z-index:999999999999;overflow:hidden;display:none;}
+.option .tops_sl{ width:194px; height:21px; background-image:url(../images/select_list_bg_top.png); _background-image:url(../images/select_list_bg_top.gif);}
+.option .mids_sl{ width:169px; padding:0px 12px 0px 13px; overflow:hidden; height:auto; background-image:url(../images/select_list_bg_mid_ie6.png); _background-image:url(../images/select_list_bg_mid_ie6.gif); background-repeat:repeat-y;}
+.option .btms_sl{ width:194px; height:24px; background-image:url(../images/select_list_bg_btm.png); _background-image:url(../images/select_list_bg_btm.gif);}
+.option a{display:block;height:26px;line-height:26px;text-align:left;padding:0 10px;width:149px;background:#fff; text-align:center; font-size:14px; font-family:微软雅黑;}
+.option a:hover{background:#a20f0f; color:white;}
+/*Top Option End*/
 
-#ytfooter a {
-    color:white;
-}
 
 
-.bd {
-border-bottom: #8B8B87 1px solid;
-border-left: #CCCCC6 1px solid;
-padding-bottom: 0px;
-padding-left: 11px;
-padding-right: 11px;
-zoom: 1;
-background: white;
-border-top: #CCCCC6 1px solid;
-border-right: #CCCCC6 1px solid;
-padding-top: 10px;
-}
+.height_30{ height:30px; line-height:30px;}
+
+.height_110{ height:30px; line-height:110px;}
+
+.pb_info_f_btn{ display:block; height:110px; width:110px; overflow:hidden;}
+.pb_info_f_btn img{ display:block; height:110px; width:110px; border:0px;}
+
+/*Interval Set*/
+.interval_5{ width:100%; height:5px; clear:both;}
+.interval_9{ width:100%; height:9px; clear:both;}
+.interval_10{ width:100%; height:10px; clear:both;}
+.interval_15{ width:100%; height:15px; clear:both;}
+.interval_20{ width:100%; height:20px; clear:both;}
+.interval_25{ width:100%; height:25px; clear:both;}
+.interval_30{ width:100%; height:30px; clear:both;}
+.width_cus{ width:30px; color:white;}
+.clear{ clear:both;}
+.bottom{ line-height:30px; background-color:#9d261d; height:30px; text-align:center;}
+.bottom a{ font-size:12px; color:white; font-family:微软雅黑; margin-right:25px;}
+.bottom a:hover{ text-decoration:underline;}

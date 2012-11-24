@@ -1,13 +1,13 @@
 ﻿<!--logo和搜索框-->
 <form>
 <div class="grid_24">
-    <div class="grid_8 alpha">
-        <img src="@Fx.InformationPlatform.Site.AppSettings.ImageDomain("logobig.png")" width="290" height="98"  />
+    <div class="grid_5 alpha">
+        <img src="@Fx.InformationPlatform.Site.AppSettings.ImageDomain("logo.png")" class="logo_img" alt="英淘网"/>
     </div>
-    <div class="grid_16 omega">
+    <div class="grid_19 omega">
         <div>
-            <div class="searchcenter navbar-search pull-left form form-search" style="padding-top:35px;">
-                <input type="text" class="search-query" placeholder="Search">
+            <div class="searchcenter navbar-search pull-left form form-search" style="padding-top:10px;">
+                <input type="text" class="search-query input-xlarge"  placeholder="Search">
                 <div class="btn-group">
                     <button class="btn dropdown-toggle" id="logochose">二手物品</button>
                     <button class="btn btn-success">查找</button>
@@ -22,6 +22,72 @@
     </div>
 </div>
 </form>
+
+
+
+@*
+<div class="grid_24" style="margin-top: 10px;">
+    <div class="grid_5 alpha">
+        <a href="index.html" title="英淘网">
+            <img src="images/logo.png" class="logo_img" align="英淘网"></a>
+    </div>
+    <div class="grid_13">
+        <div class="search_wks">
+            <div class="txts">
+                <input type="text" onblur="search_input_change(this,0)" onfocus="search_input_change(this,1)" value="英国华人信息发布平台" class="normals">
+            </div>
+            <div class="buttons">
+
+
+                <div class="mod_select" style="width: 194px;">
+                    <input type="submit" value="" class="search_btns_top" title="查找">
+                    <ul>
+                        <li>
+                            <div class="select_box">
+                                <span class="select_txt">二手物品</span>
+                                <div class="option" style="display: none;">
+                                    <div class="tops_sl"></div>
+                                    <div class="mids_sl">
+                                        <a href="javascript:void(0)">二手物品</a>
+                                        <a href="javascript:void(0)">汽车交易</a>
+                                        <a href="javascript:void(0)">汽车租赁</a>
+                                        <a href="javascript:void(0)">汽车租赁</a>
+                                        <a href="javascript:void(0)">汽车租赁</a>
+                                    </div>
+                                    <div class="btms_sl"></div>
+                                </div>
+                            </div>
+                            <br clear="all">
+                        </li>
+                    </ul>
+                    <input type="hidden" id="select_value">
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>*@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <script type="text/javascript">
     $(document).ready(function () {

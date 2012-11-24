@@ -3,5 +3,6 @@
     Layout = "~/Views/Shared/_LayoutClean.cshtml";
     ViewBag.Title = "免费发布信息";
 }
+<input id="selectcatid" type="hidden" value="@ViewBag.Select" />
 @Html.Partial("Partial/Flow")
 @Html.Partial("Partial/Channel",Model)

@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using Fx.Entity;
 
-namespace Fx.Domain
+namespace Fx.Domain.Base.IService
 {
     //ChannelCatagroy channelCatagroy, 
+    /// <summary>
+    /// 帖子关键字查询接口
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public interface ISiteSearch<T> where T : class
     {
         /// <summary>
@@ -35,6 +39,6 @@ namespace Fx.Domain
         /// <param name="asc">是否升序</param>
         /// <param name="key">关键字</param>
         /// <returns></returns>
-        List<T> SearchByDate(int page, bool asc, string key);
+        List<T> SearchByDate(int page, bool asc, string key);        
     }
 }
