@@ -23,7 +23,16 @@
 </div>
 </form>
 
-
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#logochose').dropdown();
+        $("#searchmenu li a").each(function () {
+            $(this).click(function (index, dom) {
+                $("#logochose").text($(this).text());
+            });
+        });
+    });
+</script>
 
 @*
 <div class="grid_24" style="margin-top: 10px;">
@@ -89,14 +98,5 @@
 
 
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#logochose').dropdown();
-        $("#searchmenu li a").each(function () {
-            $(this).click(function (index, dom) {
-                $("#logochose").text($(this).text());
-            });
-        });
-    });
-</script>
+
 
