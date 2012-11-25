@@ -70,6 +70,7 @@ namespace Fx.Domain.FxGoods
                 if (goods != null)
                 {
                     goods.InfoProcessState = (int)ProcessState.PictrueCdning;
+                    goods.IsPublish = true;
                     goods.Logs.Add(new Entity.FxGoods.GoodsTransferLog()
                     {
                         OperteName = Enum.GetName(typeof(ProcessState), ProcessState.PictrueCdning)

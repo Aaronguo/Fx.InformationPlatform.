@@ -90,6 +90,7 @@ namespace Fx.Domain.FxCar
                 if (car != null)
                 {
                     car.InfoProcessState = (int)ProcessState.Publish;
+                    car.IsPublish = true;
                     car.Logs.Add(new Entity.FxCar.CarBuyLog()
                     {
                         OperteName = Enum.GetName(typeof(ProcessState), ProcessState.Publish)

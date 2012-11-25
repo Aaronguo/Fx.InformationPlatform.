@@ -16,13 +16,13 @@ namespace Fx.Domain.FxGoods.Search
                 if (!string.IsNullOrWhiteSpace(key))
                 {
                     return context.GoodsBuyInfos
-                                    .Where(r => r.PublishTitle.Contains(key))
+                                    .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
                                     .OrderByDescending(r => r.CreatedTime)
                                     .Skip(page * 20).Take(20).ToList();
                 }
                 else
                 {
-                    return context.GoodsBuyInfos
+                    return context.GoodsBuyInfos.Where(r => r.IsPublish == true)
                                     .OrderByDescending(r => r.CreatedTime)
                                     .Skip(page * 20).Take(20).ToList();
                 }
@@ -44,14 +44,14 @@ namespace Fx.Domain.FxGoods.Search
                 {
                     if (asc)
                     {
-                        return context.GoodsBuyInfos
+                        return context.GoodsBuyInfos.Where(r => r.IsPublish == true)
                                     .OrderBy(r => r.Price)
                                     .Skip(page * 20)
                                     .Take(20).ToList();
                     }
                     else
                     {
-                        return context.GoodsBuyInfos
+                        return context.GoodsBuyInfos.Where(r => r.IsPublish == true)
                                     .OrderByDescending(r => r.Price)
                                     .Skip(page * 20)
                                     .Take(20).ToList();
@@ -62,7 +62,7 @@ namespace Fx.Domain.FxGoods.Search
                     if (asc)
                     {
                         return context.GoodsBuyInfos
-                                    .Where(r => r.PublishTitle.Contains(key))
+                                    .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
                                     .OrderBy(r => r.Price)
                                     .Skip(page * 20)
                                     .Take(20).ToList();
@@ -70,7 +70,7 @@ namespace Fx.Domain.FxGoods.Search
                     else
                     {
                         return context.GoodsBuyInfos
-                                    .Where(r => r.PublishTitle.Contains(key))
+                                    .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
                                     .OrderByDescending(r => r.Price)
                                     .Skip(page * 20)
                                     .Take(20).ToList();
@@ -95,7 +95,7 @@ namespace Fx.Domain.FxGoods.Search
                     if (asc)
                     {
                         return context.GoodsBuyInfos
-                                        .Where(r => r.PublishTitle.Contains(key))
+                                        .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
                                        .OrderBy(r => r.CreatedTime)
                                        .Skip(page * 20)
                                        .Take(20).ToList();
@@ -103,7 +103,7 @@ namespace Fx.Domain.FxGoods.Search
                     else
                     {
                         return context.GoodsBuyInfos
-                                        .Where(r => r.PublishTitle.Contains(key))
+                                        .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
                                         .OrderByDescending(r => r.CreatedTime)
                                         .Skip(page * 20)
                                         .Take(20).ToList();
@@ -113,14 +113,14 @@ namespace Fx.Domain.FxGoods.Search
                 {
                     if (asc)
                     {
-                        return context.GoodsBuyInfos
+                        return context.GoodsBuyInfos.Where(r => r.IsPublish == true)
                                         .OrderBy(r => r.CreatedTime)
                                         .Skip(page * 20)
                                         .Take(20).ToList();
                     }
                     else
                     {
-                        return context.GoodsBuyInfos
+                        return context.GoodsBuyInfos.Where(r => r.IsPublish == true)
                                         .OrderByDescending(r => r.CreatedTime)
                                         .Skip(page * 20)
                                         .Take(20).ToList();
@@ -140,7 +140,7 @@ namespace Fx.Domain.FxGoods.Search
                         if (asc)
                         {
                             return context.GoodsBuyInfos
-                                       .Where(r => r.PublishTitle.Contains(key) && r.IsChange == false)
+                                       .Where(r => r.PublishTitle.Contains(key) && r.IsChange == false && r.IsPublish == true)
                                        .OrderBy(r => r.CreatedTime)
                                        .Skip(page * 20)
                                        .Take(20).ToList();
@@ -148,7 +148,7 @@ namespace Fx.Domain.FxGoods.Search
                         else
                         {
                             return context.GoodsBuyInfos
-                                       .Where(r => r.PublishTitle.Contains(key) && r.IsChange == false)
+                                       .Where(r => r.PublishTitle.Contains(key) && r.IsChange == false && r.IsPublish == true)
                                        .OrderByDescending(r => r.CreatedTime)
                                        .Skip(page * 20)
                                        .Take(20).ToList();
@@ -159,7 +159,7 @@ namespace Fx.Domain.FxGoods.Search
                         if (asc)
                         {
                             return context.GoodsBuyInfos
-                                           .Where(r => r.PublishTitle.Contains(key) && r.IsChange == true)
+                                           .Where(r => r.PublishTitle.Contains(key) && r.IsChange == true && r.IsPublish == true)
                                            .OrderBy(r => r.CreatedTime)
                                            .Skip(page * 20)
                                            .Take(20).ToList();
@@ -167,7 +167,7 @@ namespace Fx.Domain.FxGoods.Search
                         else
                         {
                             return context.GoodsBuyInfos
-                                          .Where(r => r.PublishTitle.Contains(key) && r.IsChange == true)
+                                          .Where(r => r.PublishTitle.Contains(key) && r.IsChange == true && r.IsPublish == true)
                                           .OrderByDescending(r => r.CreatedTime)
                                           .Skip(page * 20)
                                           .Take(20).ToList();
@@ -182,7 +182,7 @@ namespace Fx.Domain.FxGoods.Search
                         if (asc)
                         {
                             return context.GoodsBuyInfos
-                                           .Where(r => r.IsChange == false)
+                                           .Where(r => r.IsChange == false && r.IsPublish == true)
                                            .OrderBy(r => r.CreatedTime)
                                            .Skip(page * 20)
                                            .Take(20).ToList();
@@ -190,7 +190,7 @@ namespace Fx.Domain.FxGoods.Search
                         else
                         {
                             return context.GoodsBuyInfos
-                                           .Where(r => r.IsChange == false)
+                                           .Where(r => r.IsChange == false && r.IsPublish == true)
                                            .OrderByDescending(r => r.CreatedTime)
                                            .Skip(page * 20)
                                            .Take(20).ToList();
@@ -203,7 +203,7 @@ namespace Fx.Domain.FxGoods.Search
                         {
 
                             return context.GoodsBuyInfos
-                                           .Where(r => r.IsChange == true)
+                                           .Where(r => r.IsChange == true && r.IsPublish == true)
                                            .OrderBy(r => r.CreatedTime)
                                            .Skip(page * 20)
                                            .Take(20).ToList();
@@ -212,7 +212,7 @@ namespace Fx.Domain.FxGoods.Search
                         {
 
                             return context.GoodsBuyInfos
-                                           .Where(r => r.IsChange == true)
+                                           .Where(r => r.IsChange == true && r.IsPublish == true)
                                            .OrderByDescending(r => r.CreatedTime)
                                            .Skip(page * 20)
                                            .Take(20).ToList();

@@ -148,6 +148,7 @@ namespace Fx.Domain.FxHouse
                 if (house != null)
                 {
                     house.InfoProcessState = (int)ProcessState.Publish;
+                    house.IsPublish = true;
                     house.Logs.Add(new Entity.FxHouse.HouseTransferLog()
                     {
                         OperteName = Enum.GetName(typeof(ProcessState), ProcessState.Publish)

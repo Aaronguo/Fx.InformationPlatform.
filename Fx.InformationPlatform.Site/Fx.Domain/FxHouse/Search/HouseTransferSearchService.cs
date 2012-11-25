@@ -17,14 +17,14 @@ namespace Fx.Domain.FxHouse.Search
                 if (!string.IsNullOrWhiteSpace(key))
                 {
                     return context.HouseTransferInfos
-                                    .Where(r => r.PublishTitle.Contains(key))
+                                    .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
                                     .OrderByDescending(r => r.CreatedTime)
                                     .Skip(page * 20)
                                     .Take(20).ToList();
                 }
                 else
                 {
-                    return context.HouseTransferInfos
+                    return context.HouseTransferInfos.Where(r => r.IsPublish == true)
                                     .OrderByDescending(r => r.CreatedTime)
                                     .Skip(page * 20)
                                     .Take(20).ToList();
@@ -47,14 +47,14 @@ namespace Fx.Domain.FxHouse.Search
                 {
                     if (asc)
                     {
-                        return context.HouseTransferInfos
+                        return context.HouseTransferInfos.Where(r => r.IsPublish == true)
                                     .OrderBy(r => r.Price)
                                     .Skip(page * 20)
                                     .Take(20).ToList();
                     }
                     else
                     {
-                        return context.HouseTransferInfos
+                        return context.HouseTransferInfos.Where(r => r.IsPublish == true)
                                     .OrderByDescending(r => r.Price)
                                     .Skip(page * 20)
                                     .Take(20).ToList();
@@ -65,7 +65,7 @@ namespace Fx.Domain.FxHouse.Search
                     if (asc)
                     {
                         return context.HouseTransferInfos
-                                    .Where(r => r.PublishTitle.Contains(key))
+                                    .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
                                     .OrderBy(r => r.Price)
                                     .Skip(page * 20)
                                     .Take(20).ToList();
@@ -73,7 +73,7 @@ namespace Fx.Domain.FxHouse.Search
                     else
                     {
                         return context.HouseTransferInfos
-                                    .Where(r => r.PublishTitle.Contains(key))
+                                    .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
                                     .OrderByDescending(r => r.Price)
                                     .Skip(page * 20)
                                     .Take(20).ToList();
@@ -98,7 +98,7 @@ namespace Fx.Domain.FxHouse.Search
                     if (asc)
                     {
                         return context.HouseTransferInfos
-                                        .Where(r => r.PublishTitle.Contains(key))
+                                        .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
                                         .OrderBy(r => r.CreatedTime)
                                         .Skip(page * 20)
                                         .Take(20).ToList();
@@ -106,7 +106,7 @@ namespace Fx.Domain.FxHouse.Search
                     else
                     {
                         return context.HouseTransferInfos
-                                        .Where(r => r.PublishTitle.Contains(key))
+                                        .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
                                         .OrderByDescending(r => r.CreatedTime)
                                         .Skip(page * 20)
                                         .Take(20).ToList();
@@ -116,14 +116,14 @@ namespace Fx.Domain.FxHouse.Search
                 {
                     if (asc)
                     {
-                        return context.HouseTransferInfos
+                        return context.HouseTransferInfos.Where(r => r.IsPublish == true)
                                         .OrderBy(r => r.CreatedTime)
                                         .Skip(page * 20)
                                         .Take(20).ToList();
                     }
                     else
                     {
-                        return context.HouseTransferInfos
+                        return context.HouseTransferInfos.Where(r => r.IsPublish == true)
                                         .OrderByDescending(r => r.CreatedTime)
                                         .Skip(page * 20)
                                         .Take(20).ToList();
@@ -136,7 +136,8 @@ namespace Fx.Domain.FxHouse.Search
         {
             using (var content = new FxHouseContext())
             {
-                return content.HouseTransferInfos.Include(r => r.Pictures).OrderByDescending(r => r.CreatedTime).Take(count).ToList();
+                return content.HouseTransferInfos.Where(r => r.IsPublish == true)
+                    .Include(r => r.Pictures).OrderByDescending(r => r.CreatedTime).Take(count).ToList();
             }
         }
 

@@ -17,14 +17,14 @@ namespace Fx.Domain.FxCar.Search
                 if (!string.IsNullOrWhiteSpace(key))
                 {
                     return context.CarTransferInfos
-                                    .Where(r => r.PublishTitle.Contains(key))
+                                    .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
                                     .OrderByDescending(r => r.CreatedTime)
                                     .Skip(page * 20)
                                     .Take(20).ToList();
                 }
                 else
                 {
-                    return context.CarTransferInfos
+                    return context.CarTransferInfos.Where(r => r.IsPublish == true)
                                     .OrderByDescending(r => r.CreatedTime)
                                     .Skip(page * 20)
                                     .Take(20).ToList();
@@ -47,14 +47,14 @@ namespace Fx.Domain.FxCar.Search
                 {
                     if (asc)
                     {
-                        return context.CarTransferInfos
+                        return context.CarTransferInfos.Where(r => r.IsPublish == true)
                                     .OrderBy(r => r.Price)
                                     .Skip(page * 20)
                                     .Take(20).ToList();
                     }
                     else
                     {
-                        return context.CarTransferInfos
+                        return context.CarTransferInfos.Where(r => r.IsPublish == true)
                                     .OrderByDescending(r => r.Price)
                                     .Skip(page * 20)
                                     .Take(20).ToList();
@@ -65,7 +65,7 @@ namespace Fx.Domain.FxCar.Search
                     if (asc)
                     {
                         return context.CarTransferInfos
-                                    .Where(r => r.PublishTitle.Contains(key))
+                                    .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
                                     .OrderBy(r => r.Price)
                                     .Skip(page * 20)
                                     .Take(20).ToList();
@@ -73,7 +73,7 @@ namespace Fx.Domain.FxCar.Search
                     else
                     {
                         return context.CarTransferInfos
-                                    .Where(r => r.PublishTitle.Contains(key))
+                                    .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
                                     .OrderByDescending(r => r.Price)
                                     .Skip(page * 20)
                                     .Take(20).ToList();
@@ -98,7 +98,7 @@ namespace Fx.Domain.FxCar.Search
                     if (asc)
                     {
                         return context.CarTransferInfos
-                                        .Where(r => r.PublishTitle.Contains(key))
+                                        .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
                                         .OrderBy(r => r.CreatedTime)
                                         .Skip(page * 20)
                                         .Take(20).ToList();
@@ -106,7 +106,7 @@ namespace Fx.Domain.FxCar.Search
                     else
                     {
                         return context.CarTransferInfos
-                                        .Where(r => r.PublishTitle.Contains(key))
+                                        .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
                                         .OrderByDescending(r => r.CreatedTime)
                                         .Skip(page * 20)
                                         .Take(20).ToList();
@@ -116,14 +116,14 @@ namespace Fx.Domain.FxCar.Search
                 {
                     if (asc)
                     {
-                        return context.CarTransferInfos
+                        return context.CarTransferInfos.Where(r => r.IsPublish == true)
                                         .OrderBy(r => r.CreatedTime)
                                         .Skip(page * 20)
                                         .Take(20).ToList();
                     }
                     else
                     {
-                        return context.CarTransferInfos
+                        return context.CarTransferInfos.Where(r => r.IsPublish == true)
                                         .OrderByDescending(r => r.CreatedTime)
                                         .Skip(page * 20)
                                         .Take(20).ToList();
@@ -136,7 +136,8 @@ namespace Fx.Domain.FxCar.Search
         {
             using (var content = new FxCarContext())
             {
-                return content.CarTransferInfos.Include(r => r.Pictures).OrderByDescending(r => r.CreatedTime).Take(count).ToList();
+                return content.CarTransferInfos.Where(r => r.IsPublish == true)
+                    .Include(r => r.Pictures).OrderByDescending(r => r.CreatedTime).Take(count).ToList();
             }
         }
 
