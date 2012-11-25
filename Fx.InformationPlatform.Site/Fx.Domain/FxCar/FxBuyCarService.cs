@@ -12,7 +12,11 @@ namespace Fx.Domain.FxCar
 
         public Entity.FxCar.CarBuyInfo Get(int Id)
         {
-            throw new NotImplementedException();
+            using (FxCarContext context = new FxCarContext())
+            {
+                return context.CarBuyInfos
+                    .Where(r => r.CarBuyInfoId == Id).FirstOrDefault();
+            }
         }
 
         public bool SaveBuyCar(CarBuyInfo car)

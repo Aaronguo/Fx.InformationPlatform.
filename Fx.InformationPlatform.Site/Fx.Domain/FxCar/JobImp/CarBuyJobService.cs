@@ -137,6 +137,25 @@ namespace Fx.Domain.FxCar
             return false;
         }
 
-        
+
+
+
+        public bool NoDelete(int carId)
+        {
+            using (var context = new FxCarContext())
+            {
+                var car = context.CarBuyInfos.Where(r => r.CarBuyInfoId == carId).FirstOrDefault();
+                if (car != null)
+                {
+                    car.InfoProcessState = (int)ProcessState.NoDelete;
+                    car.Logs.Add(new Entity.FxCar.CarBuyLog()
+                    {
+                        OperteName = Enum.GetName(typeof(ProcessState), ProcessState.NoDelete)
+                    });
+                    return context.SaveChanges() > 0;
+                }
+            }
+            return false;
+        }
     }
 }

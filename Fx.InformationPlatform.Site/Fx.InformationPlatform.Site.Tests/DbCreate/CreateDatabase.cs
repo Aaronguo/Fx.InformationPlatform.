@@ -6,6 +6,7 @@ using Fx.Domain.FxGoods;
 using Fx.Domain.FxHouse;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Fx.Entity.FxGoods;
+using Fx.Entity;
 
 namespace Fx.InformationPlatform.Site.Tests.DbCreate
 {
@@ -122,7 +123,7 @@ namespace Fx.InformationPlatform.Site.Tests.DbCreate
             {
                 Title = "",
                 InfoId = 1000,
-                ChannelCatagroy = 1000
+                ChannelCatagroy = (int)ChannelCatagroy.FxCarTransfer
             };
             context.Favorites.Add(entity);
             context.SaveChanges();

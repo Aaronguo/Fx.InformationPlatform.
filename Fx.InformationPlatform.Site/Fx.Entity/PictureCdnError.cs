@@ -17,18 +17,9 @@ namespace Fx.Entity
        public int ObjectId { get; set; }
 
        /// <summary>
-       /// 来源对象类型 SoureceCatagry
+       /// 来源对象类型 ChannelCatagroy
        /// </summary>
+      
        public int SourceType { get; set; }
     }
-
-   public enum SoureceCatagry
-   {
-       CarBuy=1,
-       CarTransfer = 2,
-       GoodsBuy = 3,
-       GoodsTransfer = 4,
-       HouseBuy = 5,
-       HouseTransfer = 6,
-   }
 }

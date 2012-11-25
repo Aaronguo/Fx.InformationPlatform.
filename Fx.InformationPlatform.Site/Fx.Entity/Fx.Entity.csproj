@@ -47,6 +47,8 @@
     <Compile Include="Catagroy\PictureCatagroy.cs" />
     <Compile Include="Catagroy\ProcessState.cs" />
     <Compile Include="FxAggregate\Favorite.cs" />
+    <Compile Include="FxAggregate\PrivateMessage.cs" />
+    <Compile Include="FxAggregate\TopShow.cs" />
     <Compile Include="FxCar\CarBase.cs" />
     <Compile Include="FxCar\CarBuyInfo.cs" />
     <Compile Include="FxCar\CarBuyLog.cs" />

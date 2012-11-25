@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data.Entity;
 using Fx.Domain.FxHouse.IService;
 using Fx.Entity.FxHouse;
 
@@ -12,7 +13,11 @@ namespace Fx.Domain.FxHouse
 
         public Entity.FxHouse.HouseTransferInfo Get(int Id)
         {
-            throw new NotImplementedException();
+            using (FxHouseContext context = new FxHouseContext())
+            {
+                return context.HouseTransferInfos.Include(r => r.Pictures)
+                    .Where(r => r.HouseTransferInfoId == Id).FirstOrDefault();
+            }
         }
 
         public bool SaveTransferHouse(HouseTransferInfo house)

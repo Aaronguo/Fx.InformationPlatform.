@@ -2,5 +2,53 @@
     <script type="text/javascript" src="../../Content/js/Debug/log4javascript1.4.3.js"></script>   
     <script type="text/javascript" src="../../Content/js/Debug/log4Init.js"></script> 
 
+
+	不需要！！！
 2 需要在aspnet_Membership表中添加一列OtherInformation_OtherInformationId  int
 添加和OtherInformation的主外键关系：
+
+
+
+
+
+
+本地调试注意：
+1 host的时候填写自己的IP和IIS想对应
+
+
+发布注意：
+对于静态文件的网站程序池设置 "无托管代码"
+对于设置了多网址的站点 是可以设置多个80端口的 ！！
+问题：无法识别的属性“targetFramework”。请注意属性名称区分大小
+修改IIS中网站的的.net framework 版本
+修改文件上传目录的权限
+多子域名登录 要建立machinekey
+缓存IIS设置 每天0点才重启 即使重启了也没多少损失
+程序缓存设置1年过期，  级别最高!!
+IIS MIME woff字体文件的下载   .woff  application/x-font-woff					--application/font-woff
+http://en.wikipedia.org/wiki/Mime_type
+
+技术注意：
+asp.net mvc 生成“*/?Length=*”的情况解决方法
+1 http://www.cnblogs.com/smailxiaobai/archive/2012/02/02/2335518.html
+
+2 Jquery库千万别冲突。。 Jquery.pack.js导致问题。
+Jquery.pack.js是jquery的压缩版
+
+3 .OrderBy(r=>r.GoodsTransferInfoId)
+仅对 LINQ to Entities 中已排序的输入支持方法“Skip”。必须在调用“Skip”方法之前调用方法“OrderBy”
+
+4 指定的 Include 路径无效。EntityType“Fx.Domain.FxCar.CarBuyInfo”未声明具有名称“UserAccount”的导航属性。
+导航属性的理解有问题
+
+
+热门物品就一点要求。不要全是手机或者同一类型的东西就行。如果可以做到电器里面一个居家里面一个这样子
+
+
+viutual 当没有设置的时候 有没有显示加载 这个时候就没有数据了！！！！查了好久
+何为配置????  当一个配置固定的时候 就应该取消配置！！！！
+
+
+
+
+

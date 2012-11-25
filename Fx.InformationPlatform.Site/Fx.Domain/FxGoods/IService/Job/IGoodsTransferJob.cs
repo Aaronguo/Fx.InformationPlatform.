@@ -30,5 +30,7 @@ namespace Fx.Domain.FxGoods.IService
         bool Delay(int goodsId);
 
         bool End(int goodsId);
+
+        bool NoDelete(int goodsId);
     }
 }

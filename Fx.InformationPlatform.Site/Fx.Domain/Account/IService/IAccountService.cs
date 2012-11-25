@@ -16,7 +16,7 @@ namespace Fx.Domain.Account.IService
 
         DomainResult UpdateUser(Membership entity);
 
-        DomainResult ChangePassword(Membership entity);
+        DomainResult ChangePassword(Membership entity,string oldPassword);
 
         /// <summary>
         /// 用户帐号是否存在

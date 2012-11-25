@@ -7,11 +7,11 @@ namespace Fx.Domain.FxHouse
 {
     public class HouseBuyJobService : IHouseBuyJob
     {
-        public bool Authorizing(int housId)
+        public bool Authorizing(int houseId)
         {
             using (var context = new FxHouseContext())
             {
-                var house = context.HouseBuyInfos.Where(r => r.HouseBuyInfoId == housId).FirstOrDefault();
+                var house = context.HouseBuyInfos.Where(r => r.HouseBuyInfoId == houseId).FirstOrDefault();
                 if (house != null)
                 {
                     house.InfoProcessState = (int)ProcessState.Authorizing;
@@ -25,11 +25,11 @@ namespace Fx.Domain.FxHouse
             return false;
         }
 
-        public bool AuthorizeSuccess(int housId)
+        public bool AuthorizeSuccess(int houseId)
         {
             using (var context = new FxHouseContext())
             {
-                var house = context.HouseBuyInfos.Where(r => r.HouseBuyInfoId == housId).FirstOrDefault();
+                var house = context.HouseBuyInfos.Where(r => r.HouseBuyInfoId == houseId).FirstOrDefault();
                 if (house != null)
                 {
                     house.InfoProcessState = (int)ProcessState.AuthorizeSuccess;
@@ -43,11 +43,11 @@ namespace Fx.Domain.FxHouse
             return false;
         }
 
-        public bool AuthorizeFaild(int housId,string msg)
+        public bool AuthorizeFaild(int houseId,string msg)
         {
             using (var context = new FxHouseContext())
             {
-                var house = context.HouseBuyInfos.Where(r => r.HouseBuyInfoId == housId).FirstOrDefault();
+                var house = context.HouseBuyInfos.Where(r => r.HouseBuyInfoId == houseId).FirstOrDefault();
                 if (house != null)
                 {
                     house.InfoProcessState = (int)ProcessState.AuthorizeFaild;
@@ -62,11 +62,11 @@ namespace Fx.Domain.FxHouse
             return false;
         }
 
-        public bool PictureProcessdSuccessd(int housId)
+        public bool PictureProcessdSuccessd(int houseId)
         {
             using (var context = new FxHouseContext())
             {
-                var house = context.HouseBuyInfos.Where(r => r.HouseBuyInfoId == housId).FirstOrDefault();
+                var house = context.HouseBuyInfos.Where(r => r.HouseBuyInfoId == houseId).FirstOrDefault();
                 if (house != null)
                 {
                     house.InfoProcessState = (int)ProcessState.AuthorizeFaild;
@@ -80,11 +80,11 @@ namespace Fx.Domain.FxHouse
             return false;
         }
 
-        public bool Publish(int housId)
+        public bool Publish(int houseId)
         {
             using (var context = new FxHouseContext())
             {
-                var house = context.HouseBuyInfos.Where(r => r.HouseBuyInfoId == housId).FirstOrDefault();
+                var house = context.HouseBuyInfos.Where(r => r.HouseBuyInfoId == houseId).FirstOrDefault();
                 if (house != null)
                 {
                     house.InfoProcessState = (int)ProcessState.Publish;
@@ -99,11 +99,11 @@ namespace Fx.Domain.FxHouse
             return false;
         }
 
-        public bool Delay(int housId)
+        public bool Delay(int houseId)
         {
             using (var context = new FxHouseContext())
             {
-                var house = context.HouseBuyInfos.Where(r => r.HouseBuyInfoId == housId).FirstOrDefault();
+                var house = context.HouseBuyInfos.Where(r => r.HouseBuyInfoId == houseId).FirstOrDefault();
                 if (house != null)
                 {
                     house.InfoProcessState = (int)ProcessState.Delay;
@@ -117,11 +117,11 @@ namespace Fx.Domain.FxHouse
             return false;
         }
 
-        public bool End(int housId)
+        public bool End(int houseId)
         {
             using (var context = new FxHouseContext())
             {
-                var house = context.HouseBuyInfos.Where(r => r.HouseBuyInfoId == housId).FirstOrDefault();
+                var house = context.HouseBuyInfos.Where(r => r.HouseBuyInfoId == houseId).FirstOrDefault();
                 if (house != null)
                 {
                     house.InfoProcessState = (int)ProcessState.End;
@@ -135,6 +135,25 @@ namespace Fx.Domain.FxHouse
             return false;
         }
 
-        
+
+
+
+        public bool NoDelete(int houseId)
+        {
+            using (var context = new FxHouseContext())
+            {
+                var house = context.HouseBuyInfos.Where(r => r.HouseBuyInfoId == houseId).FirstOrDefault();
+                if (house != null)
+                {
+                    house.InfoProcessState = (int)ProcessState.NoDelete;
+                    house.Logs.Add(new Entity.FxHouse.HouseBuyLog()
+                    {
+                        OperteName = Enum.GetName(typeof(ProcessState), ProcessState.NoDelete)
+                    });
+                    return context.SaveChanges() > 0;
+                }
+            }
+            return false;
+        }
     }
 }

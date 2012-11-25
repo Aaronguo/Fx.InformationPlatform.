@@ -10,7 +10,10 @@ namespace Fx.Domain.FxHouse
     {
         public Entity.FxHouse.HouseBuyInfo Get(int Id)
         {
-            throw new NotImplementedException();
+            using (FxHouseContext context = new FxHouseContext())
+            {
+                return context.HouseBuyInfos.Where(r => r.HouseBuyInfoId == Id).FirstOrDefault();
+            }
         }
 
         public bool SaveBuyHouse(Entity.FxHouse.HouseBuyInfo house)

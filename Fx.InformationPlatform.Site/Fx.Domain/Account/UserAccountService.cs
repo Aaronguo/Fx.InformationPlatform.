@@ -141,7 +141,7 @@ namespace Fx.Domain.Account
 
 
 
-        public DomainResult ChangePassword(Entity.MemberShip.Membership entity)
+        public DomainResult ChangePassword(Entity.MemberShip.Membership entity,string oldPassword)
         {
             var result = DomainResult.GetDefault();
             var u = Membership.GetUser(entity.Users.UserName);
@@ -149,7 +149,9 @@ namespace Fx.Domain.Account
             {
                 try
                 {
-                    u.ChangePassword(u.GetPassword(), entity.Password);
+                    //u.ChangePasswordQuestionAndAnswer(entity.Password, null, null);
+                    u.ChangePassword(oldPassword, entity.Password);
+                    //u.ResetPassword(u.GetPassword());
                 }
                 catch (Exception ex)
                 {

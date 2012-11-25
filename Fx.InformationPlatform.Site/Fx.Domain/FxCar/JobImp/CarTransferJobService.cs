@@ -116,7 +116,7 @@ namespace Fx.Domain.FxCar
                     {
                         ErorMsg = errorMsg,
                         ObjectId = carId,
-                        SourceType = (int)SoureceCatagry.CarTransfer
+                        SourceType = (int)ChannelCatagroy.FxCarTransfer
                     });
                     return context.SaveChanges() > 0;
                 }
@@ -199,6 +199,25 @@ namespace Fx.Domain.FxCar
 
 
 
-       
+
+
+
+        public bool NoDelete(int carId)
+        {
+            using (var context = new FxCarContext())
+            {
+                var car = context.CarTransferInfos.Where(r => r.CarTransferInfoId == carId).FirstOrDefault();
+                if (car != null)
+                {
+                    car.InfoProcessState = (int)ProcessState.NoDelete;
+                    car.Logs.Add(new Entity.FxCar.CarTransferLog()
+                    {
+                        OperteName = Enum.GetName(typeof(ProcessState), ProcessState.NoDelete)
+                    });
+                    return context.SaveChanges() > 0;
+                }
+            }
+            return false;
+        }
     }
 }

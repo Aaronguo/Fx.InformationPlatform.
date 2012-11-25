@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Text;
 using Fx.Domain.FxGoods.IService;
 
@@ -12,7 +13,8 @@ namespace Fx.Domain.FxGoods
         {
             using (FxGoodsContext context = new FxGoodsContext())
             {
-                return context.GoodsBuyInfos.Where(r => r.GoodsBuyInfoId == Id).FirstOrDefault();
+                return context.GoodsBuyInfos.Include(r=>r.Pictures)
+                    .Where(r => r.GoodsBuyInfoId == Id).FirstOrDefault();
             }
         }
 

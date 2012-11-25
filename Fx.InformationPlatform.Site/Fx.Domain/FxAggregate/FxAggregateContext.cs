@@ -31,8 +31,13 @@ namespace Fx.Domain.FxAggregate
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Configurations.Add(new Favorites_Mapping());
+            modelBuilder.Configurations.Add(new PrivateMessage_Mapping());
+            modelBuilder.Configurations.Add(new TopShows_Mapping());
+            
         }
 
         public DbSet<Favorite> Favorites { get; set; }
+        public DbSet<PrivateMessage> PrivateMessages { get; set; }
+        public DbSet<TopShow> TopShows { get; set; }
     }
 }

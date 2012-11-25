@@ -190,7 +190,7 @@ namespace Fx.Domain.FxGoods
                     {
                         ErorMsg = errorMsg,
                         ObjectId = goodsId,
-                        SourceType = (int)SoureceCatagry.CarBuy
+                        SourceType = (int)ChannelCatagroy.FxGoodsBuy
                     });
                     return context.SaveChanges() > 0;
                 }
@@ -209,6 +209,25 @@ namespace Fx.Domain.FxGoods
                     goods.Logs.Add(new Entity.FxGoods.GoodsBuyLog()
                     {
                         OperteName = Enum.GetName(typeof(ProcessState), ProcessState.JobSuccess)
+                    });
+                    return context.SaveChanges() > 0;
+                }
+            }
+            return false;
+        }
+
+
+        public bool NoDelete(int goodsId)
+        {
+            using (var context = new FxGoodsContext())
+            {
+                var goods = context.GoodsBuyInfos.Where(r => r.GoodsBuyInfoId == goodsId).FirstOrDefault();
+                if (goods != null)
+                {
+                    goods.InfoProcessState = (int)ProcessState.NoDelete;
+                    goods.Logs.Add(new Entity.FxGoods.GoodsBuyLog()
+                    {
+                        OperteName = Enum.GetName(typeof(ProcessState), ProcessState.NoDelete)
                     });
                     return context.SaveChanges() > 0;
                 }
