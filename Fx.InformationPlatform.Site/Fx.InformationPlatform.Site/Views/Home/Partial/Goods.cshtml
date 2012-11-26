@@ -1,0 +1,130 @@
+﻿@model Fx.InformationPlatform.Site.ViewModel.HomeGoodsModel
+<div class="grid_24">
+    <div class="grid_5 alpha">
+        <div class="hot_tags">
+            <div class="thing_deal_tops">
+                <img src="Content/images/goods.png" />
+            </div>
+            <div class="interval_line_c"></div>
+            <div class="thing_deal_hot_tag">
+                <div class="tits">热门标签</div>
+                <div class="tdht_cons">
+                    <a href="#">数码产品</a><a href="#">居家用品</a><a href="#">衣服鞋包</a><a href="#">文化生活</a>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="grid_1 width_cus">-</div>
+    <!--最新-->
+    <div class="grid_6">
+        <div class="topLoop" id="sliders_1" style="height: 304px; width: 230px;">
+            <div class="hd"><a class="next"></a><a class="prev"></a></div>
+            <div class="bd">
+                <ul class="picList">
+                    @foreach (var item in Model.GoodsTransferInfo1s)
+                    {
+                        foreach (var picture in item.Pictures)
+                        {
+                            if (picture.TransferPictureCatagroy == (int)Fx.Entity.PictureCatagroy.Head)
+                            {
+                        <li>
+                            <div class="pic">
+                                <div class="img_cons_wks_common">
+                                    <div class="tits_btm_coms_index">最新发布</div>
+                                    <div class="interval_line_c"></div>
+                                    <a href="#" class="imgs_a">
+                                        <img src="@Fx.InformationPlatform.Site.AppSettings.ImageUploadCdnDomain(picture.ImageUrl)" />
+                                        <img src="Content/images/test1.jpg" />
+                                    </a>
+                                    <div class="tits_btm_coms_index names_btm">
+                                        <a href="#">
+                                           @item.Price、@item.PublishTitle
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                            }
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!--热门-->
+    <div class="grid_6">
+        <div class="topLoop" id="sliders_2" style="height: 304px; width: 230px;">
+            <div class="hd"><a class="next"></a><a class="prev"></a></div>
+            <div class="bd">
+                <ul class="picList">
+                    @foreach (var item in Model.GoodsTransferInfo2s)
+                    {
+                        foreach (var picture in item.Pictures)
+                        {
+                            if (picture.TransferPictureCatagroy == (int)Fx.Entity.PictureCatagroy.Head)
+                            {
+                        <li>
+                            <div class="pic">
+                                <div class="img_cons_wks_common">
+                                    <div class="tits_btm_coms_index">最新发布</div>
+                                    <div class="interval_line_c"></div>
+                                    <a href="#" class="imgs_a">
+                                        <img src="@Fx.InformationPlatform.Site.AppSettings.ImageUploadCdnDomain(picture.ImageUrl)" />
+                                        <img src="Content/images/test1.jpg" />
+                                    </a>
+                                    <div class="tits_btm_coms_index names_btm">
+                                        <a href="#">
+                                           @item.Price、@item.PublishTitle
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                            }
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!--置顶-->
+    <div class="grid_6 omega">
+        <div class="topLoop" id="sliders_3" style="height: 304px; width: 230px;">
+            <div class="hd"><a class="next"></a><a class="prev"></a></div>
+            <div class="bd">
+                <ul class="picList">
+                    @foreach (var item in Model.GoodsTransferInfo3s)
+                    {
+                        foreach (var picture in item.Pictures)
+                        {
+                            if (picture.TransferPictureCatagroy == (int)Fx.Entity.PictureCatagroy.Head)
+                            {
+                        <li>
+                            <div class="pic">
+                                <div class="img_cons_wks_common">
+                                    <div class="tits_btm_coms_index">最新发布</div>
+                                    <div class="interval_line_c"></div>
+                                    <a href="#" class="imgs_a">
+                                        <img src="@Fx.InformationPlatform.Site.AppSettings.ImageUploadCdnDomain(picture.ImageUrl)" />
+                                        <img src="Content/images/test1.jpg" />
+                                    </a>
+                                    <div class="tits_btm_coms_index names_btm">
+                                        <a href="#">
+                                            @item.Price、@item.PublishTitle
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                            }
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>

@@ -6,6 +6,9 @@ using Fx.Entity.FxAggregate;
 
 namespace Fx.Domain.FxAggregate.IService
 {
+    /// <summary>
+    /// 置顶接口 用于一般性的操作
+    /// </summary>
     public interface ITopShow
     {
         /// <summary>

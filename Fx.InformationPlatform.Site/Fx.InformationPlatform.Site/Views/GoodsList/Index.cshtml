@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "物品交易";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="interval_20"></div>
+
+<!--Banner-->
+<div class="grid_24">
+    @Html.Partial("Partial/Flash")
+    @Html.Partial("Partial/Menu")
+</div>
+<div class="clear"></div>
+
+
+<div class="interval_30"></div>
+@Html.Partial("Partial/GoodsLine1")
+<div class="interval_20"></div>
+@Html.Partial("Partial/GoodsLine2")
+<div class="interval_20"></div>
+@Html.Partial("Partial/Ad1")
+<div class="interval_20"></div>
+@Html.Partial("Partial/GoodsLine3")
+<div class="interval_20"></div>
+@Html.Partial("Partial/Ad1")
+<div class="interval_20"></div>
+@Html.Partial("Partial/GoodsLine4")
+<div class="interval_20"></div>
+@Html.Partial("Partial/GoodsLine5")
+<div class="interval_20"></div>
+
+
+
+<script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("jquery.SuperSlide.js")"></script>
+<script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("slider.js")"></script>
+<script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("List.js")"></script>
+
+
+<script>
+    $(document).ready(function () {
+        Control_btn();
+        List_Nav_R();
+        $(".topLoop").slide({ mainCell: ".bd ul", effect: "topLoop", vis: 1, scroll: 1, trigger: "click" });
+    });
+</script>

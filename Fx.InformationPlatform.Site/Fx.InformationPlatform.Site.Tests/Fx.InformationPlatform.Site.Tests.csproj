@@ -99,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\DataCreateTest.cs" />
+    <Compile Include="Data\CreateUrl.cs" />
     <Compile Include="DbCreate\CreateDatabase.cs" />
     <Compile Include="Email\EmailTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

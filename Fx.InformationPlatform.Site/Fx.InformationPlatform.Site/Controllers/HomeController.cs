@@ -37,16 +37,19 @@ namespace Fx.InformationPlatform.Site.Controllers
         private HomeModel CreateModel()
         {
             var model = new HomeModel();
-            model.GoodsTransferInfos = goodsCache.GetHomeLatest();
-            model.CarTransferInfos = carCache.GetHomeLatest();
-            model.HouseTransferInfos = houseCache.GetHomeLatest();
+
+            model.HomeGoodsModel.GoodsTransferInfo1s = goodsCache.GetHomeLatest().Take(5).ToList();
+            model.HomeGoodsModel.GoodsTransferInfo2s=goodsCache.GetHomeLatest().Skip(5).Take(5).ToList();
+            model.HomeGoodsModel.GoodsTransferInfo3s = goodsCache.GetHomeTopShow();
+
+            model.HomeCarModel.CarTransferInfo1s=carCache.GetHomeLatest().Take(5).ToList();
+            model.HomeCarModel.CarTransferInfo2s = carCache.GetHomeLatest().Skip(5).Take(5).ToList();
+            model.HomeCarModel.CarTransferInfo3s = carCache.GetHomeTopShow();
+
+            model.HomeHouseModel.HouseTransferInfo1s= houseCache.GetHomeLatest().Take(5).ToList();
+            model.HomeHouseModel.HouseTransferInfo2s = houseCache.GetHomeLatest().Skip(5).Take(5).ToList();
+            model.HomeHouseModel.HouseTransferInfo3s = houseCache.GetHomeTopShow();
             return model;
-        }
-
-
-        public ActionResult GoodsShow()
-        {
-            return View();
         }
     }
 }

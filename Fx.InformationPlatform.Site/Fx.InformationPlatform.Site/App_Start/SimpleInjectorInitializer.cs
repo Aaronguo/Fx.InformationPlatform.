@@ -38,23 +38,28 @@ namespace Fx.InformationPlatform.Site.App_Start
             InitSiteContainer(container);
             InitSearchContainer(container);
             InitCacheContainer(container);
-            InitTaskContainer(container);
+            InitJobContainer(container);
+            InitAggregateContainer(container);
+        }
 
+        private static void InitAggregateContainer(Container container)
+        {
+            container.Register<Fx.Domain.FxAggregate.IService.ITopShow, Fx.Domain.FxAggregate.TopShowService>();
+            container.Register<Fx.Domain.FxAggregate.IService.IHomeTopShow, Fx.Domain.FxAggregate.TopShowService>();
         }
 
         private static void InitCacheContainer(Container container)
         {
+            //缓存服务
+            container.RegisterSingle<Fx.Infrastructure.Caching.ICacheManager, Fx.Infrastructure.Caching.CacheManager>();
             container.RegisterSingle<FxCacheService.FxGoods.GoodsCache>();
             container.RegisterSingle<FxCacheService.FxHouse.HouseCache>();
             container.RegisterSingle<FxCacheService.FxCar.CarCache>();
         }
 
 
-
-        private static void InitTaskContainer(Container container)
-        {
-
-            //container.RegisterSingle<Fx.Infrastructure.Caching.ICacheManager, Fx.Infrastructure.Caching.CacheManager>();
+        private static void InitJobContainer(Container container)
+        {            
             container.RegisterSingle<FxTask.AppSettings>();
             container.RegisterSingle<FxTask.Filter>();
 
@@ -77,7 +82,6 @@ namespace Fx.InformationPlatform.Site.App_Start
             container.RegisterSingle<Fx.Domain.Base.IService.IHomeSearch<Fx.Entity.FxGoods.GoodsTransferInfo>,
                 Fx.Domain.FxGoods.Search.GoodsTransferSearchService>();
 
-
             //FxCarSearch
             container.RegisterSingle<Fx.Domain.Base.IService.IHomeSearch<Fx.Entity.FxCar.CarTransferInfo>,
              Fx.Domain.FxCar.Search.CarTransferSearchService>();
@@ -85,8 +89,6 @@ namespace Fx.InformationPlatform.Site.App_Start
             //FxHouseSearch
             container.RegisterSingle<Fx.Domain.Base.IService.IHomeSearch<Fx.Entity.FxHouse.HouseTransferInfo>,
              Fx.Domain.FxHouse.Search.HouseTransferSearchService>();
-
-
         }
 
 
@@ -96,13 +98,14 @@ namespace Fx.InformationPlatform.Site.App_Start
             container.Register<Fx.Domain.FxSite.IService.IChannelService, Fx.Domain.FxSite.ChannelService>();
             container.Register<Fx.Domain.FxSite.IService.IPageAjax, Fx.Domain.FxSite.PublishAjaxService>();
 
+            //ForSite
             container.Register<Fx.Domain.FxSite.IService.IGoods, Fx.Domain.FxSite.GoodsService>();
             container.Register<Fx.Domain.FxSite.IService.ICar, Fx.Domain.FxSite.CarService>();
             container.Register<Fx.Domain.FxSite.IService.IHouse, Fx.Domain.FxSite.HouseService>();
 
             //FxGoods
             container.Register<Fx.Domain.FxGoods.IService.ITransferGoods, Fx.Domain.FxGoods.FxTransferGoodService>();
-            container.Register<Fx.Domain.FxGoods.IService.IBuyGoods, Fx.Domain.FxGoods.FxBuyGoodsService>();
+            container.Register<Fx.Domain.FxGoods.IService.IBuyGoods, Fx.Domain.FxGoods.FxBuyGoodsService>();          
 
             //FxCar
             container.Register<Fx.Domain.FxCar.IService.ITransferCar, Fx.Domain.FxCar.FxTransferCarService>();
@@ -114,10 +117,7 @@ namespace Fx.InformationPlatform.Site.App_Start
 
             //FxAggregate 
             container.Register<Fx.Domain.FxAggregate.IService.IDbAll, Fx.Domain.FxAggregate.DbAllService>();
-            container.Register<Fx.Domain.FxAggregate.IService.IFavorite, Fx.Domain.FxAggregate.FavoriteService>();
-
-            //缓存服务
-            container.RegisterSingle<Fx.Infrastructure.Caching.ICacheManager, Fx.Infrastructure.Caching.CacheManager>();
+            container.Register<Fx.Domain.FxAggregate.IService.IFavorite, Fx.Domain.FxAggregate.FavoriteService>();          
         }
     }
 }

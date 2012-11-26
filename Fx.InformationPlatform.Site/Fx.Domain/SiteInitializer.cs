@@ -861,30 +861,30 @@ namespace Fx.Domain
                          },
                      }
                 },
-                new ChannelList(){
-                     ChannelListName="汽车配件",
-                     Description="",
-                     ControllerName=channels[1].ControllerName,
-                     ActionName="CarAccessories",
-                     Sorted=2,
-                     ChannelListDetails=new List<ChannelListDetail>(){
-                         new ChannelListDetail(){
-                            ChannelListDetailName="GPS",
-                            Sorted=1,
-                            ActionName="GPS"
-                         },
-                         new ChannelListDetail(){
-                            ChannelListDetailName="汽车装饰",
-                            Sorted=2,
-                            ActionName="Cardecoration"
-                         },
-                         new ChannelListDetail(){
-                            ChannelListDetailName="其他",
-                            Sorted=3,
-                            ActionName="Ohter"
-                         }
-                     }
-                }
+                //new ChannelList(){
+                //     ChannelListName="汽车配件",
+                //     Description="",
+                //     ControllerName=channels[1].ControllerName,
+                //     ActionName="CarAccessories",
+                //     Sorted=2,
+                //     ChannelListDetails=new List<ChannelListDetail>(){
+                //         new ChannelListDetail(){
+                //            ChannelListDetailName="GPS",
+                //            Sorted=1,
+                //            ActionName="GPS"
+                //         },
+                //         new ChannelListDetail(){
+                //            ChannelListDetailName="汽车装饰",
+                //            Sorted=2,
+                //            ActionName="Cardecoration"
+                //         },
+                //         new ChannelListDetail(){
+                //            ChannelListDetailName="其他",
+                //            Sorted=3,
+                //            ActionName="Ohter"
+                //         }
+                //     }
+                //}
             };
             carList.ForEach(r => r.TransferController = r.ControllerName + "Transfer");
             carList.ForEach(r => r.BuyController = r.ControllerName + "Buy");
