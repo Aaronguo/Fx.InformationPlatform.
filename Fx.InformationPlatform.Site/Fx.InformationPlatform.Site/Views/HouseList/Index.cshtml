@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Fx.InformationPlatform.Site.ViewModel.HouseListModel
+@{
     ViewBag.Title = "房屋交易";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -14,19 +15,13 @@
 
 
 <div class="interval_30"></div>
-@Html.Partial("Partial/GoodsLine1")
-<div class="interval_20"></div>
-@Html.Partial("Partial/GoodsLine2")
+@Html.Partial("Partial/CommercialProperties",Model.CommercialProperties)
 <div class="interval_20"></div>
 @Html.Partial("Partial/Ad1")
 <div class="interval_20"></div>
-@Html.Partial("Partial/GoodsLine3")
+@Html.Partial("Partial/Properties",Model.Properties)
 <div class="interval_20"></div>
-@Html.Partial("Partial/Ad1")
-<div class="interval_20"></div>
-@Html.Partial("Partial/GoodsLine4")
-<div class="interval_20"></div>
-@Html.Partial("Partial/GoodsLine5")
+@Html.Partial("Partial/Ad2")
 <div class="interval_20"></div>
 
 

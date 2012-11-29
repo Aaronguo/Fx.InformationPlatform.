@@ -13,8 +13,15 @@ using Fx.InformationPlatform.Site.ViewModel;
 
 namespace Fx.InformationPlatform.Site.Controllers
 {
-     [Authorize]
-    public class HouseTransferController : BaseController,ISiteJob
+    /// <summary>
+    /// 房屋转让发布
+    /// </summary>
+#if DEBUG
+
+#else
+    [Authorize]    
+#endif
+    public class HouseTransferController : BaseController, ISiteJob
     {
         IHouse houseService;
         ITransferHouse transferService;
@@ -105,6 +112,7 @@ namespace Fx.InformationPlatform.Site.Controllers
         {
             InitParas();
             string pictureName;
+            string pictureMinName;
             //图片保存到
             #region FaceFile
             foreach (var face in facefile)
@@ -113,12 +121,14 @@ namespace Fx.InformationPlatform.Site.Controllers
                 if (face.HasFile())
                 {
                     pictureName = GetPictureName();
+                    pictureMinName = GetPictureMinName();
                     house.FaceFiles.Add(new TransferPicture()
                     {
                         ImageUrl = GetVirtualPath() + pictureName,
                         CdnUrl = "",
                         TransferPictureCatagroy = (int)PictureCatagroy.Head,
-                        PhysicalPath = GetPhysicalPath() + pictureName
+                        PhysicalPath = GetPhysicalPath() + pictureName,
+                        MinImageUrl=GetVirtualPath()+pictureMinName,
                     });
                     SaveFile(face, GetPhysicalPath(), GetPhysicalPath() + pictureName);
                 }
@@ -131,12 +141,14 @@ namespace Fx.InformationPlatform.Site.Controllers
                 if (other.HasFile())
                 {
                     pictureName = GetPictureName();
+                    pictureMinName = GetPictureMinName();
                     house.OtherFiles.Add(new TransferPicture()
                     {
                         ImageUrl = GetVirtualPath() + pictureName,
+                        PhysicalPath = GetPhysicalPath() + pictureName,
+                        MinImageUrl = GetVirtualPath() + pictureMinName,
                         CdnUrl = "",
-                        TransferPictureCatagroy = (int)PictureCatagroy.Head,
-                        PhysicalPath = GetPhysicalPath() + pictureName
+                        TransferPictureCatagroy = (int)PictureCatagroy.Head
                     });
                     SaveFile(other, GetPhysicalPath(), GetPhysicalPath() + pictureName);
                 }
@@ -149,9 +161,11 @@ namespace Fx.InformationPlatform.Site.Controllers
                 if (bad.HasFile())
                 {
                     pictureName = GetPictureName();
+                    pictureMinName = GetPictureMinName();
                     house.BadFiles.Add(new TransferPicture()
                     {
                         ImageUrl = GetVirtualPath() + pictureName,
+                        MinImageUrl = GetVirtualPath() + pictureMinName,
                         CdnUrl = "",
                         TransferPictureCatagroy = (int)PictureCatagroy.Head,
                         PhysicalPath = GetPhysicalPath() + pictureName
@@ -221,6 +235,13 @@ namespace Fx.InformationPlatform.Site.Controllers
             pictureCount++;
             return pictureName;
 
+        }
+
+
+        private string GetPictureMinName()
+        {
+            string pictureName = string.Format("{0}{1}-64X64.jpg", timestamp, pictureCount);
+            return pictureName;
         }
 
         public void SaveFile(HttpPostedFileBase file, string folderPath, string filePath)

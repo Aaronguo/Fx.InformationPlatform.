@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Fx.InformationPlatform.Site.ViewModel.GoodsListModel
+@{
     ViewBag.Title = "物品交易";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -14,22 +15,22 @@
 
 
 <div class="interval_30"></div>
-@Html.Partial("Partial/GoodsLine1")
+@Html.Partial("Partial/Electronics", Model.Electronics)
 <div class="interval_20"></div>
-@Html.Partial("Partial/GoodsLine2")
-<div class="interval_20"></div>
-@Html.Partial("Partial/Ad1")
-<div class="interval_20"></div>
-@Html.Partial("Partial/GoodsLine3")
+@Html.Partial("Partial/HomeSupplies", Model.HomeSupplies)
 <div class="interval_20"></div>
 @Html.Partial("Partial/Ad1")
 <div class="interval_20"></div>
-@Html.Partial("Partial/GoodsLine4")
+@Html.Partial("Partial/Fashion", Model.Fashions)
 <div class="interval_20"></div>
-@Html.Partial("Partial/GoodsLine5")
+@Html.Partial("Partial/Ad2")
 <div class="interval_20"></div>
-
-
+@Html.Partial("Partial/CultureLife", Model.CultureLifes)
+<div class="interval_20"></div>
+@Html.Partial("Partial/Other", Model.Others)
+<div class="interval_20"></div>
+@Html.Partial("Partial/Ad3")
+<div class="interval_20"></div>
 
 <script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("jquery.SuperSlide.js")"></script>
 <script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("slider.js")"></script>

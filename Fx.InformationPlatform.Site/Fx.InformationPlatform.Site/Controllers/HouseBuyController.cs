@@ -11,13 +11,20 @@ using Fx.InformationPlatform.Site.ViewModel;
 
 namespace Fx.InformationPlatform.Site.Controllers
 {
-     [Authorize]
-    public class HouseBuyController : BaseController,ISiteJob
+    /// <summary>
+    /// 房屋求购 
+    /// </summary>
+#if DEBUG
+
+#else
+    [Authorize]    
+#endif
+    public class HouseBuyController : BaseController, ISiteJob
     {
-        IHouse houseService;        
+        IHouse houseService;
         IBuyHouse buyService;
         IAccountService accountService;
-        public HouseBuyController(IHouse houseService, 
+        public HouseBuyController(IHouse houseService,
             IBuyHouse buyService,
             IAccountService accountService)
         {
@@ -37,7 +44,7 @@ namespace Fx.InformationPlatform.Site.Controllers
             BindCatagroy();
             return View();
         }
-        
+
 
         [HttpPost]
         public ActionResult CommercialProperties(BuyViewHouse house)

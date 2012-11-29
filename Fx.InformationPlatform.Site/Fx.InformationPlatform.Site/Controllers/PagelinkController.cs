@@ -10,7 +10,7 @@ namespace Fx.InformationPlatform.Site.Controllers
     /// 页面资源控制器 一些仅仅只有文字的页面
     /// </summary>
     public class PagelinkController : Controller
-    { 
+    {
         /// <summary>
         /// 英淘网用户协议
         /// </summary>
@@ -51,7 +51,13 @@ namespace Fx.InformationPlatform.Site.Controllers
         /// 英淘网隐私权保护规则
         /// </summary>
         /// <returns></returns>
-        public ActionResult  Privacy()
+        public ActionResult Privacy()
+        {
+            return View();
+        }
+
+
+        public ActionResult PageNotFound()
         {
             return View();
         }

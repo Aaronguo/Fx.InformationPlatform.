@@ -8,8 +8,13 @@ using Fx.Domain.FxSite.IService;
 namespace Fx.InformationPlatform.Site.Controllers
 {
     /// <summary>
-    /// 发布信息
+    /// 转让页面频道选择
     /// </summary>
+#if DEBUG
+
+#else
+    [Authorize]    
+#endif
     public class TransferController : Controller
     {
         IChannelService channelService;

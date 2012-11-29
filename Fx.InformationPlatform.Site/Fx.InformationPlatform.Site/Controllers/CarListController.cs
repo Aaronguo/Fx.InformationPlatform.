@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Fx.InformationPlatform.Site.ViewModel;
+using Fx.Infrastructure.Caching;
+using FxCacheService.FxCar;
 
 namespace Fx.InformationPlatform.Site.Controllers
 {
@@ -11,9 +14,16 @@ namespace Fx.InformationPlatform.Site.Controllers
     /// </summary>
     public class CarListController : Controller
     {
+        protected CarCache carCache;
+        public CarListController(CarCache carCache)
+        {
+            this.carCache = carCache;
+        }
         public ActionResult Index()
         {
-            return View();
+            var model = new CarListModel();
+            model.SecondHandCars = carCache.GetCarSecondHandCarList();
+            return View(model);
         }
 
     }

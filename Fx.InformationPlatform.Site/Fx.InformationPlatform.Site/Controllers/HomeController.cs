@@ -11,6 +11,9 @@ using Fx.InformationPlatform.Site.ViewModel;
 
 namespace Fx.InformationPlatform.Site.Controllers
 {
+    /// <summary>
+    /// 首页
+    /// </summary>
     public class HomeController : Controller
     {
         private FxCacheService.FxGoods.GoodsCache goodsCache;

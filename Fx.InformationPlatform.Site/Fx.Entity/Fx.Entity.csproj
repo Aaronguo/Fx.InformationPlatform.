@@ -43,7 +43,12 @@
   <ItemGroup>
     <Compile Include="Account\RegisterUser.cs" />
     <Compile Include="BuyPicture.cs" />
+    <Compile Include="Catagroy\AreaCatagroy.cs" />
     <Compile Include="Catagroy\ChannelCatagroy.cs" />
+    <Compile Include="Catagroy\ChannelListCatagroy.cs" />
+    <Compile Include="Catagroy\CityCatagroy.cs" />
+    <Compile Include="Catagroy\GoodsConditionCatagroy.cs" />
+    <Compile Include="Catagroy\MileCatagroy.cs" />
     <Compile Include="Catagroy\PictureCatagroy.cs" />
     <Compile Include="Catagroy\ProcessState.cs" />
     <Compile Include="FxAggregate\Favorite.cs" />

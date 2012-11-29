@@ -137,34 +137,77 @@ namespace Fx.InformationPlatform.Site
             return GetString("ImageUploadCdnDomain", "http://uploadcdn.yingtao.co.uk/") + imageFileorPath;
         }
 
+        public static string YingTaoUrl()
+        {
+            if (cacheService.Get("YingTaoUrl") == null)
+            {
+                cacheService.Insert("YingTaoUrl", GetString("YingTaoUrl", "http://yingtao.co.uk"), 3600, System.Web.Caching.CacheItemPriority.Default);
+            }
+            object o = cacheService.Get("YingTaoUrl");
+            if (o != null)
+            {
+                return o.ToString();
+            }
+            return "";
+        }
+
+        public static string GoodsTransferLink(int id)
+        {
+            return string.Format("{0}{1}/{2}/{3}", YingTaoUrl(), "GoodsTransferDetail", "Index", id);
+        }
+
+
+        public static string GoodsBuyLink(int id)
+        {
+            return string.Format("{0}{1}/{2}/{3}", YingTaoUrl(), "GoodsBuyDetail", "Index", id);
+        }
+
+
+        public static string HouseTransferLink(int id)
+        {
+            return string.Format("{0}{1}/{2}/{3}", YingTaoUrl(), "HouseTransferDetail", "Index", id);
+        }
+
+
+        public static string HouseBuyLink(int id)
+        {
+            return string.Format("{0}{1}/{2}/{3}", YingTaoUrl(), "HouseBuyDetail", "Index", id);
+        }
+
+
+        public static string CarTransferLink(int id)
+        {
+            return string.Format("{0}{1}/{2}/{3}", YingTaoUrl(), "CarTransferDetail", "Index", id);
+        }
+
+
+        public static string CarBuyLink(int id)
+        {
+            return string.Format("{0}{1}/{2}/{3}", YingTaoUrl(), "CarBuyDetail", "Index", id);
+        }
+
+
+
+
 
 
         public static string[] PictureMINE()
         {
             if (cacheService.Get("FxSitePictureMINE") == null)
             {
-                cacheService.Insert("FxSitePictureMINE",GetString("PictureMIME","jpg|jpeg|png|gif|bmp"),3600, System.Web.Caching.CacheItemPriority.Normal);
+                cacheService.Insert("FxSitePictureMINE", GetString("PictureMIME", "jpg|jpeg|png|gif|bmp"), 3600, System.Web.Caching.CacheItemPriority.Normal);
             }
-            var mines=(cacheService.Get("FxSitePictureMINE") as string).Split('|').ToArray();
+            var mines = (cacheService.Get("FxSitePictureMINE") as string).Split('|').ToArray();
             return mines;
         }
 
 
         public static string FormDomain
         {
-            get { return GetString("FormDomain", "yingtao.co.uk"); }  
+            get { return GetString("FormDomain", "yingtao.co.uk"); }
         }
 
 
-        //public static double CacheSettingsTimeOut
-        //{
-        //    get { return GetDouble("CacheSettingsTimeOut", 600); }
-        //}
-
-        //public static byte CacheSettingsPriority
-        //{
-        //    get { return GetByte("CacheSettingsPriority", 3); }
-        //}
 
         #endregion
 

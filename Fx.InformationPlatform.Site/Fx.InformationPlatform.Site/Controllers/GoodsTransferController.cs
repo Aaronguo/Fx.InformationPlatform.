@@ -13,7 +13,14 @@ using Fx.InformationPlatform.Site.ViewModel;
 
 namespace Fx.InformationPlatform.Site.Controllers
 {
-    [Authorize]
+    /// <summary>
+    /// 二手转让发布
+    /// </summary>
+#if DEBUG
+
+#else
+    [Authorize]    
+#endif
     public class GoodsTransferController : BaseController, ISiteJob
     {
         IGoods goodsService;
@@ -143,6 +150,7 @@ namespace Fx.InformationPlatform.Site.Controllers
         {
             InitParas();
             string pictureName;
+            string pictureMinName;
             //图片保存到
             #region FaceFile
             foreach (var face in facefile)
@@ -150,9 +158,11 @@ namespace Fx.InformationPlatform.Site.Controllers
                 if (face.HasFile())
                 {
                     pictureName = GetPictureName();
+                    pictureMinName = GetPictureMinName();
                     goods.FaceFiles.Add(new TransferPicture()
                     {
                         ImageUrl = GetVirtualPath() + pictureName,
+                        MinImageUrl = GetVirtualPath() + pictureMinName,
                         CdnUrl = "",
                         TransferPictureCatagroy = (int)PictureCatagroy.Head,
                         PhysicalPath = GetPhysicalPath() + pictureName
@@ -168,9 +178,11 @@ namespace Fx.InformationPlatform.Site.Controllers
                 if (other.HasFile())
                 {
                     pictureName = GetPictureName();
+                    pictureMinName = GetPictureMinName();
                     goods.OtherFiles.Add(new TransferPicture()
                     {
                         ImageUrl = GetVirtualPath() + pictureName,
+                        MinImageUrl = GetVirtualPath() + pictureMinName,
                         CdnUrl = "",
                         TransferPictureCatagroy = (int)PictureCatagroy.Head,
                         PhysicalPath = GetPhysicalPath() + pictureName
@@ -186,9 +198,11 @@ namespace Fx.InformationPlatform.Site.Controllers
                 if (bad.HasFile())
                 {
                     pictureName = GetPictureName();
+                    pictureMinName = GetPictureMinName();
                     goods.BadFiles.Add(new TransferPicture()
                     {
                         ImageUrl = GetVirtualPath() + pictureName,
+                        MinImageUrl = GetVirtualPath() + pictureMinName,
                         CdnUrl = "",
                         TransferPictureCatagroy = (int)PictureCatagroy.Head,
                         PhysicalPath = GetPhysicalPath() + pictureName
@@ -270,6 +284,13 @@ namespace Fx.InformationPlatform.Site.Controllers
             pictureCount++;
             return pictureName;
 
+        }
+
+
+        private string GetPictureMinName()
+        {
+            string pictureName = string.Format("{0}{1}-64X64.jpg", timestamp, pictureCount);
+            return pictureName;
         }
 
         public void SaveFile(HttpPostedFileBase file, string folderPath, string filePath)

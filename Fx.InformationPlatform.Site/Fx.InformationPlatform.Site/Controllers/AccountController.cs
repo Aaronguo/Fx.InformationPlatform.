@@ -10,6 +10,9 @@ using Fx.Entity.MemberShip;
 
 namespace Fx.InformationPlatform.Site.Controllers
 {
+    /// <summary>
+    /// 帐号控制器
+    /// </summary>
     public class AccountController : Controller
     {
         private IAccountService accountService;
@@ -23,13 +26,6 @@ namespace Fx.InformationPlatform.Site.Controllers
         // GET: /Account/
 
         public ActionResult Index()
-        {
-            return View();
-        }
-
-
-        [HttpGet]
-        public ActionResult Profile()
         {
             return View();
         }

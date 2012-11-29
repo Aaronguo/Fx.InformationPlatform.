@@ -8,8 +8,13 @@ using Fx.Domain.FxSite.IService;
 namespace Fx.InformationPlatform.Site.Controllers
 {
     /// <summary>
-    /// 求购页面总控制器
+    /// 求购页面频道选择
     /// </summary>
+#if DEBUG
+
+#else
+    [Authorize]    
+#endif
     public class BuyController : Controller
     {
         IChannelService channelService;

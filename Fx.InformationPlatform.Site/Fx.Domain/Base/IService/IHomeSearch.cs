@@ -13,8 +13,18 @@ namespace Fx.Domain.Base.IService
     {
         List<T> SearchLatestForHome(int count);
 
-        List<T> SearchHottestForHome(int count);
+        /// <summary>
+        ///  没有实现 取消此功能 later imp
+        /// </summary>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        //List<T> SearchHottestForHome(int count);
 
-        List<T> SearchTopshowForHome(int count);
+        /// <summary>
+        /// 没有实现 由Aggregate实现
+        /// </summary>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        //List<T> SearchTopshowForHome(int count);
     }
 }

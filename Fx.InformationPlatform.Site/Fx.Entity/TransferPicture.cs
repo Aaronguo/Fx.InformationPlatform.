@@ -22,6 +22,8 @@ namespace Fx.Entity
 
         public string CdnUrl { get; set; }
 
+        public string MinImageUrl { get; set; }
+
         public TransferPicture()
         {
             this.IsCdn = false;
