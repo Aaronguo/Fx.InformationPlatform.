@@ -1,0 +1,28 @@
+﻿@model List<Fx.Entity.FxCar.CarBuyInfo>
+@foreach (var item in Model)
+{
+    foreach (var picture in item.Pictures)
+    {
+        if (picture.TransferPictureCatagroy == (int)Fx.Entity.PictureCatagroy.Head)
+        {
+    <div class="rows_wks_sr_list">
+        <a href="/CarTransferDetail/Index/@item.CarTransferInfoId" target="_blank" class="lefts_demo_imgs">
+            <img src="@Fx.InformationPlatform.Site.AppSettings.ImageUploadCdnDomain(picture.MinImageUrl)" />
+        </a>
+        <div class="right_details_wkss">
+            <div class="tops_tddds">
+                <div class="tops_tddds_names"><a href="/CarTransferDetail/Index/@item.CarTransferInfoId">@item.PublishTitle</a><font>图</font></div>
+                <div class="shows_price_or_exchange_ico">@item.Price</div>
+                <div class="date_wks_sr_list">@item.CreatedTime.ToString("yy-MM-dd")</div>
+                <div class="right_icon_show_hidden">
+                    &nbsp;                    
+                    @*<img src="images/exchange-ico.jpg" />*@
+                </div>
+            </div>
+            <div class="btm_descriptions">@item.PublishTitle</div>
+        </div>
+        <div class="clear"></div>
+    </div>
+        }
+    }
+}

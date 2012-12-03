@@ -1,0 +1,54 @@
+﻿Car -Transfer
+CarTransferInfoId	PublishTitle	CatagroyId	Price	AreaId	CityId	CarYear	CarMileage	PublishUserEmail	Mark	Controller	Action	UserAccount	CreatedTime	IsDelete	IsPublish	InfoProcessState	ErrorMsg
+1	出售宝马	30	9999	6	60	2009	3	117822597@qq.com	2	CarTransfer	SecondHandCar	117822597@163.com	2012-11-25 02:42:50.197	0	1	11	NULL
+2	出售轮胎	45	300	2	8	2010	2	117822597@qq.com	2	CarTransfer	CarAccessories	117822597@163.com	2012-11-25 02:50:31.703	0	1	11	NULL
+3	231	29	22	4	48	2008	2	117822597@qq.com	NULL	CarTransfer	SecondHandCar	117822597@163.com	2012-11-25 03:58:06.787	0	1	11	NULL
+4	别克转让只要3000	31	3000	2	7	2010	2	117822597@qq.com	2214138	CarTransfer	SecondHandCar	117822597@qq.com	2012-11-25 17:49:46.483	0	1	11	NULL
+5	 本田3000	34	3000	1	3	2009	2	117822597@qq.com	NULL	CarTransfer	SecondHandCar	117822597@163.com	2012-11-26 20:20:12.500	0	1	11	NULL
+6	奥迪A4	29	2000	1	3	2010	4	117822597@qq.com	NULL	CarTransfer	SecondHandCar	117822597@163.com	2012-11-26 20:21:21.783	0	1	11	NULL
+7	雪铁龙	32	2000	1	2	2000	3	117822597@qq.com	NULL	CarTransfer	SecondHandCar	117822597@163.com	2012-11-26 20:22:16.997	0	1	11	NULL
+8	本田思域	34	6666	2	8	1997	4	117822597@qq.com	NULL	CarTransfer	SecondHandCar	117822597@163.com	2012-11-26 20:23:45.950	0	1	11	NULL
+9	MINI	37	500	1	4	1997	2	117822597@qq.com	NULL	CarTransfer	SecondHandCar	117822597@163.com	2012-11-26 20:24:55.163	0	1	11	NULL
+10	沃尔沃xc60	41	9000	3	16	1997	6	117822597@qq.com	NULL	CarTransfer	SecondHandCar	117822597@163.com	2012-11-26 20:25:58.297	0	1	11	NULL
+11	奔驰s500	38	99999	3	30	2006	3	117822597@qq.com	NULL	CarTransfer	SecondHandCar	117822597@163.com	2012-11-26 20:27:24.683	0	1	11	NULL
+
+
+
+
+
+
+
+
+
+
+
+
+Goods -Transfer
+
+GoodsTransferInfoId	GoodsconditonId	GoodsConditionMsg	PublishTitle	CatagroyId	Price	IsChange	ChangeMsg	AreaId	CityId	PublishUserEmail	Mark	Controller	Action	UserAccount	CreatedTime	IsDelete	IsPublish	InfoProcessState	ErrorMsg
+1	2	NULL	出手诺基亚	1	770	0	NULL	1	2	117822597@163.com	222	GoodsTransfer	Electronics	117822597@163.com	2012-11-24 23:38:13.480	0	1	11	NULL
+2	2	NULL	出售电视机	10	2000	0	NULL	1	4	117822597@163.com	赶快联系我	GoodsTransfer	HomeSupplies	117822597@163.com	2012-11-24 23:39:32.987	0	1	11	NULL
+3	1	NULL	出售水床	22	10000	0	NULL	2	7	117822597@163.com	2214138	GoodsTransfer	Fashion	117822597@163.com	2012-11-24 23:40:27.373	0	1	-1	NULL
+4	2	NULL	出售连衣裙	18	200	0	NULL	4	48	117822597@qq.com	22141	GoodsTransfer	Fashion	117822597@163.com	2012-11-24 23:41:16.150	0	1	11	NULL
+5	2	NULL	出售玩偶	25	30	0	NULL	1	2	117822597@163.com	221418	GoodsTransfer	CultureLife	117822597@163.com	2012-11-24 23:42:30.387	0	1	11	NULL
+6	1	NULL	出售宝马	28	123123	0	NULL	7	74	117822597@qq.com	NULL	GoodsTransfer	Other	117822597@163.com	2012-11-25 03:26:59.533	0	1	11	NULL
+7	1	NULL	大撒旦撒的	1	123123	0	NULL	3	30	117822597@163.com	NULL	GoodsTransfer	Electronics	117822597@163.com	2012-11-25 03:30:29.977	0	1	11	NULL
+8	2	NULL	111	2	222	0	NULL	3	28	117822597@qq.com	NULL	GoodsTransfer	Electronics	117822597@163.com	2012-11-25 03:57:42.617	0	1	-1	NULL
+9	2	NULL	出手电脑椅子	9	677	0	NULL	2	6	117822597@qq.com	22222	GoodsTransfer	HomeSupplies	117822597@163.com	2012-11-26 19:50:40.927	0	1	11	NULL
+10	2	NULL	出手躺椅	9	1000	0	NULL	1	5	117822597@qq.com	NULL	GoodsTransfer	HomeSupplies	117822597@163.com	2012-11-26 19:52:11.727	0	1	11	NULL
+11	2	NULL	漂亮项链转让	21	2000	0	NULL	6	58	117822597@qq.com	NULL	GoodsTransfer	Fashion	117822597@163.com	2012-11-26 19:53:19.467	0	1	11	NULL
+12	1	NULL	珍珠项链	21	199	0	NULL	3	18	117822597@qq.com	NULL	GoodsTransfer	Fashion	117822597@163.com	2012-11-26 19:58:18.160	0	1	11	NULL
+13	1	NULL	水晶项链漂亮有木有	21	99	0	NULL	3	16	117822597@qq.com	NULL	GoodsTransfer	Fashion	117822597@163.com	2012-11-26 19:59:19.317	0	1	11	NULL
+14	2	NULL	9成新二胡	23	800	0	NULL	2	8	117822597@qq.com	NULL	GoodsTransfer	CultureLife	117822597@163.com	2012-11-26 20:16:14.017	0	1	-1	NULL
+15	1	NULL	100张明信片打包出售	24	80	0	NULL	6	60	117822597@qq.com	2214138	GoodsTransfer	CultureLife	117822597@163.com	2012-11-26 20:18:05.427	0	1	11	NULL
+
+
+
+
+House -Transfer
+
+HouseTransferInfoId	PostCode	RoadName	PublishTitle	CatagroyId	Price	AreaId	CityId	Bill	HasFurniture	RoomNumber	PublishUserEmail	Mark	Controller	Action	UserAccount	CreatedTime	IsDelete	IsPublish	InfoProcessState	ErrorMsg
+1	233333	天目西路	一室一厅	46	300	1	2	1	1	2	117822597@qq.com	23	HouseTransfer	CommercialProperties	117822597@163.com	2012-11-25 02:53:23.553	0	1	11	NULL
+2	454ef	111231232	商品房	50	2222	3	16	1	1	5	117822597@qq.com	2323232	HouseTransfer	Properties	117822597@163.com	2012-11-25 03:07:57.760	0	1	11	NULL
+3	22222	天目西路547	一室一厅	46	111	2	6	0	0	2	117822597@163.com	22	HouseTransfer	CommercialProperties	117822597@163.com	2012-11-25 03:21:49.423	0	1	11	NULL
+4	11111	2	dfds	49	1222	4	49	0	0	7	117822597@qq.com	NULL	HouseTransfer	CommercialProperties	117822597@163.com	2012-11-25 03:58:40.800	0	1	11	NULL

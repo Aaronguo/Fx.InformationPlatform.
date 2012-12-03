@@ -14,6 +14,58 @@ image的延迟加载
 
 
 
+list_left_img_demo_tit
+
+
+City  Wales和West Midlands都有一个 Newport!
+
+South East England 中有个2个Southampton 
 
 
 
+首页：查找 （3个频道）    
+条件查询  ：以物换物 ....
+热门标签  
+
+二级列表：
+每个栏目的图片载入  8个栏目  （3个栏目的工作量）
+翻页 4-5次 
+
+物品明细 ok
+求购 转让 
+
+后台：
+删除的功能 和查看帖子的功能
+
+缓存有失败的地方
+
+
+小功能 FLASH  AD
+
+今天完成
+1）重构了下发布页面的代码 添加Publish的公共代码
+2) 添加了物品明细的代码 晚上要测试
+
+
+下一步
+每个栏目的图片载入  8个栏目
+1 添加3个Model  GoodsListModel CarListModel HouseListModel
+2 添加Domain的逻辑 ok
+3 添加缓存服务 ok
+
+
+
+修正了换物的脚本 如果换物 必须上传相关图片
+
+修正有多个首图导致的图片显示问题 最多显示一张
+2种方式： 1 逻辑层搞定
+	      2 页面层搞定  this  添加break语句 就选一张
+		  demo  var list = new List<int>() { 1, 3, 7, 5, 6, 7, 8 };
+            foreach (var item in list)
+            {
+                if (item == 7)
+                {
+                    Console.WriteLine(item);
+                    break;
+                }
+            }

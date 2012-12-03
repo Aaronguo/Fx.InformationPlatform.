@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Fx.Domain.FxCar.IService;
 
 namespace Fx.InformationPlatform.Site.Controllers
 {
@@ -11,10 +12,27 @@ namespace Fx.InformationPlatform.Site.Controllers
     /// </summary>
     public class CarTransferDetailController : Controller
     {
-        public ActionResult Index()
+        protected ITransferCar transferCar;
+        public CarTransferDetailController(ITransferCar transferCar)
         {
-            return View();
+            this.transferCar = transferCar;
         }
 
+        public ActionResult Index(int id)
+        {
+            if (id <= 0)
+            {
+                return RedirectToAction("PageNotFound", "PageLink");
+            }
+            else
+            {
+                var car = transferCar.Get(id);
+                if (car == null)
+                {
+                    return RedirectToAction("PageNotFound", "PageLink");
+                }
+                return View(car);
+            }
+        }
     }
 }

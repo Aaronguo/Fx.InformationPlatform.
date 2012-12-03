@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Fx.Entity.FxAggregate;
+using Fx.Entity.FxCar;
+using Fx.Entity.FxGoods;
+using Fx.Entity.FxHouse;
 
 namespace Fx.Domain.FxAggregate.IService
 {
@@ -30,5 +33,22 @@ namespace Fx.Domain.FxAggregate.IService
         List<TopShow> GetAllTopShow();
 
         TopShow GetById(int id);
+
+        
+        /// <summary>
+        /// 用于具体频道的展示 数据完整性
+        /// </summary>
+        /// <returns></returns>
+        List<CarTransferInfo> GetCarTransferTopShow();
+
+        List<GoodsTransferInfo> GetGoodsTransferTopShow();
+
+        List<HouseTransferInfo> GetHouseTransferTopShow();
+
+        List<CarBuyInfo> GetCarBuyTopShow();
+
+        List<GoodsBuyInfo> GetGoodsBuyTopShow();
+
+        List<HouseBuyInfo> GetHouseBuyTopShow();
     }
 }

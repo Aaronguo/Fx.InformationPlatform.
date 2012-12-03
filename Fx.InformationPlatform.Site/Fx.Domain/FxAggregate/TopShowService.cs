@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Fx.Domain.FxAggregate.IService;
+using Fx.Domain.FxCar.IService;
+using Fx.Domain.FxGoods.IService;
+using Fx.Domain.FxHouse.IService;
 using Fx.Entity;
 using Fx.Entity.FxAggregate;
 using Fx.Entity.FxCar;
@@ -13,155 +16,261 @@ namespace Fx.Domain.FxAggregate
 {
     public class TopShowService : ITopShow, IHomeTopShow
     {
-        public List<Fx.Entity.FxAggregate.TopShow> GetAllTopShow()
+        protected IBuyCar buyCarService;
+        protected ITransferCar transferCarService;
+        protected IBuyHouse buyHouseService;
+        protected ITransferHouse transferHouseService;
+        protected IBuyGoods buyGoodsService;
+        protected ITransferGoods transferGoodsService;
+
+        public TopShowService(IBuyCar buyCarService,
+            ITransferCar transferCarService,
+            IBuyHouse buyHouseService,
+            ITransferHouse transferHouseService,
+            IBuyGoods buyGoodsService,
+            ITransferGoods transferGoodsService)
         {
-            using (FxAggregateContext context = new FxAggregateContext())
+            this.buyCarService = buyCarService;
+            this.buyGoodsService = buyGoodsService;
+            this.buyHouseService = buyHouseService;
+            this.transferCarService = transferCarService;
+            this.transferGoodsService = transferGoodsService;
+            this.transferHouseService = transferHouseService;
+        }
+
+        public void TopShow(TopShow entity)
+        {
+            if (!IsExist(entity))
             {
-                return context.TopShows.ToList<Fx.Entity.FxAggregate.TopShow>();
+                using (var content = new FxAggregateContext())
+                {
+                    content.TopShows.Add(entity);
+                    content.SaveChanges();
+                }
             }
         }
 
-        public Fx.Entity.FxAggregate.TopShow GetById(int id)
+
+        public bool IsExist(TopShow entity)
         {
-            using (FxAggregateContext context = new FxAggregateContext())
+            using (var content = new FxAggregateContext())
             {
-                return (from r in context.TopShows
-                        where r.TopShowId == id
-                        select r).FirstOrDefault<Fx.Entity.FxAggregate.TopShow>();
+                return content.TopShows
+                    .Where(r => r.TopShowId == entity.TopShowId && r.ChannelCatagroy == entity.ChannelCatagroy)
+                    .FirstOrDefault() != null;
             }
         }
 
+
+        /// <summary>
+        /// 取消置顶
+        /// </summary>
+        /// <param name="entity"></param>
+        public void TopShowCancel(TopShow entity)
+        {
+            if (IsExist(entity))
+            {
+                using (var content = new FxAggregateContext())
+                {
+                    entity = content.TopShows
+                    .Where(r => r.TopShowId == entity.TopShowId && r.ChannelCatagroy == entity.ChannelCatagroy)
+                    .FirstOrDefault();
+                    if (entity != null)
+                    {
+                        content.TopShows.Remove(entity);
+                        content.SaveChanges();
+                    }
+                }
+            }
+        }
+
+
+        public List<TopShow> GetAllTopShow()
+        {
+            using (var content = new FxAggregateContext())
+            {
+                return content.TopShows.ToList();
+            }
+        }
+
+
+        public TopShow GetById(int id)
+        {
+            using (var content = new FxAggregateContext())
+            {
+                return content.TopShows.Where(r => r.TopShowId == id).FirstOrDefault();
+            }
+        }
+
+       
         public List<CarTransferInfo> GetHomeCarTopShow()
         {
-            List<Fx.Entity.FxAggregate.TopShow> list = new List<Fx.Entity.FxAggregate.TopShow>();
-            List<CarTransferInfo> list2 = new List<CarTransferInfo>();
-            using (FxAggregateContext context = new FxAggregateContext())
+            var topShows = new List<TopShow>();
+            var cars = new List<CarTransferInfo>();
+            using (var content = new FxAggregateContext())
             {
-                list = (from r in context.TopShows
-                        where r.ChannelCatagroy == 0
-                        select r).ToList<Fx.Entity.FxAggregate.TopShow>();
+                topShows = content.TopShows.Where(r => r.ChannelCatagroy == (int)ChannelCatagroy.FxCarTransfer).ToList();
             }
-            foreach (Fx.Entity.FxAggregate.TopShow show in list)
+            foreach (var item in topShows)
             {
-                CarTransferInfo item = new CarTransferInfo
+                cars.Add(new CarTransferInfo()
                 {
-                    CarTransferInfoId = show.InfoId,
-                    Price = show.Price,
-                    PublishTitle = show.Title
-                };
-                List<TransferPicture> list3 = new List<TransferPicture>();
-                TransferPicture picture = new TransferPicture
-                {
-                    TransferPictureCatagroy = 0,
-                    ImageUrl = show.HeadPicture
-                };
-                list3.Add(picture);
-                item.Pictures = list3;
-                list2.Add(item);
+                    CarTransferInfoId = item.InfoId,
+                    Price = item.Price,
+                    PublishTitle = item.Title,
+                    Pictures = new List<TransferPicture>() { 
+                        new  TransferPicture(){
+                             TransferPictureCatagroy= (int)PictureCatagroy.Head,
+                             ImageUrl=item.HeadPicture,
+                        }
+                    }
+                });
             }
-            return list2;
+            return cars;
         }
 
         public List<GoodsTransferInfo> GetHomeGoodsTopShow()
         {
-            List<Fx.Entity.FxAggregate.TopShow> list = new List<Fx.Entity.FxAggregate.TopShow>();
-            List<GoodsTransferInfo> list2 = new List<GoodsTransferInfo>();
-            using (FxAggregateContext context = new FxAggregateContext())
+            var topShows = new List<TopShow>();
+            var goods = new List<GoodsTransferInfo>();
+            using (var content = new FxAggregateContext())
             {
-                list = (from r in context.TopShows
-                        where r.ChannelCatagroy == 2
-                        select r).ToList<Fx.Entity.FxAggregate.TopShow>();
+                topShows = content.TopShows.Where(r => r.ChannelCatagroy == (int)ChannelCatagroy.FxGoodsTransfer).ToList();
             }
-            foreach (Fx.Entity.FxAggregate.TopShow show in list)
+            foreach (var item in topShows)
             {
-                GoodsTransferInfo item = new GoodsTransferInfo
+                goods.Add(new GoodsTransferInfo()
                 {
-                    GoodsTransferInfoId = show.InfoId,
-                    Price = show.Price,
-                    PublishTitle = show.Title
-                };
-                List<TransferPicture> list3 = new List<TransferPicture>();
-                TransferPicture picture = new TransferPicture
-                {
-                    TransferPictureCatagroy = 0,
-                    ImageUrl = show.HeadPicture
-                };
-                list3.Add(picture);
-                item.Pictures = list3;
-                list2.Add(item);
+                    GoodsTransferInfoId = item.InfoId,
+                    Price = item.Price,
+                    PublishTitle = item.Title,
+                    Pictures = new List<TransferPicture>() { 
+                        new  TransferPicture(){
+                             TransferPictureCatagroy= (int)PictureCatagroy.Head,
+                             ImageUrl=item.HeadPicture,
+                        }
+                    }
+                });
             }
-            return list2;
+            return goods;
         }
 
         public List<HouseTransferInfo> GetHomeHouseTopShow()
         {
-            List<Fx.Entity.FxAggregate.TopShow> list = new List<Fx.Entity.FxAggregate.TopShow>();
-            List<HouseTransferInfo> list2 = new List<HouseTransferInfo>();
-            using (FxAggregateContext context = new FxAggregateContext())
+            var topShows = new List<TopShow>();
+            var houses = new List<HouseTransferInfo>();
+            using (var content = new FxAggregateContext())
             {
-                list = (from r in context.TopShows
-                        where r.ChannelCatagroy == 4
-                        select r).ToList<Fx.Entity.FxAggregate.TopShow>();
+                topShows = content.TopShows.Where(r => r.ChannelCatagroy == (int)ChannelCatagroy.FxHouseTrasnfer).ToList();
             }
-            foreach (Fx.Entity.FxAggregate.TopShow show in list)
+            foreach (var item in topShows)
             {
-                HouseTransferInfo item = new HouseTransferInfo
+                houses.Add(new HouseTransferInfo()
                 {
-                    HouseTransferInfoId = show.InfoId,
-                    Price = show.Price,
-                    PublishTitle = show.Title
-                };
-                List<TransferPicture> list3 = new List<TransferPicture>();
-                TransferPicture picture = new TransferPicture
-                {
-                    TransferPictureCatagroy = 0,
-                    ImageUrl = show.HeadPicture
-                };
-                list3.Add(picture);
-                item.Pictures = list3;
-                list2.Add(item);
-            }
-            return list2;
-        }
-
-        public bool IsExist(Fx.Entity.FxAggregate.TopShow entity)
-        {
-            using (FxAggregateContext context = new FxAggregateContext())
-            {
-                return ((from r in context.TopShows
-                         where (r.TopShowId == entity.TopShowId) && (r.ChannelCatagroy == entity.ChannelCatagroy)
-                         select r).FirstOrDefault<Fx.Entity.FxAggregate.TopShow>() != null);
-            }
-        }
-
-        public void TopShow(Fx.Entity.FxAggregate.TopShow entity)
-        {
-            if (!this.IsExist(entity))
-            {
-                using (FxAggregateContext context = new FxAggregateContext())
-                {
-                    context.TopShows.Add(entity);
-                    context.SaveChanges();
-                }
-            }
-        }
-
-        public void TopShowCancel(Fx.Entity.FxAggregate.TopShow entity)
-        {
-            if (this.IsExist(entity))
-            {
-                using (FxAggregateContext context = new FxAggregateContext())
-                {
-                    entity = (from r in context.TopShows
-                              where (r.TopShowId == entity.TopShowId) && (r.ChannelCatagroy == entity.ChannelCatagroy)
-                              select r).FirstOrDefault<Fx.Entity.FxAggregate.TopShow>();
-                    if (entity != null)
-                    {
-                        context.TopShows.Remove(entity);
-                        context.SaveChanges();
+                    HouseTransferInfoId = item.InfoId,
+                    Price = item.Price,
+                    PublishTitle = item.Title,
+                    Pictures = new List<TransferPicture>() { 
+                        new  TransferPicture(){
+                             TransferPictureCatagroy= (int)PictureCatagroy.Head,
+                             ImageUrl=item.HeadPicture,
+                        }
                     }
-                }
+                });
             }
+            return houses;
+        }
+
+    
+        public List<CarTransferInfo> GetCarTransferTopShow()
+        {
+            var topShows = new List<TopShow>();
+            var cars = new List<CarTransferInfo>();
+            using (var content = new FxAggregateContext())
+            {
+                topShows = content.TopShows.Where(r => r.ChannelCatagroy == (int)ChannelCatagroy.FxCarTransfer).ToList();
+            }
+            foreach (var item in topShows)
+            {
+                cars.Add(this.transferCarService.Get(item.InfoId));
+            }
+            return cars;
+        }
+
+        public List<GoodsTransferInfo> GetGoodsTransferTopShow()
+        {
+            var topShows = new List<TopShow>();
+            var goods = new List<GoodsTransferInfo>();
+            using (var content = new FxAggregateContext())
+            {
+                topShows = content.TopShows.Where(r => r.ChannelCatagroy == (int)ChannelCatagroy.FxGoodsTransfer).ToList();
+            }
+            foreach (var item in topShows)
+            {
+                goods.Add(this.transferGoodsService.Get(item.InfoId));
+            }
+            return goods;
+        }
+
+        public List<HouseTransferInfo> GetHouseTransferTopShow()
+        {
+            var topShows = new List<TopShow>();
+            var houses = new List<HouseTransferInfo>();
+            using (var content = new FxAggregateContext())
+            {
+                topShows = content.TopShows.Where(r => r.ChannelCatagroy == (int)ChannelCatagroy.FxHouseTrasnfer).ToList();
+            }
+            foreach (var item in topShows)
+            {
+                houses.Add(this.transferHouseService.Get(item.InfoId));
+            }
+            return houses;
+        }
+
+
+        public List<CarBuyInfo> GetCarBuyTopShow()
+        {
+            var topShows = new List<TopShow>();
+            var cars = new List<CarBuyInfo>();
+            using (var content = new FxAggregateContext())
+            {
+                topShows = content.TopShows.Where(r => r.ChannelCatagroy == (int)ChannelCatagroy.FxCarBuy).ToList();
+            }
+            foreach (var item in topShows)
+            {
+                cars.Add(buyCarService.Get(item.InfoId));
+            }
+            return cars;
+        }
+
+        public List<GoodsBuyInfo> GetGoodsBuyTopShow()
+        {
+            var topShows = new List<TopShow>();
+            var goods = new List<GoodsBuyInfo>();
+            using (var content = new FxAggregateContext())
+            {
+                topShows = content.TopShows.Where(r => r.ChannelCatagroy == (int)ChannelCatagroy.FxGoodsBuy).ToList();
+            }
+            foreach (var item in topShows)
+            {
+                goods.Add(this.buyGoodsService.Get(item.InfoId));
+            }
+            return goods;
+        }
+
+        public List<HouseBuyInfo> GetHouseBuyTopShow()
+        {
+            var topShows = new List<TopShow>();
+            var houses = new List<HouseBuyInfo>();
+            using (var content = new FxAggregateContext())
+            {
+                topShows = content.TopShows.Where(r => r.ChannelCatagroy == (int)ChannelCatagroy.FxHouseBuy).ToList();
+            }
+            foreach (var item in topShows)
+            {
+                houses.Add(this.buyHouseService.Get(item.InfoId));
+            }
+            return houses;
         }
     }
 }

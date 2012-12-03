@@ -7,9 +7,9 @@ using Fx.Entity.FxCar;
 
 namespace Fx.Domain.FxCar.Search
 {
-    public class CarBuySearchService : ISiteSearch<CarBuyInfo>
+    public class CarBuySearchService : ISiteSearch<CarBuyInfo>, ICarSearch<CarBuyInfo> 
     {
-        public List<CarBuyInfo> SearchByKey(string key, int page)
+        public List<CarBuyInfo> SearchByKey(string key, int page, int take = 20)
         {
             using (var context = new FxCarContext())
             {
@@ -18,14 +18,15 @@ namespace Fx.Domain.FxCar.Search
                     return context.CarBuyInfos
                                     .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
                                     .OrderByDescending(r => r.CreatedTime)
-                                    .Skip(page * 20).Take(20).ToList();
+                                    .Skip(page * take).Take(take).ToList();
                 }
                 else
                 {
-                    return context.CarBuyInfos.Where(r=>r.IsPublish == true)
+                    return context.CarBuyInfos
+                                    .Where(r => r.IsPublish == true)
                                     .OrderByDescending(r => r.CreatedTime)
-                                    .Skip(page * 20)
-                                    .Take(20).ToList();
+                                    .Skip(page * take)
+                                    .Take(take).ToList();
                 }
             }
         }
@@ -37,7 +38,7 @@ namespace Fx.Domain.FxCar.Search
         /// <param name="asc"></param>
         /// <param name="key"></param>
         /// <returns></returns>
-        public List<CarBuyInfo> SearchByPrice(int page, bool asc = true, string key = "")
+        public List<CarBuyInfo> SearchByPrice(int page, bool asc = true, string key = "", int take = 20)
         {
             using (var context = new FxCarContext())
             {
@@ -45,17 +46,17 @@ namespace Fx.Domain.FxCar.Search
                 {
                     if (asc)
                     {
-                        return context.CarBuyInfos.Where(r=>r.IsPublish == true)
+                        return context.CarBuyInfos.Where(r => r.IsPublish == true)
                                     .OrderBy(r => r.Price)
-                                    .Skip(page * 20)
-                                    .Take(20).ToList();
+                                    .Skip(page * take)
+                                    .Take(take).ToList();
                     }
                     else
                     {
                         return context.CarBuyInfos.Where(r => r.IsPublish == true)
                                     .OrderByDescending(r => r.Price)
-                                    .Skip(page * 20)
-                                    .Take(20).ToList();
+                                    .Skip(page * take)
+                                    .Take(take).ToList();
                     }
                 }
                 else
@@ -63,18 +64,18 @@ namespace Fx.Domain.FxCar.Search
                     if (asc)
                     {
                         return context.CarBuyInfos
-                                    .Where(r => r.PublishTitle.Contains(key)&& r.IsPublish==true)
+                                    .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
                                     .OrderBy(r => r.Price)
-                                    .Skip(page * 20)
-                                    .Take(20).ToList();
+                                    .Skip(page * take)
+                                    .Take(take).ToList();
                     }
                     else
                     {
                         return context.CarBuyInfos
                                     .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
                                     .OrderByDescending(r => r.Price)
-                                    .Skip(page * 20)
-                                    .Take(20).ToList();
+                                    .Skip(page * take)
+                                    .Take(take).ToList();
                     }
                 }
             }
@@ -87,7 +88,7 @@ namespace Fx.Domain.FxCar.Search
         /// <param name="asc"></param>
         /// <param name="page"></param>
         /// <returns></returns>
-        public List<CarBuyInfo> SearchByDate(int page, bool asc, string key)
+        public List<CarBuyInfo> SearchByDate(int page, bool asc, string key, int take = 20)
         {
             using (var context = new FxCarContext())
             {
@@ -98,31 +99,43 @@ namespace Fx.Domain.FxCar.Search
                         return context.CarBuyInfos
                                         .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
                                        .OrderBy(r => r.CreatedTime)
-                                       .Skip(page * 20).Take(20).ToList();
+                                       .Skip(page * take).Take(take).ToList();
                     }
                     else
                     {
                         return context.CarBuyInfos
                                         .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
                                         .OrderByDescending(r => r.CreatedTime)
-                                        .Skip(page * 20).Take(20).ToList();
+                                        .Skip(page * take).Take(take).ToList();
                     }
                 }
                 else
                 {
                     if (asc)
                     {
-                        return context.CarBuyInfos.Where(r=>r.IsPublish==true)
+                        return context.CarBuyInfos.Where(r => r.IsPublish == true)
                                         .OrderBy(r => r.CreatedTime)
-                                        .Skip(page * 20).Take(20).ToList();
+                                        .Skip(page * take).Take(take).ToList();
                     }
                     else
                     {
                         return context.CarBuyInfos.Where(r => r.IsPublish == true)
                                         .OrderByDescending(r => r.CreatedTime)
-                                        .Skip(page * 20).Take(20).ToList();
+                                        .Skip(page * take).Take(take).ToList();
                     }
                 }
+            }
+        }
+
+        public List<CarBuyInfo> SearchByCatagroy(Entity.Catagroy.ChannelListDetailCatagroy catagroy, int page, int take)
+        {
+            using (var context = new FxCarContext())
+            {
+                return context.CarBuyInfos
+                    .Where(r => r.IsPublish == true && r.CatagroyId == (int)catagroy)
+                    .OrderByDescending(r => r.CreatedTime)
+                    .Skip(page * take)
+                    .Take(take).ToList();
             }
         }
     }

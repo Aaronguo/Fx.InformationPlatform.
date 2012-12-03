@@ -5,97 +5,87 @@
     </div>
     <div class="grid_21 omega" style="text-align: left; float: right;">
         <div class="topLoop" id="sliders_1" style="width: 830px; height: 243px;">
-            <div class="hd" style="width: 40px; height: 243px; left: 3px;">
-                <a class="next" style="margin-top: 65px;"></a>
-                <a class="prev"></a>
-            </div>
+            <div class="hd" style="width: 40px; height: 243px; left: 3px;"><a class="next" style="margin-top: 65px;"></a><a class="prev"></a></div>
             <div class="bd" style="width: 790px; position: relative; left: 40px; top: 0px; border: 0px; padding: 0px; height: 243px;">
-                <div class="tempWrap" style="overflow: hidden; position: relative; height: 243px">
-                    <ul class="picList" style="float: none; height: 2187px; padding: 0px; position: relative; margin: 0px; top: -729px;">
-                        @for (int i = 0; i < Model.Count; i = i + 4)
-                        {
-                            <li style="float: none; height: 243px;">
-                                <div class="pic" style="width: 800px; height: 243px; border: 0px;">
-                                    <div class="list_scroll_inn_wks">
-                                        @foreach (var picture in Model[i].Pictures)
+                <ul class="picList" style="float: none; height: 255px; padding-top: 0px;">
+                    @for (int i = 0; i < Model.Count; i = i + 4)
+                    {
+                        <li style="float: none; height: 243px;">
+                            <div class="pic" style="width: 800px; height: 243px; border: 0px;">
+                                <div class="list_scroll_inn_wks">
+                                    @foreach (var picture in Model[i].Pictures)
+                                    {
+                                        if (picture.TransferPictureCatagroy == (int)Fx.Entity.PictureCatagroy.Head)
                                         {
-                                            <a href="@Fx.InformationPlatform.Site.AppSettings.HouseTransferLink(Model[i].HouseTransferInfoId)" class="tops_aa_imgs_kk">
-                                                @if (picture.TransferPictureCatagroy == (int)Fx.Entity.PictureCatagroy.Head)
-                                                {
-                                                    <img src="@Fx.InformationPlatform.Site.AppSettings.ImageUploadCdnDomain(picture.ImageUrl)"/>
-                                                }
-                                            </a>
+                                        <a href="@Fx.InformationPlatform.Site.AppSettings.CarTransferLink(Model[i].HouseTransferInfoId)" class="tops_aa_imgs_kk">
+
+                                            <img src="@Fx.InformationPlatform.Site.AppSettings.ImageUploadCdnDomain(picture.ImageUrl)"/>
+                                        </a>
+                                            break;
                                         }
-                                        <div class="tits_btm_coms_list names_btm">
-                                            <a href="@Fx.InformationPlatform.Site.AppSettings.HouseTransferLink(Model[i].HouseTransferInfoId)">@Model[i].PublishTitle、 @Model[i].Price ￡</a>
-                                        </div>
+                                    }
+                                    <div class="tits_btm_coms_list names_btm">
+                                        <a href="@Fx.InformationPlatform.Site.AppSettings.CarTransferLink(Model[i].HouseTransferInfoId)">@Model[i].PublishTitle、 @Model[i].Price ￡</a>
                                     </div>
                                 </div>
-                            </li>  
-                            
-                            <li style="float: none; height: 243px;">
-                                <div class="pic" style="width: 800px; height: 243px; border: 0px;">
-                                    <div class="list_scroll_inn_wks">
-                                        @foreach (var picture in Model[i + 1].Pictures)
+
+                                <div class="list_scroll_inn_wks">
+                                    @foreach (var picture in Model[i + 1].Pictures)
+                                    {
+                                        if (picture.TransferPictureCatagroy == (int)Fx.Entity.PictureCatagroy.Head)
                                         {
-                                            <a href="@Fx.InformationPlatform.Site.AppSettings.HouseTransferLink(Model[i + 1].HouseTransferInfoId)" class="tops_aa_imgs_kk">
-                                                @if (picture.TransferPictureCatagroy == (int)Fx.Entity.PictureCatagroy.Head)
-                                                {
-                                                    <img src="@Fx.InformationPlatform.Site.AppSettings.ImageUploadCdnDomain(picture.ImageUrl)"/>
-                                                }
-                                            </a>
+                                        <a href="@Fx.InformationPlatform.Site.AppSettings.CarTransferLink(Model[i + 1].HouseTransferInfoId)" class="tops_aa_imgs_kk">
+
+                                            <img src="@Fx.InformationPlatform.Site.AppSettings.ImageUploadCdnDomain(picture.ImageUrl)"/>
+                                        </a>
+                                            break;
                                         }
-                                        <div class="tits_btm_coms_list names_btm">
-                                            <a href="@Fx.InformationPlatform.Site.AppSettings.HouseTransferLink(Model[i + 1].HouseTransferInfoId)">@Model[i + 1].PublishTitle、 @Model[i + 1].Price ￡</a>
-                                        </div>
+                                    }
+                                    <div class="tits_btm_coms_list names_btm">
+                                        <a href="@Fx.InformationPlatform.Site.AppSettings.CarTransferLink(Model[i + 1].HouseTransferInfoId)">@Model[i + 1].PublishTitle、 @Model[i + 1].Price ￡</a>
                                     </div>
                                 </div>
-                            </li>  
-                            
-                            
-                            <li style="float: none; height: 243px;">
-                                <div class="pic" style="width: 800px; height: 243px; border: 0px;">
-                                    <div class="list_scroll_inn_wks">
-                                        @foreach (var picture in Model[i + 2].Pictures)
+
+                                <div class="list_scroll_inn_wks">
+                                    @foreach (var picture in Model[i + 2].Pictures)
+                                    {
+                                        if (picture.TransferPictureCatagroy == (int)Fx.Entity.PictureCatagroy.Head)
                                         {
-                                            <a href="@Fx.InformationPlatform.Site.AppSettings.HouseTransferLink(Model[i + 2].HouseTransferInfoId)" class="tops_aa_imgs_kk">
-                                                @if (picture.TransferPictureCatagroy == (int)Fx.Entity.PictureCatagroy.Head)
-                                                {
-                                                    <img src="@Fx.InformationPlatform.Site.AppSettings.ImageUploadCdnDomain(picture.ImageUrl)"/>
-                                                }
-                                            </a>
+                                        <a href="@Fx.InformationPlatform.Site.AppSettings.CarTransferLink(Model[i + 2].HouseTransferInfoId)" class="tops_aa_imgs_kk">
+
+                                            <img src="@Fx.InformationPlatform.Site.AppSettings.ImageUploadCdnDomain(picture.ImageUrl)"/>
+                                        </a>
+                                            break;
                                         }
-                                        <div class="tits_btm_coms_list names_btm">
-                                            <a href="@Fx.InformationPlatform.Site.AppSettings.HouseTransferLink(Model[i + 2].HouseTransferInfoId)">@Model[i + 2].PublishTitle、 @Model[i + 2].Price ￡</a>
-                                        </div>
+                                    }
+                                    <div class="tits_btm_coms_list names_btm">
+                                        <a href="@Fx.InformationPlatform.Site.AppSettings.CarTransferLink(Model[i + 2].HouseTransferInfoId)">@Model[i + 2].PublishTitle、 @Model[i + 2].Price ￡</a>
                                     </div>
                                 </div>
-                            </li>  
-                            
-                            
-                            <li style="float: none; height: 243px;">
-                                <div class="pic" style="width: 800px; height: 243px; border: 0px;">
-                                    <div class="list_scroll_inn_wks">
-                                        @foreach (var picture in Model[i + 3].Pictures)
+
+                                <div class="list_scroll_inn_wks">
+                                    @foreach (var picture in Model[i + 3].Pictures)
+                                    {
+                                        if (picture.TransferPictureCatagroy == (int)Fx.Entity.PictureCatagroy.Head)
                                         {
-                                            <a href="@Fx.InformationPlatform.Site.AppSettings.HouseTransferLink(Model[i + 3].HouseTransferInfoId)" class="tops_aa_imgs_kk">
-                                                @if (picture.TransferPictureCatagroy == (int)Fx.Entity.PictureCatagroy.Head)
-                                                {
-                                                    <img src="@Fx.InformationPlatform.Site.AppSettings.ImageUploadCdnDomain(picture.ImageUrl)"/>
-                                                }
-                                            </a>
+                                        <a href="@Fx.InformationPlatform.Site.AppSettings.CarTransferLink(Model[i + 3].HouseTransferInfoId)" class="tops_aa_imgs_kk">
+
+                                            <img src="@Fx.InformationPlatform.Site.AppSettings.ImageUploadCdnDomain(picture.ImageUrl)"/>
+                                        </a>
+                                            break;
                                         }
-                                        <div class="tits_btm_coms_list names_btm">
-                                            <a href="@Fx.InformationPlatform.Site.AppSettings.HouseTransferLink(Model[i + 3].HouseTransferInfoId)">@Model[i + 3].PublishTitle、 @Model[i + 3].Price ￡</a>
-                                        </div>
+                                    }
+                                    <div class="tits_btm_coms_list names_btm">
+                                        <a href="@Fx.InformationPlatform.Site.AppSettings.CarTransferLink(Model[i + 3].HouseTransferInfoId)">@Model[i + 3].PublishTitle、 @Model[i + 3].Price ￡</a>
                                     </div>
                                 </div>
-                            </li>  
-                        }
-                    </ul>
-                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
             </div>
         </div>
     </div>
     <div class="clear"></div>
 </div>
+

@@ -1,0 +1,39 @@
+﻿@model Fx.InformationPlatform.Site.ViewModel.CarTransferSearchModel
+@{
+    ViewBag.Title = "车辆转让信息";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="interval_20"></div>
+<div class="grid_24">
+    @Html.Partial("Partial/CarTransfer/Search")
+    <div class="interval_20"></div>
+
+
+    <div class="grid_20 alpha">
+        <div class="searchs-results_list">
+            <div class="tops_tit_s_r">
+                @*    @Html.ActionLink("转让", "CarTransferSearch", new { carTransferSearchKey = "", page = 1, @class = "zhuanrang-a" })    *@
+                @Html.ActionLink("求购", "CarBuySearch", new { carBuySearchKey = "", page = 1, @class = "qiugot-a" })
+            </div>
+            <div class="srl_cons">
+                @Html.Partial("Partial/CarTransfer/Ad")
+                @Html.Partial("Partial/CarTransfer/TopCar", Model.TopCars)
+                @Html.Partial("Partial/CarTransfer/MainCar", Model.MainCars)
+            </div>
+            <div class="interval_30"></div>
+            <div class="pages_index_fenye_common_wks">
+                <div class="inners_paging_wks">
+                    @Html.Partial("Partial/CarTransfer/Link", Model)
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="grid_4 omega" style="float: right;">
+        @Html.Partial("Partial/CarTransfer/RightCar")
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="clear"></div>
+<div class="interval_30"></div>

@@ -326,12 +326,8 @@ namespace Fx.Domain
                          Sorted=12
                        },
                        new City(){
-                         CityName="Southampton",
-                         Sorted=13
-                       },
-                       new City(){
                          CityName="Winchester",
-                         Sorted=14
+                         Sorted=13
                        },
                     }
                 },
@@ -390,24 +386,20 @@ namespace Fx.Domain
                          Sorted=2
                        },
                        new City(){
-                         CityName="Newport",
+                         CityName="Keele",
                          Sorted=3
                        },
                        new City(){
-                         CityName="Keele",
+                         CityName="Stoke on Trent",
                          Sorted=4
                        },
                        new City(){
-                         CityName="Stoke on Trent",
+                         CityName="Wolverhampton",
                          Sorted=5
                        },
                        new City(){
-                         CityName="Wolverhampton",
-                         Sorted=6
-                       },
-                       new City(){
                          CityName="Worcester",
-                         Sorted=7
+                         Sorted=6
                        }
                     }
                 },
@@ -634,7 +626,7 @@ namespace Fx.Domain
                          new ChannelListDetail(){
                             ChannelListDetailName="其他",
                             Sorted=8,
-                            ActionName="Other"
+                            ActionName="ElectronicsOther"
                          },
                      }
                 },
@@ -688,7 +680,7 @@ namespace Fx.Domain
                          new ChannelListDetail(){
                             ChannelListDetailName="其他",
                             Sorted=9,
-                            ActionName="Other"
+                            ActionName="HomeSuppliesOther"
                          },
                      }
                 },
@@ -722,7 +714,7 @@ namespace Fx.Domain
                          new ChannelListDetail(){
                             ChannelListDetailName="其他",
                             Sorted=5,
-                            ActionName="Other"
+                            ActionName="FashionOther"
                          },
                      }
                 },
@@ -746,7 +738,7 @@ namespace Fx.Domain
                          new ChannelListDetail(){
                             ChannelListDetailName="玩具模型",
                             Sorted=3,
-                            ActionName="Books"
+                            ActionName="Toys"
                          },
                          new ChannelListDetail(){
                             ChannelListDetailName="文具",
@@ -756,7 +748,7 @@ namespace Fx.Domain
                           new ChannelListDetail(){
                             ChannelListDetailName="其他",
                             Sorted=5,
-                            ActionName="Other"
+                            ActionName="CultureLifeOther"
                          }
                      }
                 },
@@ -770,7 +762,7 @@ namespace Fx.Domain
                          new ChannelListDetail(){
                             ChannelListDetailName="Other",
                             Sorted=1,
-                            ActionName="Other"
+                            ActionName="OtherOther"
                          }
                      }
                 }
@@ -857,7 +849,7 @@ namespace Fx.Domain
                          new ChannelListDetail(){
                             ChannelListDetailName="其他品牌",
                             Sorted=14,
-                            ActionName="Other"
+                            ActionName="SecondHandCarOther"
                          },
                      }
                 },

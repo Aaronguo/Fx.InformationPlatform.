@@ -1,0 +1,45 @@
+﻿@model Fx.InformationPlatform.Site.ViewModel.GoodsTransferSearchModel
+@if (Model.CurrentIndex == 1)
+{
+    @Html.ActionLink("上一页", Model.Action, new
+    {
+        page = 1,
+        goodsTransferSearchKey = Model.Key,
+        IsChangeByGoods = Model.IsChangeByGoods,
+        IsChangeByPrice = Model.IsChangeByPrice,
+    }, new { @class = "pre-btn" })
+}
+else
+{
+    @Html.ActionLink("上一页", Model.Action, new
+    {
+        page = Model.CurrentIndex - 1,
+        goodsTransferSearchKey = Model.Key,
+        IsChangeByGoods = Model.IsChangeByGoods,
+        IsChangeByPrice = Model.IsChangeByPrice,
+    }, new { @class = "pre-btn" })
+}
+@for (int i = Model.StartIndex; i <= Model.EndIndex; i++)
+{
+    if (i == Model.CurrentIndex)
+    {
+    <a href="#" class="currents-pages">@Model.CurrentIndex</a>
+    }
+    else
+    {
+    @Html.ActionLink(i.ToString(), Model.Action, new
+    {
+        page = i,
+        goodsTransferSearchKey = Model.Key,
+        IsChangeByGoods = Model.IsChangeByGoods,
+        IsChangeByPrice = Model.IsChangeByPrice,
+    })
+    }
+}
+@Html.ActionLink("下一页", Model.Action, new
+{
+    page = Model.CurrentIndex + 1,
+    goodsTransferSearchKey = Model.Key,
+    IsChangeByGoods = Model.IsChangeByGoods,
+    IsChangeByPrice = Model.IsChangeByPrice,
+}, new { @class = "next-btn" })

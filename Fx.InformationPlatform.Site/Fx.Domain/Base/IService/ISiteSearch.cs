@@ -18,8 +18,9 @@ namespace Fx.Domain.Base.IService
         /// </summary>
         /// <param name="key">关键字</param>
         /// <param name="page">页码</param>
+        /// <param name="take">获取数据的数量</param>
         /// <returns></returns>
-        List<T> SearchByKey(string key, int page);
+        List<T> SearchByKey(string key, int page,int take);
 
 
         /// <summary>
@@ -28,8 +29,9 @@ namespace Fx.Domain.Base.IService
         /// <param name="page">页码</param>        
         /// <param name="asc">是否升序</param>
         /// <param name="key">关键字</param>
+        /// <param name="take">获取数据的数量</param>
         /// <returns></returns>
-        List<T> SearchByPrice(int page, bool asc, string key);
+        List<T> SearchByPrice(int page, bool asc, string key, int take);
 
 
         /// <summary>
@@ -38,7 +40,8 @@ namespace Fx.Domain.Base.IService
         /// <param name="page">页码</param>
         /// <param name="asc">是否升序</param>
         /// <param name="key">关键字</param>
+        /// <param name="take">获取数据的数量</param>
         /// <returns></returns>
-        List<T> SearchByDate(int page, bool asc, string key);
+        List<T> SearchByDate(int page, bool asc, string key, int take);
     }
 }

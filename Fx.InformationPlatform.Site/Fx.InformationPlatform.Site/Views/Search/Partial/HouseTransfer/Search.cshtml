@@ -1,0 +1,36 @@
+﻿@using (Html.BeginForm("HouseTransferSearch", "Search", FormMethod.Post))
+{
+    <div class="interval_20"></div>
+    <div class="search_page_condition">
+        <div class="tops_search_btns">
+            <div class="lefts-shs">
+                <input type="text" class="search-query input-xlarge" id="houseTransferSearchKey" name="houseTransferSearchKey" placeholder="Search">
+                <button class="btn btn-success" id="houseTransferSearchBtn">查找</button>
+            </div>
+            @* <div class="rights_hot_keywords">热门：<a href="#">配饰</a><a href="#">美妆</a><a href="#">包包/鞋子</a><a href="#">羽绒服</a></div>*@
+        </div>
+        @*    <div class="s_p_condition_common_wks">
+            <div class="left_condition_tit">交换方式：</div>
+            <div class="left_condition_cons">
+                <span class="current_conditions"><a href="#">全部</a></span>
+                <span>@Html.CheckBox("IsChangeByGoods", true)<a href="#">以物换物</a></span>
+                <span>@Html.CheckBox("IsChangeByPrice", true)<a href="#">价格交换</a></span>
+            </div>
+            <div class="clear"></div>
+        </div>*@
+    </div>
+    <div class="interval_20"></div>
+    
+    <div style="display: none">
+        @Html.Hidden("page", "1")
+    </div>  
+    
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#houseTransferSearchBtn").click(function () {
+                $("#page").val(1);
+            });
+        });
+    </script>
+}

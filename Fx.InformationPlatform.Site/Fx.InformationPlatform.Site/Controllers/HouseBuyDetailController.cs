@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Fx.Domain.FxHouse.IService;
 
 namespace Fx.InformationPlatform.Site.Controllers
 {
@@ -11,10 +12,27 @@ namespace Fx.InformationPlatform.Site.Controllers
     /// </summary>
     public class HouseBuyDetailController : Controller
     {
-        public ActionResult Index()
+        protected IBuyHouse buyHouse;
+        public HouseBuyDetailController(IBuyHouse buyHouse)
         {
-            return View();
+            this.buyHouse = buyHouse;
         }
 
+        public ActionResult Index(int id)
+        {
+            if (id <= 0)
+            {
+                return RedirectToAction("PageNotFound", "PageLink");
+            }
+            else
+            {
+                var house = buyHouse.Get(id);
+                if (house == null)
+                {
+                    return RedirectToAction("PageNotFound", "PageLink");
+                }
+                return View(house);
+            }
+        }
     }
 }

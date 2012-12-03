@@ -1,14 +1,17 @@
-﻿@*<div class="grid_24">
-    <div class="grid_3 alpha"><a href="#" class="orange">物品交易</a></div>
-    <div class="grid_3"><a href="#" class="orange">汽车交易</a></div>
-    <div class="grid_3 omega"><a href="#" class="orange">房屋交易</a></div>
-</div>*@
-
-
-
-<div class="grid_24" id="nav_wk">
-    @Html.ActionLink("物品交易", "Index", "GoodsList")
-    @Html.ActionLink("汽车交易", "Index", "CarList")
-    @Html.ActionLink("房屋交易", "Index", "HouseList")
+﻿<div class="grid_24" style="margin-top: 35px;">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="container">
+                <div class="nav-collapse">
+                    <ul id="homeNavs" class="nav">
+                        <li>@Html.ActionLink("物品交易", "Index", "GoodsList")</li>
+                        <li>@Html.ActionLink("汽车交易", "Index", "CarList")</li>
+                        <li>@Html.ActionLink("房屋信息", "Index", "HouseList")</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input id="navindex" type="hidden" value="-1" />
 </div>
 <div class="clear"></div>

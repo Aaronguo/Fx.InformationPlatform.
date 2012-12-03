@@ -1,5 +1,7 @@
 ﻿@model Fx.Entity.Account.RegisterUser
+
 @{
+    Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "英淘注册";
 }
 @using (Html.BeginForm("Register", "Account"))
@@ -12,18 +14,18 @@
         <div class="grid_24">
             <div class="grid_18 alpha">
                 <div class="grid_2 alpha">
-                    <label>邮箱</label>
+                    邮箱
                 </div>
                 <div class="grid_16 omega">
                     @Html.TextBoxFor(model => model.Email, new { placeholder = "邮箱即为用户帐号" })
-                    @Html.ValidationMessageFor(model => model.Email)   <span style="color: #f00">*必填</span>                    
+                    @Html.ValidationMessageFor(model => model.Email)   <span style="color: #f00">*必填</span>
                 </div>
                 <div class="clear">
                 </div>
 
 
                 <div class="grid_2 alpha">
-                    <label>密码</label>
+                    密码
                 </div>
                 <div class="grid_16 omega">
                     @Html.TextBoxFor(model => model.Password, new { placeholder = "请输入密码" })
@@ -44,15 +46,15 @@
                 </div>
 
 
-                <div class="grid_2 alpha">
+                @*         <div class="grid_2 alpha">
                     联系方式
                 </div>
                 <div class="grid_16 omega">
                     @Html.TextBoxFor(model => model.Address)
-                    @Html.ValidationMessageFor(model => model.Address)  <span style="color: #f00">*必填</span>
+                    @Html.ValidationMessageFor(model => model.Address)
                 </div>
                 <div class="clear">
-                </div>
+                </div>*@
 
 
                 <div class="grid_2 alpha">
@@ -67,7 +69,7 @@
 
 
                 <div class="grid_2 alpha">
-                    <label>手机</label>
+                    手机
                 </div>
                 <div class="grid_16 omega">
                     @Html.TextBoxFor(model => model.Mobile)
@@ -78,7 +80,7 @@
 
 
                 <div class="grid_2 alpha">
-                    <label>验证码</label>
+                    验证码
                 </div>
                 <div class="grid_6">
                     @Html.TextBoxFor(model => model.VerificationCode)
@@ -94,20 +96,27 @@
 
                 <div class="p-line">
                     <label class="p-label"></label>
-                    <small>注册即代表您已阅读并同意<a href="/Pagelink/Agreement/" target="_blank">《英淘网用户协议》</a></small>
+                    <small>注册即代表您已阅读并同意<a href="/PageLink/Agreement/" target="_blank">《英淘网用户协议》</a></small>
                 </div>
-                <div>
-                    <label></label>
-                    <input class="btn_green button button-green" type="submit" value="免费注册">
+
+                <div class="grid_5 alpha">
+                    &nbsp;
+                </div>
+                <div class="grid_6">
+                    <button class="btn btn-warning">免费注册</button>
                     <span style="color: #f00;">@ViewBag.Error</span>
                 </div>
+                <div class="grid_7">
+                     &nbsp;
+                </div>
+                <div class="clear"></div>
             </div>
             <div class="grid_6 omega">
                 @Html.Partial("Partial/Join")
             </div>
         </div>
-
     </div>
+    <div class="interval_20"></div>
     
     
     <script type="text/javascript">

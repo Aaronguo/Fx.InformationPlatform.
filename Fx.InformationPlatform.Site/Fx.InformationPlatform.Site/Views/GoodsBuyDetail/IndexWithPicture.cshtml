@@ -1,0 +1,127 @@
+﻿@model Fx.Entity.FxGoods.GoodsBuyInfo
+@{
+    ViewBag.Title = Model.PublishTitle + "|  我在英淘网http://yingtao.co.uk发布了一条二手求购信息";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="interval_20"></div>
+
+
+@Html.Partial("Partial/Madol")
+
+<div class="grid_24">
+    <div class="grid_9 alpha">
+        <div class="big_img_suo_l_imgs">
+            @foreach (var picture in Model.Pictures)
+            {
+                if (picture.BuyPictureCatagroy == (int)Fx.Entity.PictureCatagroy.Head)
+                { 
+                <a href="@Fx.InformationPlatform.Site.AppSettings.ImageUploadCdnDomain(picture.ImageUrl)" class="jqzoom" id="big_suol_img">
+                    <img id="midium_imgs" src="@Fx.InformationPlatform.Site.AppSettings.ImageUploadCdnDomain(picture.ImageUrl)"
+                        style="border: 1px solid #cccccc; width: 348px; height: 348px; display: block;">
+                </a>
+                    break;
+                }
+            }
+        </div>
+    </div>
+    <div class="grid_2 alpha">
+        <div class="right_small_imgs_sll_demo" id="right_small_img_set">
+            @foreach (var picture in Model.Pictures)
+            {
+                <span>
+                    <div class="left_arr">
+                        <img src="@Fx.InformationPlatform.Site.AppSettings.ImageDomain("current_img_arrow.png")" class="arrow_red">
+                    </div>
+                    <div class="right_imgs_dm_on">
+                        <a href="#">
+                            <img src="@Fx.InformationPlatform.Site.AppSettings.ImageUploadCdnDomain(picture.MinImageUrl)" 
+                            bigpic="@Fx.InformationPlatform.Site.AppSettings.ImageUploadCdnDomain(picture.ImageUrl)">
+                        </a>
+                    </div>
+                </span>
+                break;
+            }
+        </div>
+    </div>
+    <div class="grid_11">
+        <div class="goods_descriptions_demo">
+            <div class="goods_names"><a href="#">@Model.PublishTitle</a></div>
+            <div class="designer_wks">
+                希望价格：
+                 <font>
+                    @Model.Price
+                    ￡
+                 </font>
+                @if (Model.IsChange)
+                {
+                    <img src="@Fx.InformationPlatform.Site.AppSettings.ImageDomain("exchange-ico.jpg")" alt="换物"/>
+                }
+            </div>
+
+            <div class="source_wks">
+                希望所处地区：@Fx.InformationPlatform.Site.Helper.GetEnumDescription((Fx.Entity.Catagroy.AreaCatagroy)Model.AreaId)
+                <br />
+                希望所处城市:@Fx.InformationPlatform.Site.Helper.GetEnumDescription((Fx.Entity.Catagroy.CityCatagroy)Model.CityId)
+                <br />
+                希望新旧程度:@Fx.InformationPlatform.Site.Helper.GetEnumDescription((Fx.Entity.Catagroy.GoodsConditionCatagroy)Model.GoodsconditonId)
+                <br />
+                @if (!string.IsNullOrWhiteSpace(Model.GoodsConditionMsg))
+                {
+                    <span>相关物品缺陷描述</span>@Model.GoodsConditionMsg 
+                    <br />
+                }
+                @if (!string.IsNullOrWhiteSpace(Model.Mark))
+                {
+                    <span>备注:</span>@Model.Mark
+                }
+            </div>
+            <div class="goods_details_introduce">
+            </div>
+        </div>
+    </div>
+    <div class="grid_2 omega">
+        <span class="right_btns_demo_set">
+            <font class="saler_btns"><img src="@Fx.InformationPlatform.Site.AppSettings.ImageDomain("l_t.png")" id="demoBtn1"></font>
+            <font class="shares_wwkks">分享：
+            @Html.Partial("_JiaThis")
+		</font>
+            <font><img src="@Fx.InformationPlatform.Site.AppSettings.ImageDomain("l_b.png")" id="jifa_alert_fras" onclick="show_al_fra()"></font>
+            <font><img src="@Fx.InformationPlatform.Site.AppSettings.ImageDomain("add_off.png")" 
+                onmouseover="this.src='@Fx.InformationPlatform.Site.AppSettings.ImageDomain("add_on.png")'" 
+                onmouseout="this.src='@Fx.InformationPlatform.Site.AppSettings.ImageDomain("add_off.png")'"></font>
+        </span>
+    </div>
+    <div class="clear"></div>
+</div>
+
+<div class="clear"></div>
+
+
+@Html.Partial("Partial/Ad")
+
+
+
+<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js?uid=1353938214106494" charset="utf-8"></script>
+<script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("easydialog.min.js")"></script>
+<script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("getelepos.js")"></script>
+<script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("List.js")"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        set_mouse();
+    });
+
+    var btnFn = function (e) {
+        alert(e.target);
+        return false;
+    };
+    document.getElementById("demoBtn1").onclick = function () {
+        easyDialog.open({
+            container: {
+                header: '请自定义提示主题',
+                content: '请自行添加提示信息！'
+            },
+            drag: true
+        });
+    };
+</script>

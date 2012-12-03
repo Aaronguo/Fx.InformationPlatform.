@@ -44,7 +44,7 @@
       <HintPath>..\packages\FxTask\Other\ChenHttp\ChenHttp.dll</HintPath>
     </Reference>
     <Reference Include="Common.Logging">
-      <HintPath>..\..\..\..\FxInformationJob\FxInformationJob\FxInformationJob\packages\Quartz.NET-2.0\bin\4.0\release\Quartz\Common.Logging.dll</HintPath>
+      <HintPath>..\packages\Quartz.NET-2.0\bin\4.0\release\Quartz\Common.Logging.dll</HintPath>
     </Reference>
     <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -188,25 +188,20 @@
     <Compile Include="Controllers\GoodsBuyController.cs" />
     <Compile Include="Controllers\GoodsBuyDetailController.cs" />
     <Compile Include="Controllers\GoodsBuySearchController.cs" />
-    <Compile Include="Controllers\GoodsChoseController.cs" />
-    <Compile Include="Controllers\GoodsController.cs" />
     <Compile Include="Controllers\GoodsListController.cs" />
     <Compile Include="Controllers\GoodsTransferDetailController.cs" />
     <Compile Include="Controllers\GoodsTransferSearchController.cs" />
-    <Compile Include="Controllers\GoodsTransferShowController.cs" />
     <Compile Include="Controllers\GoodsTransferController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HouseBuyController.cs" />
     <Compile Include="Controllers\HouseBuyDetailController.cs" />
     <Compile Include="Controllers\HouseBuySearchController.cs" />
-    <Compile Include="Controllers\HouseController.cs" />
     <Compile Include="Controllers\HouseListController.cs" />
     <Compile Include="Controllers\HouseTransferController.cs" />
     <Compile Include="Controllers\HouseTransferDetailController.cs" />
     <Compile Include="Controllers\HouseTransferSearchController.cs" />
-    <Compile Include="Controllers\PagelinkController.cs" />
-    <Compile Include="Controllers\PublishGoodsController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\PageLinkController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\TransferController.cs" />
     <Compile Include="Framework\AppSettings.cs" />
     <Compile Include="Framework\ChannelLocation.cs" />
@@ -221,22 +216,26 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Upload\FilesStatus.cs" />
-    <Compile Include="Upload\UploadHandler.ashx.cs">
-      <DependentUpon>UploadHandler.ashx</DependentUpon>
-    </Compile>
+    <Compile Include="ViewModel\AccountModel.cs" />
     <Compile Include="ViewModel\BuyViewCar.cs" />
     <Compile Include="ViewModel\BuyViewGoods.cs" />
     <Compile Include="ViewModel\BuyViewHouse.cs" />
+    <Compile Include="ViewModel\CarBuySearchModel.cs" />
     <Compile Include="ViewModel\CarListModel.cs" />
+    <Compile Include="ViewModel\CarTransferSearchModel.cs" />
+    <Compile Include="ViewModel\GoodsBuySearchModel.cs" />
     <Compile Include="ViewModel\GoodsListModel.cs" />
+    <Compile Include="ViewModel\GoodsTransferSearchModel.cs" />
     <Compile Include="ViewModel\HomeModel.cs" />
+    <Compile Include="ViewModel\HouseBuySearchModel.cs" />
     <Compile Include="ViewModel\HouseListModel.cs" />
+    <Compile Include="ViewModel\HouseTransferSearchModel.cs" />
     <Compile Include="ViewModel\TransferViewCar.cs" />
     <Compile Include="ViewModel\TransferViewGoods.cs" />
     <Compile Include="ViewModel\TransferViewHouse.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\data.txt" />
     <Content Include="App_Data\gitlog20121108.txt" />
     <Content Include="App_Data\gitlog20121109.txt" />
     <Content Include="App_Data\gitlog20121112.txt" />
@@ -257,7 +256,6 @@
     <Content Include="Content\css\images\bj-bd.jpg" />
     <Content Include="Content\css\images\car.png" />
     <Content Include="Content\css\images\favicon.ico" />
-    <Content Include="Content\css\images\generalFile.png" />
     <Content Include="Content\css\images\glyphicons-halflings-white.png" />
     <Content Include="Content\css\images\glyphicons-halflings.png" />
     <Content Include="Content\css\images\glyphicons_020_home.png" />
@@ -304,42 +302,6 @@
     <Content Include="Content\css\images\top_btn_btns.gif" />
     <Content Include="Content\css\images\top_btn_btns.png" />
     <Content Include="Content\css\images\yuan.png" />
-    <Content Include="Content\FileUpload\canvas-to-blob.min.js" />
-    <Content Include="Content\FileUpload\html5.js" />
-    <Content Include="Content\FileUpload\jquery-ui-1.8.11.js" />
-    <Content Include="Content\FileUpload\jquery-ui-1.8.11.min.js">
-      <DependentUpon>jquery-ui-1.8.11.js</DependentUpon>
-    </Content>
-    <Content Include="Content\FileUpload\jquery.fileupload-ip.js" />
-    <Content Include="Content\FileUpload\jquery.fileupload-ui.css" />
-    <Content Include="Content\FileUpload\jquery.fileupload-ui.js" />
-    <Content Include="Content\FileUpload\jquery.fileupload.js" />
-    <Content Include="Content\FileUpload\jquery.iframe-transport.js" />
-    <Content Include="Content\FileUpload\load-image.min.js" />
-    <Content Include="Content\FileUpload\locale.js" />
-    <Content Include="Content\FileUpload\main.js" />
-    <Content Include="Content\FileUpload\tmpl.min.js" />
-    <Content Include="Content\images\1.jpg" />
-    <Content Include="Content\images\10.jpg" />
-    <Content Include="Content\images\11.jpg" />
-    <Content Include="Content\images\12.jpg" />
-    <Content Include="Content\images\13.jpg" />
-    <Content Include="Content\images\14.jpg" />
-    <Content Include="Content\images\15.jpg" />
-    <Content Include="Content\images\16.jpg" />
-    <Content Include="Content\images\17.jpg" />
-    <Content Include="Content\images\18.jpg" />
-    <Content Include="Content\images\19.jpg" />
-    <Content Include="Content\images\2.jpg" />
-    <Content Include="Content\images\20.jpg" />
-    <Content Include="Content\images\3.jpg" />
-    <Content Include="Content\images\5.jpg" />
-    <Content Include="Content\images\6.jpg" />
-    <Content Include="Content\images\64X64.jpg" />
-    <Content Include="Content\images\7.jpg" />
-    <Content Include="Content\images\8.jpg" />
-    <Content Include="Content\images\9.jpg" />
-    <Content Include="Content\images\ad4.jpg" />
     <Content Include="Content\images\adddd.jpg" />
     <Content Include="Content\images\glyphicons_020_home.png" />
     <Content Include="Content\images\glyphicons_028_cars.png" />
@@ -356,8 +318,6 @@
     <Content Include="Content\images\lft_ad.jpg" />
     <Content Include="Content\images\lft_ad1.jpg" />
     <Content Include="Content\images\arrowhead.gif" />
-    <Content Include="Content\images\generalFile.png" />
-    <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\logo.png" />
@@ -371,10 +331,6 @@
     <Content Include="Content\images\r_b.png" />
     <Content Include="Content\images\r_t.png" />
     <Content Include="Content\images\search_bg.gif" />
-    <Content Include="Content\images\search_btn.gif" />
-    <Content Include="Content\images\search_btn.jpg" />
-    <Content Include="Content\images\search_btn1.gif" />
-    <Content Include="Content\images\search_select_btn.png" />
     <Content Include="Content\images\select_list_bg.png" />
     <Content Include="Content\images\select_list_bg_btm.gif" />
     <Content Include="Content\images\select_list_bg_btm.png" />
@@ -385,7 +341,6 @@
     <Content Include="Content\images\select_list_bg_top.png" />
     <Content Include="Content\images\tag_off_bg.jpg" />
     <Content Include="Content\images\tag_on_bg.jpg" />
-    <Content Include="Content\images\test1.jpg" />
     <Content Include="Content\images\tf_lft_btn.gif" />
     <Content Include="Content\images\tf_lft_btn.png" />
     <Content Include="Content\images\tf_rit_btn.gif" />
@@ -393,16 +348,9 @@
     <Content Include="Content\images\thing_deal.jpg" />
     <Content Include="Content\images\top_btn_btns.gif" />
     <Content Include="Content\images\top_btn_btns.png" />
-    <Content Include="Content\images\tss1.png" />
-    <Content Include="Content\images\tss2.png" />
-    <Content Include="Content\images\tss3.png" />
-    <Content Include="Content\images\tss5.png" />
-    <Content Include="Content\images\tss6.png" />
-    <Content Include="Content\images\yuan.png" />
     <Content Include="Content\images\house.png" />
     <Content Include="Content\images\goods.png" />
     <Content Include="Content\images\car.png" />
-    <Content Include="Content\images\未标题-1.png" />
     <Content Include="Content\js\Ajax\AjaxBaseRequest.js" />
     <Content Include="Content\js\Ajax\AjaxCarRequest.js" />
     <Content Include="Content\js\Ajax\AjaxGoodsRequest.js" />
@@ -415,6 +363,7 @@
     <Content Include="Content\js\Buy\BuyValidCar.js" />
     <Content Include="Content\js\Buy\BuyValidGoods.js" />
     <Content Include="Content\js\Buy\BuyValidHouse.js" />
+    <Content Include="Content\js\Channel.js" />
     <Content Include="Content\js\List.js" />
     <Content Include="Content\js\Debug\log4Init.js" />
     <Content Include="Content\js\Debug\log4javascript1.4.3.js" />
@@ -422,12 +371,6 @@
     <Content Include="Content\js\jquery.SuperSlide.js" />
     <Content Include="Content\js\slider.js" />
     <Content Include="Content\js\Transfer\TransferGoodsEvent.js" />
-    <Content Include="Content\js\Flash\bcastr.swf" />
-    <Content Include="Content\js\Flash\images\02.jpg" />
-    <Content Include="Content\js\Flash\images\03.jpg" />
-    <Content Include="Content\js\Flash\images\04.jpg" />
-    <Content Include="Content\js\Flash\images\01.jpg" />
-    <Content Include="Content\js\Flash\xml\bcastr.xml" />
     <Content Include="Content\js\instant.js" />
     <Content Include="Content\js\Pluggin\jquery.placeholder.js" />
     <Content Include="Content\js\Pluggin\jquery.placeholder.min.js">
@@ -452,26 +395,7 @@
     <Content Include="Config\JobLog.config" />
     <Content Include="Config\Resizer.config" />
     <Content Include="Config\Machine.config" />
-    <Content Include="Content\images\select_list_bg.psd" />
-    <Content Include="Content\images\select_search.psd" />
-    <Content Include="Content\images\Thumbs.db" />
-    <None Include="Content\js\jquery-1.6.2-vsdoc.js" />
     <Content Include="Content\images\icons.png" />
-    <Content Include="Content\images\new-icons.png" />
-    <Content Include="Content\js\jquery-1.6.2.js" />
-    <Content Include="Content\js\jquery-1.6.2.min.js">
-      <DependentUpon>jquery-1.6.2.js</DependentUpon>
-    </Content>
-    <None Include="Content\js\jquery.validate-vsdoc.js" />
-    <Content Include="Content\js\jquery-ui-1.8.11.js" />
-    <Content Include="Content\js\jquery-ui-1.8.11.min.js">
-      <DependentUpon>jquery-ui-1.8.11.js</DependentUpon>
-    </Content>
-    <Content Include="Content\js\jquery.validate.js" />
-    <Content Include="Content\js\jquery.validate.min.js">
-      <DependentUpon>jquery.validate.js</DependentUpon>
-    </Content>
-    <Content Include="Content\js\modernizr-2.0.6-development-only.js" />
     <Content Include="Content\images\favicon.ico" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -482,17 +406,6 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Content\js\jquery.unobtrusive-ajax.js" />
-    <Content Include="Content\js\jquery.unobtrusive-ajax.min.js" />
-    <Content Include="Content\js\jquery.validate.unobtrusive.js" />
-    <Content Include="Content\js\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Content\js\MicrosoftAjax.js" />
-    <Content Include="Content\js\MicrosoftAjax.debug.js" />
-    <Content Include="Content\js\MicrosoftMvcAjax.js" />
-    <Content Include="Content\js\MicrosoftMvcAjax.debug.js" />
-    <Content Include="Content\js\MicrosoftMvcValidation.js" />
-    <Content Include="Content\js\MicrosoftMvcValidation.debug.js" />
-    <Content Include="Upload\UploadHandler.ashx" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\LoginOff.cshtml" />
@@ -524,9 +437,8 @@
     <Content Include="Views\CarTransfer\Partial\Publish.cshtml" />
     <Content Include="Views\CarTransfer\SecondHandCar.cshtml" />
     <Content Include="Views\CarTransfer\Success.cshtml" />
-    <Content Include="Views\CarTransfer\ViewPage1.cshtml" />
-    <Content Include="Views\GoodsBuyDetail\IndexChange.cshtml" />
-    <Content Include="Views\GoodsBuyDetail\IndexNoChange.cshtml" />
+    <Content Include="Views\GoodsBuyDetail\IndexWithNoPicture.cshtml" />
+    <Content Include="Views\GoodsBuyDetail\IndexWithPicture.cshtml" />
     <Content Include="Views\GoodsBuyDetail\Partial\Ad.cshtml" />
     <Content Include="Views\GoodsBuyDetail\Partial\Madol.cshtml" />
     <Content Include="Views\GoodsBuy\CultureLife.cshtml" />
@@ -576,7 +488,6 @@
     <Content Include="Views\HouseBuyDetail\Index.cshtml" />
     <Content Include="Views\HouseBuyDetail\Partial\Ad.cshtml" />
     <Content Include="Views\HouseBuyDetail\Partial\Madol.cshtml" />
-    <Content Include="Views\HouseBuyDetail\副本 Index.cshtml" />
     <Content Include="Views\HouseBuy\CommercialProperties.cshtml" />
     <Content Include="Views\HouseBuy\Partial\Flow.cshtml" />
     <Content Include="Views\HouseBuy\Partial\Publish.cshtml" />
@@ -598,12 +509,12 @@
     <Content Include="Views\HouseTransfer\Partial\Publish.cshtml" />
     <Content Include="Views\HouseTransfer\Properties.cshtml" />
     <Content Include="Views\HouseTransfer\Success.cshtml" />
-    <Content Include="Views\Pagelink\Agreement.cshtml" />
-    <Content Include="Views\Pagelink\Convention.cshtml" />
-    <Content Include="Views\Pagelink\Forbidden.cshtml" />
-    <Content Include="Views\Pagelink\PageNotFound.cshtml" />
-    <Content Include="Views\Pagelink\PaymentNotice.cshtml" />
-    <Content Include="Views\Pagelink\Privacy.cshtml" />
+    <Content Include="Views\PageLink\Agreement.cshtml" />
+    <Content Include="Views\PageLink\Convention.cshtml" />
+    <Content Include="Views\PageLink\Forbidden.cshtml" />
+    <Content Include="Views\PageLink\PageNotFound.cshtml" />
+    <Content Include="Views\PageLink\PaymentNotice.cshtml" />
+    <Content Include="Views\PageLink\Privacy.cshtml" />
     <Content Include="Views\Shared\BuyModal.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\TransferModal.cshtml" />
@@ -611,9 +522,7 @@
     <Content Include="Views\Shared\_JiaThis.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_LayoutClean.cshtml" />
-    <Content Include="Views\Shared\_LayoutShow.cshtml" />
     <Content Include="Views\Shared\_Logo.cshtml" />
-    <Content Include="Views\Shared\_LogoShow.cshtml" />
     <Content Include="Views\Shared\_Nav.cshtml" />
     <Content Include="Views\Shared\_Navigation.cshtml" />
     <Content Include="Views\Transfer\Index.cshtml" />
@@ -621,6 +530,182 @@
     <Content Include="Views\Transfer\Partial\Flow.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\CarTransferSearch\Audi.cshtml" />
+    <Content Include="Views\CarTransferSearch\Partial\Ad.cshtml" />
+    <Content Include="Views\CarTransferSearch\Partial\MainCar.cshtml" />
+    <Content Include="Views\CarTransferSearch\Partial\RightCar.cshtml" />
+    <Content Include="Views\CarTransferSearch\Partial\TopCar.cshtml" />
+    <Content Include="Views\CarTransferSearch\Partial\Link.cshtml" />
+    <Content Include="Views\CarTransferSearch\BMW.cshtml" />
+    <Content Include="Views\CarTransferSearch\Buick.cshtml" />
+    <Content Include="Views\CarTransferSearch\Citroen.cshtml" />
+    <Content Include="Views\CarTransferSearch\Ford.cshtml" />
+    <Content Include="Views\CarTransferSearch\Honda.cshtml" />
+    <Content Include="Views\CarTransferSearch\Toyota.cshtml" />
+    <Content Include="Views\CarTransferSearch\Nissan.cshtml" />
+    <Content Include="Views\CarTransferSearch\MINI.cshtml" />
+    <Content Include="Views\CarTransferSearch\MercedesBenz.cshtml" />
+    <Content Include="Views\CarTransferSearch\Peugeot.cshtml" />
+    <Content Include="Views\CarTransferSearch\VW.cshtml" />
+    <Content Include="Views\CarTransferSearch\Volvo.cshtml" />
+    <Content Include="Views\CarTransferSearch\SecondHandCarOther.cshtml" />
+    <Content Include="Views\CarTransferSearch\Partial\Search.cshtml" />
+    <Content Include="Views\CarBuySearch\VW.cshtml" />
+    <Content Include="Views\CarBuySearch\Partial\Ad.cshtml" />
+    <Content Include="Views\CarBuySearch\Partial\Link.cshtml" />
+    <Content Include="Views\CarBuySearch\Partial\MainCar.cshtml" />
+    <Content Include="Views\CarBuySearch\Partial\RightCar.cshtml" />
+    <Content Include="Views\CarBuySearch\Partial\Search.cshtml" />
+    <Content Include="Views\CarBuySearch\Partial\TopCar.cshtml" />
+    <Content Include="Views\CarBuySearch\Audi.cshtml" />
+    <Content Include="Views\CarBuySearch\BMW.cshtml" />
+    <Content Include="Views\CarBuySearch\Buick.cshtml" />
+    <Content Include="Views\CarBuySearch\Citroen.cshtml" />
+    <Content Include="Views\CarBuySearch\Ford.cshtml" />
+    <Content Include="Views\CarBuySearch\Honda.cshtml" />
+    <Content Include="Views\CarBuySearch\MercedesBenz.cshtml" />
+    <Content Include="Views\CarBuySearch\MINI.cshtml" />
+    <Content Include="Views\CarBuySearch\Nissan.cshtml" />
+    <Content Include="Views\CarBuySearch\Peugeot.cshtml" />
+    <Content Include="Views\CarBuySearch\SecondHandCarOther.cshtml" />
+    <Content Include="Views\CarBuySearch\Toyota.cshtml" />
+    <Content Include="Views\CarBuySearch\Volvo.cshtml" />
+    <Content Include="Views\GoodsBuySearch\Partial\Ad.cshtml" />
+    <Content Include="Views\GoodsBuySearch\Partial\Link.cshtml" />
+    <Content Include="Views\GoodsBuySearch\Partial\MainGoods.cshtml" />
+    <Content Include="Views\GoodsBuySearch\Partial\RightGoods.cshtml" />
+    <Content Include="Views\GoodsBuySearch\Partial\Search.cshtml" />
+    <Content Include="Views\GoodsBuySearch\Partial\TopGoods.cshtml" />
+    <Content Include="Views\GoodsBuySearch\Phone.cshtml" />
+    <Content Include="Views\GoodsBuySearch\Computer.cshtml" />
+    <Content Include="Views\GoodsBuySearch\DigitalCamera.cshtml" />
+    <Content Include="Views\GoodsBuySearch\ComputerAccessories.cshtml" />
+    <Content Include="Views\GoodsBuySearch\PlayStations.cshtml" />
+    <Content Include="Views\GoodsBuySearch\PSAccessories.cshtml" />
+    <Content Include="Views\GoodsBuySearch\PhoneAccessories.cshtml" />
+    <Content Include="Views\GoodsBuySearch\ElectronicsOther.cshtml" />
+    <Content Include="Views\GoodsBuySearch\Furniture.cshtml" />
+    <Content Include="Views\GoodsBuySearch\KitchenAppliances.cshtml" />
+    <Content Include="Views\GoodsBuySearch\AudioAppliances.cshtml" />
+    <Content Include="Views\GoodsBuySearch\KitchenDinningWares.cshtml" />
+    <Content Include="Views\GoodsBuySearch\Decoration.cshtml" />
+    <Content Include="Views\GoodsBuySearch\OtherElectronics.cshtml" />
+    <Content Include="Views\GoodsBuySearch\GymEquipment.cshtml" />
+    <Content Include="Views\GoodsBuySearch\Bike.cshtml" />
+    <Content Include="Views\GoodsBuySearch\HomeSuppliesOther.cshtml" />
+    <Content Include="Views\GoodsBuySearch\Clothing.cshtml" />
+    <Content Include="Views\GoodsBuySearch\Shoes.cshtml" />
+    <Content Include="Views\GoodsBuySearch\Bag.cshtml" />
+    <Content Include="Views\GoodsBuySearch\Accessories.cshtml" />
+    <Content Include="Views\GoodsBuySearch\FashionOther.cshtml" />
+    <Content Include="Views\GoodsBuySearch\MusicInstruments.cshtml" />
+    <Content Include="Views\GoodsBuySearch\Books.cshtml" />
+    <Content Include="Views\GoodsBuySearch\Toys.cshtml" />
+    <Content Include="Views\GoodsBuySearch\Stationary.cshtml" />
+    <Content Include="Views\GoodsBuySearch\CultureLifeOther.cshtml" />
+    <Content Include="Views\GoodsBuySearch\OtherOther.cshtml" />
+    <Content Include="Views\HouseTransferSearch\SecondShop.cshtml" />
+    <Content Include="Views\HouseTransferSearch\Restaurants.cshtml" />
+    <Content Include="Views\HouseTransferSearch\Warehouse.cshtml" />
+    <Content Include="Views\HouseTransferSearch\Office.cshtml" />
+    <Content Include="Views\HouseTransferSearch\House.cshtml" />
+    <Content Include="Views\HouseTransferSearch\Flat.cshtml" />
+    <Content Include="Views\HouseTransferSearch\StudentAparment.cshtml" />
+    <Content Include="Views\HouseBuySearch\Flat.cshtml" />
+    <Content Include="Views\HouseBuySearch\House.cshtml" />
+    <Content Include="Views\HouseBuySearch\Office.cshtml" />
+    <Content Include="Views\HouseBuySearch\Restaurants.cshtml" />
+    <Content Include="Views\HouseBuySearch\SecondShop.cshtml" />
+    <Content Include="Views\HouseBuySearch\StudentAparment.cshtml" />
+    <Content Include="Views\HouseBuySearch\Warehouse.cshtml" />
+    <Content Include="Views\HouseBuySearch\Partial\Ad.cshtml" />
+    <Content Include="Views\HouseBuySearch\Partial\Link.cshtml" />
+    <Content Include="Views\HouseBuySearch\Partial\MainHouse.cshtml" />
+    <Content Include="Views\HouseBuySearch\Partial\RightHouse.cshtml" />
+    <Content Include="Views\HouseBuySearch\Partial\Search.cshtml" />
+    <Content Include="Views\HouseBuySearch\Partial\TopHouse.cshtml" />
+    <Content Include="Views\HouseTransferSearch\Partial\Ad.cshtml" />
+    <Content Include="Views\HouseTransferSearch\Partial\Link.cshtml" />
+    <Content Include="Views\HouseTransferSearch\Partial\MainHouse.cshtml" />
+    <Content Include="Views\HouseTransferSearch\Partial\RightHouse.cshtml" />
+    <Content Include="Views\HouseTransferSearch\Partial\Search.cshtml" />
+    <Content Include="Views\HouseTransferSearch\Partial\TopHouse.cshtml" />
+    <Content Include="Views\Search\GoodsTransferSearch.cshtml" />
+    <Content Include="Views\Search\CarTransferSearch.cshtml" />
+    <Content Include="Views\Search\HouseTransferSearch.cshtml" />
+    <Content Include="Views\Search\GoodsBuySearch.cshtml" />
+    <Content Include="Views\Search\CarBuySearch.cshtml" />
+    <Content Include="Views\Search\HouseBuySearch.cshtml" />
+    <Content Include="Views\Search\Partial\CarTransfer\Ad.cshtml" />
+    <Content Include="Views\Search\Partial\CarTransfer\Link.cshtml" />
+    <Content Include="Views\Search\Partial\CarTransfer\MainCar.cshtml" />
+    <Content Include="Views\Search\Partial\CarTransfer\RightCar.cshtml" />
+    <Content Include="Views\Search\Partial\CarTransfer\Search.cshtml" />
+    <Content Include="Views\Search\Partial\CarTransfer\TopCar.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\Partial\Ad.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\Partial\Link.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\Partial\MainGoods.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\Partial\RightGoods.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\Partial\Search.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\Partial\TopGoods.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\Accessories.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\AudioAppliances.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\Bag.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\Bike.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\Books.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\Clothing.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\Computer.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\ComputerAccessories.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\CultureLifeOther.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\Decoration.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\DigitalCamera.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\ElectronicsOther.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\FashionOther.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\Furniture.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\GymEquipment.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\HomeSuppliesOther.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\KitchenAppliances.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\KitchenDinningWares.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\MusicInstruments.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\OtherElectronics.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\OtherOther.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\Phone.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\PhoneAccessories.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\PlayStations.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\PSAccessories.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\Shoes.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\Stationary.cshtml" />
+    <Content Include="Views\GoodsTransferSearch\Toys.cshtml" />
+    <Content Include="Views\Search\Partial\Carbuy\Ad.cshtml" />
+    <Content Include="Views\Search\Partial\Carbuy\Link.cshtml" />
+    <Content Include="Views\Search\Partial\Carbuy\MainCar.cshtml" />
+    <Content Include="Views\Search\Partial\Carbuy\RightCar.cshtml" />
+    <Content Include="Views\Search\Partial\Carbuy\Search.cshtml" />
+    <Content Include="Views\Search\Partial\Carbuy\TopCar.cshtml" />
+    <Content Include="Views\Search\Partial\GoodsTransfer\Ad.cshtml" />
+    <Content Include="Views\Search\Partial\GoodsTransfer\Link.cshtml" />
+    <Content Include="Views\Search\Partial\GoodsTransfer\MainGoods.cshtml" />
+    <Content Include="Views\Search\Partial\GoodsTransfer\RightGoods.cshtml" />
+    <Content Include="Views\Search\Partial\GoodsTransfer\Search.cshtml" />
+    <Content Include="Views\Search\Partial\GoodsTransfer\TopGoods.cshtml" />
+    <Content Include="Views\Search\Partial\GoodsBuy\Ad.cshtml" />
+    <Content Include="Views\Search\Partial\GoodsBuy\Link.cshtml" />
+    <Content Include="Views\Search\Partial\GoodsBuy\MainGoods.cshtml" />
+    <Content Include="Views\Search\Partial\GoodsBuy\RightGoods.cshtml" />
+    <Content Include="Views\Search\Partial\GoodsBuy\Search.cshtml" />
+    <Content Include="Views\Search\Partial\GoodsBuy\TopGoods.cshtml" />
+    <Content Include="Views\Search\Partial\HouseTransfer\Ad.cshtml" />
+    <Content Include="Views\Search\Partial\HouseTransfer\Link.cshtml" />
+    <Content Include="Views\Search\Partial\HouseTransfer\MainHouse.cshtml" />
+    <Content Include="Views\Search\Partial\HouseTransfer\RightHouse.cshtml" />
+    <Content Include="Views\Search\Partial\HouseTransfer\Search.cshtml" />
+    <Content Include="Views\Search\Partial\HouseTransfer\TopHouse.cshtml" />
+    <Content Include="Views\Search\Partial\HouseBuy\Ad.cshtml" />
+    <Content Include="Views\Search\Partial\HouseBuy\Link.cshtml" />
+    <Content Include="Views\Search\Partial\HouseBuy\MainHouse.cshtml" />
+    <Content Include="Views\Search\Partial\HouseBuy\RightHouse.cshtml" />
+    <Content Include="Views\Search\Partial\HouseBuy\Search.cshtml" />
+    <Content Include="Views\Search\Partial\HouseBuy\TopHouse.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UploadImage\Buy\CarImage\" />
@@ -629,10 +714,6 @@
     <Folder Include="UploadImage\Transfer\CarImage\" />
     <Folder Include="UploadImage\Transfer\GoodsImage\" />
     <Folder Include="UploadImage\Transfer\HouseImage\" />
-    <Folder Include="Upload\HeadPicture\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fx.Domain\Fx.Domain.csproj">

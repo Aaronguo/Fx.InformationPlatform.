@@ -1,36 +1,56 @@
 ﻿<!--logo和搜索框-->
-<form>
-<div class="grid_24">
-    <div class="grid_5 alpha">
-        <img src="@Fx.InformationPlatform.Site.AppSettings.ImageDomain("logo.png")" class="logo_img" alt="英淘网"/>
-    </div>
-    <div class="grid_19 omega">
-        <div>
-            <div class="searchcenter navbar-search pull-left form form-search" style="padding-top:10px;">
-                <input type="text" class="search-query input-xlarge"  placeholder="Search">
-                <div class="btn-group">
-                    <button class="btn dropdown-toggle" id="logochose">二手物品</button>
-                    <button class="btn btn-success">查找</button>
-                    <ul id="searchmenu" class="dropdown-menu" style="margin-left: -60px">
-                        <li><a href="#">二手物品</a></li>
-                        <li><a href="#">汽车交易</a></li>
-                        <li><a href="#">房屋租赁</a></li>
-                    </ul>
+@using (Html.BeginForm("HomeSearchFacade", "Home", FormMethod.Post, new { enctype = "multipart/form-data", id = "homeForm" }))
+{
+    <div class="grid_24">
+        <div class="grid_5 alpha">
+            <a href="@Fx.InformationPlatform.Site.AppSettings.YingTaoUrl()">
+                <img src="@Fx.InformationPlatform.Site.AppSettings.ImageDomain("logo.png")" class="logo_img" alt="英淘网"/>
+            </a>
+        </div>
+        <div class="grid_19 omega">
+            <div>
+                <div class="searchcenter navbar-search pull-left form form-search" style="padding-top: 10px;">
+                    <input type="text" class="search-query input-xlarge" id="searchText" placeholder="英国华人生活信息发布平台">
+                    <div class="btn-group">
+                        <button class="btn dropdown-toggle" id="logochose">二手物品</button>
+                        <button class="btn btn-danger" id="homeSearchButton">查找</button>
+                        <ul id="searchmenu" class="dropdown-menu" style="margin-left: -60px">
+                            <li><a href="#">二手物品</a></li>
+                            <li><a href="#">汽车交易</a></li>
+                            <li><a href="#">房屋租赁</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-</form>
+
+    <div style="display: none">
+        @Html.Hidden("searchTextModel")
+        @Html.Hidden("logochoseModel")
+    </div>
+    
+}
 
 <script type="text/javascript">
     $(document).ready(function () {
         $('#logochose').dropdown();
         $("#searchmenu li a").each(function () {
             $(this).click(function (index, dom) {
-                $("#logochose").text($(this).text());
+                $("#logochose").text($(this).text());              
             });
         });
+        $("#homeSearchButton").click(function () {
+            $("#searchTextModel").val($.trim($("#searchText").val()));
+            $("#logochoseModel").val($.trim($("#logochose").text()));
+            return true;
+            //var link = "/Home/HomeSearch?key=";
+            //link = link + $.trim($("#searchText").val());
+            //link = link + "&channel=" + $.trim($("#logochose").text());
+            //$("#homeLink").attr("href", link);
+            //$("#homeLink").trigger("click");
+        });
+
     });
 </script>
 

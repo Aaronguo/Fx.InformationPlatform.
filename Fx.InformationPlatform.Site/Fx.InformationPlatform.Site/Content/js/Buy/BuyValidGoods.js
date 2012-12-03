@@ -139,6 +139,11 @@ buygoods.ValidFacefile = function () {
         buygoods.TipMsg = "图片的数量至少是：" + minlength;
         return false;
     }
+    //如果选择了换物 请上传图片
+    if (buygoods.IsChangeGoods() == true && facefile.length == 1) {
+        buygoods.TipMsg = "如果你选择了换物，请上你交换物品的图片";
+        return false;
+    }
     return true;
 }
 

@@ -4,7 +4,10 @@ namespace Fx.InformationPlatform.Site.App_Start
 {
     using System.Reflection;
     using System.Web.Mvc;
-
+    using Fx.Domain.Base.IService;
+    using Fx.Entity.FxCar;
+    using Fx.Entity.FxGoods;
+    using Fx.Entity.FxHouse;
     using SimpleInjector;
     using SimpleInjector.Integration.Web.Mvc;
 
@@ -55,17 +58,26 @@ namespace Fx.InformationPlatform.Site.App_Start
             container.RegisterSingle<FxCacheService.FxGoods.GoodsCache>();
             container.RegisterSingle<FxCacheService.FxHouse.HouseCache>();
             container.RegisterSingle<FxCacheService.FxCar.CarCache>();
+            //缓存查询服务  为什么不使用接口注册？ISiteSearch<CarBuyInfo> 保持对外一致性 用于缓存
+            container.Register<Fx.Domain.FxCar.Search.CarBuySearchService>();
+            container.Register<Fx.Domain.FxCar.Search.CarTransferSearchService>();
+            container.Register<Fx.Domain.FxGoods.Search.GoodsBuySearchService>();
+            container.Register<Fx.Domain.FxGoods.Search.GoodsTransferSearchService>();
+            container.Register<Fx.Domain.FxHouse.Search.HouseBuySearchService>();
+            container.Register<Fx.Domain.FxHouse.Search.HouseTransferSearchService>();
+
         }
 
 
         private static void InitJobContainer(Container container)
-        {            
+        {
             container.RegisterSingle<FxTask.AppSettings>();
             container.RegisterSingle<FxTask.Filter>();
 
             //FxTaskFxCar
             container.Register<Fx.Domain.FxCar.IService.ICarBuyJob, Fx.Domain.FxCar.CarBuyJobService>();
             container.Register<Fx.Domain.FxCar.IService.ICarTransferJob, Fx.Domain.FxCar.CarTransferJobService>();
+
 
             //FxTaskFxGoods
             container.Register<Fx.Domain.FxGoods.IService.IGoodsBuyJob, Fx.Domain.FxGoods.GoodsBuyJobService>();
@@ -79,16 +91,32 @@ namespace Fx.InformationPlatform.Site.App_Start
         private static void InitSearchContainer(Container container)
         {
             //FxGoodsSearch
-            container.RegisterSingle<Fx.Domain.Base.IService.IHomeSearch<Fx.Entity.FxGoods.GoodsTransferInfo>,
-                Fx.Domain.FxGoods.Search.GoodsTransferSearchService>();
+            container.Register<IHomeSearch<Fx.Entity.FxGoods.GoodsTransferInfo>,Fx.Domain.FxGoods.Search.GoodsTransferSearchService>();
+            container.Register<ISiteSearch<GoodsTransferInfo>, Fx.Domain.FxGoods.Search.GoodsTransferSearchService>();
+            container.Register<ISiteSearch<GoodsBuyInfo>, Fx.Domain.FxGoods.Search.GoodsBuySearchService>();           
+            //GoodsConditionSearch
+            container.Register<IGoodsSearch<GoodsTransferInfo>, Fx.Domain.FxGoods.Search.GoodsTransferSearchService>();
+            container.Register<IGoodsSearch<GoodsBuyInfo>, Fx.Domain.FxGoods.Search.GoodsBuySearchService>();
 
             //FxCarSearch
-            container.RegisterSingle<Fx.Domain.Base.IService.IHomeSearch<Fx.Entity.FxCar.CarTransferInfo>,
-             Fx.Domain.FxCar.Search.CarTransferSearchService>();
+            container.Register<IHomeSearch<Fx.Entity.FxCar.CarTransferInfo>,Fx.Domain.FxCar.Search.CarTransferSearchService>();
+            container.Register<ISiteSearch<CarTransferInfo>, Fx.Domain.FxCar.Search.CarTransferSearchService>();
+            container.Register<ISiteSearch<CarBuyInfo>, Fx.Domain.FxCar.Search.CarBuySearchService>();
+            //CarConditionSearch
+            container.Register<ICarSearch<CarTransferInfo>, Fx.Domain.FxCar.Search.CarTransferSearchService>();
+            container.Register<ICarSearch<CarBuyInfo>, Fx.Domain.FxCar.Search.CarBuySearchService>();
 
             //FxHouseSearch
-            container.RegisterSingle<Fx.Domain.Base.IService.IHomeSearch<Fx.Entity.FxHouse.HouseTransferInfo>,
-             Fx.Domain.FxHouse.Search.HouseTransferSearchService>();
+            container.Register<IHomeSearch<Fx.Entity.FxHouse.HouseTransferInfo>,Fx.Domain.FxHouse.Search.HouseTransferSearchService>();
+            container.Register<ISiteSearch<HouseTransferInfo>, Fx.Domain.FxHouse.Search.HouseTransferSearchService>();
+            container.Register<ISiteSearch<HouseBuyInfo>, Fx.Domain.FxHouse.Search.HouseBuySearchService>();
+            //HouseConditionSearch
+            container.Register<IHouseSearch<HouseTransferInfo>, Fx.Domain.FxHouse.Search.HouseTransferSearchService>();
+            container.Register<IHouseSearch<HouseBuyInfo>, Fx.Domain.FxHouse.Search.HouseBuySearchService>();
+
+
+
+           
         }
 
 
@@ -105,7 +133,7 @@ namespace Fx.InformationPlatform.Site.App_Start
 
             //FxGoods
             container.Register<Fx.Domain.FxGoods.IService.ITransferGoods, Fx.Domain.FxGoods.FxTransferGoodService>();
-            container.Register<Fx.Domain.FxGoods.IService.IBuyGoods, Fx.Domain.FxGoods.FxBuyGoodsService>();          
+            container.Register<Fx.Domain.FxGoods.IService.IBuyGoods, Fx.Domain.FxGoods.FxBuyGoodsService>();
 
             //FxCar
             container.Register<Fx.Domain.FxCar.IService.ITransferCar, Fx.Domain.FxCar.FxTransferCarService>();
@@ -117,7 +145,12 @@ namespace Fx.InformationPlatform.Site.App_Start
 
             //FxAggregate 
             container.Register<Fx.Domain.FxAggregate.IService.IDbAll, Fx.Domain.FxAggregate.DbAllService>();
-            container.Register<Fx.Domain.FxAggregate.IService.IFavorite, Fx.Domain.FxAggregate.FavoriteService>();          
+            container.Register<Fx.Domain.FxAggregate.IService.IFavorite, Fx.Domain.FxAggregate.FavoriteService>();
+
+            //ListGet
+            container.Register<Fx.Domain.FxCar.CarListService>();
+            container.Register<Fx.Domain.FxGoods.GoodsListService>();
+            container.Register<Fx.Domain.FxHouse.HouseListService>();
         }
     }
 }

@@ -8,26 +8,29 @@ using Fx.Entity.FxCar;
 
 namespace Fx.Domain.FxCar.Search
 {
-    public class CarTransferSearchService : ISiteSearch<CarTransferInfo>,IHomeSearch<CarTransferInfo>
+    public class CarTransferSearchService : ISiteSearch<CarTransferInfo>, IHomeSearch<CarTransferInfo>, ICarSearch<CarTransferInfo> 
     {
-        public List<CarTransferInfo> SearchByKey(string key, int page)
+        public List<CarTransferInfo> SearchByKey(string key, int page, int take = 20)
         {
             using (var context = new FxCarContext())
             {
                 if (!string.IsNullOrWhiteSpace(key))
                 {
                     return context.CarTransferInfos
+                                    .Include(r => r.Pictures)
                                     .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
                                     .OrderByDescending(r => r.CreatedTime)
-                                    .Skip(page * 20)
-                                    .Take(20).ToList();
+                                    .Skip(page * take)
+                                    .Take(take).ToList();
                 }
                 else
                 {
-                    return context.CarTransferInfos.Where(r => r.IsPublish == true)
+                    return context.CarTransferInfos
+                                    .Include(r => r.Pictures)
+                                    .Where(r => r.IsPublish == true)
                                     .OrderByDescending(r => r.CreatedTime)
-                                    .Skip(page * 20)
-                                    .Take(20).ToList();
+                                    .Skip(page * take)
+                                    .Take(take).ToList();
                 }
             }
         }
@@ -39,7 +42,7 @@ namespace Fx.Domain.FxCar.Search
         /// <param name="asc"></param>
         /// <param name="key"></param>
         /// <returns></returns>
-        public List<CarTransferInfo> SearchByPrice(int page, bool asc = true, string key = "")
+        public List<CarTransferInfo> SearchByPrice(int page, bool asc = true, string key = "", int take = 20)
         {
             using (var context = new FxCarContext())
             {
@@ -47,17 +50,21 @@ namespace Fx.Domain.FxCar.Search
                 {
                     if (asc)
                     {
-                        return context.CarTransferInfos.Where(r => r.IsPublish == true)
+                        return context.CarTransferInfos
+                                    .Include(r => r.Pictures)
+                                    .Where(r => r.IsPublish == true)
                                     .OrderBy(r => r.Price)
-                                    .Skip(page * 20)
-                                    .Take(20).ToList();
+                                    .Skip(page * take)
+                                    .Take(take).ToList();
                     }
                     else
                     {
-                        return context.CarTransferInfos.Where(r => r.IsPublish == true)
+                        return context.CarTransferInfos
+                                    .Include(r => r.Pictures)
+                                    .Where(r => r.IsPublish == true)
                                     .OrderByDescending(r => r.Price)
-                                    .Skip(page * 20)
-                                    .Take(20).ToList();
+                                    .Skip(page * take)
+                                    .Take(take).ToList();
                     }
                 }
                 else
@@ -65,18 +72,20 @@ namespace Fx.Domain.FxCar.Search
                     if (asc)
                     {
                         return context.CarTransferInfos
+                                    .Include(r => r.Pictures)
                                     .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
                                     .OrderBy(r => r.Price)
-                                    .Skip(page * 20)
-                                    .Take(20).ToList();
+                                    .Skip(page * take)
+                                    .Take(take).ToList();
                     }
                     else
                     {
                         return context.CarTransferInfos
+                                    .Include(r => r.Pictures)
                                     .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
                                     .OrderByDescending(r => r.Price)
-                                    .Skip(page * 20)
-                                    .Take(20).ToList();
+                                    .Skip(page * take)
+                                    .Take(take).ToList();
                     }
                 }
             }
@@ -89,7 +98,7 @@ namespace Fx.Domain.FxCar.Search
         /// <param name="asc"></param>
         /// <param name="page"></param>
         /// <returns></returns>
-        public List<CarTransferInfo> SearchByDate(int page, bool asc, string key)
+        public List<CarTransferInfo> SearchByDate(int page, bool asc, string key, int take = 20)
         {
             using (var context = new FxCarContext())
             {
@@ -98,35 +107,41 @@ namespace Fx.Domain.FxCar.Search
                     if (asc)
                     {
                         return context.CarTransferInfos
+                                        .Include(r => r.Pictures)
                                         .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
                                         .OrderBy(r => r.CreatedTime)
-                                        .Skip(page * 20)
-                                        .Take(20).ToList();
+                                        .Skip(page * take)
+                                        .Take(take).ToList();
                     }
                     else
                     {
                         return context.CarTransferInfos
+                                        .Include(r => r.Pictures)
                                         .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
                                         .OrderByDescending(r => r.CreatedTime)
-                                        .Skip(page * 20)
-                                        .Take(20).ToList();
+                                        .Skip(page * take)
+                                        .Take(take).ToList();
                     }
                 }
                 else
                 {
                     if (asc)
                     {
-                        return context.CarTransferInfos.Where(r => r.IsPublish == true)
-                                        .OrderBy(r => r.CreatedTime)
-                                        .Skip(page * 20)
-                                        .Take(20).ToList();
+                        return context.CarTransferInfos
+                                    .Include(r => r.Pictures)
+                                    .Where(r => r.IsPublish == true)
+                                    .OrderBy(r => r.CreatedTime)
+                                    .Skip(page * take)
+                                    .Take(take).ToList();
                     }
                     else
                     {
-                        return context.CarTransferInfos.Where(r => r.IsPublish == true)
-                                        .OrderByDescending(r => r.CreatedTime)
-                                        .Skip(page * 20)
-                                        .Take(20).ToList();
+                        return context.CarTransferInfos
+                                    .Include(r => r.Pictures)
+                                    .Where(r => r.IsPublish == true)
+                                    .OrderByDescending(r => r.CreatedTime)
+                                    .Skip(page * take)
+                                    .Take(take).ToList();
                     }
                 }
             }
@@ -136,8 +151,11 @@ namespace Fx.Domain.FxCar.Search
         {
             using (var content = new FxCarContext())
             {
-                return content.CarTransferInfos.Where(r => r.IsPublish == true)
-                    .Include(r => r.Pictures).OrderByDescending(r => r.CreatedTime).Take(count).ToList();
+                return content.CarTransferInfos
+                                    .Include(r => r.Pictures)
+                                    .Where(r => r.IsPublish == true)
+                                    .OrderByDescending(r => r.CreatedTime)
+                                    .Take(count).ToList();
             }
         }
 
@@ -146,9 +164,17 @@ namespace Fx.Domain.FxCar.Search
             throw new NotImplementedException();
         }
 
-        public List<CarTransferInfo> SearchTopshowForHome(int count)
+        public List<CarTransferInfo> SearchByCatagroy(Entity.Catagroy.ChannelListDetailCatagroy catagroy, int page, int take)
         {
-            throw new NotImplementedException();
+            using (var context = new FxCarContext())
+            {
+                return context.CarTransferInfos
+                    .Include(r => r.Pictures)
+                    .Where(r => r.IsPublish == true && r.CatagroyId == (int)catagroy)
+                    .OrderByDescending(r => r.CreatedTime)
+                    .Skip(page * take)
+                    .Take(take).ToList();
+            }
         }
     }
 }

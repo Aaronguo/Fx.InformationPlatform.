@@ -164,7 +164,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                         ImageUrl = GetVirtualPath() + pictureName,
                         MinImageUrl = GetVirtualPath() + pictureMinName,
                         CdnUrl = "",
-                        BuyPictureCatagroy = (int)PictureCatagroy.Head,
+                        BuyPictureCatagroy = (int)PictureCatagroy.Other,
                         PhysicalPath = GetPhysicalPath() + pictureName
                     });
                     SaveFile(other, GetPhysicalPath(), GetPhysicalPath() + pictureName);
@@ -184,7 +184,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                         ImageUrl = GetVirtualPath() + pictureName,
                         MinImageUrl = GetVirtualPath() + pictureMinName,
                         CdnUrl = "",
-                        BuyPictureCatagroy = (int)PictureCatagroy.Head,
+                        BuyPictureCatagroy = (int)PictureCatagroy.Bad,
                         PhysicalPath = GetPhysicalPath() + pictureName
                     });
                     SaveFile(bad, GetPhysicalPath(), GetPhysicalPath() + pictureName);

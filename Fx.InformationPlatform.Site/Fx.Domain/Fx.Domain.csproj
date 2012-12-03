@@ -69,8 +69,10 @@
     <Compile Include="Account\UserAccountService.cs" />
     <Compile Include="Account\IService\IAccountService.cs" />
     <Compile Include="Account\AccountContext.cs" />
+    <Compile Include="Base\IService\ICarSearch.cs" />
     <Compile Include="Base\IService\IGoodsSearch.cs" />
     <Compile Include="Base\IService\IHomeSearch.cs" />
+    <Compile Include="Base\IService\IHouseSearch.cs" />
     <Compile Include="Base\IService\IInfoFind.cs" />
     <Compile Include="FxAggregate\DbAllService.cs" />
     <Compile Include="FxAggregate\FavoriteService.cs" />

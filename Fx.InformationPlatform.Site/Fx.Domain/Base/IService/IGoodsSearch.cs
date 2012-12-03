@@ -16,6 +16,27 @@ namespace Fx.Domain.Base.IService
         /// <param name="byPrice">是否根据价格交换查询 和以物换物条件互斥</param>
         /// <param name="byGoods">是否根据以物换物查询</param>
         /// <returns></returns>
-        List<T> SearchByChanges(int page, bool byPrice, bool byGoods, bool asc, string key);
+        //List<T> SearchByChanges(int page, bool byPrice, bool byGoods, bool asc, string key);
+
+
+
+        /// <summary>
+        /// 查找只换物的
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="take"></param>
+        /// <returns></returns>
+        List<T> SearchWhenChangeGoods(int page, int take);
+
+        /// <summary>
+        /// 查找只现金交易的
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="take"></param>
+        /// <returns></returns>
+        List<T> SearchWhenPrice(int page, int take);
+
+
+        List<T> SearchByCatagroy(Fx.Entity.Catagroy.ChannelListDetailCatagroy catagroy, int page, int take);
     }
 }

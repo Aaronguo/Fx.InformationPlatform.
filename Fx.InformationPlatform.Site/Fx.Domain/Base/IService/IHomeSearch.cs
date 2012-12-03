@@ -18,7 +18,7 @@ namespace Fx.Domain.Base.IService
         /// </summary>
         /// <param name="count"></param>
         /// <returns></returns>
-        //List<T> SearchHottestForHome(int count);
+        List<T> SearchHottestForHome(int count);
 
         /// <summary>
         /// 没有实现 由Aggregate实现

@@ -46,6 +46,8 @@ namespace Fx.InformationPlatform.Site
                new { controller = "Transfer", action = "Index", id = UrlParameter.Optional } // Parameter defaults
            );
 
+
+
         }
 
         protected void Application_Start()

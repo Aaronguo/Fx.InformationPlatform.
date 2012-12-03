@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using Fx.Domain.Account.IService;
 using Fx.Entity.Account;
 using Fx.Entity.MemberShip;
+using Fx.InformationPlatform.Site.ViewModel;
 
 namespace Fx.InformationPlatform.Site.Controllers
 {
@@ -54,6 +55,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 HttpCookie cookie = new HttpCookie(System.Web.Security.FormsAuthentication.FormsCookieName, authTicket);
                 cookie.Domain = AppSettings.FormDomain;
                 Response.Cookies.Add(cookie);
+                Session[user.Email] = user.NickName == null ? "" : user.NickName;
                 if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
                     && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
                 {
@@ -98,22 +100,17 @@ namespace Fx.InformationPlatform.Site.Controllers
             membershipuser.Email = user.Email;
             membershipuser.Password = user.Password;
             var other = new OtherInformation();
-            other.Address = user.Address;
+            other.Address = "";
             other.Mobile = user.Mobile;
             other.QQ = user.QQ;
             other.Sex = SexCatalog.Male;
-
-            if (Request.Files["headPicture"].HasFile())
-            {
-                string path = AppDomain.CurrentDomain.BaseDirectory + "Upload/HeadPicture/";
-                string filename = Path.GetFileName(Request.Files["headPicture"].FileName);
-            }
-            other.HeadPicture = user.HeadPicture;
-            var entityResult = accountService.AddUser(membershipuser,other);
+            other.NickName = user.NickName;
+            var entityResult = accountService.AddUser(membershipuser, other);
             if (entityResult.isSuccess)
             {
                 // 跳转到登录页面
                 System.Web.Security.FormsAuthentication.SetAuthCookie(user.Email, true);
+                Session[user.Email] = user.NickName == null ? "" : user.NickName;
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -130,7 +127,7 @@ namespace Fx.InformationPlatform.Site.Controllers
         public ActionResult LoginOff()
         {
             System.Web.Security.FormsAuthentication.SignOut();
-            Session.Clear();          
+            Session.Clear();
             return RedirectToAction("Index", "Home");
         }
 
@@ -143,8 +140,5 @@ namespace Fx.InformationPlatform.Site.Controllers
         {
             return accountService.GetUserCount();
         }
-
-
-
     }
 }

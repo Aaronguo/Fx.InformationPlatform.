@@ -22,23 +22,23 @@ function set_fc()
 {
 	var l_id=document.getElementById("left_btns");
 	var r_id=document.getElementById("right_btns");
-	l_id.onmouseover=function (){
-		l_id.style.backgroundImage='url(images/mouse_on_bg.png)';
+	l_id.onmouseover = function () {
+	        l_id.style.backgroundImage = 'url(http://image.yingtao.co.uk/mouse_on_bg.png)';
 		l_id.style.display='block';
 		r_id.style.display='block';
 		}
 	l_id.onmouseout=function (){
-		l_id.style.backgroundImage='url(images/mouse_off_bg.png)';
+	    l_id.style.backgroundImage = 'url(http://image.yingtao.co.uk/mouse_off_bg.png)';
 		l_id.style.display='none';
 		r_id.style.display='none';
 		}
 	r_id.onmouseover=function (){
-		r_id.style.backgroundImage='url(images/mouse_on_bg.png)';
+	    r_id.style.backgroundImage = 'url(http://image.yingtao.co.uk/mouse_on_bg.png)';
 		r_id.style.display='block';
 		l_id.style.display='block';
 		}
 	r_id.onmouseout=function (){
-		r_id.style.backgroundImage='url(images/mouse_off_bg.png)';
+	    r_id.style.backgroundImage = 'url(http://image.yingtao.co.uk/mouse_off_bg.png)';
 		r_id.style.display='none';
 		l_id.style.display='none';
 		}

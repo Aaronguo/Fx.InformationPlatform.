@@ -46,6 +46,7 @@
     <Compile Include="Catagroy\AreaCatagroy.cs" />
     <Compile Include="Catagroy\ChannelCatagroy.cs" />
     <Compile Include="Catagroy\ChannelListCatagroy.cs" />
+    <Compile Include="Catagroy\ChannelListDetailCatagroy.cs" />
     <Compile Include="Catagroy\CityCatagroy.cs" />
     <Compile Include="Catagroy\GoodsConditionCatagroy.cs" />
     <Compile Include="Catagroy\MileCatagroy.cs" />

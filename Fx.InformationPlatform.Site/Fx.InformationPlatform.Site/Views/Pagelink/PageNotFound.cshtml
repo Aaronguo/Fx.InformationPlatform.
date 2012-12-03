@@ -1,12 +1,14 @@
-﻿<!DOCTYPE html>
-
-<html>
-<head>
-    <title>PageNotFound</title>
-</head>
-<body>
-    <div>
-        404 PageNotFound
-    </div>
-</body>
-</html>
+﻿@{
+    ViewBag.Title = "404 PageNotFound";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <p class="text-error">Sorry. Page not be found.</p>
+    <p class="text-info">
+        你阅读的页面可能已被更新或者删除，您可以重新尝试或者返回
+        @Html.ActionLink("首页", "Index", "Home");
+        。对您造成的不变我们深感抱歉，
+        如果信息十分重要，您可以联系我们<a href="mailto:customerservice@yingtao.co.uk"><span style="color: red;">英淘网客服</span></a>
+        Email:<a href="#">customerservice@yingtao.co.uk</a> .
+    </p>
+</div>

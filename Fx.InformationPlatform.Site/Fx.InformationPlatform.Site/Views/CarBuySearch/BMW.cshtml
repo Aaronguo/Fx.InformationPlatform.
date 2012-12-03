@@ -1,0 +1,33 @@
+﻿@model Fx.InformationPlatform.Site.ViewModel.CarBuySearchModel
+@{
+    ViewBag.Title = "车辆求购";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="interval_20"></div>
+<div class="grid_24">
+    <div class="grid_20 alpha">
+        <div class="searchs-results_list">
+            <div class="srl_cons">
+                @Html.Partial("Partial/Ad")
+                @Html.Partial("Partial/TopCar", Model.TopCars)
+                @Html.Partial("Partial/MainCar", Model.MainCars)
+            </div>
+            <div class="interval_30"></div>
+            <div class="pages_index_fenye_common_wks">
+                <div class="inners_paging_wks">
+                    @Html.Partial("Partial/Link", Model)
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="grid_4 omega" style="float: right;">
+        @Html.Partial("Partial/RightCar")
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="clear"></div>
+<div class="interval_30"></div>

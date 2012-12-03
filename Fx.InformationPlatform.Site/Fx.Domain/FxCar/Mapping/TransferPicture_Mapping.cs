@@ -23,6 +23,7 @@ namespace Fx.Domain.FxCar.Mapping
               this.Property(t => t.TransferPictureCatagroy).HasColumnName("TransferPictureCatagroy");
               this.Property(t => t.PhysicalPath).HasColumnName("PhysicalPath").HasMaxLength(128);
               this.Property(t => t.ImageUrl).HasColumnName("ImageUrl").HasMaxLength(128);
+              this.Property(t => t.MinImageUrl).HasColumnName("MinImageUrl").HasMaxLength(128);
               this.Property(t => t.IsCdn).HasColumnName("IsCdn");
               this.Property(t => t.CdnUrl).HasColumnName("CdnUrl").HasMaxLength(128);
          }

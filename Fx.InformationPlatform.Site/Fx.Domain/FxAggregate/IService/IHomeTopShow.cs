@@ -10,6 +10,10 @@ namespace Fx.Domain.FxAggregate.IService
     /// </summary>
     public interface IHomeTopShow
     {
+        /// <summary>
+        /// 用于首页的Topshow展示 仅仅具有一些重要的基础信息
+        /// </summary>
+        /// <returns></returns>
         List<Fx.Entity.FxCar.CarTransferInfo> GetHomeCarTopShow();
 
         List<Fx.Entity.FxGoods.GoodsTransferInfo> GetHomeGoodsTopShow();

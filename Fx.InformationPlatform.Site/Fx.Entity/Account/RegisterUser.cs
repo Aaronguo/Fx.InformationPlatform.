@@ -13,7 +13,8 @@ namespace Fx.Entity.Account
         public string Email { get; set; }
 
         //[MobileCheck(ErrorMessage = "请填写正确的手机号码")]
-        [Required(ErrorMessage = "手机号码不能为空")]
+        //[Required(ErrorMessage = "手机号码不能为空")]
+        [StringLength(11, ErrorMessage = "手机号码长度为11字符")]
         public string Mobile { get; set; }
 
         [Required(ErrorMessage = "密码不能为空")]
@@ -21,9 +22,9 @@ namespace Fx.Entity.Account
         public string Password { get; set; }
 
 
-        [Required(ErrorMessage = "地址不能为空")]
-        [StringLength(50, ErrorMessage = "地址长度最大为50个字符")]
-        public string Address { get; set; }
+        //[Required(ErrorMessage = "地址不能为空")]
+        //[StringLength(50, ErrorMessage = "地址长度最大为50个字符")]
+        //public string Address { get; set; }
 
         public string QQ { get; set; }
 

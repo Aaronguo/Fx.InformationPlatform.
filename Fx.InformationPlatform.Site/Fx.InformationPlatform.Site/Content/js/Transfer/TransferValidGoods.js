@@ -15,7 +15,7 @@ transfergoods.Submit = function () {
         }
         //$("input[type='submit']").attr("data-content", transfergoods.TipMsg);
         //$("input[type='submit']").popover('show');
-        $('#transferModal').modal('show');        
+        $('#transferModal').modal('show');
         return false;
     });
 };
@@ -71,7 +71,7 @@ transfergoods.IsChangeGoods = function () {
 }
 
 transfergoods.ChangeGoodsText = function () {
-    return $("#changegoodstxt").val();              
+    return $("#changegoodstxt").val();
 }
 
 transfergoods.ValidChangeGoods = function () {
@@ -150,6 +150,10 @@ transfergoods.ValidFacefile = function () {
     if (facefile.length < minlength) {
         transfergoods.TipMsg = "图片的数量至少是：" + minlength;
         return false;
+    }//如果选择了换物 请上传图片
+    if (transfergoods.IsChangeGoods() == true && facefile.length <= 2) {
+        transfergoods.TipMsg = "如果你选择了换物，请上你交换物品的图片";
+        return false;
     }
     return true;
 }
@@ -214,14 +218,14 @@ transfergoods.BuildMVCForm = function () {
     $("#Title").val(transfergoods.Title());
     $("#Price").val(transfergoods.Price());
     $("#CatagroyId").val(transfergoods.CatagroyId());
-    $("#IsChangeGoods").attr("checked",$("#changegoods").attr("checked"));
+    $("#IsChangeGoods").attr("checked", $("#changegoods").attr("checked"));
     $("#ChangeGoodsMsg").val(transfergoods.ChangeGoodsText());
     $("#AreaId").val(transfergoods.AreaId());
     $("#CityId").val(transfergoods.CityId());
     $("#GoodConditionId").val(transfergoods.GoodsConditonId());
     $("#GoodConditonMsg").val(transfergoods.GoodsConditionText());
     $("#Email").val(transfergoods.Email());
-    $("#Mark").val(transfergoods.Tag());   
+    $("#Mark").val(transfergoods.Tag());
 }
 
 $(document).ready(function () {

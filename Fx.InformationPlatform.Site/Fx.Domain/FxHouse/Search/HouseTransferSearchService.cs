@@ -8,26 +8,29 @@ using Fx.Entity.FxHouse;
 
 namespace Fx.Domain.FxHouse.Search
 {
-   public class HouseTransferSearchService:ISiteSearch<HouseTransferInfo>,IHomeSearch<HouseTransferInfo>
+    public class HouseTransferSearchService : ISiteSearch<HouseTransferInfo>, IHomeSearch<HouseTransferInfo>, IHouseSearch<HouseTransferInfo>
     {
-        public List<HouseTransferInfo> SearchByKey(string key, int page)
+        public List<HouseTransferInfo> SearchByKey(string key, int page, int take = 20)
         {
             using (var context = new FxHouseContext())
             {
                 if (!string.IsNullOrWhiteSpace(key))
                 {
                     return context.HouseTransferInfos
+                                    .Include(r => r.Pictures)
                                     .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
                                     .OrderByDescending(r => r.CreatedTime)
-                                    .Skip(page * 20)
-                                    .Take(20).ToList();
+                                    .Skip(page * take)
+                                    .Take(take).ToList();
                 }
                 else
                 {
-                    return context.HouseTransferInfos.Where(r => r.IsPublish == true)
+                    return context.HouseTransferInfos
+                                    .Include(r => r.Pictures)
+                                    .Where(r => r.IsPublish == true)
                                     .OrderByDescending(r => r.CreatedTime)
-                                    .Skip(page * 20)
-                                    .Take(20).ToList();
+                                    .Skip(page * take)
+                                    .Take(take).ToList();
                 }
             }
         }
@@ -39,7 +42,7 @@ namespace Fx.Domain.FxHouse.Search
         /// <param name="asc"></param>
         /// <param name="key"></param>
         /// <returns></returns>
-        public List<HouseTransferInfo> SearchByPrice(int page, bool asc = true, string key = "")
+        public List<HouseTransferInfo> SearchByPrice(int page, bool asc = true, string key = "", int take = 20)
         {
             using (var context = new FxHouseContext())
             {
@@ -47,17 +50,21 @@ namespace Fx.Domain.FxHouse.Search
                 {
                     if (asc)
                     {
-                        return context.HouseTransferInfos.Where(r => r.IsPublish == true)
+                        return context.HouseTransferInfos
+                                    .Include(r => r.Pictures)
+                                    .Where(r => r.IsPublish == true)
                                     .OrderBy(r => r.Price)
-                                    .Skip(page * 20)
-                                    .Take(20).ToList();
+                                    .Skip(page * take)
+                                    .Take(take).ToList();
                     }
                     else
                     {
-                        return context.HouseTransferInfos.Where(r => r.IsPublish == true)
+                        return context.HouseTransferInfos
+                                    .Include(r => r.Pictures)
+                                    .Where(r => r.IsPublish == true)
                                     .OrderByDescending(r => r.Price)
-                                    .Skip(page * 20)
-                                    .Take(20).ToList();
+                                    .Skip(page * take)
+                                    .Take(take).ToList();
                     }
                 }
                 else
@@ -65,18 +72,20 @@ namespace Fx.Domain.FxHouse.Search
                     if (asc)
                     {
                         return context.HouseTransferInfos
+                                    .Include(r => r.Pictures)
                                     .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
                                     .OrderBy(r => r.Price)
-                                    .Skip(page * 20)
-                                    .Take(20).ToList();
+                                    .Skip(page * take)
+                                    .Take(take).ToList();
                     }
                     else
                     {
                         return context.HouseTransferInfos
+                                    .Include(r => r.Pictures)
                                     .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
                                     .OrderByDescending(r => r.Price)
-                                    .Skip(page * 20)
-                                    .Take(20).ToList();
+                                    .Skip(page * take)
+                                    .Take(take).ToList();
                     }
                 }
             }
@@ -89,7 +98,7 @@ namespace Fx.Domain.FxHouse.Search
         /// <param name="asc"></param>
         /// <param name="page"></param>
         /// <returns></returns>
-        public List<HouseTransferInfo> SearchByDate(int page, bool asc, string key)
+        public List<HouseTransferInfo> SearchByDate(int page, bool asc, string key, int take = 20)
         {
             using (var context = new FxHouseContext())
             {
@@ -98,35 +107,41 @@ namespace Fx.Domain.FxHouse.Search
                     if (asc)
                     {
                         return context.HouseTransferInfos
+                                    .Include(r => r.Pictures)
                                         .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
                                         .OrderBy(r => r.CreatedTime)
-                                        .Skip(page * 20)
-                                        .Take(20).ToList();
+                                        .Skip(page * take)
+                                        .Take(take).ToList();
                     }
                     else
                     {
                         return context.HouseTransferInfos
+                                    .Include(r => r.Pictures)
                                         .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
                                         .OrderByDescending(r => r.CreatedTime)
-                                        .Skip(page * 20)
-                                        .Take(20).ToList();
+                                        .Skip(page * take)
+                                        .Take(take).ToList();
                     }
                 }
                 else
                 {
                     if (asc)
                     {
-                        return context.HouseTransferInfos.Where(r => r.IsPublish == true)
+                        return context.HouseTransferInfos
+                                    .Include(r => r.Pictures)
+                                        .Where(r => r.IsPublish == true)
                                         .OrderBy(r => r.CreatedTime)
-                                        .Skip(page * 20)
-                                        .Take(20).ToList();
+                                        .Skip(page * take)
+                                        .Take(take).ToList();
                     }
                     else
                     {
-                        return context.HouseTransferInfos.Where(r => r.IsPublish == true)
+                        return context.HouseTransferInfos
+                                    .Include(r => r.Pictures)
+                                        .Where(r => r.IsPublish == true)
                                         .OrderByDescending(r => r.CreatedTime)
-                                        .Skip(page * 20)
-                                        .Take(20).ToList();
+                                        .Skip(page * take)
+                                        .Take(take).ToList();
                     }
                 }
             }
@@ -136,8 +151,11 @@ namespace Fx.Domain.FxHouse.Search
         {
             using (var content = new FxHouseContext())
             {
-                return content.HouseTransferInfos.Where(r => r.IsPublish == true)
-                    .Include(r => r.Pictures).OrderByDescending(r => r.CreatedTime).Take(count).ToList();
+                return content.HouseTransferInfos
+                                    .Include(r => r.Pictures)
+                                    .Where(r => r.IsPublish == true)
+                                    .OrderByDescending(r => r.CreatedTime)
+                                    .Take(count).ToList();
             }
         }
 
@@ -146,9 +164,17 @@ namespace Fx.Domain.FxHouse.Search
             throw new NotImplementedException();
         }
 
-        public List<HouseTransferInfo> SearchTopshowForHome(int count)
+        public List<HouseTransferInfo> SearchByCatagroy(Entity.Catagroy.ChannelListDetailCatagroy catagroy, int page = 0, int take = 20)
         {
-            throw new NotImplementedException();
+            using (var content = new FxHouseContext())
+            {
+                return content.HouseTransferInfos
+                                    .Include(r => r.Pictures)
+                                    .Where(r => r.IsPublish == true && r.CatagroyId == (int)catagroy)
+                                    .OrderByDescending(r => r.CreatedTime)
+                                    .Skip(page * take)
+                                    .Take(take).ToList();
+            }
         }
     }
 }

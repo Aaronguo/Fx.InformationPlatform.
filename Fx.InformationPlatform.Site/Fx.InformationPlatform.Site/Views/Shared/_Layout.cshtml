@@ -36,8 +36,12 @@
     <script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("Pluggin/jquery.placeholder.min.js")"></script>
     <script type="text/javascript">
         $('input[placeholder], textarea[placeholder]').placeholder();
+        $(document).ready(function () {
+            var navindex = document.getElementById('navindex').value;
+            if (navindex >= 0) {
+                $("#homeNavs li").eq(navindex).addClass("active");
+            }
+        });
     </script>
-
-
 </body>
 </html>
