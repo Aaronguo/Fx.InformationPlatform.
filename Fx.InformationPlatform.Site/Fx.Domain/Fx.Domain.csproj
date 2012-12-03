@@ -137,8 +137,7 @@
     <Compile Include="FxHouse\Search\HouseBuySearchService.cs" />
     <Compile Include="FxHouse\Search\HouseTransferSearchService.cs" />
     <Compile Include="FxHouse\UserCenterImp\HouseUserCenter.cs" />
-    <Compile Include="Mapping\BuyPicture_Mapping.cs" />
-    <Compile Include="DomainResult.cs" />
+    <Compile Include="FxSite\DomainResult.cs" />
     <Compile Include="FxCar\FxBuyCarService.cs" />
     <Compile Include="FxCar\FxCarContext.cs" />
     <Compile Include="FxCar\FxCarInitializer.cs" />
@@ -158,8 +157,6 @@
     <Compile Include="FxHouse\IService\ITransferHouse.cs" />
     <Compile Include="FxSite\CarService.cs" />
     <Compile Include="FxSite\ChannelService.cs" />
-    <Compile Include="FxSite\FxSiteContext.cs" />
-    <Compile Include="FxSite\FxSiteInitializer.cs" />
     <Compile Include="FxSite\GoodsService.cs" />
     <Compile Include="FxSite\HouseService.cs" />
     <Compile Include="FxSite\IService\ICar.cs" />
@@ -176,9 +173,8 @@
     <Compile Include="FxSite\Mapping\GoodsConditions_Mapping.cs" />
     <Compile Include="FxSite\PublishAjaxService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SiteContext.cs" />
-    <Compile Include="SiteInitializer.cs" />
-    <Compile Include="Mapping\TransferPicture_Mapping.cs" />
+    <Compile Include="FxSite\SiteContext.cs" />
+    <Compile Include="FxSite\SiteInitializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fx.Entity\Fx.Entity.csproj">

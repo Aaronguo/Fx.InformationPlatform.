@@ -9,26 +9,30 @@ namespace Fx.Domain.FxSite
     /// <summary>
     /// 发布信息Ajax服务
     /// </summary>
-    public class PublishAjaxService : BaseIService<SiteContext>, IPageAjax, IDisposable
+    public class PublishAjaxService : IPageAjax
     {
-        public PublishAjaxService()
-        {
-            this.content = new Lazy<SiteContext>(() => new SiteContext());
-        }
-
         public List<Entity.FxSite.Area> GetAreas()
         {
-            return content.Value.Areas.OrderBy(r => r.Sorted).ToList();
+            using (var content = new SiteContext())
+            {
+                return content.Areas.OrderBy(r => r.Sorted).ToList();
+            }
         }
 
         public List<Entity.FxSite.City> GetCitys(int AreaId)
         {
-            return content.Value.Cities.Where(r => r.AreaID == AreaId).OrderBy(r => r.Sorted).ToList();
+            using (var content = new SiteContext())
+            {
+                return content.Cities.Where(r => r.AreaID == AreaId).OrderBy(r => r.Sorted).ToList();
+            }
         }
 
         public List<Entity.FxSite.GoodsCondition> GoodsConditions()
         {
-            return content.Value.GoodsConditions.OrderBy(r => r.Sorted).ToList();
+            using (var content = new SiteContext())
+            {
+                return content.GoodsConditions.OrderBy(r => r.Sorted).ToList();
+            }
         }
     }
 }

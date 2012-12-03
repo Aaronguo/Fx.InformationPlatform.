@@ -6,14 +6,8 @@ using Fx.Infrastructure;
 
 namespace Fx.Domain.Account
 {
-    public class UserAccountService : BaseIService<SiteContext>, IService.IAccountService
+    public class UserAccountService : IService.IAccountService
     {
-        public UserAccountService()
-        {
-            this.content = new Lazy<SiteContext>(() => new SiteContext());
-        }
-
-
         public DomainResult IsExistUser(string userName)
         {
             var user = Membership.GetUser(userName);
@@ -27,9 +21,10 @@ namespace Fx.Domain.Account
             {
                 return new DomainResult(false);
             }
+
         }
 
-        public DomainResult AddUser(Entity.MemberShip.Membership entity,Entity.MemberShip.OtherInformation other)
+        public DomainResult AddUser(Entity.MemberShip.Membership entity, Entity.MemberShip.OtherInformation other)
         {
             if (!IsExistUser(entity.Users.UserName).isSuccess)
             {
@@ -40,17 +35,20 @@ namespace Fx.Domain.Account
                     Membership.CreateUser(entity.Email, entity.Password, entity.Email, null, null, true, null, out createStatus);
                     if (createStatus == MembershipCreateStatus.Success)
                     {
-                        var user = content.Value.Users.Where(r => r.UserName == entity.Users.UserName).First();
-                        other.ApplicationId = user.ApplicationId;
-                        other.UserId = user.UserId;
-                        var rEntity = content.Value.OtherInformations.Add(other);
-                        try
+                        using (var content = new SiteContext())
                         {
-                            content.Value.SaveChanges();
-                        }
-                        catch (Exception)
-                        {
-                            DeleteUser(entity);
+                            var user = content.Users.Where(r => r.UserName == entity.Users.UserName).First();
+                            other.ApplicationId = user.ApplicationId;
+                            other.UserId = user.UserId;
+                            var rEntity = content.OtherInformations.Add(other);
+                            try
+                            {
+                                content.SaveChanges();
+                            }
+                            catch (Exception)
+                            {
+                                DeleteUser(entity);
+                            }
                         }
                     }
                 }
@@ -83,12 +81,16 @@ namespace Fx.Domain.Account
                 try
                 {
                     Membership.DeleteUser(entity.Users.UserName);
-                    var other = this.content.Value.OtherInformations.Where(r => r.Email == entity.Users.UserName).FirstOrDefault();
-                    if (other != null)
+                    using (var content = new SiteContext())
                     {
-                        this.content.Value.OtherInformations.Remove(other);
-                        this.content.Value.SaveChanges();
-                    }                    
+                        var other = content.OtherInformations
+                            .Where(r => r.Email == entity.Users.UserName).FirstOrDefault();
+                        if (other != null)
+                        {
+                            content.OtherInformations.Remove(other);
+                            content.SaveChanges();
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -141,7 +143,7 @@ namespace Fx.Domain.Account
 
 
 
-        public DomainResult ChangePassword(Entity.MemberShip.Membership entity,string oldPassword)
+        public DomainResult ChangePassword(Entity.MemberShip.Membership entity, string oldPassword)
         {
             var result = DomainResult.GetDefault();
             var u = Membership.GetUser(entity.Users.UserName);
@@ -180,13 +182,19 @@ namespace Fx.Domain.Account
 
         public int GetUserCount()
         {
-            return this.content.Value.Users.Count();
+            using (var content = new SiteContext())
+            {
+                return content.Users.Count();
+            }
         }
 
 
         public Guid GetCurrentUser(string Email)
         {
-            return this.content.Value.Memberships.Where(r => r.Email == Email).First().UserId;
+            using (var content = new SiteContext())
+            {
+                return content.Memberships.Where(r => r.Email == Email).First().UserId;
+            }
         }
     }
 }

@@ -1,27 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using Fx.Domain.FxSite.IService;
 using Fx.Infrastructure;
 using Fx.Infrastructure.Caching;
 
 namespace Fx.Domain.FxSite
 {
-    public class CarService : BaseIService<SiteContext>, ICar, IDisposable
+    public class CarService : ICar
     {
         private readonly string CARKEYYEAR = "Fx.Domain.FxSite.CarService.GetCarShowYear";
         private readonly string CARMILEAGE = "Fx.Domain.FxSite.CarService.CARMILEAGE";
         ICacheManager cachemanager;
         public CarService(ICacheManager cachemanager)
         {
-            this.content = new Lazy<SiteContext>(() => new SiteContext());
             this.cachemanager = cachemanager;
         }
 
         public List<Entity.FxSite.ChannelListDetail> GetChannelBuyDetail(string ControllerName, string ActionName)
         {
-            var channelList = content.Value.ChannelLists.Where(
-                r => r.BuyController == ControllerName && r.ActionName == ActionName).FirstOrDefault();
+            Fx.Entity.FxSite.ChannelList channelList;
+            using (var content = new SiteContext())
+            {
+                channelList = content.ChannelLists.Include(r => r.ChannelListDetails)
+                    .Where(r => r.BuyController == ControllerName
+                             && r.ActionName == ActionName).FirstOrDefault();
+            }
             if (channelList != null)
             {
                 var details = channelList.ChannelListDetails.OrderBy(r => r.Sorted).ToList();
@@ -33,8 +38,12 @@ namespace Fx.Domain.FxSite
 
         public List<Entity.FxSite.ChannelListDetail> GetChannelTransferDetail(string ControllerName, string ActionName)
         {
-            var channelList = content.Value.ChannelLists.Where(
-                r => r.TransferController == ControllerName && r.ActionName == ActionName).FirstOrDefault();
+            Fx.Entity.FxSite.ChannelList channelList;
+            using (var content = new SiteContext())
+            {
+                 channelList= content.ChannelLists.Where(
+                    r => r.TransferController == ControllerName && r.ActionName == ActionName).FirstOrDefault();
+            }
             if (channelList != null)
             {
                 var details = channelList.ChannelListDetails.OrderBy(r => r.Sorted).ToList();
@@ -69,7 +78,7 @@ namespace Fx.Domain.FxSite
         {
             if (cachemanager.Get(CARMILEAGE) == null)
             {
-                var carMileage = new Dictionary<int,string>();
+                var carMileage = new Dictionary<int, string>();
                 carMileage.Add(1, "100英里以下");
                 carMileage.Add(2, "5000英里以下");
                 carMileage.Add(3, "10000英里以下");
@@ -81,7 +90,7 @@ namespace Fx.Domain.FxSite
                 carMileage.Add(9, "100000英里以上");
                 cachemanager.Insert(CARMILEAGE, carMileage, 3600, System.Web.Caching.CacheItemPriority.Default);
             }
-            return cachemanager.Get(CARMILEAGE) as Dictionary<int,string>;
+            return cachemanager.Get(CARMILEAGE) as Dictionary<int, string>;
         }
     }
 }

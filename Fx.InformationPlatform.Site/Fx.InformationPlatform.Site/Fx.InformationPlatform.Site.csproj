@@ -230,6 +230,7 @@
     <Compile Include="ViewModel\HouseBuySearchModel.cs" />
     <Compile Include="ViewModel\HouseListModel.cs" />
     <Compile Include="ViewModel\HouseTransferSearchModel.cs" />
+    <Compile Include="ViewModel\SearchBase.cs" />
     <Compile Include="ViewModel\TransferViewCar.cs" />
     <Compile Include="ViewModel\TransferViewGoods.cs" />
     <Compile Include="ViewModel\TransferViewHouse.cs" />
