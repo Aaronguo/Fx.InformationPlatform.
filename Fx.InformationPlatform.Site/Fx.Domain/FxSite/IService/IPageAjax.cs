@@ -22,5 +22,11 @@ namespace Fx.Domain.FxSite.IService
         /// </summary>
         /// <returns></returns>
         List<GoodsCondition> GoodsConditions();
+
+        /// <summary>
+        /// 获取所有的地区包括其级联城市
+        /// </summary>
+        /// <returns></returns>
+        List<Entity.FxSite.Area> GetAreaDomain();
     }
 }

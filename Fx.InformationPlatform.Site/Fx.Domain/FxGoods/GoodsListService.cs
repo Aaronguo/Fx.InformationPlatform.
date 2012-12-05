@@ -20,7 +20,7 @@ namespace Fx.Domain.FxGoods
             {
                 list = context.GoodsTransferInfos.Include(r => r.Pictures)
                         .Where(r => r.IsPublish &&
-                            (r.GoodsTransferInfoId >= (int)ChannelListDetailCatagroy.MusicInstruments ||
+                            (r.GoodsTransferInfoId >= (int)ChannelListDetailCatagroy.MusicInstruments &&
                             r.GoodsTransferInfoId >= (int)ChannelListDetailCatagroy.CultureLifeOther))
                         .OrderByDescending(r => r.CreatedTime)
                         .Take(20).ToList();
@@ -39,7 +39,7 @@ namespace Fx.Domain.FxGoods
             {
                 list = context.GoodsTransferInfos.Include(r => r.Pictures)
                         .Where(r => r.IsPublish &&
-                            (r.GoodsTransferInfoId >= (int)ChannelListDetailCatagroy.Phone ||
+                            (r.GoodsTransferInfoId >= (int)ChannelListDetailCatagroy.Phone &&
                             r.GoodsTransferInfoId >= (int)ChannelListDetailCatagroy.ElectronicsOther))
                         .OrderByDescending(r => r.CreatedTime)
                         .Take(20).ToList();
@@ -58,7 +58,7 @@ namespace Fx.Domain.FxGoods
             {
                 list = context.GoodsTransferInfos.Include(r => r.Pictures)
                         .Where(r => r.IsPublish &&
-                            (r.GoodsTransferInfoId >= (int)ChannelListDetailCatagroy.Clothing ||
+                            (r.GoodsTransferInfoId >= (int)ChannelListDetailCatagroy.Clothing &&
                             r.GoodsTransferInfoId >= (int)ChannelListDetailCatagroy.FashionOther))
                         .OrderByDescending(r => r.CreatedTime)
                         .Take(20).ToList();
@@ -77,7 +77,7 @@ namespace Fx.Domain.FxGoods
             {
                 list = context.GoodsTransferInfos.Include(r => r.Pictures)
                          .Where(r => r.IsPublish &&
-                            (r.GoodsTransferInfoId >= (int)ChannelListDetailCatagroy.Furniture ||
+                            (r.GoodsTransferInfoId >= (int)ChannelListDetailCatagroy.Furniture &&
                             r.GoodsTransferInfoId >= (int)ChannelListDetailCatagroy.HomeSuppliesOther))
                          .OrderByDescending(r => r.CreatedTime)
                          .Take(20).ToList();

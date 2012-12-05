@@ -6,14 +6,23 @@
 
 <div class="interval_20"></div>
 <div class="grid_24">
-    @Html.Partial("Partial/GoodsTransfer/Search")
+    @Html.Partial("Partial/GoodsTransfer/Search", Model)
     <div class="interval_20"></div>
 
 
     <div class="grid_20 alpha">
         <div class="searchs-results_list">
-            <div class="tops_tit_s_r">  
-                @Html.ActionLink("求购", "GoodsBuySearch", new { goodsTransferSearchKey = "", page = 1, @class = "qiugot-a" })
+            <div class="tops_tit_s_r">
+                @Html.ActionLink("求购", "GoodsBuySearch", new
+                    {
+                        goodsTransferSearchKey = "",
+                        page = 1,
+                        IsChangeByGoods = Model.IsChangeByGoods,
+                        IsChangeByPrice = Model.IsChangeByPrice,
+                        area = Model.AreaId,
+                        city = Model.CityId,
+                        @class = "qiugot-a"
+                    })
             </div>
             <div class="srl_cons">
                 @Html.Partial("Partial/GoodsTransfer/Ad")
@@ -30,7 +39,7 @@
         </div>
     </div>
     <div class="grid_4 omega" style="float: right;">
-        @Html.Partial("Partial/GoodsTransfer/RightGoods",Model.RightGoods)
+        @Html.Partial("Partial/GoodsTransfer/RightGoods")
     </div>
     <div class="clear"></div>
 </div>

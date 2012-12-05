@@ -58,6 +58,7 @@ namespace Fx.InformationPlatform.Site.App_Start
             container.RegisterSingle<FxCacheService.FxGoods.GoodsCache>();
             container.RegisterSingle<FxCacheService.FxHouse.HouseCache>();
             container.RegisterSingle<FxCacheService.FxCar.CarCache>();
+            container.RegisterSingle<FxCacheService.FxSite.SiteCache>();
             //缓存查询服务  为什么不使用接口注册？ISiteSearch<CarBuyInfo> 保持对外一致性 用于缓存
             container.Register<Fx.Domain.FxCar.Search.CarBuySearchService>();
             container.Register<Fx.Domain.FxCar.Search.CarTransferSearchService>();

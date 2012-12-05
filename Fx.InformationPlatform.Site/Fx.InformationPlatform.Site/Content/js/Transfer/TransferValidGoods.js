@@ -151,10 +151,10 @@ transfergoods.ValidFacefile = function () {
         transfergoods.TipMsg = "图片的数量至少是：" + minlength;
         return false;
     }//如果选择了换物 请上传图片
-    if (transfergoods.IsChangeGoods() == true && facefile.length <= 2) {
-        transfergoods.TipMsg = "如果你选择了换物，请上你交换物品的图片";
-        return false;
-    }
+    //if (transfergoods.IsChangeGoods() == true && facefile.length <= 2) {
+    //    transfergoods.TipMsg = "如果你选择了换物，请上你交换物品的图片";
+    //    return false;
+    //}
     return true;
 }
 
@@ -177,7 +177,7 @@ transfergoods.ValidBadfile = function () {
     var badfile = $("input[name=badfile]");
     var minlength = $("#mainbad").attr("minlength");
     if (badfile.length == 1 && badfile.length != minlength) {
-        transfergoods.TipMsg = "请选择磨损部位照片";
+        transfergoods.TipMsg = "请选择其他方位照片2";
         return false;
     }
     if (badfile.length < minlength) {

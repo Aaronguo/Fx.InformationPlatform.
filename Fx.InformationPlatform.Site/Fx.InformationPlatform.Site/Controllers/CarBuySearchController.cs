@@ -55,7 +55,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopCars = carCache.GetCarBuyTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -79,7 +79,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopCars = carCache.GetCarBuyTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -103,7 +103,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopCars = carCache.GetCarBuyTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -127,7 +127,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopCars = carCache.GetCarBuyTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -151,7 +151,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopCars = carCache.GetCarBuyTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -175,7 +175,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopCars = carCache.GetCarBuyTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -199,7 +199,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopCars = carCache.GetCarBuyTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -223,7 +223,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopCars = carCache.GetCarBuyTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -247,7 +247,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopCars = carCache.GetCarBuyTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -271,7 +271,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopCars = carCache.GetCarBuyTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -295,7 +295,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopCars = carCache.GetCarBuyTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -319,7 +319,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopCars = carCache.GetCarBuyTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -343,7 +343,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopCars = carCache.GetCarBuyTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -367,7 +367,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopCars = carCache.GetCarBuyTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 

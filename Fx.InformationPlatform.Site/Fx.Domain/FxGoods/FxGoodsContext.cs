@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Data.Objects;
 using Fx.Domain.FxGoods.Mapping;
 using Fx.Entity;
 using Fx.Entity.FxGoods;
@@ -47,5 +49,14 @@ namespace Fx.Domain.FxGoods
         public DbSet<GoodsTransferInfo> GoodsTransferInfos { get; set; }
         public DbSet<GoodsBuyInfo> GoodsBuyInfos { get; set; }
         public DbSet<PictureCdnError> PictureCdnErrors { get; set; }
+
+
+        public ObjectContext ObjectContent
+        {
+            get
+            {
+                return ((IObjectContextAdapter)this).ObjectContext;
+            }
+        }
     }
 }

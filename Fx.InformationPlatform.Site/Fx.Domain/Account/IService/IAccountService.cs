@@ -40,5 +40,7 @@ namespace Fx.Domain.Account.IService
         int GetUserCount();
 
         Guid GetCurrentUser(string Email);
+
+        OtherInformation GetUserExtendInfo(string Email);
     }
 }

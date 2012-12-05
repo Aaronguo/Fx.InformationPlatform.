@@ -5,267 +5,133 @@ using System.Text;
 using System.Data.Entity;
 using Fx.Domain.Base.IService;
 using Fx.Entity.FxGoods;
+using Fx.Domain.Base;
+using Fx.Infrastructure.Data;
+using System.Configuration;
 
 namespace Fx.Domain.FxGoods.Search
 {
-    public class GoodsBuySearchService : ISiteSearch<GoodsBuyInfo>, IGoodsSearch<GoodsBuyInfo>
+    public class GoodsBuySearchService : CommonSearch,ISiteSearch<GoodsBuyInfo>, IGoodsSearch<GoodsBuyInfo>
     {
-        public List<GoodsBuyInfo> SearchByKey(string key, int page, int take = 20)
+
+        public List<GoodsBuyInfo> SearchByKey(string key, int area, int city, int page, int take)
         {
-            using (var context = new FxGoodsContext())
+            return SearchByKey(key, area, city, page, take, true, true);
+        }
+
+        public List<GoodsBuyInfo> SearchByKey(string key, int area = 0, int city = 0, int page = 0, int take = 10, bool changegoods = true, bool changeprice = true)
+        {
+            int start = 1 + page * 10;
+            int end = page * 10 + take;
+            var where = CreateCommonSearch(key, area, city);
+            if (!(changegoods && changeprice))
             {
-                if (!string.IsNullOrWhiteSpace(key))
+                if (changegoods)
                 {
-                    return context.GoodsBuyInfos
-                                    .Include(r => r.Pictures)
-                                    .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
-                                    .OrderByDescending(r => r.CreatedTime)
-                                    .Skip(page * take).Take(take).ToList();
+                    where.Append(string.Format(" and IsChange={0} ", 1));                    
                 }
                 else
                 {
-                    return context.GoodsBuyInfos
-                                    .Include(r => r.Pictures)
-                                    .Where(r => r.IsPublish == true)
-                                    .OrderByDescending(r => r.CreatedTime)
-                                    .Skip(page * take).Take(take).ToList();
+                    where.Append(string.Format(" and IsChange={0} ", 0));
                 }
             }
-        }
+            string sql = " SELECT [GoodsBuyInfoId] FROM " +
+                "  ( SELECT ROW_NUMBER() OVER ( ORDER BY [GoodsBuyInfoId] ) " +
+                "    AS RowNumber,[GoodsBuyInfoId],CreatedTime " +
+                "      FROM [FxGoods].[Goods].[GoodsBuyInfo] " + where.ToString() + " ) " +
+                "  AS A1 WHERE RowNumber BETWEEN " + start + " AND " + end;
 
-        /// <summary>
-        /// 按价格查询 默认价格从低到高
-        /// </summary>
-        /// <param name="page"></param>
-        /// <param name="asc"></param>
-        /// <param name="key"></param>
-        /// <returns></returns>
-        public List<GoodsBuyInfo> SearchByPrice(int page, bool asc = true, string key = "", int take = 20)
-        {
+            SqlHelper db = new SqlHelper(ConfigurationManager.ConnectionStrings["fx.goods-sqlserver"].ToString());
+            var dt = db.GetDt(sql);
+            var ids = new List<int>();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                ids.Add(Convert.ToInt32(dt.Rows[i][0]));
+            }
             using (var context = new FxGoodsContext())
             {
-                if (!string.IsNullOrWhiteSpace(key))
-                {
-                    if (asc)
-                    {
-                        return context.GoodsBuyInfos
-                                    .Include(r => r.Pictures)
-                                    .Where(r => r.IsPublish == true)
-                                    .OrderBy(r => r.Price)
-                                    .Skip(page * take)
-                                    .Take(take).ToList();
-                    }
-                    else
-                    {
-                        return context.GoodsBuyInfos
-                                    .Include(r => r.Pictures)
-                                    .Where(r => r.IsPublish == true)
-                                    .OrderByDescending(r => r.Price)
-                                    .Skip(page * take)
-                                    .Take(take).ToList();
-                    }
-                }
-                else
-                {
-                    if (asc)
-                    {
-                        return context.GoodsBuyInfos
-                                    .Include(r => r.Pictures)
-                                    .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
-                                    .OrderBy(r => r.Price)
-                                    .Skip(page * take)
-                                    .Take(take).ToList();
-                    }
-                    else
-                    {
-                        return context.GoodsBuyInfos
-                                    .Include(r => r.Pictures)
-                                    .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
-                                    .OrderByDescending(r => r.Price)
-                                    .Skip(page * take)
-                                    .Take(take).ToList();
-                    }
-                }
+                return context.GoodsBuyInfos
+                   .Include(r => r.Pictures)
+                   .Where(r => ids.Contains(r.GoodsBuyInfoId)).ToList();
+                //if (!string.IsNullOrWhiteSpace(key))
+                //{
+                //    if (area == 0 && city == 0)
+                //    {
+
+                //        return context.GoodsBuyInfos
+                //                        .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
+                //                        .OrderByDescending(r => r.CreatedTime)
+                //                        .Skip(page * take).Take(take).ToList();
+                //    }
+                //    else if (area > 0)
+                //    {
+                //        if (city > 0)
+                //        {
+                //            return context.GoodsBuyInfos
+                //                       .Where(r => r.PublishTitle.Contains(key) &&
+                //                           r.AreaId == area &&
+                //                           r.CityId == city &&
+                //                           r.IsPublish == true)
+                //                       .OrderByDescending(r => r.CreatedTime)
+                //                       .Skip(page * take).Take(take).ToList();
+                //        }
+                //        else
+                //        {
+                //            return context.GoodsBuyInfos
+                //                       .Where(r => r.PublishTitle.Contains(key) &&
+                //                           r.AreaId == area &&
+                //                           r.IsPublish == true)
+                //                       .OrderByDescending(r => r.CreatedTime)
+                //                       .Skip(page * take).Take(take).ToList();
+                //        }
+
+                //    }
+                //    else
+                //    {
+                //        return context.GoodsBuyInfos
+                //                      .Where(r => r.PublishTitle.Contains(key) &&
+                //                          r.IsPublish == true)
+                //                      .OrderByDescending(r => r.CreatedTime)
+                //                      .Skip(page * take).Take(take).ToList();
+                //    }
+
+                //}
+                //else
+                //{
+                //    return context.GoodsBuyInfos
+                //                    .Where(r => r.IsPublish == true)
+                //                    .OrderByDescending(r => r.CreatedTime)
+                //                    .Skip(page * take)
+                //                    .Take(take).ToList();
+                //}
             }
         }
 
-        /// <summary>
-        /// 根据时间排序
-        /// </summary>
-        /// <param name="key"></param>
-        /// <param name="asc"></param>
-        /// <param name="page"></param>
-        /// <returns></returns>
-        public List<GoodsBuyInfo> SearchByDate(int page, bool asc = false, string key = "", int take = 20)
-        {
-            using (var context = new FxGoodsContext())
-            {
-                if (!string.IsNullOrWhiteSpace(key))
-                {
-                    if (asc)
-                    {
-                        return context.GoodsBuyInfos
-                                        .Include(r => r.Pictures)
-                                        .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
-                                       .OrderBy(r => r.CreatedTime)
-                                       .Skip(page * take)
-                                       .Take(take).ToList();
-                    }
-                    else
-                    {
-                        return context.GoodsBuyInfos
-                                        .Include(r => r.Pictures)
-                                        .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
-                                        .OrderByDescending(r => r.CreatedTime)
-                                        .Skip(page * take)
-                                        .Take(take).ToList();
-                    }
-                }
-                else
-                {
-                    if (asc)
-                    {
-                        return context.GoodsBuyInfos
-                                    .Include(r => r.Pictures)
-                                    .Where(r => r.IsPublish == true)
-                                    .OrderBy(r => r.CreatedTime)
-                                    .Skip(page * take)
-                                    .Take(take).ToList();
-                    }
-                    else
-                    {
-                        return context.GoodsBuyInfos
-                                    .Include(r => r.Pictures)
-                                    .Where(r => r.IsPublish == true)
-                                    .OrderByDescending(r => r.CreatedTime)
-                                    .Skip(page * take)
-                                    .Take(take).ToList();
-                    }
-                }
-            }
-        }
-
-
-
-
-        //public List<GoodsBuyInfo> SearchByChanges(int page, bool byPrice, bool byGoods, bool asc, string key)
+        //public List<GoodsBuyInfo> SearchWhenChangeGoods(int page = 0, int take = 20)
         //{
         //    using (var context = new FxGoodsContext())
         //    {
-        //        if (!string.IsNullOrWhiteSpace(key))
-        //        {
-        //            if (byPrice)
-        //            {
-        //                if (asc)
-        //                {
-        //                    return context.GoodsBuyInfos
-        //                               .Where(r => r.PublishTitle.Contains(key) && r.IsChange == false && r.IsPublish == true)
-        //                               .OrderBy(r => r.CreatedTime)
-        //                               .Skip(page * 20)
-        //                               .Take(20).ToList();
-        //                }
-        //                else
-        //                {
-        //                    return context.GoodsBuyInfos
-        //                               .Where(r => r.PublishTitle.Contains(key) && r.IsChange == false && r.IsPublish == true)
-        //                               .OrderByDescending(r => r.CreatedTime)
-        //                               .Skip(page * 20)
-        //                               .Take(20).ToList();
-        //                }
-        //            }
-        //            else
-        //            {
-        //                if (asc)
-        //                {
-        //                    return context.GoodsBuyInfos
-        //                                   .Where(r => r.PublishTitle.Contains(key) && r.IsChange == true && r.IsPublish == true)
-        //                                   .OrderBy(r => r.CreatedTime)
-        //                                   .Skip(page * 20)
-        //                                   .Take(20).ToList();
-        //                }
-        //                else
-        //                {
-        //                    return context.GoodsBuyInfos
-        //                                  .Where(r => r.PublishTitle.Contains(key) && r.IsChange == true && r.IsPublish == true)
-        //                                  .OrderByDescending(r => r.CreatedTime)
-        //                                  .Skip(page * 20)
-        //                                  .Take(20).ToList();
-        //                }
-        //            }
-        //        }
-        //        else
-        //        {
-
-        //            if (byPrice)
-        //            {
-        //                if (asc)
-        //                {
-        //                    return context.GoodsBuyInfos
-        //                                   .Where(r => r.IsChange == false && r.IsPublish == true)
-        //                                   .OrderBy(r => r.CreatedTime)
-        //                                   .Skip(page * 20)
-        //                                   .Take(20).ToList();
-        //                }
-        //                else
-        //                {
-        //                    return context.GoodsBuyInfos
-        //                                   .Where(r => r.IsChange == false && r.IsPublish == true)
-        //                                   .OrderByDescending(r => r.CreatedTime)
-        //                                   .Skip(page * 20)
-        //                                   .Take(20).ToList();
-        //                }
-
-        //            }
-        //            else
-        //            {
-        //                if (asc)
-        //                {
-
-        //                    return context.GoodsBuyInfos
-        //                                   .Where(r => r.IsChange == true && r.IsPublish == true)
-        //                                   .OrderBy(r => r.CreatedTime)
-        //                                   .Skip(page * 20)
-        //                                   .Take(20).ToList();
-        //                }
-        //                else
-        //                {
-
-        //                    return context.GoodsBuyInfos
-        //                                   .Where(r => r.IsChange == true && r.IsPublish == true)
-        //                                   .OrderByDescending(r => r.CreatedTime)
-        //                                   .Skip(page * 20)
-        //                                   .Take(20).ToList();
-        //                }
-        //            }
-        //        }
+        //        return context.GoodsBuyInfos
+        //            .Include(r => r.Pictures)
+        //            .Where(r => r.IsPublish == true && r.IsChange == true)
+        //            .OrderByDescending(r => r.CreatedTime)
+        //            .Skip(page * take)
+        //            .Take(take).ToList();
         //    }
         //}
 
-        public List<GoodsBuyInfo> SearchWhenChangeGoods(int page = 0, int take = 20)
-        {
-            using (var context = new FxGoodsContext())
-            {
-                return context.GoodsBuyInfos
-                    .Include(r => r.Pictures)
-                    .Where(r => r.IsPublish == true && r.IsChange == true)
-                    .OrderByDescending(r => r.CreatedTime)
-                    .Skip(page * take)
-                    .Take(take).ToList();
-            }
-        }
-
-        public List<GoodsBuyInfo> SearchWhenPrice(int page = 0, int take = 20)
-        {
-            using (var context = new FxGoodsContext())
-            {
-                return context.GoodsBuyInfos
-                    .Include(r => r.Pictures)
-                    .Where(r => r.IsPublish == true && r.IsChange == false)
-                    .OrderByDescending(r => r.CreatedTime)
-                    .Skip(page * take)
-                    .Take(take).ToList();
-            }
-        }
+        //public List<GoodsBuyInfo> SearchWhenPrice(int page = 0, int take = 20)
+        //{
+        //    using (var context = new FxGoodsContext())
+        //    {
+        //        return context.GoodsBuyInfos
+        //            .Include(r => r.Pictures)
+        //            .Where(r => r.IsPublish == true && r.IsChange == false)
+        //            .OrderByDescending(r => r.CreatedTime)
+        //            .Skip(page * take)
+        //            .Take(take).ToList();
+        //    }
+        //}
 
 
         public List<GoodsBuyInfo> SearchByCatagroy(Entity.Catagroy.ChannelListDetailCatagroy catagroy, int page, int take)
@@ -280,5 +146,27 @@ namespace Fx.Domain.FxGoods.Search
                     .Take(take).ToList();
             }
         }
+
+
+        private IQueryable<GoodsBuyInfo> CreateWhereExpress(IQueryable<GoodsBuyInfo> list, string key, int area, int city, bool changegoods, bool changeprice)
+        {
+            IQueryable<GoodsBuyInfo> query = list.Include(r=>r.Pictures);
+            if (!string.IsNullOrWhiteSpace(key))
+            {
+                list = list.Where(r => r.PublishTitle.Contains(key));
+            }
+            if (area > 0)
+            {
+                list = list.Where(r => r.AreaId == area);
+            }
+            if (city > 0)
+            {
+                list = list.Where(r => r.CityId == city);
+            }
+            
+            return query.Where(r => r.IsPublish == true);
+        }
+
+
     }
 }

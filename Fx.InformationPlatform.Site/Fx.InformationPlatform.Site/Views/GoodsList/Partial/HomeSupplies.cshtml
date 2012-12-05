@@ -1,7 +1,7 @@
 ﻿@model List<Fx.Entity.FxGoods.GoodsTransferInfo>
 <div class="grid_24">
     <div class="grid_3 alpha">
-        <img class="list_left_img_demo_tit" src="@Fx.InformationPlatform.Site.AppSettings.ImageDomain("goods.png")">
+        <img class="list_left_img_demo_tit" src="@Fx.InformationPlatform.Site.AppSettings.ImageDomain("goodsList/HomeSupplies.png")">
     </div>
     <div class="grid_21 omega" style="text-align: left; float: right;">
         <div class="topLoop" id="sliders_1" style="width: 830px; height: 243px;">
@@ -17,7 +17,7 @@
                                     {
                                         if (picture.TransferPictureCatagroy == (int)Fx.Entity.PictureCatagroy.Head)
                                         {
-                                        <a href="@Fx.InformationPlatform.Site.AppSettings.CarTransferLink(Model[i].GoodsTransferInfoId)" class="tops_aa_imgs_kk">
+                                        <a href="@Fx.InformationPlatform.Site.AppSettings.GoodsTransferLink(Model[i].GoodsTransferInfoId)" class="tops_aa_imgs_kk">
 
                                             <img src="@Fx.InformationPlatform.Site.AppSettings.ImageUploadCdnDomain(picture.ImageUrl)"/>
                                         </a>
@@ -25,7 +25,7 @@
                                         }
                                     }
                                     <div class="tits_btm_coms_list names_btm">
-                                        <a href="@Fx.InformationPlatform.Site.AppSettings.CarTransferLink(Model[i].GoodsTransferInfoId)">@Model[i].PublishTitle、 @Model[i].Price ￡</a>
+                                        <a href="@Fx.InformationPlatform.Site.AppSettings.GoodsTransferLink(Model[i].GoodsTransferInfoId)">@Model[i].PublishTitle、 @Model[i].Price ￡</a>
                                     </div>
                                 </div>
 
@@ -34,7 +34,7 @@
                                     {
                                         if (picture.TransferPictureCatagroy == (int)Fx.Entity.PictureCatagroy.Head)
                                         {
-                                        <a href="@Fx.InformationPlatform.Site.AppSettings.CarTransferLink(Model[i + 1].GoodsTransferInfoId)" class="tops_aa_imgs_kk">
+                                        <a href="@Fx.InformationPlatform.Site.AppSettings.GoodsTransferLink(Model[i + 1].GoodsTransferInfoId)" class="tops_aa_imgs_kk">
 
                                             <img src="@Fx.InformationPlatform.Site.AppSettings.ImageUploadCdnDomain(picture.ImageUrl)"/>
                                         </a>
@@ -42,7 +42,7 @@
                                         }
                                     }
                                     <div class="tits_btm_coms_list names_btm">
-                                        <a href="@Fx.InformationPlatform.Site.AppSettings.CarTransferLink(Model[i + 1].GoodsTransferInfoId)">@Model[i + 1].PublishTitle、 @Model[i + 1].Price ￡</a>
+                                        <a href="@Fx.InformationPlatform.Site.AppSettings.GoodsTransferLink(Model[i + 1].GoodsTransferInfoId)">@Model[i + 1].PublishTitle、 @Model[i + 1].Price ￡</a>
                                     </div>
                                 </div>
 
@@ -51,7 +51,7 @@
                                     {
                                         if (picture.TransferPictureCatagroy == (int)Fx.Entity.PictureCatagroy.Head)
                                         {
-                                        <a href="@Fx.InformationPlatform.Site.AppSettings.CarTransferLink(Model[i + 2].GoodsTransferInfoId)" class="tops_aa_imgs_kk">
+                                        <a href="@Fx.InformationPlatform.Site.AppSettings.GoodsTransferLink(Model[i + 2].GoodsTransferInfoId)" class="tops_aa_imgs_kk">
 
                                             <img src="@Fx.InformationPlatform.Site.AppSettings.ImageUploadCdnDomain(picture.ImageUrl)"/>
                                         </a>
@@ -59,7 +59,7 @@
                                         }
                                     }
                                     <div class="tits_btm_coms_list names_btm">
-                                        <a href="@Fx.InformationPlatform.Site.AppSettings.CarTransferLink(Model[i + 2].GoodsTransferInfoId)">@Model[i + 2].PublishTitle、 @Model[i + 2].Price ￡</a>
+                                        <a href="@Fx.InformationPlatform.Site.AppSettings.GoodsTransferLink(Model[i + 2].GoodsTransferInfoId)">@Model[i + 2].PublishTitle、 @Model[i + 2].Price ￡</a>
                                     </div>
                                 </div>
 
@@ -68,7 +68,7 @@
                                     {
                                         if (picture.TransferPictureCatagroy == (int)Fx.Entity.PictureCatagroy.Head)
                                         {
-                                        <a href="@Fx.InformationPlatform.Site.AppSettings.CarTransferLink(Model[i + 3].GoodsTransferInfoId)" class="tops_aa_imgs_kk">
+                                        <a href="@Fx.InformationPlatform.Site.AppSettings.GoodsTransferLink(Model[i + 3].GoodsTransferInfoId)" class="tops_aa_imgs_kk">
 
                                             <img src="@Fx.InformationPlatform.Site.AppSettings.ImageUploadCdnDomain(picture.ImageUrl)"/>
                                         </a>
@@ -76,7 +76,7 @@
                                         }
                                     }
                                     <div class="tits_btm_coms_list names_btm">
-                                        <a href="@Fx.InformationPlatform.Site.AppSettings.CarTransferLink(Model[i + 3].GoodsTransferInfoId)">@Model[i + 3].PublishTitle、 @Model[i + 3].Price ￡</a>
+                                        <a href="@Fx.InformationPlatform.Site.AppSettings.GoodsTransferLink(Model[i + 3].GoodsTransferInfoId)">@Model[i + 3].PublishTitle、 @Model[i + 3].Price ￡</a>
                                     </div>
                                 </div>
                             </div>

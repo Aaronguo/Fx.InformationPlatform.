@@ -40,6 +40,8 @@ namespace Fx.Domain.Account
                             var user = content.Users.Where(r => r.UserName == entity.Users.UserName).First();
                             other.ApplicationId = user.ApplicationId;
                             other.UserId = user.UserId;
+                            other.Email = entity.Email;
+                               
                             var rEntity = content.OtherInformations.Add(other);
                             try
                             {
@@ -194,6 +196,15 @@ namespace Fx.Domain.Account
             using (var content = new SiteContext())
             {
                 return content.Memberships.Where(r => r.Email == Email).First().UserId;
+            }
+        }
+
+
+        public Entity.MemberShip.OtherInformation GetUserExtendInfo(string Email)
+        {
+            using (var content = new SiteContext())
+            {
+                return content.OtherInformations.Where(r => r.Email == Email).First();
             }
         }
     }

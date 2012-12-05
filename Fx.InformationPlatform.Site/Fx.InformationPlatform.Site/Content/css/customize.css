@@ -435,6 +435,7 @@ a
         .thing_deal_hot_tag .tdht_cons a:hover
         {
             background-image: url(images/tag_on_bg.jpg);
+            text-decoration: none;
             color: white;
         }
 

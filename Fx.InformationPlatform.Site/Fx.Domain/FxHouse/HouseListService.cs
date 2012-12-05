@@ -20,7 +20,7 @@ namespace Fx.Domain.FxHouse
             {
                 list = context.HouseTransferInfos.Include(r => r.Pictures)
                 .Where(r => r.IsPublish &&
-                    (r.HouseTransferInfoId >= (int)ChannelListDetailCatagroy.Shop ||
+                    (r.HouseTransferInfoId >= (int)ChannelListDetailCatagroy.Shop &&
                     r.HouseTransferInfoId <= (int)ChannelListDetailCatagroy.Office))
                 .OrderByDescending(r => r.CreatedTime)
                 .Take(20).ToList();
@@ -39,7 +39,7 @@ namespace Fx.Domain.FxHouse
             {
                 list = context.HouseTransferInfos.Include(r => r.Pictures)
                 .Where(r => r.IsPublish &&
-                    (r.HouseTransferInfoId >= (int)ChannelListDetailCatagroy.House ||
+                    (r.HouseTransferInfoId >= (int)ChannelListDetailCatagroy.House &&
                     r.HouseTransferInfoId <= (int)ChannelListDetailCatagroy.StudentAparment))
                 .OrderByDescending(r => r.CreatedTime)
                 .Take(20).ToList();

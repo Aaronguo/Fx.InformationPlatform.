@@ -47,15 +47,15 @@ namespace Fx.InformationPlatform.Site.Controllers
 
             var result = accountService.VaildUser(user.Email, user.Password);
             if (result.isSuccess)
-            {
+            {               
                 //创建验证票subdomain  share cookie
-                var ticket = new System.Web.Security.FormsAuthenticationTicket(user.Email, true, 30);
-
+                var ticket = new System.Web.Security.FormsAuthenticationTicket(user.Email, true, 30);                
                 string authTicket = System.Web.Security.FormsAuthentication.Encrypt(ticket);
                 HttpCookie cookie = new HttpCookie(System.Web.Security.FormsAuthentication.FormsCookieName, authTicket);
                 cookie.Domain = AppSettings.FormDomain;
                 Response.Cookies.Add(cookie);
-                Session[user.Email] = user.NickName == null ? "" : user.NickName;
+                var userExtend = accountService.GetUserExtendInfo(user.Email);
+                Session[user.Email] = userExtend.NickName == null ? "" : userExtend.NickName;
                 if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
                     && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
                 {

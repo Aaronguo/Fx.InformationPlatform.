@@ -50,8 +50,8 @@
     <Compile Include="Base\BaseIService.cs" />
     <Compile Include="Caching\CacheManager.cs" />
     <Compile Include="Caching\ICacheManager.cs" />
-    <Compile Include="Core\Core.cs" />
     <Compile Include="Data\IRepository.cs" />
+    <Compile Include="Data\SqlHelper.cs" />
     <Compile Include="Db\Connection.cs" />
     <Compile Include="Files\FileHelper.cs" />
     <Compile Include="Net\IMailManager.cs" />
@@ -62,7 +62,9 @@
     <Compile Include="Valide\EmailCheckAttribute.cs" />
     <Compile Include="Valide\MobileCheckAttribute.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Core\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy /V "$(TargetDir)\Fx.Infrastructure.dll" "E:\Program Files\GitHubWorkspace\net\FxInformationJob\FxInformationJob\FxInformationJob\packages\Fx\Fx.Infrastructure\Fx.Infrastructure.dll"

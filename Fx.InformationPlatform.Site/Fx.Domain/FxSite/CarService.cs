@@ -41,8 +41,9 @@ namespace Fx.Domain.FxSite
             Fx.Entity.FxSite.ChannelList channelList;
             using (var content = new SiteContext())
             {
-                 channelList= content.ChannelLists.Where(
-                    r => r.TransferController == ControllerName && r.ActionName == ActionName).FirstOrDefault();
+                channelList = content.ChannelLists.Include(r => r.ChannelListDetails)
+                     .Where(r => r.TransferController == ControllerName && 
+                         r.ActionName == ActionName).FirstOrDefault();
             }
             if (channelList != null)
             {

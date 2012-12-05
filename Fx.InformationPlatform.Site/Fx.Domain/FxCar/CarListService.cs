@@ -19,11 +19,13 @@ namespace Fx.Domain.FxCar
             using (FxCarContext context = new FxCarContext())
             {
                 list = context.CarTransferInfos.Include(r => r.Pictures)
-                    .Where(r => r.IsPublish &&
-                        (r.CarTransferInfoId >= (int)ChannelListDetailCatagroy.Audi ||
-                        r.CarTransferInfoId >= (int)ChannelListDetailCatagroy.SecondHandCarOther))
+                    .Where(r => r.IsPublish)
                     .OrderByDescending(r => r.CreatedTime)
                     .Take(20).ToList();
+                //&&
+                //        (r.CarTransferInfoId >= (int)ChannelListDetailCatagroy.Audi &&
+                //        r.CarTransferInfoId >= (int)ChannelListDetailCatagroy.SecondHandCarOther)
+                //只有一个栏目 优化语句
             }
             if ((list.Count % 4) != 0)
             {

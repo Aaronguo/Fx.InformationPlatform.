@@ -36,10 +36,10 @@
                     <cite class="red">*</cite><strong>价格：</strong>
                 </p>
             </div>
-            <div class="omega grid_17 input-append">
+            <div class="omega grid_17 input-prepend">
+                <span class="add-on">￡</span>
                 <input type="text" id="price" value=""
                     style="width: 180px;" maxlength="8" />
-                <span class="add-on">￡</span>
             </div>
             <div class="clear">
             </div>
@@ -118,7 +118,7 @@
                 <input type="file" class="multi" accept="jpg|jpeg|png|gif|bmp" maxlength="1" minlength="2" name="facefile" id="mainface" /><br />
                 <div class="gird_2">其他方位照片 <cite class="red">选填</cite></div>
                 <input type="file" class="multi" accept="jpg|jpeg|png|gif|bmp" maxlength="1" minlength="1" name="otherfile" id="mainother" /><br />
-                <div class="gird_2">磨损部位照片 <cite class="red">选填</cite></div>
+                <div class="gird_2">其他方位照片2 <cite class="red">选填</cite></div>
                 <input type="file" class="multi" accept="jpg|jpeg|png|gif|bmp" maxlength="1" minlength="1" name="badfile" id="mainbad"><br />
             </div>
             <div class="clear">
@@ -169,12 +169,12 @@
             </div>
 
             <div class="omega grid_17">
-                <input type="submit" class="form-submit button button-green" value="免费注册并发布"
+                <input type="submit" class="btn btn-warning" value="发布"
                     rel="popover" data-placement="left" data-original-title="您的信息填写错误" data-content="" onclick="return transfergoods.Submit();"
                     show="1500" hide="300">
                 <span class="p-note">发布即代表您已阅读并同意 
-                        @Html.ActionLink("英淘网用户协议", "Agreement", "PageLink")
-                    和  @Html.ActionLink("英淘网公约", "Convention", "PageLink")
+                        @Html.ActionLink("《英淘网用户协议》", "Agreement", "PageLink")
+                    和  @Html.ActionLink("《英淘网公约》", "Convention", "PageLink")
                 </span>
             </div>
             <div class="clear">

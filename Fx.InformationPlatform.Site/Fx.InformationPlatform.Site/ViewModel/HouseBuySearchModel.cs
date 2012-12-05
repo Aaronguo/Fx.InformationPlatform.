@@ -24,7 +24,7 @@ namespace Fx.InformationPlatform.Site.ViewModel
 
         }
 
-        public override void CheckMode()
+        public override void CheckModel()
         {
             this.RightHouse = this.RightHouse == null ? new List<HouseBuyInfo>() : this.RightHouse;
             this.MainHouse = this.MainHouse == null ? new List<HouseBuyInfo>() : this.MainHouse;

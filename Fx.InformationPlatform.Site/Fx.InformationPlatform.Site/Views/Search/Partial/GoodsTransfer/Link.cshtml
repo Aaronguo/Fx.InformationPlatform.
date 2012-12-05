@@ -7,6 +7,8 @@
         goodsTransferSearchKey = Model.Key,
         IsChangeByGoods = Model.IsChangeByGoods,
         IsChangeByPrice = Model.IsChangeByPrice,
+        area = Model.AreaId,
+        city = Model.CityId
     }, new { @class = "pre-btn" })
 }
 else
@@ -17,6 +19,8 @@ else
         goodsTransferSearchKey = Model.Key,
         IsChangeByGoods = Model.IsChangeByGoods,
         IsChangeByPrice = Model.IsChangeByPrice,
+        area = Model.AreaId,
+        city = Model.CityId
     }, new { @class = "pre-btn" })
 }
 @for (int i = Model.StartIndex; i <= Model.EndIndex; i++)
@@ -33,6 +37,8 @@ else
         goodsTransferSearchKey = Model.Key,
         IsChangeByGoods = Model.IsChangeByGoods,
         IsChangeByPrice = Model.IsChangeByPrice,
+        area = Model.AreaId,
+        city = Model.CityId
     })
     }
 }
@@ -42,4 +48,6 @@ else
     goodsTransferSearchKey = Model.Key,
     IsChangeByGoods = Model.IsChangeByGoods,
     IsChangeByPrice = Model.IsChangeByPrice,
+    area = Model.AreaId,
+    city = Model.CityId
 }, new { @class = "next-btn" })

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Text;
 using Fx.Domain.FxSite.IService;
 using Fx.Entity.FxSite;
@@ -22,8 +23,9 @@ namespace Fx.Domain.FxSite
             ChannelList channelList;
             using (var content = new SiteContext())
             {
-                channelList = content.ChannelLists.Where(
-                   r => r.BuyController == ControllerName && r.ActionName == ActionName).FirstOrDefault();
+                channelList = content.ChannelLists.Include(r => r.ChannelListDetails)
+                    .Where(r => r.BuyController == ControllerName && 
+                        r.ActionName == ActionName).FirstOrDefault();
             }
             if (channelList != null)
             {
@@ -39,8 +41,9 @@ namespace Fx.Domain.FxSite
             ChannelList channelList;
             using (var content = new SiteContext())
             {
-                channelList = content.ChannelLists.Where(
-                   r => r.TransferController == ControllerName && r.ActionName == ActionName).FirstOrDefault();
+                channelList = content.ChannelLists.Include(r => r.ChannelListDetails)
+                    .Where(r => r.TransferController == ControllerName && 
+                        r.ActionName == ActionName).FirstOrDefault();
             }
             if (channelList != null)
             {

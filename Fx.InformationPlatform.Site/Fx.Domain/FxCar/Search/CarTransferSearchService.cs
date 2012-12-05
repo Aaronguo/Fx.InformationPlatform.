@@ -10,140 +10,64 @@ namespace Fx.Domain.FxCar.Search
 {
     public class CarTransferSearchService : ISiteSearch<CarTransferInfo>, IHomeSearch<CarTransferInfo>, ICarSearch<CarTransferInfo> 
     {
-        public List<CarTransferInfo> SearchByKey(string key, int page, int take = 20)
+        public List<CarTransferInfo> SearchByKey(string key, int area = 0, int city = 0, int page = 0, int take = 10)
         {
             using (var context = new FxCarContext())
             {
-                if (!string.IsNullOrWhiteSpace(key))
-                {
-                    return context.CarTransferInfos
-                                    .Include(r => r.Pictures)
-                                    .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
-                                    .OrderByDescending(r => r.CreatedTime)
-                                    .Skip(page * take)
-                                    .Take(take).ToList();
-                }
-                else
-                {
-                    return context.CarTransferInfos
-                                    .Include(r => r.Pictures)
-                                    .Where(r => r.IsPublish == true)
-                                    .OrderByDescending(r => r.CreatedTime)
-                                    .Skip(page * take)
-                                    .Take(take).ToList();
-                }
-            }
-        }
+                return CreateWhereExpress(context.CarTransferInfos, key, area, city)
+                                       .OrderByDescending(r => r.CreatedTime)
+                                       .Skip(page * take).Take(take).ToList();
+                //if (!string.IsNullOrWhiteSpace(key))
+                //{
+                //    if (area == 0 && city == 0)
+                //    {
 
-        /// <summary>
-        /// 按价格查询 默认价格从低到高
-        /// </summary>
-        /// <param name="page"></param>
-        /// <param name="asc"></param>
-        /// <param name="key"></param>
-        /// <returns></returns>
-        public List<CarTransferInfo> SearchByPrice(int page, bool asc = true, string key = "", int take = 20)
-        {
-            using (var context = new FxCarContext())
-            {
-                if (!string.IsNullOrWhiteSpace(key))
-                {
-                    if (asc)
-                    {
-                        return context.CarTransferInfos
-                                    .Include(r => r.Pictures)
-                                    .Where(r => r.IsPublish == true)
-                                    .OrderBy(r => r.Price)
-                                    .Skip(page * take)
-                                    .Take(take).ToList();
-                    }
-                    else
-                    {
-                        return context.CarTransferInfos
-                                    .Include(r => r.Pictures)
-                                    .Where(r => r.IsPublish == true)
-                                    .OrderByDescending(r => r.Price)
-                                    .Skip(page * take)
-                                    .Take(take).ToList();
-                    }
-                }
-                else
-                {
-                    if (asc)
-                    {
-                        return context.CarTransferInfos
-                                    .Include(r => r.Pictures)
-                                    .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
-                                    .OrderBy(r => r.Price)
-                                    .Skip(page * take)
-                                    .Take(take).ToList();
-                    }
-                    else
-                    {
-                        return context.CarTransferInfos
-                                    .Include(r => r.Pictures)
-                                    .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
-                                    .OrderByDescending(r => r.Price)
-                                    .Skip(page * take)
-                                    .Take(take).ToList();
-                    }
-                }
-            }
-        }
+                //        return context.CarTransferInfos
+                //                        .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
+                //                        .OrderByDescending(r => r.CreatedTime)
+                //                        .Skip(page * take).Take(take).ToList();
+                //    }
+                //    else if (area > 0)
+                //    {
+                //        if (city > 0)
+                //        {
+                //            return context.CarTransferInfos
+                //                       .Where(r => r.PublishTitle.Contains(key) &&
+                //                           r.AreaId == area &&
+                //                           r.CityId == city &&
+                //                           r.IsPublish == true)
+                //                       .OrderByDescending(r => r.CreatedTime)
+                //                       .Skip(page * take).Take(take).ToList();
+                //        }
+                //        else
+                //        {
+                //            return context.CarTransferInfos
+                //                       .Where(r => r.PublishTitle.Contains(key) &&
+                //                           r.AreaId == area &&
+                //                           r.IsPublish == true)
+                //                       .OrderByDescending(r => r.CreatedTime)
+                //                       .Skip(page * take).Take(take).ToList();
+                //        }
 
-        /// <summary>
-        /// 根据时间排序
-        /// </summary>
-        /// <param name="key"></param>
-        /// <param name="asc"></param>
-        /// <param name="page"></param>
-        /// <returns></returns>
-        public List<CarTransferInfo> SearchByDate(int page, bool asc, string key, int take = 20)
-        {
-            using (var context = new FxCarContext())
-            {
-                if (!string.IsNullOrWhiteSpace(key))
-                {
-                    if (asc)
-                    {
-                        return context.CarTransferInfos
-                                        .Include(r => r.Pictures)
-                                        .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
-                                        .OrderBy(r => r.CreatedTime)
-                                        .Skip(page * take)
-                                        .Take(take).ToList();
-                    }
-                    else
-                    {
-                        return context.CarTransferInfos
-                                        .Include(r => r.Pictures)
-                                        .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
-                                        .OrderByDescending(r => r.CreatedTime)
-                                        .Skip(page * take)
-                                        .Take(take).ToList();
-                    }
-                }
-                else
-                {
-                    if (asc)
-                    {
-                        return context.CarTransferInfos
-                                    .Include(r => r.Pictures)
-                                    .Where(r => r.IsPublish == true)
-                                    .OrderBy(r => r.CreatedTime)
-                                    .Skip(page * take)
-                                    .Take(take).ToList();
-                    }
-                    else
-                    {
-                        return context.CarTransferInfos
-                                    .Include(r => r.Pictures)
-                                    .Where(r => r.IsPublish == true)
-                                    .OrderByDescending(r => r.CreatedTime)
-                                    .Skip(page * take)
-                                    .Take(take).ToList();
-                    }
-                }
+                //    }
+                //    else
+                //    {
+                //        return context.CarTransferInfos
+                //                      .Where(r => r.PublishTitle.Contains(key) &&
+                //                          r.IsPublish == true)
+                //                      .OrderByDescending(r => r.CreatedTime)
+                //                      .Skip(page * take).Take(take).ToList();
+                //    }
+
+                //}
+                //else
+                //{
+                //    return context.CarTransferInfos
+                //                    .Where(r => r.IsPublish == true)
+                //                    .OrderByDescending(r => r.CreatedTime)
+                //                    .Skip(page * take)
+                //                    .Take(take).ToList();
+                //}
             }
         }
 
@@ -175,6 +99,24 @@ namespace Fx.Domain.FxCar.Search
                     .Skip(page * take)
                     .Take(take).ToList();
             }
+        }
+
+        private IQueryable<CarTransferInfo> CreateWhereExpress(IQueryable<CarTransferInfo> list, string key, int area = 0, int city = 0)
+        {
+            IQueryable<CarTransferInfo> query = list.Include(r => r.Pictures);
+            if (!string.IsNullOrWhiteSpace(key))
+            {
+                list = list.Where(r => r.PublishTitle.Contains(key));
+            }
+            if (area > 0)
+            {
+                list = list.Where(r => r.AreaId == area);
+            }
+            if (city > 0)
+            {
+                list = list.Where(r => r.CityId == city);
+            }
+            return query.Where(r => r.IsPublish == true);
         }
     }
 }

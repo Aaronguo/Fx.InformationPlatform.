@@ -54,14 +54,14 @@ namespace Fx.InformationPlatform.Site.Controllers
 
 
         [OutputCache(Duration = 3600)]
-        public ActionResult GoodsCondition()
+        public ActionResult GoodsBuyCondition()
         {
             if (Request.IsAjaxRequest())
             {
                 string show = "<option value=\"0\">--请选择新旧程度--</option>";
                 var list = publishService.GoodsConditions();
                 var json = from p in list
-                           select string.Format("<option value=\"{0}\" extend=\"{1}\" message=\"{2}\" >{3}</option>", p.GoodsConditionId, p.IsHasMessage.ToString().ToUpper(),p.PlaceHolder,p.GoodsConditionName);
+                           select string.Format("<option value=\"{0}\" extend=\"{1}\" message=\"{2}\" >{3}</option>", p.GoodsConditionId, p.IsHasMessage.ToString().ToUpper(), p.PlaceHolder, "至少" + p.GoodsConditionName);
 
                 return Json(show + string.Join("", json), JsonRequestBehavior.DenyGet);
             }
@@ -70,5 +70,25 @@ namespace Fx.InformationPlatform.Site.Controllers
                 return new ContentResult() { Content = "Access Forbidden!" };
             }
         }
+
+
+        [OutputCache(Duration = 3600)]
+        public ActionResult GoodsTransferCondition()
+        {
+            if (Request.IsAjaxRequest())
+            {
+                string show = "<option value=\"0\">--请选择新旧程度--</option>";
+                var list = publishService.GoodsConditions();
+                var json = from p in list
+                           select string.Format("<option value=\"{0}\" extend=\"{1}\" message=\"{2}\" >{3}</option>", p.GoodsConditionId, p.IsHasMessage.ToString().ToUpper(), p.PlaceHolder, p.GoodsConditionName);
+
+                return Json(show + string.Join("", json), JsonRequestBehavior.DenyGet);
+            }
+            else
+            {
+                return new ContentResult() { Content = "Access Forbidden!" };
+            }
+        }
+
     }
 }

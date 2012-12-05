@@ -6,15 +6,21 @@
 
 <div class="interval_20"></div>
 <div class="grid_24">
-    @Html.Partial("Partial/CarBuy/Search")
+    @Html.Partial("Partial/CarBuy/Search",Model)
     <div class="interval_20"></div>
 
 
     <div class="grid_20 alpha">
         <div class="searchs-results_list">
             <div class="tops_tit_s_r">
-                @Html.ActionLink("转让", "CarTransferSearch", new { carTransferSearchKey = "", page = 1, @class = "zhuanrang-a" })
-                @*@Html.ActionLink("求购", "CarBuySearch", new { carBuySearchKey = "", page = 1, @class = "qiugot-a" })*@
+                @Html.ActionLink("转让", "CarTransferSearch", new
+                {
+                    carTransferSearchKey = "",
+                    page = 1,
+                    area = Model.AreaId,
+                    city = Model.CityId,
+                    @class = "zhuanrang-a"
+                })
             </div>
             <div class="srl_cons">
                 @Html.Partial("Partial/CarBuy/Ad")

@@ -960,35 +960,35 @@ namespace Fx.Domain
             #region 二手物品新旧信息建立
             var goodsConditons = new List<GoodsCondition>() { 
                 new GoodsCondition(){
-                     GoodsConditionName="至少未开封，配件齐全，全新",
+                     GoodsConditionName="未开封，配件齐全，全新",
                      Description="未开封，配件齐全",
                      IsHasMessage=false,
                      PlaceHolder="",
                      Sorted=1
                 },
                 new GoodsCondition(){
-                     GoodsConditionName="至少无磨损，配件齐全，功能齐全",
+                     GoodsConditionName="无磨损，配件齐全，功能齐全",
                      Description="无磨损，配件齐全",
                      IsHasMessage=false,
                      PlaceHolder="",
                      Sorted=2
                 },
                 new GoodsCondition(){
-                     GoodsConditionName="至少有磨损或配件不齐全，功能齐全",
+                     GoodsConditionName="有磨损或配件不齐全，功能齐全",
                      Description="有磨损或配件不齐全",
                      IsHasMessage=true,
                      PlaceHolder="请填写磨损或配件问题",
                      Sorted=3
                 },
                 new GoodsCondition(){
-                     GoodsConditionName="至少配件齐全，部分功能不可用",
+                     GoodsConditionName="配件齐全，部分功能不可用",
                      Description="配件齐全",
                      IsHasMessage=true,
                      PlaceHolder="请填写功能问题",
                      Sorted=4
                 },
                 new GoodsCondition(){
-                     GoodsConditionName="至少配件不全，部分功能不可用",
+                     GoodsConditionName="配件不全，部分功能不可用",
                      Description="配件不全",
                      IsHasMessage=true,
                      PlaceHolder="请填写配件以及功能问题",

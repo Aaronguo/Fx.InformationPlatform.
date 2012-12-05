@@ -2,7 +2,7 @@
 
 AjaxGoods.GetGoodsConditionData = function () {
     $.ajax({
-        url: "/Ajax/GoodsCondition",
+        url: "/Ajax/GoodsBuyCondition",
         type: "POST",
         dataType: "json",
         data: {},

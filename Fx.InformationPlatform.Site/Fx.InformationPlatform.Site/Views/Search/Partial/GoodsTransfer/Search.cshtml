@@ -1,57 +1,172 @@
-﻿@using (Html.BeginForm("GoodsTransferSearch", "Search", FormMethod.Post))
+﻿@model Fx.InformationPlatform.Site.ViewModel.GoodsTransferSearchModel
+@using (Html.BeginForm("GoodsTransferSearch", "Search", FormMethod.Post))
 {
     <div class="interval_20"></div>
     <div class="search_page_condition">
         <div class="tops_search_btns">
             <div class="lefts-shs">
-                <input type="text" class="search-query input-xlarge" id="goodsTransferSearchKey" name="goodsTransferSearchKey" placeholder="Search">
+                <input type="text" class="search-query input-xlarge"  value="@Model.Key"
+                    id="goodsTransferSearchKey" name="goodsTransferSearchKey" 
+                    placeholder="Search">
                 <button class="btn btn-success" id="goodsTransferSearchBtn">查找</button>
             </div>
             @*<div class="rights_hot_keywords">热门：<a href="#">配饰</a><a href="#">美妆</a><a href="#">包包/鞋子</a><a href="#">羽绒服</a></div>*@
         </div>
         <div class="s_p_condition_common_wks">
             <div class="left_condition_tit">交换方式：</div>
-            <div class="left_condition_cons">
+            <div class="left_condition_cons" id="changelist">
+                @*<input id="changeshowid" type="hidden"  value="0"/>*@
                 <span class="current_conditions"><a href="#">全部</a></span>
-                <span>@Html.CheckBox("IsChangeByGoods", true)<a href="#">以物换物</a></span>
-                <span>@Html.CheckBox("IsChangeByPrice", true)<a href="#">价格交换</a></span>
+                <span>@Html.CheckBox("IsChangeByGoods", Model.IsChangeByGoods)<a href="#">以物换物</a></span>
+                <span>@Html.CheckBox("IsChangeByPrice", Model.IsChangeByPrice)<a href="#">价格交换</a></span>
             </div>
             <div class="clear"></div>
         </div>
         <div class="s_p_condition_common_wks">
             <div class="left_condition_tit">区域：</div>
-            <div class="left_condition_cons">
-                <span class="current_conditions"><a href="#">全部</a></span>
-                <span><a href="#">丰台</a></span>
-                <span><a href="#">海淀</a></span>
-                <span><a href="#">西城</a></span>
-                <span><a href="#">朝阳</a></span>
+            <div class="left_condition_cons" id="arealist">
+                @if (Model.AreaId > 0)
+                {
+                    <span><a href="#">全部</a></span>
+                }
+                else
+                {
+                    <span class="current_conditions"><a href="#">全部</a></span>
+                }
+
+                <input id="areashowid" type="hidden" value="@Model.AreaId" />
+                @foreach (var area in Model.Areas)
+                {
+                    if (area.AreaId == Model.AreaId)
+                    {
+                    <span class="current_conditions"><a href="#" areaid="@area.AreaId">@area.AreaName</a></span>
+                    }
+                    else
+                    {
+                    <span><a href="#" areaid="@area.AreaId">@area.AreaName</a></span>
+                    }
+                }
             </div>
             <div class="clear"></div>
         </div>
         <div class="s_p_condition_common_wks">
             <div class="left_condition_tit">城市：</div>
-            <div class="left_condition_cons">
-                <span class="current_conditions"><a href="#">全部</a></span>
-                <span><a href="#">丰台</a></span>
-                <span><a href="#">海淀</a></span>
-                <span><a href="#">西城</a></span>
-                <span><a href="#">朝阳</a></span>
+            <div class="left_condition_cons" id="citylist">
+                @if (Model.AreaId > 0)
+                {
+                    for (int i = 0; i < Model.Areas.Count; i++)
+                    {
+                        if (Model.Areas[i].AreaId == Model.AreaId)
+                        {
+                    <input type="hidden" id="cityshowid" value="@i" />
+                        }
+                    }
+                }
+                else
+                {
+                    <input type="hidden" id="cityshowid" value="0" /><!--显示第几个city层-->
+                }
+                @foreach (var area in Model.Areas)
+                {
+
+                    if (area.Cities.Select(r => r.CityId).Contains(Model.CityId))
+                    {
+                        var index = 0;
+                        var citys = area.Cities.Select(r => r.CityId).ToList();
+                        for (int i = 0; i < citys.Count(); i++)
+                        {
+                            if (citys[i] == Model.CityId)
+                            {
+                                index = i + 1;
+                            }
+                        }
+                    <div style="display: block;">
+                        <span><a href="#">全部</a></span>
+                        <input type="hidden" value="@index" />
+                        @foreach (var city in area.Cities)
+                        {
+                            if (city.CityId == @Model.CityId)
+                            {
+                            <span class="current_conditions"><a href="#" cityid="@city.CityId">@city.CityName</a></span>
+                            }
+                            else
+                            {
+                            <span><a href="#" cityid="@city.CityId">@city.CityName</a></span>
+                            }
+                        }
+                    </div> 
+                    }
+                    else
+                    {
+                    <div style="display: none;">
+                        <span class="current_conditions"><a href="#">全部</a></span>
+                        <input type="hidden" value="0" />
+                        @foreach (var city in area.Cities)
+                        {                    
+                            <span><a href="#" cityid="@city.CityId">@city.CityName</a></span>
+                        }
+                    </div> 
+                    }
+                }
             </div>
             <div class="clear"></div>
         </div>
     </div>
     <div class="interval_20"></div>
+   
     
     <div style="display: none">
         @Html.Hidden("page", "1")
+        @Html.Hidden("area", "0")
+        @Html.Hidden("city", "0")
     </div>  
     
     
     <script type="text/javascript">
         $(document).ready(function () {
+            //点击按钮的时候默认查询第一页
             $("#goodsTransferSearchBtn").click(function () {
                 $("#page").val(1);
+            });
+
+            //ChangeArea  点击Area 显示相应的City
+            $("#arealist span").eq(document.getElementById('areashowid').value).addClass("current_conditions");
+            $("#arealist span").each(function (i) {
+                var t = i;
+                $(this).click(function () {
+                    $("#arealist span").eq(document.getElementById('areashowid').value).removeClass("current_conditions");
+                    $("#arealist span").eq(t).addClass("current_conditions");
+                    document.getElementById('areashowid').value = t;
+                    //传递值给MVC
+                    $("#area").val(t);
+                    //关闭之前的div 
+                    $("#citylist div").eq(document.getElementById('cityshowid').value).hide();
+                    //显示相应的div
+                    $("#citylist div").eq(t - 1).show();
+                    //当前city显示的层是t
+                    document.getElementById('cityshowid').value = t - 1;
+                });
+            });
+
+            //ChangeCities
+            //$("#citylist span").eq(document.getElementById('cityshowid').value).addClass("current_conditions");
+            $("#citylist div").each(function (index) {
+                //循环DIV HIDDEN层
+                $("span", this).each(function (i) {
+                    var t = i;
+                    //DIV 中的Spans
+                    $(this).click(function () {
+                        //获取之前保存高亮的信息的input hidden
+                        var div = $("#citylist div").eq(document.getElementById("cityshowid").value);
+                        var input = $("input", div).eq(0);
+                        //删除之前高亮
+                        $("span", div).eq(input.val()).removeClass("current_conditions");
+                        input.val(t);
+                        $(this).addClass("current_conditions");
+                        //传递值给MVC
+                        $("#city").val($("a", this).eq(0).attr("cityid"));
+                    });
+                });
             });
         });
     </script>

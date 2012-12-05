@@ -14,13 +14,13 @@ namespace Fx.Domain.Base.IService
     public interface ISiteSearch<T> where T : class
     {
         /// <summary>
-        /// 按关键字查询 （标题）
+        /// 按关键字查询 （标题） 缓存会
         /// </summary>
         /// <param name="key">关键字</param>
         /// <param name="page">页码</param>
         /// <param name="take">获取数据的数量</param>
         /// <returns></returns>
-        List<T> SearchByKey(string key, int page,int take);
+        List<T> SearchByKey(string key, int area, int city, int page, int take);
 
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Fx.Domain.Base.IService
         /// <param name="key">关键字</param>
         /// <param name="take">获取数据的数量</param>
         /// <returns></returns>
-        List<T> SearchByPrice(int page, bool asc, string key, int take);
+        //List<T> SearchByPrice(int page, bool asc, string key, int take);
 
 
         /// <summary>
@@ -42,6 +42,6 @@ namespace Fx.Domain.Base.IService
         /// <param name="key">关键字</param>
         /// <param name="take">获取数据的数量</param>
         /// <returns></returns>
-        List<T> SearchByDate(int page, bool asc, string key, int take);
+        //List<T> SearchByDate(int page, bool asc, string key, int take);
     }
 }

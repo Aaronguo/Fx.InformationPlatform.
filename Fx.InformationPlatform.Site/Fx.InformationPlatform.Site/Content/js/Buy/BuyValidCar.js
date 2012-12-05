@@ -147,7 +147,7 @@ buycar.ValidBadfile = function () {
     var badfile = $("input[name=badfile]");
     var minlength = $("#mainbad").attr("minlength");
     if (badfile.length == 1 && badfile.length != minlength) {
-        buycar.TipMsg = "请选择磨损部位照片";
+        buycar.TipMsg = "请选择其他方位照片2";
         return false;
     }
     if (badfile.length < minlength) {

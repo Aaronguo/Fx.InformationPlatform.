@@ -51,7 +51,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopGoods = goodsCache.GetGoodsTransferTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -76,7 +76,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopGoods = goodsCache.GetGoodsTransferTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -101,7 +101,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopGoods = goodsCache.GetGoodsTransferTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -126,7 +126,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopGoods = goodsCache.GetGoodsTransferTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -151,7 +151,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopGoods = goodsCache.GetGoodsTransferTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -176,7 +176,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopGoods = goodsCache.GetGoodsTransferTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -201,7 +201,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopGoods = goodsCache.GetGoodsTransferTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -226,7 +226,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopGoods = goodsCache.GetGoodsTransferTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -251,7 +251,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopGoods = goodsCache.GetGoodsTransferTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -276,7 +276,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopGoods = goodsCache.GetGoodsTransferTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -301,7 +301,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopGoods = goodsCache.GetGoodsTransferTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -326,7 +326,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopGoods = goodsCache.GetGoodsTransferTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -351,7 +351,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopGoods = goodsCache.GetGoodsTransferTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -376,7 +376,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopGoods = goodsCache.GetGoodsTransferTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -401,7 +401,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopGoods = goodsCache.GetGoodsTransferTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -426,7 +426,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopGoods = goodsCache.GetGoodsTransferTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -451,7 +451,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopGoods = goodsCache.GetGoodsTransferTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -476,7 +476,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopGoods = goodsCache.GetGoodsTransferTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -501,7 +501,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopGoods = goodsCache.GetGoodsTransferTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -526,7 +526,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopGoods = goodsCache.GetGoodsTransferTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -551,7 +551,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopGoods = goodsCache.GetGoodsTransferTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -576,7 +576,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopGoods = goodsCache.GetGoodsTransferTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -601,7 +601,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopGoods = goodsCache.GetGoodsTransferTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -626,7 +626,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopGoods = goodsCache.GetGoodsTransferTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -651,7 +651,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopGoods = goodsCache.GetGoodsTransferTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -677,7 +677,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopGoods = goodsCache.GetGoodsTransferTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -702,7 +702,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopGoods = goodsCache.GetGoodsTransferTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -727,7 +727,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopGoods = goodsCache.GetGoodsTransferTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 

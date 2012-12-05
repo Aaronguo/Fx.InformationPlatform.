@@ -52,7 +52,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopHouse = houseCache.GetHouseBuyTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -77,7 +77,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopHouse = houseCache.GetHouseBuyTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -102,7 +102,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopHouse = houseCache.GetHouseBuyTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -127,7 +127,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopHouse = houseCache.GetHouseBuyTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -152,7 +152,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopHouse = houseCache.GetHouseBuyTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -177,7 +177,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopHouse = houseCache.GetHouseBuyTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
 
@@ -202,7 +202,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             model.TopHouse = houseCache.GetHouseBuyTopShow();
-            model.ModelCheck();
+            model.CheckModel();
             return View(model);
         }
     }

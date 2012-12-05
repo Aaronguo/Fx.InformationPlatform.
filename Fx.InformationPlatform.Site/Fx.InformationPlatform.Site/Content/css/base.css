@@ -25,9 +25,8 @@ audio, canvas, video {
 }
 
 /* 要注意表单元素并不继承父级 font 的问题 */
-body, button, input, select, textarea {
-    font-family: '微软雅黑';
-	/*font: 14px/1.5 'Arial', sans-serif;*/
+body, button, input, select, textarea {   
+	font: 14px/1.5 'Arial', sans-serif;
 }
 
 input, select, textarea {
@@ -129,7 +128,6 @@ a{color:#06c;}
 
 /* 让链接在 hover 状态下显示下划线 */
 a:hover {
-	color:#f50;
 	text-decoration: underline;
 }
 
@@ -763,7 +761,7 @@ _position:relative; /* fix 多一只猪的问题 */
 .flow{margin-left:15px;}
 .flow-item{display:inline-block;*display:inline;*zoom:1;float:left;padding:4px 0;text-align:center;width:309px;margin-right:20px;border:1px solid #cfcfcf;position:relative;margin-left:-15px;background:#f7f7f7;}
 .flow-item-done{border-color:#8A0018;background:#fbffed;}
-.flow-item-current{background:#8A0018;border-color:#8A0018;color:#fff;font-weight:700;}
+.flow-item-current{background:#8A0018;border-color:#8A0018;color:#fff;}
 .flow-item-last{margin-right:0;width: 316px;}
 .flow .diamond{height:20px;width:20px;background:#fff;position:absolute;left:-10px;left:-15px\9;border-right:1px solid #cfcfcf;border-top:1px solid #cfcfcf;top:4px;top:0\9;z-index:2;}
 .flow .diamond-next{left:auto;border:none;background:#f7f7f7;right:-12px;right:-8px\9;*right:-16px;*z-index:3;border-top:1px solid #cfcfcf;border-right:1px solid #cfcfcf;}

@@ -75,16 +75,32 @@ namespace Fx.InformationPlatform.Site.Controllers
                         goodsTransferSearchKey = key,
                         page = 1,
                         IsChangeByGoods = true,
-                        IsChangeByPrice = true
+                        IsChangeByPrice = true,
+                        area = 0,
+                        city = 0
                     });
             }
             if (channel.Contains("汽车"))
             {
-                return RedirectToAction("CarTransferSearch", "Search", new { carTransferSearchKey = key, page = 1 });
+                return RedirectToAction("CarTransferSearch", "Search",
+                    new
+                    {
+                        carTransferSearchKey = key,
+                        page = 1,
+                        area = 0,
+                        city = 0
+                    });
             }
             if (channel.Contains("房屋"))
             {
-                return RedirectToAction("HouseTransferSearch", "Search", new { houseTransferSearchKey = key, page = 1 });
+                return RedirectToAction("HouseTransferSearch", "Search",
+                    new
+                    {
+                        houseTransferSearchKey = key,
+                        page = 1,
+                        area = 0,
+                        city = 0
+                    });
             }
             return RedirectToAction("PageNotFound", "PageLink");
         }

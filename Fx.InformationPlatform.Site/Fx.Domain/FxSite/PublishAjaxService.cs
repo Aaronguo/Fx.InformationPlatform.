@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using Fx.Domain.FxSite.IService;
 using Fx.Infrastructure;
 
@@ -32,6 +33,15 @@ namespace Fx.Domain.FxSite
             using (var content = new SiteContext())
             {
                 return content.GoodsConditions.OrderBy(r => r.Sorted).ToList();
+            }
+        }
+
+
+        public List<Entity.FxSite.Area> GetAreaDomain()
+        {
+            using (var content = new SiteContext())
+            {
+                return content.Areas.Include(r => r.Cities).ToList();
             }
         }
     }
