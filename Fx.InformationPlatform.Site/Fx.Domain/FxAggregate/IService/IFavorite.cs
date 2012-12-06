@@ -1,15 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using Fx.Entity.FxAggregate;
 
 namespace Fx.Domain.FxAggregate.IService
 {
+    /// <summary>
+    /// 收藏相关接口
+    /// </summary>
     public interface IFavorite
     {
-        bool AddFavorite(Favorite favorite);
+        DomainResult AddFavorite(Favorite favorite);
 
-        bool DeleteFavorite(Favorite favorite);
+        DomainResult DeleteFavorite(Favorite favorite);
+
+        List<Favorite> GetFavorite(int ChannelCatagroy, int infoId, string accountUser);
     }
 }

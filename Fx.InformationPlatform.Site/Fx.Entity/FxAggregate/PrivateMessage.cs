@@ -18,7 +18,7 @@ namespace Fx.Entity.FxAggregate
         public string Title { get; set; }
 
         /// <summary>
-        /// 敢兴趣的对象
+        /// 感兴趣的对象
         /// </summary>
         public string InterestingEmail { get; set; }
 

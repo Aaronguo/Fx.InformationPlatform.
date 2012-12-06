@@ -76,9 +76,11 @@
     <Compile Include="Base\IService\IHomeSearch.cs" />
     <Compile Include="Base\IService\IHouseSearch.cs" />
     <Compile Include="Base\IService\IInfoFind.cs" />
+    <Compile Include="FxAggregate\AggregateInfoService.cs" />
     <Compile Include="FxAggregate\DbAllService.cs" />
     <Compile Include="FxAggregate\FavoriteService.cs" />
     <Compile Include="FxAggregate\FxAggregateContext.cs" />
+    <Compile Include="FxAggregate\IService\IAggregateInfo.cs" />
     <Compile Include="FxAggregate\IService\IDbAll.cs" />
     <Compile Include="FxAggregate\IService\IFavorite.cs" />
     <Compile Include="FxAggregate\IService\IHomeTopShow.cs" />

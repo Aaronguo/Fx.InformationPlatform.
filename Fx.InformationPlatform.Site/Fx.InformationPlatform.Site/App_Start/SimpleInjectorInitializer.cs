@@ -32,12 +32,6 @@ namespace Fx.InformationPlatform.Site.App_Start
 
         private static void InitializeContainer(Container container)
         {
-            // Please note that if you updated the SimpleInjector.MVC3 package from a previous version, this
-            // SimpleInjectorInitializer class replaces the previous SimpleInjectorMVC3 class. You should
-            // move the registrations from the old SimpleInjectorMVC3.InitializeContainer to this method,
-            // and remove the SimpleInjectorMVC3 and SimpleInjectorMVC3Extensions class from the App_Start
-            // folder.
-            //#error Register your services here (remove this line).
             InitSiteContainer(container);
             InitSearchContainer(container);
             InitCacheContainer(container);
@@ -47,8 +41,13 @@ namespace Fx.InformationPlatform.Site.App_Start
 
         private static void InitAggregateContainer(Container container)
         {
+            container.Register<Fx.Domain.FxAggregate.IService.IDbAll, Fx.Domain.FxAggregate.DbAllService>();
             container.Register<Fx.Domain.FxAggregate.IService.ITopShow, Fx.Domain.FxAggregate.TopShowService>();
             container.Register<Fx.Domain.FxAggregate.IService.IHomeTopShow, Fx.Domain.FxAggregate.TopShowService>();
+            container.Register<Fx.Domain.FxAggregate.IService.IFavorite, Fx.Domain.FxAggregate.FavoriteService>();
+            container.Register<Fx.Domain.FxAggregate.IService.IAggregateInfo, Fx.Domain.FxAggregate.AggregateInfoService>();
+            container.Register<Fx.Domain.FxAggregate.IService.IPrivateMessage, Fx.Domain.FxAggregate.PrivateMessageService>();
+            
         }
 
         private static void InitCacheContainer(Container container)
@@ -66,7 +65,6 @@ namespace Fx.InformationPlatform.Site.App_Start
             container.Register<Fx.Domain.FxGoods.Search.GoodsTransferSearchService>();
             container.Register<Fx.Domain.FxHouse.Search.HouseBuySearchService>();
             container.Register<Fx.Domain.FxHouse.Search.HouseTransferSearchService>();
-
         }
 
 
@@ -114,10 +112,6 @@ namespace Fx.InformationPlatform.Site.App_Start
             //HouseConditionSearch
             container.Register<IHouseSearch<HouseTransferInfo>, Fx.Domain.FxHouse.Search.HouseTransferSearchService>();
             container.Register<IHouseSearch<HouseBuyInfo>, Fx.Domain.FxHouse.Search.HouseBuySearchService>();
-
-
-
-           
         }
 
 
@@ -143,10 +137,6 @@ namespace Fx.InformationPlatform.Site.App_Start
             //FxHouse
             container.Register<Fx.Domain.FxHouse.IService.ITransferHouse, Fx.Domain.FxHouse.FxTransferHouseService>();
             container.Register<Fx.Domain.FxHouse.IService.IBuyHouse, Fx.Domain.FxHouse.FxBuyHouseService>();
-
-            //FxAggregate 
-            container.Register<Fx.Domain.FxAggregate.IService.IDbAll, Fx.Domain.FxAggregate.DbAllService>();
-            container.Register<Fx.Domain.FxAggregate.IService.IFavorite, Fx.Domain.FxAggregate.FavoriteService>();
 
             //ListGet
             container.Register<Fx.Domain.FxCar.CarListService>();

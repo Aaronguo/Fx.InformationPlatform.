@@ -48,7 +48,6 @@ namespace Fx.InformationPlatform.Site.Tests.DbCreate
             context.SaveChanges();
             context.HouseBuyInfos.Remove(entity);
             context.SaveChanges();
-
         }
 
         [TestMethod]

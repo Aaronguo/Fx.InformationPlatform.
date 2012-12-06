@@ -23,13 +23,14 @@
             <div class="source_wks" style="width: 850px;">
                 希望所处地区：@Fx.InformationPlatform.Site.Helper.GetEnumDescription((Fx.Entity.Catagroy.AreaCatagroy)Model.AreaId)
                 <br />
-                希望所处城市:@Fx.InformationPlatform.Site.Helper.GetEnumDescription((Fx.Entity.Catagroy.CityCatagroy)Model.CityId)
+                希望所处城市：@Fx.InformationPlatform.Site.Helper.GetEnumDescription((Fx.Entity.Catagroy.CityCatagroy)Model.CityId)
                 <br />
-                希望车辆年份:@Model.CarYear
+                希望车辆年份：@Model.CarYear
                 <br />
-                希望车辆行驶里程数:@Fx.InformationPlatform.Site.Helper.GetEnumDescription((Fx.Entity.Catagroy.MileCatagroy)Model.CarMileage)
+                希望车辆行驶里程数：@Fx.InformationPlatform.Site.Helper.GetEnumDescription((Fx.Entity.Catagroy.MileCatagroy)Model.CarMileage)
                 @if (!string.IsNullOrWhiteSpace(Model.Mark))
                 {
+                    <br />
                     <span>备注</span>@Model.Mark
                 }
             </div>
@@ -39,14 +40,16 @@
 
     <div class="grid_2 omega">
         <span class="right_btns_demo_set">
-            <font class="saler_btns"><img src="@Fx.InformationPlatform.Site.AppSettings.ImageDomain("l_t.png")" id="demoBtn1"></font>
+            <font class="saler_btns"><img src="@Fx.InformationPlatform.Site.AppSettings.ImageDomain("infodetail/Contact.png")" id="demoBtn1"></font>
             <font class="shares_wwkks">分享：
             @Html.Partial("_JiaThis")
 		</font>
-            <font><img src="@Fx.InformationPlatform.Site.AppSettings.ImageDomain("l_b.png")" id="jifa_alert_fras" onclick="show_al_fra()"></font>
-            <font><img src="@Fx.InformationPlatform.Site.AppSettings.ImageDomain("add_off.png")" 
+            <font><img src="@Fx.InformationPlatform.Site.AppSettings.ImageDomain("infodetail/Message.png")" id="jifa_alert_fras" onclick="show_al_fra()"></font>
+            <a href="/CarBuyDetail/Favorite?infoId=@Model.CarBuyInfoId">
+                <img src="@Fx.InformationPlatform.Site.AppSettings.ImageDomain("add_off.png")" 
                 onmouseover="this.src='@Fx.InformationPlatform.Site.AppSettings.ImageDomain("add_on.png")'" 
-                onmouseout="this.src='@Fx.InformationPlatform.Site.AppSettings.ImageDomain("add_off.png")'"></font>
+                onmouseout="this.src='@Fx.InformationPlatform.Site.AppSettings.ImageDomain("add_off.png")'">
+            </a>
         </span>
     </div>
 </div>
@@ -54,7 +57,10 @@
 
 
 @Html.Partial("Partial/Ad")
-
+<input id="tip" type="hidden"  value="@TempData["Tip"]"/>
+<input id="infoid" type="hidden" value="@Model.CarBuyInfoId" />
+<input id="channelCatagroy" type="hidden"  value="@((int)Fx.Entity.ChannelCatagroy.FxCarBuy)"/>
+<input id="email" type="hidden"  value="@Model.PublishUserEmail"/>
 
 
 <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js?uid=1353938214106494" charset="utf-8"></script>
@@ -63,7 +69,10 @@
 <script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("List.js")"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        set_mouse();
+        //set_mouse();
+        if ($("#tip").val() != "") {
+            alert($("#tip").val());
+        }
     });
 
     var btnFn = function (e) {

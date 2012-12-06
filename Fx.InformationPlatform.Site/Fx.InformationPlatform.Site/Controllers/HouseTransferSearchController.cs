@@ -30,7 +30,7 @@ namespace Fx.InformationPlatform.Site.Controllers
             this.houseSearch = houseSearch;
         }
 
-        public ActionResult SecondShop(int id)
+        public ActionResult Shop(int id)
         {
             var model = new HouseTransferSearchModel(id);
             if (id <= 0)

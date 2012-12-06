@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Fx.Domain.FxAggregate.IService;
 using Fx.Domain.FxHouse.IService;
 
 namespace Fx.InformationPlatform.Site.Controllers
@@ -13,9 +14,12 @@ namespace Fx.InformationPlatform.Site.Controllers
     public class HouseTransferDetailController : Controller
     {
        protected ITransferHouse transferHouse;
-       public HouseTransferDetailController(ITransferHouse transferHouse)
+       protected IFavorite favorite;
+       public HouseTransferDetailController(ITransferHouse transferHouse,
+           IFavorite favorite)
         {
             this.transferHouse = transferHouse;
+            this.favorite = favorite;
         }
 
         public ActionResult Index(int id)
@@ -33,6 +37,37 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
                 return View(house);
             }
+        }
+
+        public ActionResult Favorite(int infoId)
+        {
+            if (infoId > 0 && User.Identity.IsAuthenticated)
+            {
+                var house = transferHouse.Get(infoId);
+                var ret = favorite.AddFavorite(new Entity.FxAggregate.Favorite()
+                {
+                    ChannelCatagroy = (int)Fx.Entity.ChannelCatagroy.FxHouseTrasnfer,
+                    InfoId = infoId,
+                    Title = house.PublishTitle,
+                    UserAccount = User.Identity.Name
+                });
+                if (ret.isSuccess)
+                {
+                    TempData["Tip"] = "收藏成功";
+                    //return JavaScript("function show(){alert('~');}");
+                }
+                else
+                {
+                    TempData["Tip"] = ret.ResultMsg;
+                    //return JavaScript("function show(){alert('" + ret.ResultMsg + "');}");
+                }
+            }
+            else
+            {
+                TempData["Tip"] = "收藏失败";
+                //return JavaScript("function show(){alert('收藏失败~');}");
+            }
+            return RedirectToAction("Index", new { id = infoId });
         }
     }
 }

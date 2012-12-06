@@ -20,6 +20,11 @@ namespace Fx.Entity.FxAggregate
 
         public DateTime CreatedTime { get; set; }
 
+        /// <summary>
+        /// 用户帐号
+        /// </summary>
+        public string UserAccount { get; set; }
+
         public Favorite()
         {
             this.CreatedTime = DateTime.Now;

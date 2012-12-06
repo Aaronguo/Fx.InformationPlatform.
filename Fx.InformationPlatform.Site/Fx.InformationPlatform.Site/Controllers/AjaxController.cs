@@ -89,6 +89,5 @@ namespace Fx.InformationPlatform.Site.Controllers
                 return new ContentResult() { Content = "Access Forbidden!" };
             }
         }
-
     }
 }

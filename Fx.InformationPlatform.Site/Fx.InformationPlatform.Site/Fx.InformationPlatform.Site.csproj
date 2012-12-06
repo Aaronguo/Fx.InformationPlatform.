@@ -175,6 +175,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AggregateController.cs" />
     <Compile Include="Controllers\AjaxController.cs" />
+    <Compile Include="Controllers\AjaxPostController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BuyController.cs" />
     <Compile Include="Controllers\CaptchaController.cs" />
@@ -297,7 +298,8 @@
     <Content Include="Content\images\ad4.png" />
     <Content Include="Content\images\ad5.png" />
     <Content Include="Content\images\ad6.png" />
-    <Content Include="Content\images\adddd.jpg" />
+    <Content Include="Content\images\add_off.png" />
+    <Content Include="Content\images\add_on.png" />
     <Content Include="Content\images\carList\SecondHandCar.png" />
     <Content Include="Content\images\glyphicons_020_home.png" />
     <Content Include="Content\images\glyphicons_028_cars.png" />
@@ -316,6 +318,8 @@
     <Content Include="Content\images\houseList\CommercialProperties.png" />
     <Content Include="Content\images\houseList\Properties.png" />
     <Content Include="Content\images\ico_common.png" />
+    <Content Include="Content\images\infodetail\Contact.png" />
+    <Content Include="Content\images\infodetail\Message.png" />
     <Content Include="Content\images\lft_ad.jpg" />
     <Content Include="Content\images\lft_ad1.jpg" />
     <Content Include="Content\images\arrowhead.gif" />
@@ -606,7 +610,7 @@
     <Content Include="Views\GoodsBuySearch\Stationary.cshtml" />
     <Content Include="Views\GoodsBuySearch\CultureLifeOther.cshtml" />
     <Content Include="Views\GoodsBuySearch\OtherOther.cshtml" />
-    <Content Include="Views\HouseTransferSearch\SecondShop.cshtml" />
+    <Content Include="Views\HouseTransferSearch\Shop.cshtml" />
     <Content Include="Views\HouseTransferSearch\Restaurants.cshtml" />
     <Content Include="Views\HouseTransferSearch\Warehouse.cshtml" />
     <Content Include="Views\HouseTransferSearch\Office.cshtml" />

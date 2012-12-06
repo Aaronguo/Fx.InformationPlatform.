@@ -16,6 +16,7 @@ namespace Fx.Entity.FxGoods
             this.InfoProcessState = (int)ProcessState.Commit;
         }
 
+
         /// <summary>
         /// 发布标题 
         /// </summary>
@@ -92,15 +93,5 @@ namespace Fx.Entity.FxGoods
         public int InfoProcessState { get; set; }
 
         public string ErrorMsg { get; set; }
-
-        /// <summary>
-        /// 二级分类Id
-        /// </summary>
-        //public int ChannelListId { get; set; }
-
-        /// <summary>
-        /// 三级分类Id
-        /// </summary>
-        //public int ChannelListDetailId { get; set; }
     }
 }

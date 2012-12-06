@@ -15,6 +15,7 @@ namespace Fx.Entity.FxCar
             this.InfoProcessState = (int)ProcessState.Commit;
         }
 
+
         /// <summary>
         /// 发布标题 
         /// </summary>

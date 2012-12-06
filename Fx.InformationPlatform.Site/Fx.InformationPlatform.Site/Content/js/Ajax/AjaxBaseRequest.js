@@ -23,7 +23,7 @@ AjaxBase.GetCityData = function () {
             dataType: "json",
             data: {},
             success: function (data) {
-                $("#publish").data(index,data);
+                $("#publish").data(index, data);
                 $("#city").html(data);
             },
             error: function () {
@@ -35,6 +35,32 @@ AjaxBase.GetCityData = function () {
         $("#city").html($("#publish").data(index));
     }
 };
+
+AjaxBase.AjaxPrivateMessage = function () {
+    var privatetxt = $("#privatetxt").val();
+    var infoId = $("#infoid").val();
+    var channelCatagroy = $("#channelCatagroy").val();
+    if (privatetxt == "") {
+        alert("请输入要发送私信的内容");
+    }
+    else {
+        $.ajax({
+            url: "/AjaxPost/PrivateMessage?infoId=" + infoId + "&privateTxt=" + privatetxt + "&channelCatagroy=" + channelCatagroy,
+            type: "POST",
+            dataType: "json",
+            data: {},
+            success: function (data) {
+                alert(data);
+            },
+            error: function () {
+                alert("请登录后在尝试发送私信");
+            }
+        });
+    }
+}
+
+
+
 
 
 //BindEvent To Control
