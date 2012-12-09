@@ -1,73 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
+using Fx.Domain.Base;
 using Fx.Domain.Base.IService;
 using Fx.Entity.FxCar;
+using Fx.Infrastructure.Data;
 
 namespace Fx.Domain.FxCar.Search
 {
-    public class CarTransferSearchService : ISiteSearch<CarTransferInfo>, IHomeSearch<CarTransferInfo>, ICarSearch<CarTransferInfo> 
+    public class CarTransferSearchService : CommonSearch, ISiteSearch<CarTransferInfo>, IHomeSearch<CarTransferInfo>, ICarSearch<CarTransferInfo>
     {
-        public List<CarTransferInfo> SearchByKey(string key, int area = 0, int city = 0, int page = 0, int take = 10)
+        public List<CarTransferInfo> SearchByKey(string key, int area = 0, int city = 0,
+            int page = 0, int take = 10, int clc = 0)
         {
-            using (var context = new FxCarContext())
+
+            int start = 1 + page * 10;
+            int end = page * 10 + take;
+            var where = CreateWhereExpress(key, area, city, clc);
+            string sql = " SELECT [CarTransferInfoId] FROM " +
+                "  ( SELECT ROW_NUMBER() OVER ( ORDER BY [CarTransferInfoId] ) " +
+                "    AS RowNumber,[CarTransferInfoId],CreatedTime " +
+                "      FROM [FxCar].[Car].[CarTransferInfo] " + where.ToString() + " ) " +
+                "  AS A1 WHERE RowNumber BETWEEN " + start + " AND " + end;
+
+            SqlHelper db = new SqlHelper(ConfigurationManager.ConnectionStrings["fx.car-sqlserver"].ToString());
+            var dt = db.GetDt(sql);
+            var ids = new List<int>();
+            for (int i = 0; i < dt.Rows.Count; i++)
             {
-                return CreateWhereExpress(context.CarTransferInfos, key, area, city)
-                                       .OrderByDescending(r => r.CreatedTime)
-                                       .Skip(page * take).Take(take).ToList();
-                //if (!string.IsNullOrWhiteSpace(key))
-                //{
-                //    if (area == 0 && city == 0)
-                //    {
-
-                //        return context.CarTransferInfos
-                //                        .Where(r => r.PublishTitle.Contains(key) && r.IsPublish == true)
-                //                        .OrderByDescending(r => r.CreatedTime)
-                //                        .Skip(page * take).Take(take).ToList();
-                //    }
-                //    else if (area > 0)
-                //    {
-                //        if (city > 0)
-                //        {
-                //            return context.CarTransferInfos
-                //                       .Where(r => r.PublishTitle.Contains(key) &&
-                //                           r.AreaId == area &&
-                //                           r.CityId == city &&
-                //                           r.IsPublish == true)
-                //                       .OrderByDescending(r => r.CreatedTime)
-                //                       .Skip(page * take).Take(take).ToList();
-                //        }
-                //        else
-                //        {
-                //            return context.CarTransferInfos
-                //                       .Where(r => r.PublishTitle.Contains(key) &&
-                //                           r.AreaId == area &&
-                //                           r.IsPublish == true)
-                //                       .OrderByDescending(r => r.CreatedTime)
-                //                       .Skip(page * take).Take(take).ToList();
-                //        }
-
-                //    }
-                //    else
-                //    {
-                //        return context.CarTransferInfos
-                //                      .Where(r => r.PublishTitle.Contains(key) &&
-                //                          r.IsPublish == true)
-                //                      .OrderByDescending(r => r.CreatedTime)
-                //                      .Skip(page * take).Take(take).ToList();
-                //    }
-
-                //}
-                //else
-                //{
-                //    return context.CarTransferInfos
-                //                    .Where(r => r.IsPublish == true)
-                //                    .OrderByDescending(r => r.CreatedTime)
-                //                    .Skip(page * take)
-                //                    .Take(take).ToList();
-                //}
+                ids.Add(Convert.ToInt32(dt.Rows[i][0]));
+            }
+            if (ids.Count > 0)
+            {
+                using (var context = new FxCarContext())
+                {
+                    return context.CarTransferInfos
+                        .Where(r => ids.Contains(r.CarTransferInfoId)).ToList();
+                }
+            }
+            else
+            {
+                return new List<CarTransferInfo>();
             }
         }
 
@@ -101,22 +77,15 @@ namespace Fx.Domain.FxCar.Search
             }
         }
 
-        private IQueryable<CarTransferInfo> CreateWhereExpress(IQueryable<CarTransferInfo> list, string key, int area = 0, int city = 0)
+        private StringBuilder CreateWhereExpress(string key, int area,
+          int city, int clc)
         {
-            IQueryable<CarTransferInfo> query = list.Include(r => r.Pictures);
-            if (!string.IsNullOrWhiteSpace(key))
+            var sb = CreateCommonSearch(key, area, city);
+            if (clc != 0)
             {
-                list = list.Where(r => r.PublishTitle.Contains(key));
+                sb.Append(" and CatagroyId=" + clc);
             }
-            if (area > 0)
-            {
-                list = list.Where(r => r.AreaId == area);
-            }
-            if (city > 0)
-            {
-                list = list.Where(r => r.CityId == city);
-            }
-            return query.Where(r => r.IsPublish == true);
+            return sb;
         }
     }
 }

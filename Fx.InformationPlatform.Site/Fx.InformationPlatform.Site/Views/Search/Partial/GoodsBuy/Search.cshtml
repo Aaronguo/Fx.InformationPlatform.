@@ -5,43 +5,268 @@
     <div class="search_page_condition">
         <div class="tops_search_btns">
             <div class="lefts-shs">
-                <input type="text" class="search-query input-xlarge" id="goodsBuySearchKey" name="goodsBuySearchKey" placeholder="Search">
+                <input type="text" class="search-query input-xlarge" id="key" name="key" placeholder="Search">
                 <button class="btn btn-success" id="goodsBuySearchBtn">查找</button>
             </div>
-            @* <div class="rights_hot_keywords">热门：<a href="#">配饰</a><a href="#">美妆</a><a href="#">包包/鞋子</a><a href="#">羽绒服</a></div>*@
         </div>
         <div class="s_p_condition_common_wks">
-            <div class="left_condition_tit">交换方式：</div>
-            <div class="left_condition_cons">
-                <span class="current_conditions"><a href="#">全部</a></span>
-                <span>@Html.CheckBox("IsChangeByGoods", Model.IsChangeByGoods)<a href="#">以物换物</a></span>
-                <span>@Html.CheckBox("IsChangeByPrice", Model.IsChangeByPrice)<a href="#">价格交换</a></span>
+            <div class="left_condition_tit">分类：</div>
+            <div class="left_condition_cons" id="changelist">
+                @if (Model.Clc == 0)
+                {
+                    <span class="current_conditions">
+                        @Html.ActionLink("全部", Model.Action, new
+                            {
+                                page = 1,
+                                key = Model.Key,
+                                area = Model.AreaId,
+                                city = Model.CityId,
+                                IsChangeByGoods = Model.IsChangeByGoods,
+                                IsChangeByPrice = Model.IsChangeByPrice,
+                                clc = 0
+                            })
+                    </span>
+                }
+                else
+                {
+                    <span>
+                        @Html.ActionLink("全部", Model.Action, new
+                            {
+                                page = 1,
+                                key = Model.Key,
+                                IsChangeByGoods = Model.IsChangeByGoods,
+                                IsChangeByPrice = Model.IsChangeByPrice,
+                                area = Model.AreaId,
+                                city = Model.CityId,
+                                clc = 0
+                            })
+                    </span>
+                }
+                @foreach (var channel in Model.ClcDatas)
+                {
+                    if (Model.Clc == channel.ChannelListId)
+                    {
+                    <span class="current_conditions">
+                        @Html.ActionLink(channel.ChannelListName, Model.Action, new
+                           {
+                               page = 1,
+                               key = Model.Key,
+                               IsChangeByGoods = Model.IsChangeByGoods,
+                               IsChangeByPrice = Model.IsChangeByPrice,
+                               area = Model.AreaId,
+                               city = Model.CityId,
+                               clc = channel.ChannelListId
+                           })
+                    </span>
+                    }
+                    else
+                    {
+                    <span>
+                        @Html.ActionLink(channel.ChannelListName, Model.Action, new
+                           {
+                               page = 1,
+                               key = Model.Key,
+                               IsChangeByGoods = Model.IsChangeByGoods,
+                               IsChangeByPrice = Model.IsChangeByPrice,
+                               area = Model.AreaId,
+                               city = Model.CityId,
+                               clc = channel.ChannelListId
+                           })
+                    </span>
+                    }
+                }
+                <span></span>
             </div>
             <div class="clear"></div>
         </div>
+
+        
+         <div class="s_p_condition_common_wks">
+            <div class="left_condition_tit">交换方式：</div>
+            <div class="left_condition_cons">
+                @if (Model.IsChangeByGoods == Model.IsChangeByPrice)
+                {
+                    <span class="current_conditions">
+                        @Html.ActionLink("全部", Model.Action, new
+                            {
+                                page = 1,
+                                key = Model.Key,
+                                area = Model.AreaId,
+                                city = Model.CityId,
+                                IsChangeByGoods = true,
+                                IsChangeByPrice = true,
+                                clc = Model.Clc
+                            })
+                    </span>
+                    <span>
+                        @Html.ActionLink("以物换物", Model.Action, new
+                            {
+                                page = 1,
+                                key = Model.Key,
+                                area = Model.AreaId,
+                                city = Model.CityId,
+                                IsChangeByGoods = true,
+                                IsChangeByPrice = false,
+                                clc = Model.Clc
+                            })
+                    </span>
+                    <span>
+                        @Html.ActionLink("价格交换", Model.Action, new
+                            {
+                                page = 1,
+                                key = Model.Key,
+                                area = Model.AreaId,
+                                city = Model.CityId,
+                                IsChangeByGoods = false,
+                                IsChangeByPrice = true,
+                                clc = Model.Clc
+                            })
+                    </span>                    
+                }
+                else
+                {
+                    <span>
+                        @Html.ActionLink("全部", Model.Action, new
+                            {
+                                page = 1,
+                                key = Model.Key,
+                                area = Model.AreaId,
+                                city = Model.CityId,
+                                IsChangeByGoods = true,
+                                IsChangeByPrice = true,
+                                clc = Model.Clc
+                            })
+                    </span>
+                    if (Model.IsChangeByGoods)
+                    {
+                    <span class="current_conditions">
+                        @Html.ActionLink("以物换物", Model.Action, new
+                            {
+                                page = 1,
+                                key = Model.Key,
+                                area = Model.AreaId,
+                                city = Model.CityId,
+                                IsChangeByGoods = true,
+                                IsChangeByPrice = false,
+                                clc = Model.Clc
+                            })
+                    </span>
+                    }
+                    else
+                    {
+                    <span>
+                        @Html.ActionLink("以物换物", Model.Action, new
+                            {
+                                page = 1,
+                                key = Model.Key,
+                                area = Model.AreaId,
+                                city = Model.CityId,
+                                IsChangeByGoods = true,
+                                IsChangeByPrice = false,
+                                clc = Model.Clc
+                            })
+                    </span>
+                    }
+                    if (Model.IsChangeByPrice)
+                    {
+                    <span class="current_conditions">
+                        @Html.ActionLink("价格交换", Model.Action, new
+                            {
+                                page = 1,
+                                key = Model.Key,
+                                area = Model.AreaId,
+                                city = Model.CityId,
+                                IsChangeByGoods = false,
+                                IsChangeByPrice = true,
+                                clc = Model.Clc
+                            })
+                    </span>
+                    }
+                    else
+                    {
+                    <span>
+                        @Html.ActionLink("价格交换", Model.Action, new
+                            {
+                                page = 1,
+                                key = Model.Key,
+                                area = Model.AreaId,
+                                city = Model.CityId,
+                                IsChangeByGoods = false,
+                                IsChangeByPrice = true,
+                                clc = Model.Clc
+                            })
+                    </span>
+                    }
+                }
+            </div>
+            <div class="clear"></div>
+        </div>
+
 
         <div class="s_p_condition_common_wks">
             <div class="left_condition_tit">区域：</div>
             <div class="left_condition_cons" id="arealist">
                 @if (Model.AreaId > 0)
                 {
-                    <span><a href="#">全部</a></span>
+                    <span>
+                        @Html.ActionLink("全部", Model.Action, new
+                            {
+                                page = 1,
+                                key = Model.Key,
+                                IsChangeByGoods = Model.IsChangeByGoods,
+                                IsChangeByPrice = Model.IsChangeByPrice,
+                                area = 0,
+                                city = 0,
+                                clc = Model.Clc
+                            })
+                    </span>
                 }
                 else
                 {
-                    <span class="current_conditions"><a href="#">全部</a></span>
+                    <span class="current_conditions">
+                        @Html.ActionLink("全部", Model.Action, new
+                            {
+                                page = 1,
+                                key = Model.Key,
+                                IsChangeByGoods = Model.IsChangeByGoods,
+                                IsChangeByPrice = Model.IsChangeByPrice,
+                                area = 0,
+                                city = 0,
+                                clc = Model.Clc
+                            })
+                    </span>
                 }
-
-                <input id="areashowid" type="hidden" value="@Model.AreaId" />
                 @foreach (var area in Model.Areas)
                 {
                     if (area.AreaId == Model.AreaId)
                     {
-                    <span class="current_conditions"><a href="#" areaid="@area.AreaId">@area.AreaName</a></span>
+                    <span class="current_conditions">
+                        @Html.ActionLink(area.AreaName, Model.Action, new
+                            {
+                                page = 1,
+                                key = Model.Key,
+                                IsChangeByGoods = Model.IsChangeByGoods,
+                                IsChangeByPrice = Model.IsChangeByPrice,
+                                area = area.AreaId,
+                                city = 0,
+                                clc = Model.Clc
+                            }, new { areaid = area.AreaId })
+                    </span>
                     }
                     else
                     {
-                    <span><a href="#" areaid="@area.AreaId">@area.AreaName</a></span>
+                    <span>
+                        @Html.ActionLink(area.AreaName, Model.Action, new
+                            {
+                                page = 1,
+                                key = Model.Key,
+                                IsChangeByGoods = Model.IsChangeByGoods,
+                                IsChangeByPrice = Model.IsChangeByPrice,
+                                area = area.AreaId,
+                                city = 0,
+                                clc = Model.Clc
+                            }, new { areaid = area.AreaId })
+                    </span>
                     }
                 }
             </div>
@@ -50,46 +275,73 @@
         <div class="s_p_condition_common_wks">
             <div class="left_condition_tit">城市：</div>
             <div class="left_condition_cons" id="citylist">
-                @if (Model.AreaId > 0)
-                {
-                    for (int i = 0; i < Model.Areas.Count; i++)
-                    {
-                        if (Model.Areas[i].AreaId == Model.AreaId)
-                        {
-                    <input type="hidden" id="cityshowid" value="@i" />
-                        }
-                    }
-                }
-                else
-                {
-                    <input type="hidden" id="cityshowid" value="0" /><!--显示第几个city层-->
-                }
                 @foreach (var area in Model.Areas)
                 {
 
-                    if (area.Cities.Select(r => r.CityId).Contains(Model.CityId))
+                    if (area.Cities.Select(r => r.CityId).Contains(Model.CityId) || area.AreaId == Model.AreaId)
                     {
-                        var index = 0;
-                        var citys = area.Cities.Select(r => r.CityId).ToList();
-                        for (int i = 0; i < citys.Count(); i++)
-                        {
-                            if (citys[i] == Model.CityId)
-                            {
-                                index = i + 1;
-                            }
-                        }
                     <div style="display: block;">
-                        <span><a href="#">全部</a></span>
-                        <input type="hidden" value="@index" />
+                        @if (Model.CityId == 0)
+                        {
+                            <span class="current_conditions">
+                                @Html.ActionLink("全部", Model.Action, new
+                                {
+                                    page = 1,
+                                    key = Model.Key,
+                                    IsChangeByGoods = Model.IsChangeByGoods,
+                                    IsChangeByPrice = Model.IsChangeByPrice,
+                                    area = area.AreaId,
+                                    city = 0,
+                                    clc = Model.Clc
+                                })
+                            </span>
+                        }
+                        else
+                        {
+                            <span>
+                                @Html.ActionLink("全部", Model.Action, new
+                                {
+                                    page = 1,
+                                    key = Model.Key,
+                                    IsChangeByGoods = Model.IsChangeByGoods,
+                                    IsChangeByPrice = Model.IsChangeByPrice,
+                                    area = area.AreaId,
+                                    city = 0,
+                                    clc = Model.Clc
+                                })
+                            </span>
+                        }
                         @foreach (var city in area.Cities)
                         {
                             if (city.CityId == @Model.CityId)
                             {
-                            <span class="current_conditions"><a href="#" cityid="@city.CityId">@city.CityName</a></span>
+                            <span class="current_conditions">
+                                @Html.ActionLink(city.CityName, Model.Action, new
+                                {
+                                    page = 1,
+                                    key = Model.Key,
+                                    IsChangeByGoods = Model.IsChangeByGoods,
+                                    IsChangeByPrice = Model.IsChangeByPrice,
+                                    area = area.AreaId,
+                                    city = 0,
+                                    clc = Model.Clc
+                                }, new { cityid = city.CityId })
+                            </span>
                             }
                             else
                             {
-                            <span><a href="#" cityid="@city.CityId">@city.CityName</a></span>
+                            <span>
+                                @Html.ActionLink(city.CityName, Model.Action, new
+                                {
+                                    page = 1,
+                                    key = Model.Key,
+                                    IsChangeByGoods = Model.IsChangeByGoods,
+                                    IsChangeByPrice = Model.IsChangeByPrice,
+                                    area = area.AreaId,
+                                    city = city.CityId,
+                                    clc = Model.Clc
+                                }, new { cityid = city.CityId })
+                            </span>
                             }
                         }
                     </div> 
@@ -97,11 +349,33 @@
                     else
                     {
                     <div style="display: none;">
-                        <span class="current_conditions"><a href="#">全部</a></span>
+                        <span class="current_conditions">
+                            @Html.ActionLink("全部", Model.Action, new
+                            {
+                                page = 1,
+                                key = Model.Key,
+                                IsChangeByGoods = Model.IsChangeByGoods,
+                                IsChangeByPrice = Model.IsChangeByPrice,
+                                area = area.AreaId,
+                                city = 0,
+                                clc = Model.Clc
+                            })
+                        </span>
                         <input type="hidden" value="0" />
                         @foreach (var city in area.Cities)
                         {                    
-                            <span><a href="#" cityid="@city.CityId">@city.CityName</a></span>
+                            <span>
+                                @Html.ActionLink(city.CityName, Model.Action, new
+                                {
+                                    page = 1,
+                                    key = Model.Key,
+                                    IsChangeByGoods = Model.IsChangeByGoods,
+                                    IsChangeByPrice = Model.IsChangeByPrice,
+                                    area = area.AreaId,
+                                    city = 0,
+                                    clc = Model.Clc
+                                }, new { cityid = city.CityId })
+                            </span>
                         }
                     </div> 
                     }
@@ -117,6 +391,7 @@
         @Html.Hidden("page", "1")
         @Html.Hidden("area", "0")
         @Html.Hidden("city", "0")
+        @Html.Hidden("clc", Model.Clc)
     </div>   
     
     

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Fx.Entity.FxHouse;
+using Fx.Entity.FxSite;
+using FxCacheService.FxSite;
 
 namespace Fx.InformationPlatform.Site.ViewModel
 {
@@ -14,14 +16,19 @@ namespace Fx.InformationPlatform.Site.ViewModel
 
         public List<HouseBuyInfo> TopHouse { get; set; }
 
-        public HouseBuySearchModel(int id)
+        public List<ChannelListDetail> ClcDatas
         {
-            this.CurrentIndex = id;
+            get
+            {
+                return cache.GetHouseBuyChannel();
+            }
         }
 
-        public HouseBuySearchModel()
+        public HouseBuySearchModel(int id, SiteCache siteCache)
+            : base(siteCache)
         {
-
+            this.CurrentIndex = id;
+            this.cache = siteCache;
         }
 
         public override void CheckModel()

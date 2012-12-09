@@ -6,7 +6,7 @@
             $("#selectcat  a").each(function () {
                 $(this).css("background-color", "white");
             });
-            $(this).css("background-color", "rgba(108, 0, 168, 0.28)");
+            $(this).css("background-color", "#F89406");
         }).mouseout(function () {
             $(this).css("background-color", "white");
             $("#selectcat > a").eq(id).css("background-color", "#f89406");

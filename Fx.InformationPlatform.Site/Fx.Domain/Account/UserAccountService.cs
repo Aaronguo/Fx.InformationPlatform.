@@ -76,9 +76,8 @@ namespace Fx.Domain.Account
         /// <returns></returns>
         public DomainResult DeleteUser(Entity.MemberShip.Membership entity)
         {
-            if (!IsExistUser(entity.Users.UserName).isSuccess)
+            if (IsExistUser(entity.Users.UserName).isSuccess)
             {
-
                 var result = DomainResult.GetDefault();
                 try
                 {
@@ -104,7 +103,7 @@ namespace Fx.Domain.Account
             }
             else
             {
-                return new DomainResult(false) { ResultMsg = "用户已存在" };
+                return new DomainResult(false) { ResultMsg = "用户不存在" };
             }
         }
 

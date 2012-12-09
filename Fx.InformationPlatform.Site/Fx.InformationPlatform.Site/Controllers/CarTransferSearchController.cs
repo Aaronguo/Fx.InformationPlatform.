@@ -7,12 +7,14 @@ using Fx.Entity.Catagroy;
 using Fx.Entity.FxCar;
 using Fx.InformationPlatform.Site.ViewModel;
 using FxCacheService.FxCar;
+using FxCacheService.FxSite;
 
 namespace Fx.InformationPlatform.Site.Controllers
 {
     public class CarTransferSearchController : Controller
     {
         protected CarCache carCache;
+        protected SiteCache siteCache;
         /// <summary>
         /// 用于一般检索
         /// </summary>
@@ -23,11 +25,13 @@ namespace Fx.InformationPlatform.Site.Controllers
         protected Fx.Domain.Base.IService.ICarSearch<CarTransferInfo> carSearch;
         public CarTransferSearchController(CarCache carCache,
             Fx.Domain.Base.IService.ISiteSearch<CarTransferInfo> transferCarSearch,
-            Fx.Domain.Base.IService.ICarSearch<CarTransferInfo> carSearch)
+            Fx.Domain.Base.IService.ICarSearch<CarTransferInfo> carSearch,
+            SiteCache siteCache)
         {
             this.carCache = carCache;
             this.transferCarSearch = transferCarSearch;
             this.carSearch = carSearch;
+            this.siteCache = siteCache;
         }
 
         /// <summary>
@@ -37,7 +41,7 @@ namespace Fx.InformationPlatform.Site.Controllers
         /// <returns></returns>
         public ActionResult Audi(int id)
         {
-            var model = new CarTransferSearchModel(id);
+            var model = new CarTransferSearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -62,7 +66,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult BMW(int id)
         {
-            var model = new CarTransferSearchModel(id);
+            var model = new CarTransferSearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -86,7 +90,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Buick(int id)
         {
-            var model = new CarTransferSearchModel(id);
+            var model = new CarTransferSearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -110,7 +114,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Citroen(int id)
         {
-            var model = new CarTransferSearchModel(id);
+            var model = new CarTransferSearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -134,7 +138,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Ford(int id)
         {
-            var model = new CarTransferSearchModel(id);
+            var model = new CarTransferSearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -158,7 +162,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Honda(int id)
         {
-            var model = new CarTransferSearchModel(id);
+            var model = new CarTransferSearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -182,7 +186,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Toyota(int id)
         {
-            var model = new CarTransferSearchModel(id);
+            var model = new CarTransferSearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -206,7 +210,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Nissan(int id)
         {
-            var model = new CarTransferSearchModel(id);
+            var model = new CarTransferSearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -230,7 +234,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult MINI(int id)
         {
-            var model = new CarTransferSearchModel(id);
+            var model = new CarTransferSearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -254,7 +258,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult MercedesBenz(int id)
         {
-            var model = new CarTransferSearchModel(id);
+            var model = new CarTransferSearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -278,7 +282,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Peugeot(int id)
         {
-            var model = new CarTransferSearchModel(id);
+            var model = new CarTransferSearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -302,7 +306,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult VW(int id)
         {
-            var model = new CarTransferSearchModel(id);
+            var model = new CarTransferSearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -326,7 +330,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Volvo(int id)
         {
-            var model = new CarTransferSearchModel(id);
+            var model = new CarTransferSearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -350,7 +354,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult SecondHandCarOther(int id)
         {
-            var model = new CarTransferSearchModel(id);
+            var model = new CarTransferSearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");

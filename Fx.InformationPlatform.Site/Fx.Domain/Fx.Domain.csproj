@@ -116,8 +116,6 @@
     <Compile Include="FxGoods\Mapping\TransferPicture_Mapping.cs" />
     <Compile Include="FxGoods\Search\GoodsBuySearchService.cs" />
     <Compile Include="FxGoods\Search\GoodsTransferSearchService.cs" />
-    <Compile Include="FxGoods\GoodsViewService.cs" />
-    <Compile Include="FxGoods\IService\IGoodsShow.cs" />
     <Compile Include="FxGoods\IService\Job\IGoodsBuyJob.cs" />
     <Compile Include="FxGoods\IService\Job\IGoodsTransferJob.cs" />
     <Compile Include="FxGoods\JobImp\GoodsBuyJobService.cs" />

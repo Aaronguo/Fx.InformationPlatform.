@@ -7,12 +7,14 @@ using Fx.Entity.Catagroy;
 using Fx.Entity.FxCar;
 using Fx.InformationPlatform.Site.ViewModel;
 using FxCacheService.FxCar;
+using FxCacheService.FxSite;
 
 namespace Fx.InformationPlatform.Site.Controllers
 {
     public class CarBuySearchController : Controller
     {
-      protected CarCache carCache;
+        protected CarCache carCache;
+        protected SiteCache siteCache;
         /// <summary>
         /// 用于一般检索
         /// </summary>
@@ -23,11 +25,13 @@ namespace Fx.InformationPlatform.Site.Controllers
         protected Fx.Domain.Base.IService.ICarSearch<CarBuyInfo> carSearch;
         public CarBuySearchController(CarCache carCache,
             Fx.Domain.Base.IService.ISiteSearch<CarBuyInfo> BuyCarSearch,
-            Fx.Domain.Base.IService.ICarSearch<CarBuyInfo> carSearch)
+            Fx.Domain.Base.IService.ICarSearch<CarBuyInfo> carSearch,
+            SiteCache siteCache)
         {
             this.carCache = carCache;
             this.BuyCarSearch = BuyCarSearch;
             this.carSearch = carSearch;
+            this.siteCache = siteCache;
         }
 
         /// <summary>
@@ -37,7 +41,7 @@ namespace Fx.InformationPlatform.Site.Controllers
         /// <returns></returns>
         public ActionResult Audi(int id)
         {
-            var model = new CarBuySearchModel(id);
+            var model = new CarBuySearchModel(id, siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -51,7 +55,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 //缓存中数量超过100个的时候 才可能有后续数据 这个时候才去读取 否则不读取  默认100个   
                 if (model.MainCars.Count == 100)
                 {
-                    model.MainCars = carSearch.SearchByCatagroy(ChannelListDetailCatagroy.Audi, (id - 1), 10);                       
+                    model.MainCars = carSearch.SearchByCatagroy(ChannelListDetailCatagroy.Audi, (id - 1), 10);
                 }
             }
             model.TopCars = carCache.GetCarBuyTopShow();
@@ -61,7 +65,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult BMW(int id)
         {
-            var model = new CarBuySearchModel(id);
+            var model = new CarBuySearchModel(id, siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -85,7 +89,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Buick(int id)
         {
-            var model = new CarBuySearchModel(id);
+            var model = new CarBuySearchModel(id, siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -109,7 +113,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Citroen(int id)
         {
-            var model = new CarBuySearchModel(id);
+            var model = new CarBuySearchModel(id, siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -133,7 +137,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Ford(int id)
         {
-            var model = new CarBuySearchModel(id);
+            var model = new CarBuySearchModel(id, siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -157,7 +161,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Honda(int id)
         {
-            var model = new CarBuySearchModel(id);
+            var model = new CarBuySearchModel(id, siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -181,7 +185,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Toyota(int id)
         {
-            var model = new CarBuySearchModel(id);
+            var model = new CarBuySearchModel(id, siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -205,7 +209,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Nissan(int id)
         {
-            var model = new CarBuySearchModel(id);
+            var model = new CarBuySearchModel(id, siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -229,7 +233,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult MINI(int id)
         {
-            var model = new CarBuySearchModel(id);
+            var model = new CarBuySearchModel(id, siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -253,7 +257,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult MercedesBenz(int id)
         {
-            var model = new CarBuySearchModel(id);
+            var model = new CarBuySearchModel(id, siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -277,7 +281,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Peugeot(int id)
         {
-            var model = new CarBuySearchModel(id);
+            var model = new CarBuySearchModel(id, siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -301,7 +305,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult VW(int id)
         {
-            var model = new CarBuySearchModel(id);
+            var model = new CarBuySearchModel(id, siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -325,7 +329,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Volvo(int id)
         {
-            var model = new CarBuySearchModel(id);
+            var model = new CarBuySearchModel(id, siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -349,7 +353,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult SecondHandCarOther(int id)
         {
-            var model = new CarBuySearchModel(id);
+            var model = new CarBuySearchModel(id, siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");

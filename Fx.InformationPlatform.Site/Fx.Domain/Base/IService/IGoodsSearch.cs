@@ -7,7 +7,7 @@ namespace Fx.Domain.Base.IService
 {
     public interface IGoodsSearch<T> where T : class
     {
-        List<T> SearchByKey(string key, int area, int city, int page, int take, bool changegoods, bool changeprice);
+        List<T> SearchByKey(string key, int area, int city, int page, int take, bool changegoods, bool changeprice,int clc);
 
         ///// <summary>
         ///// 查找只换物的

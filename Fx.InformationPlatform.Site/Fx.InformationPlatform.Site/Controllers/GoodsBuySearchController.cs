@@ -7,12 +7,14 @@ using Fx.Entity.Catagroy;
 using Fx.Entity.FxGoods;
 using Fx.InformationPlatform.Site.ViewModel;
 using FxCacheService.FxGoods;
+using FxCacheService.FxSite;
 
 namespace Fx.InformationPlatform.Site.Controllers
 {
     public class GoodsBuySearchController : Controller
     {
         protected GoodsCache goodsCache;
+        protected SiteCache siteCache;
         /// <summary>
         /// 用于一般检索
         /// </summary>
@@ -23,16 +25,18 @@ namespace Fx.InformationPlatform.Site.Controllers
         protected Fx.Domain.Base.IService.IGoodsSearch<GoodsBuyInfo> goodsSearch;
         public GoodsBuySearchController(GoodsCache goodsCache,
             Fx.Domain.Base.IService.ISiteSearch<GoodsBuyInfo> buyGoodsSearch,
-            Fx.Domain.Base.IService.IGoodsSearch<GoodsBuyInfo> goodsSearch)
+            Fx.Domain.Base.IService.IGoodsSearch<GoodsBuyInfo> goodsSearch,
+            SiteCache siteCache)
         {
             this.goodsCache = goodsCache;
             this.buyGoodsSearch = buyGoodsSearch;
             this.goodsSearch = goodsSearch;
+            this.siteCache = siteCache;
         }
 
         public ActionResult Phone(int id)
         {
-            var model = new GoodsBuySearchModel(id);
+            var model = new GoodsBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -57,7 +61,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Computer(int id)
         {
-            var model = new GoodsBuySearchModel(id);
+            var model = new GoodsBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -82,7 +86,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult DigitalCamera(int id)
         {
-            var model = new GoodsBuySearchModel(id);
+            var model = new GoodsBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -107,7 +111,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult ComputerAccessories(int id)
         {
-            var model = new GoodsBuySearchModel(id);
+            var model = new GoodsBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -132,7 +136,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult PlayStations(int id)
         {
-            var model = new GoodsBuySearchModel(id);
+            var model = new GoodsBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -157,7 +161,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult PSAccessories(int id)
         {
-            var model = new GoodsBuySearchModel(id);
+            var model = new GoodsBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -182,7 +186,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult PhoneAccessories(int id)
         {
-            var model = new GoodsBuySearchModel(id);
+            var model = new GoodsBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -207,7 +211,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult ElectronicsOther(int id)
         {
-            var model = new GoodsBuySearchModel(id);
+            var model = new GoodsBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -232,7 +236,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Furniture(int id)
         {
-            var model = new GoodsBuySearchModel(id);
+            var model = new GoodsBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -257,7 +261,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult KitchenAppliances(int id)
         {
-            var model = new GoodsBuySearchModel(id);
+            var model = new GoodsBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -282,7 +286,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult AudioAppliances(int id)
         {
-            var model = new GoodsBuySearchModel(id);
+            var model = new GoodsBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -307,7 +311,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult KitchenDinningWares(int id)
         {
-            var model = new GoodsBuySearchModel(id);
+            var model = new GoodsBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -332,7 +336,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Decoration(int id)
         {
-            var model = new GoodsBuySearchModel(id);
+            var model = new GoodsBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -357,7 +361,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult OtherElectronics(int id)
         {
-            var model = new GoodsBuySearchModel(id);
+            var model = new GoodsBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -382,7 +386,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult GymEquipment(int id)
         {
-            var model = new GoodsBuySearchModel(id);
+            var model = new GoodsBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -407,7 +411,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Bike(int id)
         {
-            var model = new GoodsBuySearchModel(id);
+            var model = new GoodsBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -432,7 +436,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult HomeSuppliesOther(int id)
         {
-            var model = new GoodsBuySearchModel(id);
+            var model = new GoodsBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -457,7 +461,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Clothing(int id)
         {
-            var model = new GoodsBuySearchModel(id);
+            var model = new GoodsBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -482,7 +486,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Shoes(int id)
         {
-            var model = new GoodsBuySearchModel(id);
+            var model = new GoodsBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -507,7 +511,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Bag(int id)
         {
-            var model = new GoodsBuySearchModel(id);
+            var model = new GoodsBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -532,7 +536,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Accessories(int id)
         {
-            var model = new GoodsBuySearchModel(id);
+            var model = new GoodsBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -557,7 +561,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult FashionOther(int id)
         {
-            var model = new GoodsBuySearchModel(id);
+            var model = new GoodsBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -582,7 +586,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult MusicInstruments(int id)
         {
-            var model = new GoodsBuySearchModel(id);
+            var model = new GoodsBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -607,7 +611,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Books(int id)
         {
-            var model = new GoodsBuySearchModel(id);
+            var model = new GoodsBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -632,7 +636,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Toys(int id)
         {
-            var model = new GoodsBuySearchModel(id);
+            var model = new GoodsBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -658,7 +662,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Stationary(int id)
         {
-            var model = new GoodsBuySearchModel(id);
+            var model = new GoodsBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -683,7 +687,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult CultureLifeOther(int id)
         {
-            var model = new GoodsBuySearchModel(id);
+            var model = new GoodsBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -708,7 +712,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult OtherOther(int id)
         {
-            var model = new GoodsBuySearchModel(id);
+            var model = new GoodsBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");

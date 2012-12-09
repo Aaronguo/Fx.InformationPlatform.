@@ -8,88 +8,94 @@ using Fx.Entity.FxCar;
 using Fx.Entity.FxGoods;
 using Fx.Entity.FxHouse;
 using Fx.InformationPlatform.Site.ViewModel;
+using FxCacheService.FxSite;
 
 namespace Fx.InformationPlatform.Site.Controllers
 {
     public class SearchController : Controller
     {
         protected ISiteSearch<CarTransferInfo> transferCarSearch;
-        //protected ISiteSearch<GoodsTransferInfo> transferGoodsSearch;
         protected ISiteSearch<HouseTransferInfo> transferHouseSearch;
         protected ISiteSearch<CarBuyInfo> buyCarSearch;
-        //protected ISiteSearch<GoodsBuyInfo> buyGoodsSearch;
         protected ISiteSearch<HouseBuyInfo> buyHouseSearch;
         protected IGoodsSearch<GoodsTransferInfo> goodsTransferSearch;
         protected IGoodsSearch<GoodsBuyInfo> goodsBuySearch;
+        protected SiteCache siteCache;
         public SearchController(ISiteSearch<CarTransferInfo> transferCarSearch,
-            //ISiteSearch<GoodsTransferInfo> transferGoodsSearch,
             ISiteSearch<HouseTransferInfo> transferHouseSearch,
             ISiteSearch<CarBuyInfo> buyCarSearch,
-            //ISiteSearch<GoodsBuyInfo> buyGoodsSearch,
             ISiteSearch<HouseBuyInfo> buyHouseSearch,
             IGoodsSearch<GoodsTransferInfo> goodsTransferSearch,
-            IGoodsSearch<GoodsBuyInfo> goodsBuySearch)
+            IGoodsSearch<GoodsBuyInfo> goodsBuySearch,
+            SiteCache siteCache)
         {
             this.transferCarSearch = transferCarSearch;
-            //this.transferGoodsSearch = transferGoodsSearch;
             this.transferHouseSearch = transferHouseSearch;
             this.buyCarSearch = buyCarSearch;
-            //this.buyGoodsSearch = buyGoodsSearch;
             this.buyHouseSearch = buyHouseSearch;
-
             this.goodsTransferSearch = goodsTransferSearch;
             this.goodsBuySearch = goodsBuySearch;
-
+            this.siteCache = siteCache;
         }
 
         //Transfer 
-
-        public ActionResult GoodsTransferSearch(string goodsTransferSearchKey, int page,
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="key">关键字</param>
+        /// <param name="page">第几页取数据默认0 页面会传递1（逻辑对应）</param>
+        /// <param name="IsChangeByGoods">是否按换物交换</param>
+        /// <param name="IsChangeByPrice">是否按价格交换</param>
+        /// <param name="area">区域</param>
+        /// <param name="city">城市</param>
+        /// <param name="clc">二级分类，查找时候找出对应的所有分类，channelListCatagroy简写clc</param>
+        /// <returns></returns>
+        public ActionResult GoodsTransferSearch(string key, int page,
             bool IsChangeByGoods, bool IsChangeByPrice,
-            int area, int city)
+            int area, int city,
+            int clc)
         {
-            var model = new GoodsTransferSearchModel(page);
-            model.Key = goodsTransferSearchKey;
+            var model = new GoodsTransferSearchModel(page, siteCache);
+            model.Key = key;
             model.IsChangeByGoods = IsChangeByGoods;
             model.IsChangeByPrice = IsChangeByPrice;
             model.AreaId = area;
             model.CityId = city;
-            //if (IsChangeByGoods & IsChangeByPrice)
-            //{
-            //    model.MainGoods = transferGoodsSearch.SearchByKey(goodsTransferSearchKey, page - 1, 10);
-            //}
-            //else
-            //{
-            //    if (IsChangeByGoods)
-            //    {
-            //        model.MainGoods = goodsTransferSearch.SearchWhenChangeGoods(page - 1, 10);
-            //    }
-            //    else
-            //    {
-            //        model.MainGoods = goodsTransferSearch.SearchWhenPrice(page - 1, 10);
-            //    }
-            //}
-            model.MainGoods = goodsTransferSearch.SearchByKey(goodsTransferSearchKey, area, city, page - 1, 10, IsChangeByGoods, IsChangeByPrice);
+            model.Clc = clc;
+            model.MainGoods = goodsTransferSearch.SearchByKey(key, area, 
+                city, page - 1, 
+                10, IsChangeByGoods, 
+                IsChangeByPrice, clc);
             model.CheckModel();
             return View(model);
         }
 
 
-        public ActionResult CarTransferSearch(string carTransferSearchKey, int page, int area, int city)
+        public ActionResult CarTransferSearch(string key, int page, 
+            int area, int city,
+            int clc)
         {
-            var model = new CarTransferSearchModel(page);
-            model.Key = carTransferSearchKey;
-            model.MainCars = transferCarSearch.SearchByKey(carTransferSearchKey, area, city, page - 1, 10);
+            var model = new CarTransferSearchModel(page, siteCache);
+            model.Key = key;
+            model.AreaId = area;
+            model.CityId = city;
+            model.Clc = clc;
+            model.MainCars = transferCarSearch.SearchByKey(key, area, city, page - 1, 10,clc);
             model.CheckModel();
             return View(model);
         }
 
 
-        public ActionResult HouseTransferSearch(string houseTransferSearchKey, int page, int area, int city)
+        public ActionResult HouseTransferSearch(string key, int page, 
+            int area, int city,
+            int clc)
         {
-            var model = new HouseTransferSearchModel(page);
-            model.Key = houseTransferSearchKey;
-            model.MainHouse = transferHouseSearch.SearchByKey(houseTransferSearchKey, area, city, page - 1, 10);
+            var model = new HouseTransferSearchModel(page, siteCache);
+            model.Key = key;
+            model.AreaId = area;
+            model.CityId = city;
+            model.Clc = clc;
+            model.MainHouse = transferHouseSearch.SearchByKey(key, area, city, page - 1, 10, clc);
             model.CheckModel();
             return View(model);
         }
@@ -97,37 +103,52 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         //Buy
 
-        public ActionResult GoodsBuySearch(string goodsBuySearchKey, int page,
+        public ActionResult GoodsBuySearch(string key, int page,
              bool IsChangeByGoods, bool IsChangeByPrice,
-             int area, int city)
+             int area, int city,
+             int clc)
         {
-            var model = new GoodsBuySearchModel(page);
-            model.Key = goodsBuySearchKey;
+            var model = new GoodsBuySearchModel(page, siteCache);
+            model.Key = key;
             model.IsChangeByGoods = IsChangeByGoods;
             model.IsChangeByPrice = IsChangeByPrice;
             model.AreaId = area;
             model.CityId = city;
-            model.MainGoods = goodsBuySearch.SearchByKey(goodsBuySearchKey, area, city, page - 1, 10, IsChangeByGoods, IsChangeByPrice);
+            model.Clc = clc;
+            model.MainGoods = goodsBuySearch.SearchByKey(key, area, 
+                city, page - 1, 
+                10, IsChangeByGoods, 
+                IsChangeByPrice, clc);
             model.CheckModel();
             return View(model);
         }
 
 
-        public ActionResult CarBuySearch(string carBuySearchKey, int page, int area, int city)
+        public ActionResult CarBuySearch(string key, int page, 
+            int area, int city,
+            int clc)
         {
-            var model = new CarBuySearchModel(page);
-            model.Key = carBuySearchKey;
-            model.MainCars = buyCarSearch.SearchByKey(carBuySearchKey, area, city, page - 1, 10);
+            var model = new CarBuySearchModel(page, siteCache);
+            model.Key = key;
+            model.AreaId = area;
+            model.CityId = city;
+            model.Clc = clc;
+            model.MainCars = buyCarSearch.SearchByKey(key, area, city, page - 1, 10, clc);
             model.CheckModel();
             return View(model);
         }
 
 
-        public ActionResult HouseBuySearch(string houseBuySearchKey, int page, int area, int city)
+        public ActionResult HouseBuySearch(string key, int page, 
+            int area, int city,
+            int clc)
         {
-            var model = new HouseBuySearchModel(page);
-            model.Key = houseBuySearchKey;
-            model.MainHouse = buyHouseSearch.SearchByKey(houseBuySearchKey, area, city, page - 1, 10);
+            var model = new HouseBuySearchModel(page, siteCache);
+            model.Key = key;
+            model.AreaId = area;
+            model.CityId = city;
+            model.Clc = clc;
+            model.MainHouse = buyHouseSearch.SearchByKey(key, area, city, page - 1, 10, clc);
             model.CheckModel();
             return View(model);
         }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Fx.Entity.FxCar;
+using Fx.Entity.FxSite;
+using FxCacheService.FxSite;
 
 namespace Fx.InformationPlatform.Site.ViewModel
 {
@@ -14,14 +16,19 @@ namespace Fx.InformationPlatform.Site.ViewModel
 
         public List<CarTransferInfo> TopCars { get; set; }
 
-        public CarTransferSearchModel(int id)
+        public List<ChannelListDetail> ClcDatas
         {
-            this.CurrentIndex = id;
+            get
+            {
+                return cache.GetCarTransferChannel();
+            }
         }
 
-        public CarTransferSearchModel()
+        public CarTransferSearchModel(int id, SiteCache siteCache)
+            :base(siteCache)
         {
-
+            this.CurrentIndex = id;
+            this.cache = siteCache;
         }
 
         public override void CheckModel()

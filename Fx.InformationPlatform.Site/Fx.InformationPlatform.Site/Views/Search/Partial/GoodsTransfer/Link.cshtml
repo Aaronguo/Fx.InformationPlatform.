@@ -4,11 +4,12 @@
     @Html.ActionLink("上一页", Model.Action, new
     {
         page = 1,
-        goodsTransferSearchKey = Model.Key,
+        key = Model.Key,
         IsChangeByGoods = Model.IsChangeByGoods,
         IsChangeByPrice = Model.IsChangeByPrice,
         area = Model.AreaId,
-        city = Model.CityId
+        city = Model.CityId,
+        clc = Model.Clc
     }, new { @class = "pre-btn" })
 }
 else
@@ -16,11 +17,12 @@ else
     @Html.ActionLink("上一页", Model.Action, new
     {
         page = Model.CurrentIndex - 1,
-        goodsTransferSearchKey = Model.Key,
+        key = Model.Key,
         IsChangeByGoods = Model.IsChangeByGoods,
         IsChangeByPrice = Model.IsChangeByPrice,
         area = Model.AreaId,
-        city = Model.CityId
+        city = Model.CityId,
+        clc = Model.Clc
     }, new { @class = "pre-btn" })
 }
 @for (int i = Model.StartIndex; i <= Model.EndIndex; i++)
@@ -34,20 +36,22 @@ else
     @Html.ActionLink(i.ToString(), Model.Action, new
     {
         page = i,
-        goodsTransferSearchKey = Model.Key,
+        key = Model.Key,
         IsChangeByGoods = Model.IsChangeByGoods,
         IsChangeByPrice = Model.IsChangeByPrice,
         area = Model.AreaId,
-        city = Model.CityId
+        city = Model.CityId,
+        clc = Model.Clc
     })
     }
 }
 @Html.ActionLink("下一页", Model.Action, new
 {
     page = Model.CurrentIndex + 1,
-    goodsTransferSearchKey = Model.Key,
+    key = Model.Key,
     IsChangeByGoods = Model.IsChangeByGoods,
     IsChangeByPrice = Model.IsChangeByPrice,
     area = Model.AreaId,
-    city = Model.CityId
+    city = Model.CityId,
+    clc = Model.Clc
 }, new { @class = "next-btn" })

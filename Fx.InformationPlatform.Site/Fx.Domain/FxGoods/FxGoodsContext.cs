@@ -51,12 +51,5 @@ namespace Fx.Domain.FxGoods
         public DbSet<PictureCdnError> PictureCdnErrors { get; set; }
 
 
-        public ObjectContext ObjectContent
-        {
-            get
-            {
-                return ((IObjectContextAdapter)this).ObjectContext;
-            }
-        }
     }
 }

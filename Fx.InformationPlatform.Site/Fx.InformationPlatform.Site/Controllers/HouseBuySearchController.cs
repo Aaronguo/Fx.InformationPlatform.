@@ -7,12 +7,14 @@ using Fx.Entity.Catagroy;
 using Fx.Entity.FxHouse;
 using Fx.InformationPlatform.Site.ViewModel;
 using FxCacheService.FxHouse;
+using FxCacheService.FxSite;
 
 namespace Fx.InformationPlatform.Site.Controllers
 {
     public class HouseBuySearchController : Controller
     {
-           protected HouseCache houseCache;
+        protected HouseCache houseCache;
+        protected SiteCache siteCache;
         /// <summary>
         /// 用于一般检索
         /// </summary>
@@ -23,17 +25,19 @@ namespace Fx.InformationPlatform.Site.Controllers
         protected Fx.Domain.Base.IService.IHouseSearch<HouseBuyInfo> houseSearch;
         public HouseBuySearchController(HouseCache houseCache,
             Fx.Domain.Base.IService.ISiteSearch<HouseBuyInfo> BuyHouseSearch,
-            Fx.Domain.Base.IService.IHouseSearch<HouseBuyInfo> houseSearch)
+            Fx.Domain.Base.IService.IHouseSearch<HouseBuyInfo> houseSearch,
+            SiteCache siteCache)
         {
             this.houseCache = houseCache;
             this.BuyHouseSearch = BuyHouseSearch;
             this.houseSearch = houseSearch;
+            this.siteCache = siteCache;
         }
 
 
         public ActionResult SecondShop(int id)
         {
-            var model = new HouseBuySearchModel(id);
+            var model = new HouseBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -58,7 +62,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Restaurants(int id)
         {
-            var model = new HouseBuySearchModel(id);
+            var model = new HouseBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -83,7 +87,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Warehouse(int id)
         {
-            var model = new HouseBuySearchModel(id);
+            var model = new HouseBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -108,7 +112,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Office(int id)
         {
-            var model = new HouseBuySearchModel(id);
+            var model = new HouseBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -133,7 +137,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult House(int id)
         {
-            var model = new HouseBuySearchModel(id);
+            var model = new HouseBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -158,7 +162,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Flat(int id)
         {
-            var model = new HouseBuySearchModel(id);
+            var model = new HouseBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -183,7 +187,7 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult StudentAparment(int id)
         {
-            var model = new HouseBuySearchModel(id);
+            var model = new HouseBuySearchModel(id,siteCache);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");

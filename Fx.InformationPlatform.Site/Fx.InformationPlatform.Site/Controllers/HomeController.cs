@@ -72,12 +72,13 @@ namespace Fx.InformationPlatform.Site.Controllers
                 return RedirectToAction("GoodsTransferSearch", "Search",
                     new
                     {
-                        goodsTransferSearchKey = key,
+                        key = key,
                         page = 1,
                         IsChangeByGoods = true,
                         IsChangeByPrice = true,
                         area = 0,
-                        city = 0
+                        city = 0,
+                        clc = 0
                     });
             }
             if (channel.Contains("汽车"))
@@ -85,10 +86,11 @@ namespace Fx.InformationPlatform.Site.Controllers
                 return RedirectToAction("CarTransferSearch", "Search",
                     new
                     {
-                        carTransferSearchKey = key,
+                        key = key,
                         page = 1,
                         area = 0,
-                        city = 0
+                        city = 0,
+                        clc = 0
                     });
             }
             if (channel.Contains("房屋"))
@@ -96,10 +98,11 @@ namespace Fx.InformationPlatform.Site.Controllers
                 return RedirectToAction("HouseTransferSearch", "Search",
                     new
                     {
-                        houseTransferSearchKey = key,
+                        key = key,
                         page = 1,
                         area = 0,
-                        city = 0
+                        city = 0,
+                        clc = 0
                     });
             }
             return RedirectToAction("PageNotFound", "PageLink");

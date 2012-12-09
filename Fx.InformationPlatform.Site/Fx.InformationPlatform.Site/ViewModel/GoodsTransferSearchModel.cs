@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Fx.Entity.FxGoods;
+using Fx.Entity.FxSite;
+using FxCacheService.FxSite;
 
 namespace Fx.InformationPlatform.Site.ViewModel
 {
@@ -18,17 +20,23 @@ namespace Fx.InformationPlatform.Site.ViewModel
 
         public bool IsChangeByPrice { get; set; }
 
-        public GoodsTransferSearchModel(int id)
+      
+
+        public GoodsTransferSearchModel(int id, SiteCache siteCache)
+            : base(siteCache)
         {
             this.CurrentIndex = id;
             this.IsChangeByGoods = true;
             this.IsChangeByPrice = true;
+            this.cache = siteCache;
         }
 
-
-        public GoodsTransferSearchModel()
+        public List<ChannelList> ClcDatas
         {
-
+            get
+            {
+                return cache.GetGoodsChannel();
+            }
         }
 
         public override void CheckModel()

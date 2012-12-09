@@ -14,24 +14,19 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
-        //set_mouse();
+        picclick();
         if ($("#tip").val() != "") {
             alert($("#tip").val());
         }
-    });
-
-    var btnFn = function (e) {
-        alert(e.target);
-        return false;
-    };
-    document.getElementById("demoBtn1").onclick = function () {
-        easyDialog.open({
-            container: {
-                header: '联系方式',
-                content: '您要联系人的邮箱是：'+document.getElementById('email').value
-            },
-            drag: true
+        $("#demoBtn1").click(function () {
+            easyDialog.open({
+                container: {
+                    header: '联系方式',
+                    content: '您要联系人的邮箱是：' + document.getElementById('email').value
+                },
+                drag: true
+            });
         });
-    };
+    });
 </script>
 <script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("Ajax/AjaxBaseRequest.js")"></script>

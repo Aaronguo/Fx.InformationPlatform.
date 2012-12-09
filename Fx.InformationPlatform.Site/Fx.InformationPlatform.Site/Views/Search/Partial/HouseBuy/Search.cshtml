@@ -5,33 +5,128 @@
     <div class="search_page_condition">
         <div class="tops_search_btns">
             <div class="lefts-shs">
-                <input type="text" class="search-query input-xlarge" id="houseBuySearchKey" name="houseBuySearchKey" placeholder="Search">
+                <input type="text" class="search-query input-xlarge" id="key" name="key" placeholder="Search">
                 <button class="btn btn-success" id="houseBuySearchBtn">查找</button>
-            </div>@*
-            <div class="rights_hot_keywords">热门：<a href="#">配饰</a><a href="#">美妆</a><a href="#">包包/鞋子</a><a href="#">羽绒服</a></div>*@
+            </div>
+        </div>
+             <div class="s_p_condition_common_wks">
+            <div class="left_condition_tit">分类：</div>
+            <div class="left_condition_cons" id="changelist">
+                @if (Model.Clc == 0)
+                {
+                    <span class="current_conditions">
+                        @Html.ActionLink("全部", Model.Action, new
+                            {
+                                page = 1,
+                                key = Model.Key,
+                                area = Model.AreaId,
+                                city = Model.CityId,
+                                clc = 0
+                            })
+                    </span>
+                }
+                else
+                {
+                    <span>
+                        @Html.ActionLink("全部", Model.Action, new
+                            {
+                                page = 1,
+                                key = Model.Key,
+                                area = Model.AreaId,
+                                city = Model.CityId,
+                                clc = 0
+                            })
+                    </span>
+                }
+                @foreach (var channel in Model.ClcDatas)
+                {
+                    if (Model.Clc == channel.ChannelListDetailId)
+                    {
+                    <span class="current_conditions">
+                        @Html.ActionLink(channel.ChannelListDetailName, Model.Action, new
+                           {
+                               page = 1,
+                               key = Model.Key,
+                               area = Model.AreaId,
+                               city = Model.CityId,
+                               clc = channel.ChannelListDetailId
+                           })
+                    </span>
+                    }
+                    else
+                    {
+                    <span>
+                        @Html.ActionLink(channel.ChannelListDetailName, Model.Action, new
+                           {
+                               page = 1,
+                               key = Model.Key,
+                               area = Model.AreaId,
+                               city = Model.CityId,
+                               clc = channel.ChannelListDetailId
+                           })
+                    </span>
+                    }
+                }
+                <span></span>
+            </div>
+            <div class="clear"></div>
         </div>
         <div class="s_p_condition_common_wks">
             <div class="left_condition_tit">区域：</div>
             <div class="left_condition_cons" id="arealist">
                 @if (Model.AreaId > 0)
                 {
-                    <span><a href="#">全部</a></span>
+                    <span>
+                        @Html.ActionLink("全部", Model.Action, new
+                            {
+                                page = 1,
+                                key = Model.Key,
+                                area = 0,
+                                city = 0,
+                                clc = Model.Clc
+                            })
+                    </span>
                 }
                 else
                 {
-                    <span class="current_conditions"><a href="#">全部</a></span>
+                    <span class="current_conditions">
+                        @Html.ActionLink("全部", Model.Action, new
+                            {
+                                page = 1,
+                                key = Model.Key,
+                                area = 0,
+                                city = 0,
+                                clc = Model.Clc
+                            })
+                    </span>
                 }
-
-                <input id="areashowid" type="hidden" value="@Model.AreaId" />
                 @foreach (var area in Model.Areas)
                 {
                     if (area.AreaId == Model.AreaId)
                     {
-                    <span class="current_conditions"><a href="#" areaid="@area.AreaId">@area.AreaName</a></span>
+                    <span class="current_conditions">
+                        @Html.ActionLink(area.AreaName, Model.Action, new
+                            {
+                                page = 1,
+                                key = Model.Key,
+                                area = area.AreaId,
+                                city = 0,
+                                clc = Model.Clc
+                            }, new { areaid = area.AreaId })
+                    </span>
                     }
                     else
                     {
-                    <span><a href="#" areaid="@area.AreaId">@area.AreaName</a></span>
+                    <span>
+                        @Html.ActionLink(area.AreaName, Model.Action, new
+                            {
+                                page = 1,
+                                key = Model.Key,
+                                area = area.AreaId,
+                                city = 0,
+                                clc = Model.Clc
+                            }, new { areaid = area.AreaId })
+                    </span>
                     }
                 }
             </div>
@@ -40,46 +135,65 @@
         <div class="s_p_condition_common_wks">
             <div class="left_condition_tit">城市：</div>
             <div class="left_condition_cons" id="citylist">
-                @if (Model.AreaId > 0)
-                {
-                    for (int i = 0; i < Model.Areas.Count; i++)
-                    {
-                        if (Model.Areas[i].AreaId == Model.AreaId)
-                        {
-                    <input type="hidden" id="cityshowid" value="@i" />
-                        }
-                    }
-                }
-                else
-                {
-                    <input type="hidden" id="cityshowid" value="0" /><!--显示第几个city层-->
-                }
                 @foreach (var area in Model.Areas)
                 {
 
-                    if (area.Cities.Select(r => r.CityId).Contains(Model.CityId))
+                    if (area.Cities.Select(r => r.CityId).Contains(Model.CityId) || area.AreaId == Model.AreaId)
                     {
-                        var index = 0;
-                        var citys = area.Cities.Select(r => r.CityId).ToList();
-                        for (int i = 0; i < citys.Count(); i++)
-                        {
-                            if (citys[i] == Model.CityId)
-                            {
-                                index = i + 1;
-                            }
-                        }
                     <div style="display: block;">
-                        <span><a href="#">全部</a></span>
-                        <input type="hidden" value="@index" />
+                        @if (Model.CityId == 0)
+                        {
+                            <span class="current_conditions">
+                                @Html.ActionLink("全部", Model.Action, new
+                                {
+                                    page = 1,
+                                    key = Model.Key,
+                                    area = area.AreaId,
+                                    city = 0,
+                                    clc = Model.Clc
+                                })
+                            </span>
+                        }
+                        else
+                        {
+                            <span>
+                                @Html.ActionLink("全部", Model.Action, new
+                                {
+                                    page = 1,
+                                    key = Model.Key,
+                                    area = area.AreaId,
+                                    city = 0,
+                                    clc = Model.Clc
+                                })
+                            </span>
+                        }
                         @foreach (var city in area.Cities)
                         {
                             if (city.CityId == @Model.CityId)
                             {
-                            <span class="current_conditions"><a href="#" cityid="@city.CityId">@city.CityName</a></span>
+                            <span class="current_conditions">
+                                @Html.ActionLink(city.CityName, Model.Action, new
+                                {
+                                    page = 1,
+                                    key = Model.Key,
+                                    area = area.AreaId,
+                                    city = 0,
+                                    clc = Model.Clc
+                                }, new { cityid = city.CityId })
+                            </span>
                             }
                             else
                             {
-                            <span><a href="#" cityid="@city.CityId">@city.CityName</a></span>
+                            <span>
+                                @Html.ActionLink(city.CityName, Model.Action, new
+                                {
+                                    page = 1,
+                                    key = Model.Key,
+                                    area = area.AreaId,
+                                    city = city.CityId,
+                                    clc = Model.Clc
+                                }, new { cityid = city.CityId })
+                            </span>
                             }
                         }
                     </div> 
@@ -87,11 +201,29 @@
                     else
                     {
                     <div style="display: none;">
-                        <span class="current_conditions"><a href="#">全部</a></span>
+                        <span class="current_conditions">
+                            @Html.ActionLink("全部", Model.Action, new
+                            {
+                                page = 1,
+                                key = Model.Key,
+                                area = area.AreaId,
+                                city = 0,
+                                clc = Model.Clc
+                            })
+                        </span>
                         <input type="hidden" value="0" />
                         @foreach (var city in area.Cities)
                         {                    
-                            <span><a href="#" cityid="@city.CityId">@city.CityName</a></span>
+                            <span>
+                                @Html.ActionLink(city.CityName, Model.Action, new
+                                {
+                                    page = 1,
+                                    key = Model.Key,
+                                    area = area.AreaId,
+                                    city = 0,
+                                    clc = Model.Clc
+                                }, new { cityid = city.CityId })
+                            </span>
                         }
                     </div> 
                     }
@@ -105,53 +237,6 @@
         @Html.Hidden("page", "1")
         @Html.Hidden("area", "0")
         @Html.Hidden("city", "0")
+        @Html.Hidden("clc", Model.Clc)
     </div>  
-    
-    
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#houseBuySearchBtn").click(function () {
-                $("#page").val(1);
-            });
-            //ChangeArea  点击Area 显示相应的City
-            $("#arealist span").eq(document.getElementById('areashowid').value).addClass("current_conditions");
-            $("#arealist span").each(function (i) {
-                var t = i;
-                $(this).click(function () {
-                    $("#arealist span").eq(document.getElementById('areashowid').value).removeClass("current_conditions");
-                    $("#arealist span").eq(t).addClass("current_conditions");
-                    document.getElementById('areashowid').value = t;
-                    //传递值给MVC
-                    $("#area").val(t);
-                    //关闭之前的div 
-                    $("#citylist div").eq(document.getElementById('cityshowid').value).hide();
-                    //显示相应的div
-                    $("#citylist div").eq(t - 1).show();
-                    //当前city显示的层是t
-                    document.getElementById('cityshowid').value = t - 1;
-                });
-            });
-
-            //ChangeCities
-            //$("#citylist span").eq(document.getElementById('cityshowid').value).addClass("current_conditions");
-            $("#citylist div").each(function (index) {
-                //循环DIV HIDDEN层
-                $("span", this).each(function (i) {
-                    var t = i;
-                    //DIV 中的Spans
-                    $(this).click(function () {
-                        //获取之前保存高亮的信息的input hidden
-                        var div = $("#citylist div").eq(document.getElementById("cityshowid").value);
-                        var input = $("input", div).eq(0);
-                        //删除之前高亮
-                        $("span", div).eq(input.val()).removeClass("current_conditions");
-                        input.val(t);
-                        $(this).addClass("current_conditions");
-                        //传递值给MVC
-                        $("#city").val($("a", this).eq(0).attr("cityid"));
-                    });
-                });
-            });
-        });
-    </script>
 }

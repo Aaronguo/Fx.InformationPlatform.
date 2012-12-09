@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Fx.Domain.FxSite.IService;
+using Fx.Entity.FxSite;
 using Fx.Infrastructure.Caching;
 using FxCacheService.FxSite;
 
@@ -8,7 +10,12 @@ namespace Fx.InformationPlatform.Site.ViewModel
 {
     public class SearchBase
     {
-        private SiteCache cache = new SiteCache(new Fx.Domain.FxSite.PublishAjaxService());
+        protected SiteCache cache;
+
+        public SearchBase(SiteCache siteCache)
+        {
+            this.cache = siteCache;
+        }
 
         public List<Fx.Entity.FxSite.Area> Areas
         {
@@ -29,6 +36,8 @@ namespace Fx.InformationPlatform.Site.ViewModel
         public int CityId { get; set; }
 
         public int CurrentIndex { get; set; }
+
+        public int Clc { get; set; }
 
         public int StartIndex
         {

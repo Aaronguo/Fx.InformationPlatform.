@@ -1,22 +1,27 @@
-﻿@*<div style="height: 100px; background-color: #93062F; padding-top: 100px;"
-    id="ytfooter">
-    <div class="container_24">
-        <div class="grid_24">
-            <div class="grid_7">&nbsp;</div>
-            <div class="grid_2 txtcenter"><a href="#">关于英淘</a></div>
-            <div class="grid_2 txtcenter"><a href="#">联系我们</a></div>
-            <div class="grid_2 txtcenter"><a href="#">Disclaimer</a></div>
-            <div class="grid_2 txtcenter"><a href="#">Privacy</a></div>
-            <div class="grid_2 txtcenter"><a href="#">友情链接</a></div>
-            <div class="grid_7">&nbsp;</div>
-        </div>
-    </div>
-</div>*@
-
-<div class="grid_24 bottom">
+﻿<div class="grid_24 bottom">
     <a href="#">关于英淘</a>
     <a href="#">联系我们</a>
     @Html.ActionLink("Disclaimer", "Convention", "PageLink")
     @Html.ActionLink("Privacy", "Privacy", "PageLink")
     <a href="#">友情链接</a>
 </div>
+
+<style type="text/css">
+    .bottom {
+    line-height: 30px;
+    background-color: #9d261d;
+    height: 30px;
+    text-align: center;
+}
+
+    .bottom a {
+        font-size: 12px;
+        color: white;
+        font-family: 微软雅黑;
+        margin-right: 25px;
+    }
+
+        .bottom a:hover {
+            text-decoration: underline;
+        }
+</style>
