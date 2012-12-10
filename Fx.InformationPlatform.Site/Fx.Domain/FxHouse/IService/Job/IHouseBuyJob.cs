@@ -20,5 +20,7 @@ namespace Fx.Domain.FxHouse.IService
         bool End(int houseId);
 
         bool NoDelete(int houseId);
+
+        bool Delete(int houseId);
     }
 }

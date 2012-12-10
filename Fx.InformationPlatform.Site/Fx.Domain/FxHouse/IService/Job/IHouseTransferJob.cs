@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Fx.Domain.FxHouse.IService
 {
-   public interface IHouseTransferJob
+    public interface IHouseTransferJob
     {
         bool Authorizing(int houseId);
 
@@ -32,5 +32,7 @@ namespace Fx.Domain.FxHouse.IService
         bool End(int houseId);
 
         bool NoDelete(int houseId);
+
+        bool Delete(int houseId);
     }
 }

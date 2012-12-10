@@ -155,5 +155,25 @@ namespace Fx.Domain.FxHouse
             }
             return false;
         }
+
+
+        public bool Delete(int houseId)
+        {
+            using (var context = new FxHouseContext())
+            {
+                var house = context.HouseBuyInfos.Where(r => r.HouseBuyInfoId == houseId).FirstOrDefault();
+                if (house != null)
+                {
+                    house.InfoProcessState = (int)ProcessState.Delete;
+                    house.IsPublish = false;
+                    house.Logs.Add(new Entity.FxHouse.HouseBuyLog()
+                    {
+                        OperteName = Enum.GetName(typeof(ProcessState), ProcessState.Delete)
+                    });
+                    return context.SaveChanges() > 0;
+                }
+            }
+            return false;
+        }
     }
 }

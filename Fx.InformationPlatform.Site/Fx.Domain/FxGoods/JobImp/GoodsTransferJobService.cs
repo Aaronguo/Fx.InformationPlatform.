@@ -213,5 +213,25 @@ namespace Fx.Domain.FxGoods
             }
             return false;
         }
+
+
+        public bool Delete(int goodsId)
+        {
+            using (var context = new FxGoodsContext())
+            {
+                var goods = context.GoodsTransferInfos.Where(r => r.GoodsTransferInfoId == goodsId).FirstOrDefault();
+                if (goods != null)
+                {
+                    goods.InfoProcessState = (int)ProcessState.Delete;
+                    goods.IsPublish = false;
+                    goods.Logs.Add(new Entity.FxGoods.GoodsTransferLog()
+                    {
+                        OperteName = Enum.GetName(typeof(ProcessState), ProcessState.Delete)
+                    });
+                    return context.SaveChanges() > 0;
+                }
+            }
+            return false;
+        }
     }
 }

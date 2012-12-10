@@ -59,7 +59,7 @@ namespace Fx.Entity
         /// <summary>
         /// 图片CDN失败
         /// </summary>
-       [Description("图片CDN失败")]
+        [Description("图片CDN失败")]
         PictrueCdnFailed = 9,
         /// <summary>
         /// Job完成
@@ -83,6 +83,9 @@ namespace Fx.Entity
         End = 99,
 
         [Description("不删除状态【置顶中...】")]
-        NoDelete=-1
+        NoDelete = -1,
+
+        [Description("已删除")]
+        Delete = -100
     }
 }

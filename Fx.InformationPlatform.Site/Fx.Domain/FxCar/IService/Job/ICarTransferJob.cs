@@ -32,5 +32,8 @@ namespace Fx.Domain.FxCar.IService
         bool End(int carId);
 
         bool NoDelete(int carId);
+
+        bool Delete(int carId);
+
     }
 }

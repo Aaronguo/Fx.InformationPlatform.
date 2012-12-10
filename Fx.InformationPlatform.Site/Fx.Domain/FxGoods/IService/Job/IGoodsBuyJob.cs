@@ -32,5 +32,7 @@ namespace Fx.Domain.FxGoods.IService
         bool End(int goodsId);
 
         bool NoDelete(int goodsId);
+
+        bool Delete(int goodsId);
     }
 }
