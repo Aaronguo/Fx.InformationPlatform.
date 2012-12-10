@@ -36,6 +36,15 @@
             if (navindex >= 0) {
                 $("#homeNavs li").eq(navindex).addClass("active");
             }
+
+
+            $("#searchText").keydown(function (e) {
+                var curkey = e.which;
+                if (curkey == 13) {
+                    $("#homeSearchButton").trigger("click");
+                    return false;
+                }
+            });
         });
     </script>
 </body>

@@ -740,9 +740,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\_Layouttest.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\PageLink\About.cshtml" />
   </ItemGroup>
   <PropertyGroup>
