@@ -399,16 +399,16 @@ a {
 
     .list_scroll_inn_wks .tops_aa_imgs_kk {
         display: block;
-        height: 200px;
-        width: 188px;
+        max-height: 200px;
+        max-width: 188px;
         overflow: hidden;
         margin: 0px 0px 2px 0px;
     }
 
         .list_scroll_inn_wks .tops_aa_imgs_kk img {
             display: block;
-            height: 200px;
-            width: 188px;
+            max-height: 200px;
+            max-width: 188px;
             border: 0px;
             padding: 0px;
         }
@@ -417,6 +417,7 @@ a {
     width: 178px;
     padding: 0px 5px 0px 5px;
     height: 39px;
+    margin-bottom:0px;
     line-height: 39px;
     overflow: hidden;
     text-align: center;
@@ -1452,8 +1453,9 @@ a {
 
 .jqzoom img {
     display: block;
-    width: 378px;
-    height: 277px;
+    max-width: 378px;
+    border: 1px solid #cccccc; 
+    display: block;
 }
 
 

@@ -1,4 +1,4 @@
-﻿@model Fx.Entity.FxHouse.HouseTransferInfo
+﻿﻿@model Fx.Entity.FxHouse.HouseTransferInfo
 @{
     ViewBag.Title = Model.PublishTitle + "|  我在英淘网http://yingtao.co.uk发布了一条房屋转让信息";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -18,7 +18,7 @@
                 { 
                 <a href="@Fx.InformationPlatform.Site.AppSettings.ImageUploadCdnDomain(picture.ImageUrl)" class="jqzoom" id="big_suol_img">
                     <img id="midium_imgs" src="@Fx.InformationPlatform.Site.AppSettings.ImageUploadCdnDomain(picture.ImageUrl)"
-                        style="border: 1px solid #cccccc; width: 348px; height: 348px; display: block;">
+                        style="border: 1px solid #cccccc; max-width: 348px;  display: block;">
                 </a>
                     break;
                 }
@@ -125,4 +125,3 @@
 <script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("easydialog.min.js")"></script>
 <script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("getelepos.js")"></script>
 <script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("List.js")"></script>
-

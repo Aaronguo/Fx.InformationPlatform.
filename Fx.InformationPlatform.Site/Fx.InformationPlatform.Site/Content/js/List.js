@@ -74,8 +74,8 @@ function Demo_R_C(ts) {
     var m_img_b = document.getElementById("big_suol_img");
     var small_img_set_ids = document.getElementById("right_small_img_set");
     var get_spans = small_img_set_ids.getElementsByTagName("span");
-    m_img.src = ts.getElementsByTagName("img")[1].src;
-    m_img_b.href = ts.getElementsByTagName("img")[1].src;
+    m_img.src = $(ts.getElementsByTagName("img")[1]).attr("bigpic");//ts.getElementsByTagName("img")[1].src;
+    m_img_b.href = $(ts.getElementsByTagName("img")[1]).attr("bigpic");
     for (var j = 0; j < get_spans.length; j++) {
         get_spans[j].getElementsByTagName("div")[1].className = 'right_imgs_dm_off';
         get_spans[j].getElementsByTagName("img")[0].style.display = 'none';

@@ -14,29 +14,14 @@
 </head>
 <body>
     @Html.Partial("_Navigation")
-
-    <div class="container_24">
+    <div class="clear"></div>
+    @RenderBody()
+    @*   <div class="container_24">
         @Html.Partial("_Logo")
-        <div class="clear"></div>
         @Html.Partial("_Nav")
-        <div class="clear"></div>
-        @RenderBody()
+       
         <div class="clear"></div>
         @Html.Partial("_Footer")
-    </div>
-
-
-    <!--JS Pluggin-->
-    <!--解决因IE Placeholder bug-->
-    <script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("Pluggin/jquery.placeholder.min.js")"></script>
-    <script type="text/javascript">
-        $('input[placeholder], textarea[placeholder]').placeholder();
-        $(document).ready(function () {
-            var navindex = document.getElementById('navindex').value;
-            if (navindex >= 0) {
-                $("#homeNavs li").eq(navindex).addClass("active");
-            }
-        });
-    </script>
+    </div>*@
 </body>
 </html>

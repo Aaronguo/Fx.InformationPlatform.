@@ -1,7 +1,7 @@
 ﻿<!--logo和搜索框-->
 @using (Html.BeginForm("HomeSearchFacade", "Home", FormMethod.Post, new { enctype = "multipart/form-data", id = "homeForm" }))
 {
-    <div class="grid_24" style="padding-top:20px;">
+    <div class="grid_24" style="padding-top: 20px;">
         <div class="grid_5 alpha">
             <a href="@Fx.InformationPlatform.Site.AppSettings.YingTaoUrl()">
                 <img src="@Fx.InformationPlatform.Site.AppSettings.ImageDomain("logo.png")" class="logo_img" alt="英淘网"/>
@@ -23,13 +23,12 @@
                 </div>
             </div>
         </div>
+        <div class="clear"></div>
+        <div style="display: none">
+            @Html.Hidden("searchTextModel")
+            @Html.Hidden("logochoseModel")
+        </div>
     </div>
-
-    <div style="display: none">
-        @Html.Hidden("searchTextModel")
-        @Html.Hidden("logochoseModel")
-    </div>
-    
 }
 
 <script type="text/javascript">
@@ -37,7 +36,7 @@
         $('#logochose').dropdown();
         $("#searchmenu li a").each(function () {
             $(this).click(function (index, dom) {
-                $("#logochose").text($(this).text());              
+                $("#logochose").text($(this).text());
             });
         });
         $("#homeSearchButton").click(function () {
