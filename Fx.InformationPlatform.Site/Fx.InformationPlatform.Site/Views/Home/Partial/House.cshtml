@@ -10,7 +10,30 @@
             <div class="thing_deal_hot_tag">
                 <div class="tits">热门标签</div>
                 <div class="tdht_cons">
-                    <a href="#">House</a><a href="#">Flat</a><a href="#">学生公寓</a>
+                    @Html.ActionLink("House", "HouseTransferSearch", "Search", new
+                            {
+                                page = 1,
+                                key = "",
+                                area = 0,
+                                city = 0,
+                                clc = 47
+                            }, null)
+                    @Html.ActionLink("Flat", "HouseTransferSearch", "Search", new
+                            {
+                                page = 1,
+                                key = "",
+                                area = 0,
+                                city = 0,
+                                clc = 48
+                            }, null)
+                    @Html.ActionLink("学生公寓", "HouseTransferSearch", "Search", new
+                            {
+                                page = 1,
+                                key = "",
+                                area = 0,
+                                city = 0,
+                                clc = 49
+                            }, null)
                     <div class="clear"></div>
                 </div>
             </div>
@@ -38,11 +61,16 @@
                                     <div class="interval_line_c"></div>
                                     <a href="@Fx.InformationPlatform.Site.AppSettings.HouseTransferLink(item.HouseTransferInfoId)" class="imgs_a"  target="_blank" >
                                         <img src="@Fx.InformationPlatform.Site.AppSettings.ImageUploadCdnDomain(picture.ImageUrl)" />
-                                       
+
                                     </a>
                                     <div class="tits_btm_coms_index names_btm">
                                         <a href="@Fx.InformationPlatform.Site.AppSettings.HouseTransferLink(item.HouseTransferInfoId)"  target="_blank" >
-                                            @item.Price、@item.PublishTitle
+                                            @if (item.PublishTitle != null && item.PublishTitle.Length >= 8)
+                                            {
+                                                @(item.PublishTitle.Substring(0,8)+"...")                                                                                                
+                                            }
+                                            、
+                                            ￡@item.Price
                                         </a>
                                     </div>
                                 </div>
@@ -77,11 +105,16 @@
                                     <div class="interval_line_c"></div>
                                     <a href="@Fx.InformationPlatform.Site.AppSettings.HouseTransferLink(item.HouseTransferInfoId)" class="imgs_a"  target="_blank" >
                                         <img src="@Fx.InformationPlatform.Site.AppSettings.ImageUploadCdnDomain(picture.ImageUrl)" />
-                                       
+
                                     </a>
                                     <div class="tits_btm_coms_index names_btm">
                                         <a href="@Fx.InformationPlatform.Site.AppSettings.HouseTransferLink(item.HouseTransferInfoId)"  target="_blank" >
-                                            @item.Price、@item.PublishTitle
+                                            @if (item.PublishTitle != null && item.PublishTitle.Length >= 8)
+                                            {
+                                                @(item.PublishTitle.Substring(0,8)+"...")                                                                                                
+                                            }
+                                            、
+                                            ￡@item.Price
                                         </a>
                                     </div>
                                 </div>
@@ -115,11 +148,16 @@
                                     <div class="interval_line_c"></div>
                                     <a href="@Fx.InformationPlatform.Site.AppSettings.HouseTransferLink(item.HouseTransferInfoId)" target="_blank" class="imgs_a">
                                         <img src="@Fx.InformationPlatform.Site.AppSettings.ImageUploadCdnDomain(picture.ImageUrl)" />
-                                       
+
                                     </a>
                                     <div class="tits_btm_coms_index names_btm">
                                         <a href="@Fx.InformationPlatform.Site.AppSettings.HouseTransferLink(item.HouseTransferInfoId)"  target="_blank" >
-                                            @item.Price、@item.PublishTitle
+                                           @if (item.PublishTitle != null && item.PublishTitle.Length >= 8)
+                                            {
+                                                @(item.PublishTitle.Substring(0,8)+"...")                                                                                                
+                                            }
+                                            、
+                                            ￡@item.Price
                                         </a>
                                     </div>
                                 </div>

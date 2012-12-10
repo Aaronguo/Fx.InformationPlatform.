@@ -4,6 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<link rel="stylesheet" href="@Fx.InformationPlatform.Site.AppSettings.CssDomain("easydialog.css")" />
+
 <div class="interval_20"></div>
 
 
@@ -16,8 +18,8 @@
             <div class="designer_wks" style="width: 870px;">
                 希望价格：
                  <font>
-                    @Model.Price
-                    ￡
+                     ￡
+                    @Model.Price                    
                  </font>
             </div>
             <div class="source_wks" style="width: 850px;">
@@ -31,7 +33,7 @@
                 @if (!string.IsNullOrWhiteSpace(Model.Mark))
                 {
                     <br />
-                    <span>备注</span>@Model.Mark
+                    <span>备注：</span>@Model.Mark
                 }
             </div>
             <div class="goods_details_introduce" style="width: 850px;"></div>

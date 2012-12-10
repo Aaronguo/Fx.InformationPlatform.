@@ -56,8 +56,20 @@ namespace Fx.InformationPlatform.Site.Controllers
             return View();
         }
 
-
+        /// <summary>
+        /// 404
+        /// </summary>
+        /// <returns></returns>
         public ActionResult PageNotFound()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// 关于我们
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult About()
         {
             return View();
         }

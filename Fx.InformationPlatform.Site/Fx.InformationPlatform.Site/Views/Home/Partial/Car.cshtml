@@ -9,7 +9,38 @@
             <div class="thing_deal_hot_tag">
                 <div class="tits">热门标签</div>
                 <div class="tdht_cons">
-                    <a href="#">宝马</a><a href="#">奥迪</a><a href="#">奔驰</a><a href="#">丰田</a>
+                    @Html.ActionLink("宝马", "CarTransferSearch", "Search", new
+                            {
+                                page = 1,
+                                key = "",
+                                area = 0,
+                                city = 0,
+                                clc = 30
+                            }, null)
+                     @Html.ActionLink("奥迪", "CarTransferSearch", "Search", new
+                            {
+                                page = 1,
+                                key = "",
+                                area = 0,
+                                city = 0,
+                                clc = 29
+                            }, null)
+                     @Html.ActionLink("奔驰", "CarTransferSearch", "Search", new
+                            {
+                                page = 1,
+                                key = "",
+                                area = 0,
+                                city = 0,
+                                clc = 38
+                            }, null)
+                     @Html.ActionLink("丰田", "CarTransferSearch", "Search", new
+                            {
+                                page = 1,
+                                key = "",
+                                area = 0,
+                                city = 0,
+                                clc = 35
+                            }, null)
                     <div class="clear"></div>
                 </div>
             </div>
@@ -37,11 +68,16 @@
                                     <div class="interval_line_c"></div>
                                     <a href="@Fx.InformationPlatform.Site.AppSettings.CarTransferLink(item.CarTransferInfoId)" class="imgs_a"  target="_blank" >
                                         <img src="@Fx.InformationPlatform.Site.AppSettings.ImageUploadCdnDomain(picture.ImageUrl)" />
-                                       
+
                                     </a>
                                     <div class="tits_btm_coms_index names_btm">
                                         <a href="@Fx.InformationPlatform.Site.AppSettings.CarTransferLink(item.CarTransferInfoId)"  target="_blank" >
-                                            @item.Price、@item.PublishTitle
+                                            @if (item.PublishTitle != null && item.PublishTitle.Length >= 8)
+                                            {
+                                                @(item.PublishTitle.Substring(0,8)+"...")                                                                                                
+                                            }
+                                            、
+                                            ￡@item.Price
                                         </a>
                                     </div>
                                 </div>
@@ -75,11 +111,16 @@
                                     <div class="interval_line_c"></div>
                                     <a href="@Fx.InformationPlatform.Site.AppSettings.CarTransferLink(item.CarTransferInfoId)" class="imgs_a"  target="_blank" >
                                         <img src="@Fx.InformationPlatform.Site.AppSettings.ImageUploadCdnDomain(picture.ImageUrl)" />
-                                       
+
                                     </a>
                                     <div class="tits_btm_coms_index names_btm">
                                         <a href="@Fx.InformationPlatform.Site.AppSettings.CarTransferLink(item.CarTransferInfoId)"  target="_blank" >
-                                            @item.Price、@item.PublishTitle
+                                            @if (item.PublishTitle != null && item.PublishTitle.Length >= 8)
+                                            {
+                                                @(item.PublishTitle.Substring(0,8)+"...")                                                                                                
+                                            }
+                                            、
+                                            ￡@item.Price
                                         </a>
                                     </div>
                                 </div>
@@ -113,11 +154,16 @@
                                     <div class="interval_line_c"></div>
                                     <a href="@Fx.InformationPlatform.Site.AppSettings.CarTransferLink(item.CarTransferInfoId)" class="imgs_a"  target="_blank" >
                                         <img src="@Fx.InformationPlatform.Site.AppSettings.ImageUploadCdnDomain(picture.ImageUrl)" />
-                                       
+
                                     </a>
                                     <div class="tits_btm_coms_index names_btm">
                                         <a href="@Fx.InformationPlatform.Site.AppSettings.CarTransferLink(item.CarTransferInfoId)"  target="_blank" >
-                                            @item.Price、@item.PublishTitle
+                                             @if (item.PublishTitle != null && item.PublishTitle.Length >= 8)
+                                            {
+                                                @(item.PublishTitle.Substring(0,8)+"...")                                                                                                
+                                            }
+                                            、
+                                            ￡@item.Price
                                         </a>
                                     </div>
                                 </div>

@@ -6,7 +6,7 @@
 
 <div class="interval_20"></div>
 
-
+<link rel="stylesheet" href="@Fx.InformationPlatform.Site.AppSettings.CssDomain("easydialog.css")" />
 @Html.Partial("Partial/Madol")
 
 <div class="grid_24">
@@ -49,8 +49,8 @@
             <div class="designer_wks">
                 房屋价格：
                  <font>
-                    @Model.Price
-                    ￡
+                     ￡
+                    @Model.Price                    
                  </font>
             </div>
 
@@ -87,7 +87,7 @@
                 @if (!string.IsNullOrWhiteSpace(Model.Mark))
                 {
                     <br />
-                    <span>备注</span>@Model.Mark
+                    <span>备注：</span>@Model.Mark
                 }
             </div>
             <div class="goods_details_introduce">

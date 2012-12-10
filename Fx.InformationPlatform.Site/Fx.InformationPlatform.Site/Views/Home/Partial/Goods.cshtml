@@ -9,8 +9,46 @@
             <div class="thing_deal_hot_tag">
                 <div class="tits">热门标签</div>
                 <div class="tdht_cons">
-                    <a href="#">数码产品</a><a href="#">居家用品</a><a href="#">衣服鞋包</a><a href="#">文化生活</a>
-                    <div class="clear"></div>
+                    @Html.ActionLink("数码产品", "GoodsTransferSearch", "Search", new
+                            {
+                                page = 1,
+                                key = "",
+                                area = 0,
+                                city = 0,
+                                IsChangeByGoods = true,
+                                IsChangeByPrice = true,
+                                clc = 1
+                            }, null)
+                    @Html.ActionLink("居家用品", "GoodsTransferSearch", "Search", new
+                            {
+                                page = 1,
+                                key = "",
+                                area = 0,
+                                city = 0,
+                                IsChangeByGoods = true,
+                                IsChangeByPrice = true,
+                                clc = 2
+                            }, null)
+                    @Html.ActionLink("衣服鞋包", "GoodsTransferSearch", "Search", new
+                            {
+                                page = 1,
+                                key = "",
+                                area = 0,
+                                city = 0,
+                                IsChangeByGoods = true,
+                                IsChangeByPrice = true,
+                                clc = 3
+                            }, null)
+                    @Html.ActionLink("文化生活", "GoodsTransferSearch", "Search", new
+                            {
+                                page = 1,
+                                key = "",
+                                area = 0,
+                                city = 0,
+                                IsChangeByGoods = true,
+                                IsChangeByPrice = true,
+                                clc = 4
+                            }, null)
                 </div>
             </div>
         </div>
@@ -38,14 +76,19 @@
 
                                     </a>
                                     <div class="tits_btm_coms_index names_btm">
-                                        <a href="@Fx.InformationPlatform.Site.AppSettings.GoodsTransferLink(item.GoodsTransferInfoId)"  target="_blank" >
-                                            @item.Price、@item.PublishTitle
+                                        <a href="@Fx.InformationPlatform.Site.AppSettings.GoodsTransferLink(item.GoodsTransferInfoId)"  target="_blank" >、@item.PublishTitle
+                                            @if (item.PublishTitle != null && item.PublishTitle.Length >= 8)
+                                            {
+                                                @(item.PublishTitle.Substring(0,8)+"...")                                                                                                
+                                            }
+                                            、
+                                            ￡@item.Price
                                         </a>
                                     </div>
                                 </div>
                             </div>
                         </li>
-                                break;
+                                            break;
                             }
                         }
                     }
@@ -77,7 +120,12 @@
                                     </a>
                                     <div class="tits_btm_coms_index names_btm">
                                         <a href="@Fx.InformationPlatform.Site.AppSettings.GoodsTransferLink(item.GoodsTransferInfoId)"  target="_blank" >
-                                            @item.Price、@item.PublishTitle
+                                           @if (item.PublishTitle != null && item.PublishTitle.Length >= 8)
+                                            {
+                                                @(item.PublishTitle.Substring(0,8)+"...")                                                                                                
+                                            }
+                                            、
+                                            ￡@item.Price
                                         </a>
                                     </div>
                                 </div>
@@ -115,7 +163,12 @@
                                     </a>
                                     <div class="tits_btm_coms_index names_btm">
                                         <a href="@Fx.InformationPlatform.Site.AppSettings.GoodsTransferLink(item.GoodsTransferInfoId)"  target="_blank" >
-                                            @item.Price、@item.PublishTitle
+                                            @if (item.PublishTitle != null && item.PublishTitle.Length >= 8)
+                                            {
+                                                @(item.PublishTitle.Substring(0,8)+"...")                                                                                                
+                                            }
+                                            、
+                                            ￡@item.Price
                                         </a>
                                     </div>
                                 </div>

@@ -252,6 +252,7 @@
     <Content Include="App_Readme\membership.sql" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\easydialog.css" />
     <Content Include="Content\css\images\arrowhead.gif" />
     <Content Include="Content\css\images\bj-bd.jpg" />
     <Content Include="Content\css\images\favicon.ico" />
@@ -740,6 +741,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_Layouttest.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PageLink\About.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

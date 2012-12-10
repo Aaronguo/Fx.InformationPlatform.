@@ -6,7 +6,7 @@
 
 <div class="interval_20"></div>
 
-
+<link rel="stylesheet" href="@Fx.InformationPlatform.Site.AppSettings.CssDomain("easydialog.css")" />
 @Html.Partial("Partial/Madol")
 
 <div class="grid_24">
@@ -49,11 +49,12 @@
             <div class="designer_wks">
                 价格：
                   <font>
-                    @Model.Price
-                    ￡
+                      ￡
+                    @Model.Price                    
                  </font>
                 @if (Model.IsChange)
                 {
+                    <br />
                     <span>换物：@Model.ChangeMsg</span>
                 }
             </div>
@@ -66,12 +67,13 @@
                 物品新旧程度：@Fx.InformationPlatform.Site.Helper.GetEnumDescription((Fx.Entity.Catagroy.GoodsTransferConditionCatagroy)Model.GoodsconditonId)
                 @if (!string.IsNullOrWhiteSpace(Model.GoodsConditionMsg))
                 {
-                    <span>物品相关缺陷描述</span>@Model.GoodsConditionMsg
                     <br />
+                    <span>物品相关缺陷描述：</span>@Model.GoodsConditionMsg                    
                 }
                 @if (!string.IsNullOrWhiteSpace(Model.Mark))
                 {
-                    <span>备注</span>@Model.Mark
+                    <br />
+                    <span>备注：</span>@Model.Mark
                 }
             </div>
             <div class="goods_details_introduce">

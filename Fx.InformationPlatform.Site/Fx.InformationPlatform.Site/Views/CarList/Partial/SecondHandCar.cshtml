@@ -28,7 +28,14 @@
                                         }
                                     }
                                     <div class="tits_btm_coms_list names_btm">
-                                        <a href="@Fx.InformationPlatform.Site.AppSettings.CarTransferLink(Model[i].CarTransferInfoId)">@Model[i].PublishTitle、 @Model[i].Price ￡</a>
+                                        <a href="@Fx.InformationPlatform.Site.AppSettings.CarTransferLink(Model[i].CarTransferInfoId)">
+                                            @if (Model[i + 0].PublishTitle != null && Model[i + 0].PublishTitle.Length >= 8)
+                                            {
+                                                @(Model[i + 0].PublishTitle.Substring(0, 8) + "...")                                                                                                
+                                            }
+                                            、
+                                            ￡@Model[i + 0].Price
+                                        </a>
                                     </div>
                                 </div>
 
@@ -47,7 +54,14 @@
                                         }
                                     }
                                     <div class="tits_btm_coms_list names_btm">
-                                        <a href="@Fx.InformationPlatform.Site.AppSettings.CarTransferLink(Model[i + 1].CarTransferInfoId)">@Model[i + 1].PublishTitle、 @Model[i + 1].Price ￡</a>
+                                        <a href="@Fx.InformationPlatform.Site.AppSettings.CarTransferLink(Model[i + 1].CarTransferInfoId)">
+                                            @if (Model[i + 1].PublishTitle != null && Model[i + 1].PublishTitle.Length >= 8)
+                                            {
+                                                @(Model[i + 1].PublishTitle.Substring(0, 8) + "...")                                                                                                
+                                            }
+                                            、
+                                            ￡@Model[i + 1].Price
+                                        </a>
                                     </div>
                                 </div>
 
@@ -66,7 +80,14 @@
                                         }
                                     }
                                     <div class="tits_btm_coms_list names_btm">
-                                        <a href="@Fx.InformationPlatform.Site.AppSettings.CarTransferLink(Model[i + 2].CarTransferInfoId)">@Model[i + 2].PublishTitle、 @Model[i + 2].Price ￡</a>
+                                        <a href="@Fx.InformationPlatform.Site.AppSettings.CarTransferLink(Model[i + 2].CarTransferInfoId)">
+                                            @if (Model[i + 2].PublishTitle != null && Model[i + 2].PublishTitle.Length >= 8)
+                                            {
+                                                @(Model[i + 2].PublishTitle.Substring(0, 8) + "...")                                                                                                
+                                            }
+                                            、
+                                            ￡@Model[i + 2].Price
+                                        </a>
                                     </div>
                                 </div>
 
@@ -85,7 +106,14 @@
                                         }
                                     }
                                     <div class="tits_btm_coms_list names_btm">
-                                        <a href="@Fx.InformationPlatform.Site.AppSettings.CarTransferLink(Model[i + 3].CarTransferInfoId)">@Model[i + 3].PublishTitle、 @Model[i + 3].Price ￡</a>
+                                        <a href="@Fx.InformationPlatform.Site.AppSettings.CarTransferLink(Model[i + 3].CarTransferInfoId)">
+                                            @if (Model[i + 3].PublishTitle != null && Model[i + 3].PublishTitle.Length >= 8)
+                                            {
+                                                @(Model[i + 3].PublishTitle.Substring(0, 8) + "...")                                                                                                
+                                            }
+                                            、
+                                            ￡@Model[i + 3].Price
+                                        </a>
                                     </div>
                                 </div>
                             </div>

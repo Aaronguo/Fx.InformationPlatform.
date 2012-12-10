@@ -1,6 +1,6 @@
 ﻿<div class="grid_24 bottom">
-    <a href="#">关于英淘</a>
-    <a href="#">联系我们</a>
+    @Html.ActionLink("关于英淘", "About", "PageLink")
+    <a href="mailto:customerservice@yingtao.co.uk">联系我们</a>
     @Html.ActionLink("Disclaimer", "Convention", "PageLink")
     @Html.ActionLink("Privacy", "Privacy", "PageLink")
     <a href="#">友情链接</a>
@@ -8,20 +8,20 @@
 
 <style type="text/css">
     .bottom {
-    line-height: 30px;
-    background-color: #9d261d;
-    height: 30px;
-    text-align: center;
-}
-
-    .bottom a {
-        font-size: 12px;
-        color: white;
-        font-family: 微软雅黑;
-        margin-right: 25px;
+        line-height: 30px;
+        background-color: #9d261d;
+        height: 30px;
+        text-align: center;
     }
 
-        .bottom a:hover {
-            text-decoration: underline;
+        .bottom a {
+            font-size: 12px;
+            color: white;
+            font-family: 微软雅黑;
+            margin-right: 25px;
         }
+
+            .bottom a:hover {
+                text-decoration: underline;
+            }
 </style>

@@ -38,6 +38,7 @@ namespace Fx.Domain.FxCar.Search
                 using (var context = new FxCarContext())
                 {
                     return context.CarTransferInfos
+                        .Include(r=>r.Pictures)
                         .Where(r => ids.Contains(r.CarTransferInfoId)).ToList();
                 }
             }

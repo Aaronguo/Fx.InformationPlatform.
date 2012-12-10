@@ -1,5 +1,4 @@
-﻿
-@model Fx.InformationPlatform.Site.ViewModel.HomeModel
+﻿@model Fx.InformationPlatform.Site.ViewModel.HomeModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "英淘网-英国华人生活信息发布平台";
@@ -46,5 +45,8 @@
     $(document).ready(function () {
         Control_btn();
         $(".topLoop").slide({ mainCell: ".bd ul", effect: "topLoop", vis: 1, scroll: 1, trigger: "click" });
+        $("#searchText").keydown(function () {
+            $("#homeSearchButton").trigger("submit");
+        });
     });
 </script>

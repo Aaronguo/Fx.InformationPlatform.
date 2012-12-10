@@ -38,6 +38,7 @@ namespace Fx.Domain.FxHouse.Search
                 using (var context = new FxHouseContext())
                 {
                     return context.HouseTransferInfos
+                        .Include(r=>r.Pictures)
                         .Where(r => ids.Contains(r.HouseTransferInfoId)).ToList();
                 }
             }

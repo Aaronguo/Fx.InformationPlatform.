@@ -5,7 +5,7 @@
 }
 
 <div class="interval_20"></div>
-
+<link rel="stylesheet" href="@Fx.InformationPlatform.Site.AppSettings.CssDomain("easydialog.css")" />
 
 @Html.Partial("Partial/Madol")
 
@@ -61,7 +61,7 @@
                 @if (!string.IsNullOrWhiteSpace(Model.Mark))
                 {
                     <br />
-                    <span>备注</span>@Model.Mark
+                    <span>备注：</span>@Model.Mark
                 }
             </div>
             <div class="goods_details_introduce">
