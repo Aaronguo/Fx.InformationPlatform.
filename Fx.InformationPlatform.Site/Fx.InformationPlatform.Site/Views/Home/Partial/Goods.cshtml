@@ -76,12 +76,16 @@
 
                                     </a>
                                     <div class="tits_btm_coms_index names_btm">
-                                        <a href="@Fx.InformationPlatform.Site.AppSettings.GoodsTransferLink(item.GoodsTransferInfoId)"  target="_blank" >、@item.PublishTitle
+                                        <a href="@Fx.InformationPlatform.Site.AppSettings.GoodsTransferLink(item.GoodsTransferInfoId)"  target="_blank" >
                                             @if (item.PublishTitle != null && item.PublishTitle.Length >= 8)
                                             {
                                                 @(item.PublishTitle.Substring(0,8)+"...")                                                                                                
                                             }
-                                            、
+                                            else
+                                            {
+                                                @item.PublishTitle
+                                            }
+                                            &nbsp;                                          
                                             ￡@item.Price
                                         </a>
                                     </div>
@@ -124,7 +128,11 @@
                                             {
                                                 @(item.PublishTitle.Substring(0,8)+"...")                                                                                                
                                             }
-                                            、
+                                            else
+                                            {
+                                                @item.PublishTitle
+                                            }
+                                            &nbsp;
                                             ￡@item.Price
                                         </a>
                                     </div>
@@ -166,8 +174,12 @@
                                             @if (item.PublishTitle != null && item.PublishTitle.Length >= 8)
                                             {
                                                 @(item.PublishTitle.Substring(0,8)+"...")                                                                                                
+                                            } 
+                                            else
+                                            {
+                                                @item.PublishTitle
                                             }
-                                            、
+                                            &nbsp;
                                             ￡@item.Price
                                         </a>
                                     </div>

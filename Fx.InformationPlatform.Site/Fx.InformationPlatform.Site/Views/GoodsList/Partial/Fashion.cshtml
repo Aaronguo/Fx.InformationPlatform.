@@ -28,12 +28,16 @@
                                     }
                                     <div class="tits_btm_coms_list names_btm">
                                         <a href="@Fx.InformationPlatform.Site.AppSettings.GoodsTransferLink(Model[i].GoodsTransferInfoId)">
-                                            @if (Model[i + 0].PublishTitle != null && Model[i + 0].PublishTitle.Length >= 8)
+                                            @if (Model[i].PublishTitle != null && Model[i].PublishTitle.Length >= 8)
                                             {
-                                                @(Model[i + 0].PublishTitle.Substring(0, 8) + "...")                                                                                                
+                                                @(Model[i].PublishTitle.Substring(0, 8) + "...")                                                                                                
                                             }
-                                            、
-                                            ￡@Model[i + 0].Price
+                                            else
+                                            {
+                                                @Model[i].PublishTitle
+                                            }
+                                            &nbsp;
+                                            ￡@Model[i].Price
                                         </a>
                                     </div>
                                 </div>
@@ -57,8 +61,12 @@
                                             @if (Model[i + 1].PublishTitle != null && Model[i + 1].PublishTitle.Length >= 8)
                                             {
                                                 @(Model[i + 1].PublishTitle.Substring(0, 8) + "...")                                                                                                
+                                            } 
+                                            else
+                                            {
+                                                @Model[i + 1].PublishTitle
                                             }
-                                            、
+                                            &nbsp;
                                             ￡@Model[i + 1].Price
                                         </a>
                                     </div>
@@ -84,7 +92,11 @@
                                             {
                                                 @(Model[i + 2].PublishTitle.Substring(0, 8) + "...")                                                                                                
                                             }
-                                            、
+                                            else
+                                            {
+                                                @Model[i + 2].PublishTitle
+                                            }
+                                            &nbsp;
                                             ￡@Model[i + 2].Price
                                         </a>
                                     </div>
@@ -109,8 +121,12 @@
                                             @if (Model[i + 3].PublishTitle != null && Model[i + 3].PublishTitle.Length >= 8)
                                             {
                                                 @(Model[i + 3].PublishTitle.Substring(0, 8) + "...")                                                                                                
+                                            } 
+                                            else
+                                            {                                                
+                                                @Model[i + 3].PublishTitle
                                             }
-                                            、
+                                            &nbsp;
                                             ￡@Model[i + 3].Price
                                         </a>
                                     </div>

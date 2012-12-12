@@ -29,12 +29,16 @@
                                     }
                                     <div class="tits_btm_coms_list names_btm">
                                         <a href="@Fx.InformationPlatform.Site.AppSettings.CarTransferLink(Model[i].CarTransferInfoId)">
-                                            @if (Model[i + 0].PublishTitle != null && Model[i + 0].PublishTitle.Length >= 8)
+                                            @if (Model[i].PublishTitle != null && Model[i].PublishTitle.Length >= 8)
                                             {
-                                                @(Model[i + 0].PublishTitle.Substring(0, 8) + "...")                                                                                                
+                                                @(Model[i].PublishTitle.Substring(0, 8) + "...")                                                                                                
                                             }
-                                            、
-                                            ￡@Model[i + 0].Price
+                                            else
+                                            {
+                                                @Model[i].PublishTitle
+                                            }
+                                            &nbsp;
+                                            ￡@Model[i].Price
                                         </a>
                                     </div>
                                 </div>

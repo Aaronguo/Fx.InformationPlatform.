@@ -75,8 +75,12 @@
                                             @if (item.PublishTitle != null && item.PublishTitle.Length >= 8)
                                             {
                                                 @(item.PublishTitle.Substring(0,8)+"...")                                                                                                
+                                            } 
+                                            else
+                                            {
+                                                @item.PublishTitle
                                             }
-                                            、
+                                            &nbsp;
                                             ￡@item.Price
                                         </a>
                                     </div>
@@ -118,8 +122,12 @@
                                             @if (item.PublishTitle != null && item.PublishTitle.Length >= 8)
                                             {
                                                 @(item.PublishTitle.Substring(0,8)+"...")                                                                                                
+                                            } 
+                                            else
+                                            {
+                                                @item.PublishTitle
                                             }
-                                            、
+                                            &nbsp;
                                             ￡@item.Price
                                         </a>
                                     </div>
@@ -161,8 +169,12 @@
                                              @if (item.PublishTitle != null && item.PublishTitle.Length >= 8)
                                             {
                                                 @(item.PublishTitle.Substring(0,8)+"...")                                                                                                
+                                            } 
+                                            else
+                                            {
+                                                @item.PublishTitle
                                             }
-                                            、
+                                            &nbsp;
                                             ￡@item.Price
                                         </a>
                                     </div>
