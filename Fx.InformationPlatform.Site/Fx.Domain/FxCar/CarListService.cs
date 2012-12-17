@@ -19,7 +19,7 @@ namespace Fx.Domain.FxCar
             using (FxCarContext context = new FxCarContext())
             {
                 list = context.CarTransferInfos.Include(r => r.Pictures)
-                    .Where(r => r.IsPublish)
+                    .Where(r => r.IsPublish==true)
                     .OrderByDescending(r => r.CreatedTime)
                     .Take(20).ToList();
                 //&&

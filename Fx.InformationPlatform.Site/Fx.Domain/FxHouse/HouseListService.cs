@@ -19,9 +19,7 @@ namespace Fx.Domain.FxHouse
             using (FxHouseContext context = new FxHouseContext())
             {
                 list = context.HouseTransferInfos.Include(r => r.Pictures)
-                .Where(r => r.IsPublish &&
-                    (r.HouseTransferInfoId >= (int)ChannelListDetailCatagroy.Shop &&
-                    r.HouseTransferInfoId <= (int)ChannelListDetailCatagroy.Office))
+                .Where(r => r.IsPublish==true && r.Action == "CommercialProperties")
                 .OrderByDescending(r => r.CreatedTime)
                 .Take(20).ToList();
             }
@@ -38,9 +36,7 @@ namespace Fx.Domain.FxHouse
             using (FxHouseContext context = new FxHouseContext())
             {
                 list = context.HouseTransferInfos.Include(r => r.Pictures)
-                .Where(r => r.IsPublish &&
-                    (r.HouseTransferInfoId >= (int)ChannelListDetailCatagroy.House &&
-                    r.HouseTransferInfoId <= (int)ChannelListDetailCatagroy.StudentAparment))
+                .Where(r => r.IsPublish==true && r.Action == "Properties")
                 .OrderByDescending(r => r.CreatedTime)
                 .Take(20).ToList();
             }

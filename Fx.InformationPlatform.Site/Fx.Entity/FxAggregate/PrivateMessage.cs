@@ -24,6 +24,10 @@ namespace Fx.Entity.FxAggregate
 
         public int ChannelCatagroy { get; set; }
 
+        public string UserAccount { get; set; }
+
+        public string Message { get; set; }
+
         /// <summary>
         /// 帖子Id
         /// </summary>

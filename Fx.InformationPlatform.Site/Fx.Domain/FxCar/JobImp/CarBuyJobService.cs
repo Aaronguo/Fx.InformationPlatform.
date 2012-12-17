@@ -167,6 +167,7 @@ namespace Fx.Domain.FxCar
                 if (car != null)
                 {
                     car.InfoProcessState = (int)ProcessState.Delete;
+                    car.IsDelete = true;
                     car.IsPublish = false;
                     car.Logs.Add(new Entity.FxCar.CarBuyLog()
                     {

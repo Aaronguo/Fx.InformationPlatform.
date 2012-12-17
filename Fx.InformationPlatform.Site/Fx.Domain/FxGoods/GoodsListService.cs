@@ -19,9 +19,7 @@ namespace Fx.Domain.FxGoods
             using (FxGoodsContext context = new FxGoodsContext())
             {
                 list = context.GoodsTransferInfos.Include(r => r.Pictures)
-                        .Where(r => r.IsPublish &&
-                            (r.GoodsTransferInfoId >= (int)ChannelListDetailCatagroy.MusicInstruments &&
-                            r.GoodsTransferInfoId >= (int)ChannelListDetailCatagroy.CultureLifeOther))
+                        .Where(r => r.IsPublish == true && r.Action == "CultureLife")
                         .OrderByDescending(r => r.CreatedTime)
                         .Take(20).ToList();
             }
@@ -38,9 +36,7 @@ namespace Fx.Domain.FxGoods
             using (FxGoodsContext context = new FxGoodsContext())
             {
                 list = context.GoodsTransferInfos.Include(r => r.Pictures)
-                        .Where(r => r.IsPublish &&
-                            (r.GoodsTransferInfoId >= (int)ChannelListDetailCatagroy.Phone &&
-                            r.GoodsTransferInfoId >= (int)ChannelListDetailCatagroy.ElectronicsOther))
+                        .Where(r => r.IsPublish == true && r.Action == "Electronics")
                         .OrderByDescending(r => r.CreatedTime)
                         .Take(20).ToList();
             }
@@ -57,9 +53,7 @@ namespace Fx.Domain.FxGoods
             using (FxGoodsContext context = new FxGoodsContext())
             {
                 list = context.GoodsTransferInfos.Include(r => r.Pictures)
-                        .Where(r => r.IsPublish &&
-                            (r.GoodsTransferInfoId >= (int)ChannelListDetailCatagroy.Clothing &&
-                            r.GoodsTransferInfoId >= (int)ChannelListDetailCatagroy.FashionOther))
+                        .Where(r => r.IsPublish == true && r.Action == "Fashion")
                         .OrderByDescending(r => r.CreatedTime)
                         .Take(20).ToList();
             }
@@ -76,9 +70,7 @@ namespace Fx.Domain.FxGoods
             using (FxGoodsContext context = new FxGoodsContext())
             {
                 list = context.GoodsTransferInfos.Include(r => r.Pictures)
-                         .Where(r => r.IsPublish &&
-                            (r.GoodsTransferInfoId >= (int)ChannelListDetailCatagroy.Furniture &&
-                            r.GoodsTransferInfoId >= (int)ChannelListDetailCatagroy.HomeSuppliesOther))
+                         .Where(r => r.IsPublish == true && r.Action == "HomeSupplies")
                          .OrderByDescending(r => r.CreatedTime)
                          .Take(20).ToList();
             }
@@ -95,8 +87,7 @@ namespace Fx.Domain.FxGoods
             using (FxGoodsContext context = new FxGoodsContext())
             {
                 list = context.GoodsTransferInfos.Include(r => r.Pictures)
-                         .Where(r => r.IsPublish &&
-                            (r.GoodsTransferInfoId == (int)ChannelListDetailCatagroy.OtherOther))
+                         .Where(r => r.IsPublish == true && r.Action == "Other")
                          .OrderByDescending(r => r.CreatedTime)
                          .Take(20).ToList();
             }

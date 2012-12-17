@@ -228,6 +228,7 @@ namespace Fx.Domain.FxHouse
                 {
                     house.InfoProcessState = (int)ProcessState.Delete;
                     house.IsPublish = false;
+                    house.IsDelete = true;
                     house.Logs.Add(new Entity.FxHouse.HouseTransferLog()
                     {
                         OperteName = Enum.GetName(typeof(ProcessState), ProcessState.Delete)

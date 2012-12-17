@@ -166,6 +166,7 @@ namespace Fx.Domain.FxHouse
                 {
                     house.InfoProcessState = (int)ProcessState.Delete;
                     house.IsPublish = false;
+                    house.IsDelete = true;
                     house.Logs.Add(new Entity.FxHouse.HouseBuyLog()
                     {
                         OperteName = Enum.GetName(typeof(ProcessState), ProcessState.Delete)

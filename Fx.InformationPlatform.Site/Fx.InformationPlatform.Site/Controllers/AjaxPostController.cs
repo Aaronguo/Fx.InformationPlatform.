@@ -39,8 +39,10 @@ namespace Fx.InformationPlatform.Site.Controllers
                     {
                         ChannelCatagroy = channelCatagroy,
                         InterestingEmail = User.Identity.Name,
+                        UserAccount = info.UserAccount,
                         SourceId = infoId,
-                        Title = privateTxt,
+                        Title = info.PublishTitle,
+                        Message = privateTxt
 
                     });
                     return Json("私信发送成功", JsonRequestBehavior.DenyGet);

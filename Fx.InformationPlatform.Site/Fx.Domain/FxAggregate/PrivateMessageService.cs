@@ -31,5 +31,27 @@ namespace Fx.Domain.FxAggregate
                 }
             }
         }
+
+
+        public List<PrivateMessage> GetByUser(string user)
+        {
+            using (var content = new FxAggregateContext())
+            {
+                var entitys = content.PrivateMessages
+                    .Where(r => r.UserAccount == user).ToList();
+                return entitys;
+            }
+        }
+
+
+        public PrivateMessage GetById(int id)
+        {
+            using (var content = new FxAggregateContext())
+            {
+                var entity = content.PrivateMessages
+                    .Where(r => r.PrivateMessageId == id).FirstOrDefault();
+                return entity;
+            }
+        }
     }
 }

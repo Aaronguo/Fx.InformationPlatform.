@@ -245,6 +245,7 @@ namespace Fx.Domain.FxGoods
                 {
                     goods.InfoProcessState = (int)ProcessState.Delete;
                     goods.IsPublish = false;
+                    goods.IsDelete = true;
                     goods.Logs.Add(new Entity.FxGoods.GoodsBuyLog()
                     {
                         OperteName = Enum.GetName(typeof(ProcessState), ProcessState.Delete)

@@ -230,6 +230,7 @@ namespace Fx.Domain.FxCar
                 {
                     car.InfoProcessState = (int)ProcessState.Delete;
                     car.IsPublish = false;
+                    car.IsDelete = true;
                     car.Logs.Add(new Entity.FxCar.CarTransferLog()
                     {
                         OperteName = Enum.GetName(typeof(ProcessState), ProcessState.Delete)

@@ -11,5 +11,9 @@ namespace Fx.Domain.FxAggregate.IService
         void AddPrivateMessage(PrivateMessage message);
 
         void RemovePrivateMessage(PrivateMessage message);
+
+        PrivateMessage GetById(int id);
+
+        List<PrivateMessage> GetByUser(string user);
     }
 }

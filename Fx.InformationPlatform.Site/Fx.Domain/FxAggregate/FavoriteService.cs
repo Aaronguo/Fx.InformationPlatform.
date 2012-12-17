@@ -67,8 +67,24 @@ namespace Fx.Domain.FxAggregate
                               r.UserAccount == userAccount).ToList();
             }
         }
-
         
+        public List<Favorite> GetFavorite(string accountUser)
+        {
+            using (var context = new FxAggregateContext())
+            {
+                return context.Favorites
+                    .Where(r =>r.UserAccount == accountUser).ToList();
+            }
+        }
 
+
+        public Favorite GetById(int id)
+        {
+            using (var context = new FxAggregateContext())
+            {
+                return context.Favorites
+                    .Where(r => r.FavoriteId == id).FirstOrDefault();
+            }
+        }
     }
 }
