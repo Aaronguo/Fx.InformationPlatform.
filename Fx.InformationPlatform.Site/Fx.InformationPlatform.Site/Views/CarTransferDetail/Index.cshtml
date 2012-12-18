@@ -75,11 +75,22 @@
             @Html.Partial("_JiaThis")
 		</font>
             <font><img src="@Fx.InformationPlatform.Site.AppSettings.ImageDomain("infodetail/Contact.png")" id="jifa_alert_fras" onclick="show_al_fra()"></font>
-            <font><a href="/CarTransferDetail/Favorite?infoId=@Model.CarTransferInfoId">
-                <img src="@Fx.InformationPlatform.Site.AppSettings.ImageDomain("add_off.png")" 
+            <font>
+                @if (ViewBag.isFav)
+                {
+                <a href="#">
+                    <img src="@Fx.InformationPlatform.Site.AppSettings.ImageDomain("add_on.png")" />
+                </a>
+                }
+                else
+                {
+                <a href="/CarTransferDetail/Favorite?infoId=@Model.CarTransferInfoId">
+                    <img src="@Fx.InformationPlatform.Site.AppSettings.ImageDomain("add_off.png")" 
                 onmouseover="this.src='@Fx.InformationPlatform.Site.AppSettings.ImageDomain("add_on.png")'" 
-                onmouseout="this.src='@Fx.InformationPlatform.Site.AppSettings.ImageDomain("add_off.png")'">
-            </a></font>
+                onmouseout="this.src='@Fx.InformationPlatform.Site.AppSettings.ImageDomain("add_off.png")'"/>
+                </a>
+                }
+            </font>
         </span>
     </div>
     <div class="clear"></div>

@@ -22,7 +22,7 @@ namespace Fx.Domain.FxAggregate
             using (var context = new FxAggregateContext())
             {
                 var fav = GetFavorite(favorite.ChannelCatagroy, favorite.InfoId, favorite.UserAccount);
-                if (fav.Count > 0)
+                if (fav != null)
                 {
                     return new DomainResult(false) { ResultMsg = "您已对此帖子进行收藏了" };
                 }
@@ -57,23 +57,23 @@ namespace Fx.Domain.FxAggregate
             }
         }
 
-        public List<Favorite> GetFavorite(int ChannelCatagroy, int infoId, string userAccount)
+        public Favorite GetFavorite(int ChannelCatagroy, int infoId, string userAccount)
         {
             using (var context = new FxAggregateContext())
             {
                 return context.Favorites
                     .Where(r => r.ChannelCatagroy == ChannelCatagroy &&
                               r.InfoId == infoId &&
-                              r.UserAccount == userAccount).ToList();
+                              r.UserAccount == userAccount).FirstOrDefault();
             }
         }
-        
+
         public List<Favorite> GetFavorite(string accountUser)
         {
             using (var context = new FxAggregateContext())
             {
                 return context.Favorites
-                    .Where(r =>r.UserAccount == accountUser).ToList();
+                    .Where(r => r.UserAccount == accountUser).ToList();
             }
         }
 
@@ -85,6 +85,12 @@ namespace Fx.Domain.FxAggregate
                 return context.Favorites
                     .Where(r => r.FavoriteId == id).FirstOrDefault();
             }
+        }
+
+
+        public bool IsFavorite(int ChannelCatagroy, int infoId, string accountUser)
+        {
+            return GetFavorite(ChannelCatagroy, infoId, accountUser) != null ? true : false;
         }
     }
 }

@@ -30,10 +30,19 @@ namespace Fx.InformationPlatform.Site.Controllers
             }
             else
             {
-                var goods = transferGoods.Get(id);
+                var goods = transferGoods.Get(id);               
                 if (goods == null)
                 {
                     return RedirectToAction("PageNotFound", "PageLink");
+                }
+                if (User.Identity.IsAuthenticated)
+                {
+                    var isFav = favorite.IsFavorite((int)Fx.Entity.ChannelCatagroy.FxGoodsTransfer, id, User.Identity.Name);
+                    ViewBag.IsFav = isFav;
+                }
+                else
+                {
+                    ViewBag.IsFav = false;
                 }
                 return View(goods);
             }

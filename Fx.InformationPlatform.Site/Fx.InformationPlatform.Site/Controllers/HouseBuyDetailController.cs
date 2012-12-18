@@ -35,6 +35,15 @@ namespace Fx.InformationPlatform.Site.Controllers
                 {
                     return RedirectToAction("PageNotFound", "PageLink");
                 }
+                if (User.Identity.IsAuthenticated)
+                {
+                    var isFav = favorite.IsFavorite((int)Fx.Entity.ChannelCatagroy.FxHouseBuy, id, User.Identity.Name);
+                    ViewBag.IsFav = isFav;
+                }
+                else
+                {
+                    ViewBag.IsFav = false;
+                }
                 return View(house);
             }
         }

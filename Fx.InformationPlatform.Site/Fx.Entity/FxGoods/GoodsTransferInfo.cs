@@ -19,6 +19,7 @@ namespace Fx.Entity.FxGoods
         /// 物品功能问题
         /// </summary>
         public string GoodsConditionMsg { get; set; }
+        
 
         /// <summary>
         /// 是否置顶

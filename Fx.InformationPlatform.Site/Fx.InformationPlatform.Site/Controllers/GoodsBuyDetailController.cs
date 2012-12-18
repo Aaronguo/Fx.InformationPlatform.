@@ -37,6 +37,15 @@ namespace Fx.InformationPlatform.Site.Controllers
                 {
                     return RedirectToAction("PageNotFound", "PageLink");
                 }
+                if (User.Identity.IsAuthenticated)
+                {
+                    var isFav = favorite.IsFavorite((int)Fx.Entity.ChannelCatagroy.FxGoodsBuy, id, User.Identity.Name);
+                    ViewBag.IsFav = isFav;
+                }
+                else
+                {
+                    ViewBag.IsFav = false;
+                }
             }
             //换物
             if (goods.IsChange)

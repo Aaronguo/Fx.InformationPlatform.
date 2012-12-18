@@ -12,10 +12,12 @@ namespace Fx.Domain.FxAggregate.IService
 
         DomainResult DeleteFavorite(Favorite favorite);
 
-        List<Favorite> GetFavorite(int ChannelCatagroy, int infoId, string accountUser);
+        Favorite GetFavorite(int ChannelCatagroy, int infoId, string accountUser);
 
         List<Favorite> GetFavorite(string accountUser);
 
         Favorite GetById(int id);
+
+        bool IsFavorite(int ChannelCatagroy, int infoId, string accountUser);
     }
 }
