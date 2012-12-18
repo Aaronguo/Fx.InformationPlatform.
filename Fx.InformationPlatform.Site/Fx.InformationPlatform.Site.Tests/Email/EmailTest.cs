@@ -13,9 +13,9 @@ namespace Fx.InformationPlatform.Site.Tests.Email
         public void SendEmail()
         {
             var email = FluentEmail.Email
-                        .From("john@email.com")
-                        .To("bob@email.com", "bob")
-                        .Subject("hows it going bob")                        
+                        .From("117822597@163.com")
+                        .To("xx@qq.com", "name")
+                        .Subject("guzhuoyue shi zhu ")                        
                         .Body("yo dawg, sup?");
             //send normally
             email.Send();

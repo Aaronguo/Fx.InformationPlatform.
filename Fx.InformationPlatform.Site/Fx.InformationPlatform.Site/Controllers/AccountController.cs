@@ -47,9 +47,9 @@ namespace Fx.InformationPlatform.Site.Controllers
 
             var result = accountService.VaildUser(user.Email, user.Password);
             if (result.isSuccess)
-            {               
+            {
                 //创建验证票subdomain  share cookie
-                var ticket = new System.Web.Security.FormsAuthenticationTicket(user.Email, true, 30);                
+                var ticket = new System.Web.Security.FormsAuthenticationTicket(user.Email, true, 30);
                 string authTicket = System.Web.Security.FormsAuthentication.Encrypt(ticket);
                 HttpCookie cookie = new HttpCookie(System.Web.Security.FormsAuthentication.FormsCookieName, authTicket);
                 cookie.Domain = AppSettings.FormDomain;
@@ -140,5 +140,34 @@ namespace Fx.InformationPlatform.Site.Controllers
         {
             return accountService.GetUserCount();
         }
+
+        public ActionResult ResetPassword()
+        {
+            return View();
+        }
+
+
+        /// <summary>
+        /// 邮箱重置密码 需要考虑恶意破解的问题 但是没有实现
+        /// </summary>
+        /// <param name="useremail"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult ResetPassword(string useremail)
+        {
+            var isExist = accountService.IsExistUser(useremail);
+            if (isExist.isSuccess)
+            {
+                accountService.ResetPassword(useremail);
+                ViewBag.Tip = "已发送邮件到您的邮箱,如果你未收到，请耐心等待几分钟";
+                return View();
+            }
+            else
+            {
+                ViewBag.Tip = "对不起，不存在这个邮箱帐号";
+                return View();
+            }
+        }
+
     }
 }

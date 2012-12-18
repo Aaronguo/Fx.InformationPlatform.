@@ -30,6 +30,10 @@ namespace Fx.InformationPlatform.Site.Controllers
         /// <returns></returns>
         public ActionResult PrivateMessage(int infoId, int channelCatagroy, string privateTxt)
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return Json("私信发送失败,您没有登录,请先登陆", JsonRequestBehavior.DenyGet);
+            }
             if (Request.IsAjaxRequest() && infoId > 0 && channelCatagroy >= 0)
             {
                 var info = aggregateInfoService.GetInfoByCatatgroyAndId(channelCatagroy, infoId);

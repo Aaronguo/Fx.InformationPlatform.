@@ -54,18 +54,15 @@ namespace Fx.InformationPlatform.Site.Controllers
                 if (ret.isSuccess)
                 {
                     TempData["Tip"] = "收藏成功";
-                    //return JavaScript("function show(){alert('~');}");
                 }
                 else
                 {
                     TempData["Tip"] = ret.ResultMsg;
-                    //return JavaScript("function show(){alert('" + ret.ResultMsg + "');}");
                 }
             }
             else
             {
-                TempData["Tip"] = "收藏失败";
-                //return JavaScript("function show(){alert('收藏失败~');}");
+                TempData["Tip"] = "收藏失败,您没有登录,请先登陆";
             }
             return RedirectToAction("Index", new { id = infoId });
         }

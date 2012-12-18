@@ -41,6 +41,9 @@
     <Reference Include="EntityFramework.Patterns">
       <HintPath>..\packages\EntityFramework.Patterns.0.7\lib\net40\EntityFramework.Patterns.dll</HintPath>
     </Reference>
+    <Reference Include="FluentEmail">
+      <HintPath>..\packages\fluent-email.1.1.0\lib\net40\FluentEmail.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />

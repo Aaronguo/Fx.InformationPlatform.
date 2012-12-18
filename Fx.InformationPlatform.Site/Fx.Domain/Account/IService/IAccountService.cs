@@ -42,5 +42,7 @@ namespace Fx.Domain.Account.IService
         Guid GetCurrentUser(string Email);
 
         OtherInformation GetUserExtendInfo(string Email);
+
+        DomainResult ResetPassword(string Email);
     }
 }

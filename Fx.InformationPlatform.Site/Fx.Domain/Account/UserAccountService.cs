@@ -41,7 +41,7 @@ namespace Fx.Domain.Account
                             other.ApplicationId = user.ApplicationId;
                             other.UserId = user.UserId;
                             other.Email = entity.Email;
-                               
+
                             var rEntity = content.OtherInformations.Add(other);
                             try
                             {
@@ -206,5 +206,35 @@ namespace Fx.Domain.Account
                 return content.OtherInformations.Where(r => r.Email == Email).First();
             }
         }
+
+        public DomainResult ResetPassword(string Email)
+        {
+            var result = DomainResult.GetDefault();
+            var u = Membership.GetUser(Email);
+            if (u != null)
+            {
+                string password = u.ResetPassword();
+                var template = "亲爱的用户，您在<a herf=\"http://yingtao.co.uk\">英淘网</a>上申请了重置密码, " +
+                    "您现在的密码为@Model.Password,为了密码安全，" +
+                    "请及时在<a href=\"http://usercenter.yingtao.co.uk/UserCenter/ChangePassword\">用户中心</a>修改密码。<br />" +
+                    "注意:此邮件由系统发出，请勿回复,谢谢!";
+
+                var emailSend = FluentEmail.Email
+                    .From(System.Configuration.ConfigurationManager.AppSettings["resetsendemail"].ToString())
+                    .To(Email)
+                    .Subject("英淘网密码找回")
+                    .UsingTemplate(template, new { Password = password, });
+                var e = emailSend.Send();                
+            }
+            else
+            {
+                result.isSuccess = false;
+                result.ResultMsg = "用户" + Email + "不存在";
+            }
+            return result;
+        }
+
+
+
     }
 }
