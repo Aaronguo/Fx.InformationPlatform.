@@ -34,6 +34,7 @@ namespace Fx.Domain.FxAggregate
                 else
                 {
                     context.Favorites.Add(favorite);
+                    context.SaveChanges();
                     return DomainResult.GetDefault();
                 }
             }
@@ -90,7 +91,7 @@ namespace Fx.Domain.FxAggregate
 
         public bool IsFavorite(int ChannelCatagroy, int infoId, string accountUser)
         {
-            return GetFavorite(ChannelCatagroy, infoId, accountUser) != null ? true : false;
+            return GetFavorite(ChannelCatagroy, infoId, accountUser) != null;
         }
     }
 }

@@ -11,6 +11,7 @@ buygoods.Submit = function () {
             buygoods.ValidEmail() &&
             buygoods.ValidTag()) {
             buygoods.BuildMVCForm();
+            $(":submit").button('loading');
             return true;
         } 
         $('#buyModal').modal('show');

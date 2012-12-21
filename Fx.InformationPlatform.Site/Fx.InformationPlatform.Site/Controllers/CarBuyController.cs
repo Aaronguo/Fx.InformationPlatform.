@@ -68,6 +68,8 @@ namespace Fx.InformationPlatform.Site.Controllers
                 CarBuyInfo buycar = MapperCar(car);
                 buyService.SaveBuyCar(buycar);
                 RunJob();
+                FxCacheService.FxSite.GlobalCache cache = System.Web.Mvc.DependencyResolver.Current.GetService<FxCacheService.FxSite.GlobalCache>();
+                cache.InfoPublishAllCountAdd();
                 return View("Success");
             }
             return View("FaildTransfer");

@@ -30,6 +30,7 @@ namespace Fx.Entity.Account
 
         public string HeadPicture { get; set; }
 
+        [Required(ErrorMessage = "注册码不能为空")]
         public string VerificationCode { get; set; }
     }
 }

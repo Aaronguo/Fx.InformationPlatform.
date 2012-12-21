@@ -112,6 +112,8 @@ namespace Fx.InformationPlatform.Site.Controllers
                 GoodsTransferInfo transfergoods = MapperGoods(goods);
                 transferService.SaveTransferGoods(transfergoods);
                 RunJob();
+                FxCacheService.FxSite.GlobalCache cache = System.Web.Mvc.DependencyResolver.Current.GetService<FxCacheService.FxSite.GlobalCache>();
+                cache.InfoPublishAllCountAdd();
                 return View("Success");
             }
             return View("FaildTransfer");

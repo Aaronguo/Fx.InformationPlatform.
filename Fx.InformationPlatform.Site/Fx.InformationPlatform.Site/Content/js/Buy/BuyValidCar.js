@@ -11,6 +11,7 @@ buycar.Submit = function () {
             buycar.ValidEmail() &&
             buycar.ValidTag()) {
             buycar.BuildMVCForm();
+            $(":submit").button('loading');
             return true;
         }
         $('#transferModal').modal('show');

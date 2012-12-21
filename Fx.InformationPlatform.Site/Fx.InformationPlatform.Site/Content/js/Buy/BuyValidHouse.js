@@ -9,6 +9,7 @@ buyhouse.Submit = function () {
             buyhouse.ValidEmail() &&
             buyhouse.ValidTag()) {
             buyhouse.BuildMVCForm();
+            $(":submit").button('loading');
             return true;
         }
         $('#buyModal').modal('show');

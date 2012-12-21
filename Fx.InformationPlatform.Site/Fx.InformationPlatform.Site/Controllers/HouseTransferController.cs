@@ -73,6 +73,8 @@ namespace Fx.InformationPlatform.Site.Controllers
                 HouseTransferInfo transferhouse = MapperHouse(house);
                 transferService.SaveTransferHouse(transferhouse);
                 RunJob();
+                FxCacheService.FxSite.GlobalCache cache = System.Web.Mvc.DependencyResolver.Current.GetService<FxCacheService.FxSite.GlobalCache>();
+                cache.InfoPublishAllCountAdd();
                 return View("Success");
             }
             return View("FaildTransfer");

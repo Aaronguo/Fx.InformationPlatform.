@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.SessionState;
+using Fx.Domain.Account.IService;
 
 namespace Fx.InformationPlatform.Site
 {
@@ -60,6 +62,18 @@ namespace Fx.InformationPlatform.Site
             {
                 return "UnKonw";
             }
+        }
+
+
+        public static object GetSessionName(this HttpSessionState session,string key)
+        {
+            if (session[key]==null || string.IsNullOrWhiteSpace(session[key].ToString()))
+            {
+                IAccountService  account=System.Web.Mvc.DependencyResolver.Current.GetService<IAccountService>();
+                var userExtend = account.GetUserExtendInfo(key);
+                session[key] = userExtend.NickName == null ? "" : userExtend.NickName;
+            }
+            return session[key];
         }
     }
 }

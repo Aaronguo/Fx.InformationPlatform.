@@ -95,6 +95,8 @@
     <Compile Include="FxAggregate\PrivateMessageService.cs" />
     <Compile Include="FxAggregate\TopShowService.cs" />
     <Compile Include="FxCar\CarListService.cs" />
+    <Compile Include="FxCar\GlobalCacheHouse.cs" />
+    <Compile Include="FxCar\IService\IGlobalCacheCar.cs" />
     <Compile Include="FxCar\IService\ITransferCar.cs" />
     <Compile Include="FxCar\IService\UserCenter\ICarUserCenter.cs" />
     <Compile Include="FxCar\JobImp\CarBuyJobService.cs" />
@@ -110,7 +112,9 @@
     <Compile Include="FxCar\Search\CarBuySearchService.cs" />
     <Compile Include="FxCar\Search\CarTransferSearchService.cs" />
     <Compile Include="FxCar\UserCenterImp\CarUserCenter.cs" />
+    <Compile Include="FxGoods\GlobalCacheGoods.cs" />
     <Compile Include="FxGoods\GoodsListService.cs" />
+    <Compile Include="FxGoods\IService\IGlobalCacheGoods.cs" />
     <Compile Include="FxGoods\IService\UserCenter\IGoodsUserCenter.cs" />
     <Compile Include="FxGoods\Mapping\BuyPicture_Mapping.cs" />
     <Compile Include="FxGoods\Mapping\GoodsBuyLogs_Mapping.cs" />
@@ -126,7 +130,9 @@
     <Compile Include="FxGoods\Mapping\GoodsBuyInfo_Mapping.cs" />
     <Compile Include="FxGoods\Mapping\GoodsTransferInfo_Mapping.cs" />
     <Compile Include="FxGoods\UserCenterImp\GoodsUserCenter.cs" />
+    <Compile Include="FxHouse\GlobalHouseCache.cs" />
     <Compile Include="FxHouse\HouseListService.cs" />
+    <Compile Include="FxHouse\IService\IGolbalCacheHouse.cs" />
     <Compile Include="FxHouse\IService\Job\IHouseBuyJob.cs" />
     <Compile Include="FxHouse\IService\Job\IHouseTransferJob.cs" />
     <Compile Include="FxHouse\IService\UserCenter\IHouseUserCenter.cs" />

@@ -48,7 +48,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                 }
             }
             //换物
-            if (goods.IsChange)
+            if (goods.Pictures != null && goods.Pictures.Count > 0)
             {
                 return View("IndexWithPicture", goods);
             }

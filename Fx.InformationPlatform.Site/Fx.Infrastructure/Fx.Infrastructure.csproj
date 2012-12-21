@@ -50,6 +50,7 @@
     <Compile Include="Base\BaseIService.cs" />
     <Compile Include="Caching\CacheManager.cs" />
     <Compile Include="Caching\ICacheManager.cs" />
+    <Compile Include="Data\Cut.cs" />
     <Compile Include="Data\IRepository.cs" />
     <Compile Include="Data\SqlHelper.cs" />
     <Compile Include="Db\Connection.cs" />

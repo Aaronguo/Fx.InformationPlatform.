@@ -35,6 +35,11 @@ namespace Fx.InformationPlatform.Site.Controllers
             return View(CreateModel());
         }
 
+        public ActionResult Test()
+        {
+            return View();
+        }
+
 
 
         private HomeModel CreateModel()
@@ -60,14 +65,14 @@ namespace Fx.InformationPlatform.Site.Controllers
         /// 
         /// </summary>
         /// <param name="searchText">Key：查找关键字</param>
-        /// <param name="logochose">Channel:二手物品</param>
+        /// <param name="logochose">Channel:物品交易</param>
         /// <returns></returns>
         [HttpPost]
         public ActionResult HomeSearchFacade(string searchTextModel, string logochoseModel)
         {
             string key = searchTextModel;
             string channel = logochoseModel;
-            if (channel.Contains("二手"))
+            if (channel.Contains("物品"))
             {
                 return RedirectToAction("GoodsTransferSearch", "Search",
                     new

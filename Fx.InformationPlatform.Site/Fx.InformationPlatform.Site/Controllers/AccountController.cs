@@ -8,6 +8,7 @@ using Fx.Domain.Account.IService;
 using Fx.Entity.Account;
 using Fx.Entity.MemberShip;
 using Fx.InformationPlatform.Site.ViewModel;
+using FxCacheService.FxSite;
 
 namespace Fx.InformationPlatform.Site.Controllers
 {
@@ -17,10 +18,13 @@ namespace Fx.InformationPlatform.Site.Controllers
     public class AccountController : Controller
     {
         private IAccountService accountService;
-        public AccountController(IAccountService accountService)
+        private GlobalCache gloCache;
+        public AccountController(IAccountService accountService,
+            GlobalCache gloCache)
         {
             this.accountService = accountService;
-            ViewBag.UserCount = UserCount();
+            this.gloCache = gloCache;
+            ViewBag.UserCount = gloCache.UserCount();
         }
 
         //
@@ -53,9 +57,9 @@ namespace Fx.InformationPlatform.Site.Controllers
                 string authTicket = System.Web.Security.FormsAuthentication.Encrypt(ticket);
                 HttpCookie cookie = new HttpCookie(System.Web.Security.FormsAuthentication.FormsCookieName, authTicket);
                 cookie.Domain = AppSettings.FormDomain;
-                Response.Cookies.Add(cookie);
                 var userExtend = accountService.GetUserExtendInfo(user.Email);
                 Session[user.Email] = userExtend.NickName == null ? "" : userExtend.NickName;
+                Response.Cookies.Add(cookie);
                 if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
                     && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
                 {
@@ -109,8 +113,16 @@ namespace Fx.InformationPlatform.Site.Controllers
             if (entityResult.isSuccess)
             {
                 // 跳转到登录页面
-                System.Web.Security.FormsAuthentication.SetAuthCookie(user.Email, true);
-                Session[user.Email] = user.NickName == null ? "" : user.NickName;
+                //System.Web.Security.FormsAuthentication.SetAuthCookie(user.Email, true);
+                //Session[user.Email] = user.NickName == null ? "" : user.NickName;
+                var ticket = new System.Web.Security.FormsAuthenticationTicket(user.Email, true, 30);
+                string authTicket = System.Web.Security.FormsAuthentication.Encrypt(ticket);
+                HttpCookie cookie = new HttpCookie(System.Web.Security.FormsAuthentication.FormsCookieName, authTicket);
+                cookie.Domain = AppSettings.FormDomain;
+                var userExtend = accountService.GetUserExtendInfo(user.Email);
+                Session[user.Email] = userExtend.NickName == null ? "" : userExtend.NickName;
+                Response.Cookies.Add(cookie);
+                gloCache.UserCountAdd();
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -129,16 +141,6 @@ namespace Fx.InformationPlatform.Site.Controllers
             System.Web.Security.FormsAuthentication.SignOut();
             Session.Clear();
             return RedirectToAction("Index", "Home");
-        }
-
-        /// <summary>
-        /// 用户查询缓存5分钟
-        /// </summary>
-        /// <returns></returns>
-        [OutputCache(Duration = 300)]
-        protected int UserCount()
-        {
-            return accountService.GetUserCount();
         }
 
         public ActionResult ResetPassword()

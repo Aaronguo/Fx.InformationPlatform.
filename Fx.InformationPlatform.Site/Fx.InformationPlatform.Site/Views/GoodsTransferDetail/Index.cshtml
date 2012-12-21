@@ -91,13 +91,13 @@
                 @if (ViewBag.isFav)
                 {
                 <a href="#">
-                    <img src="@Fx.InformationPlatform.Site.AppSettings.ImageDomain("add_on.png")" />
+                    <img src="@Fx.InformationPlatform.Site.AppSettings.ImageDomain("add_on.png")" alt="已收藏" />
                 </a>
                 }
                 else
                 {
-                <a href="/GoodsTransferDetail/Favorite?infoId=@Model.GoodsTransferInfoId">
-                    <img src="@Fx.InformationPlatform.Site.AppSettings.ImageDomain("add_off.png")" 
+                <a href="/GoodsTransferDetail/Favorite?infoId=@Model.GoodsTransferInfoId"> 
+                    <img src="@Fx.InformationPlatform.Site.AppSettings.ImageDomain("add_off.png")" alt="添加收藏"
                 onmouseover="this.src='@Fx.InformationPlatform.Site.AppSettings.ImageDomain("add_on.png")'" 
                 onmouseout="this.src='@Fx.InformationPlatform.Site.AppSettings.ImageDomain("add_off.png")'"/>
                 </a>

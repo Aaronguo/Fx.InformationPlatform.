@@ -11,6 +11,7 @@ transfergoods.Submit = function () {
             transfergoods.ValidEmail() &&
             transfergoods.ValidTag()) {
             transfergoods.BuildMVCForm();
+            $(":submit").button('loading');
             return true;
         }
         //$("input[type='submit']").attr("data-content", transfergoods.TipMsg);

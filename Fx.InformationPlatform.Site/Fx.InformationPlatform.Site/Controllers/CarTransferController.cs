@@ -71,6 +71,8 @@ namespace Fx.InformationPlatform.Site.Controllers
                 CarTransferInfo transfercar = MapperCar(car);
                 transferService.SaveTransferCar(transfercar);
                 RunJob();
+                FxCacheService.FxSite.GlobalCache cache = System.Web.Mvc.DependencyResolver.Current.GetService<FxCacheService.FxSite.GlobalCache>();
+                cache.InfoPublishAllCountAdd();
                 return View("Success");
             }
             return View("FaildTransfer");

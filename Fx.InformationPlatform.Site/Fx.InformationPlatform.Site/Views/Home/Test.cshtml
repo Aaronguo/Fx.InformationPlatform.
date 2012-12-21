@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Test";
+}
+
+<h2>Test</h2>
+ <input type="submit" id="loadbtn" class="btn btn-warning" value="发布" data-loading-text="发布中..."
+                    rel="popover" data-placement="left" data-original-title="您的信息填写错误" data-content="" onclick="return transfercar.Submit();"
+                    show="1500" hide="300">
+<script>
+    $(document).ready(function () {
+        $("#loadbtn").button('loading')
+    });
+</script>

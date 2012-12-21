@@ -65,6 +65,10 @@ namespace Fx.InformationPlatform.Site.App_Start
             container.Register<Fx.Domain.FxGoods.Search.GoodsTransferSearchService>();
             container.Register<Fx.Domain.FxHouse.Search.HouseBuySearchService>();
             container.Register<Fx.Domain.FxHouse.Search.HouseTransferSearchService>();
+            //领域层提供给缓存服务层专门拉取数据的接口
+            container.Register<Fx.Domain.FxCar.IService.IGlobalCacheCar,Fx.Domain.FxCar.GlobalCacheCar>();
+            container.Register<Fx.Domain.FxGoods.IService.IGlobalCacheGoods, Fx.Domain.FxGoods.GlobalCacheGoods>();
+            container.Register<Fx.Domain.FxHouse.IService.IGolbalCacheHouse, Fx.Domain.FxHouse.GlobalHouseCache>();
         }
 
 

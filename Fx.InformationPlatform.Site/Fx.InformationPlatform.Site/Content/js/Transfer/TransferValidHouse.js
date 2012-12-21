@@ -13,6 +13,7 @@ transferhouse.Submit = function () {
             transferhouse.ValidEmail() &&
             transferhouse.ValidTag()) {
             transferhouse.BuildMVCForm();
+            $(":submit").button('loading');
             return true;
         }
         $('#transferModal').modal('show');

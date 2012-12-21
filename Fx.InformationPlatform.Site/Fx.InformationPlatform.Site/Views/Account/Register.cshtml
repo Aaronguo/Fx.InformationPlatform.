@@ -1,5 +1,4 @@
 ﻿@model Fx.Entity.Account.RegisterUser
-
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "英淘注册";
@@ -84,11 +83,11 @@
                 </div>
                 <div class="grid_6">
                     @Html.TextBoxFor(model => model.VerificationCode)
-                    <span style="color: #f00;">@ViewBag.VerificationCode</span>
                 </div>
 
                 <div class="grid_10 omega">
                     <img alt="验证码" id="validimg" src="@Url.Action("CreateImageCode", "Captcha")"  onclick="reloadcode()" />
+                    @Html.ValidationMessageFor(model => model.VerificationCode)
                 </div>
                 <div class="clear">
                 </div>
@@ -107,7 +106,7 @@
                     <span style="color: #f00;">@ViewBag.Error</span>
                 </div>
                 <div class="grid_7">
-                     &nbsp;
+                    &nbsp;
                 </div>
                 <div class="clear"></div>
             </div>

@@ -11,6 +11,7 @@ transfercar.Submit = function () {
             transfercar.ValidEmail() &&
             transfercar.ValidTag()) {
             transfercar.BuildMVCForm();
+            $(":submit").button('loading');
             return true;
         }
         $('#transferModal').modal('show');
