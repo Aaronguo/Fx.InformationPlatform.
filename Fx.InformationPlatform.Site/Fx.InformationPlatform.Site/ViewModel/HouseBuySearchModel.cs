@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using Fx.Entity.FxHouse;
 using Fx.Entity.FxSite;
+using FxCacheService.FxHouse;
 using FxCacheService.FxSite;
 
 namespace Fx.InformationPlatform.Site.ViewModel
@@ -24,11 +26,11 @@ namespace Fx.InformationPlatform.Site.ViewModel
             }
         }
 
-        public HouseBuySearchModel(int id, SiteCache siteCache)
-            : base(siteCache)
+        public HouseBuySearchModel(int id)
+            : base()
         {
             this.CurrentIndex = id;
-            this.cache = siteCache;
+            this.TopHouse = DependencyResolver.Current.GetService<HouseCache>().GetHouseBuyTopShow();
         }
 
         public override void CheckModel()

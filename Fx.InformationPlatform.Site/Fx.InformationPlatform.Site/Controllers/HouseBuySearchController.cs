@@ -14,7 +14,6 @@ namespace Fx.InformationPlatform.Site.Controllers
     public class HouseBuySearchController : Controller
     {
         protected HouseCache houseCache;
-        protected SiteCache siteCache;
         /// <summary>
         /// 用于一般检索
         /// </summary>
@@ -25,19 +24,17 @@ namespace Fx.InformationPlatform.Site.Controllers
         protected Fx.Domain.Base.IService.IHouseSearch<HouseBuyInfo> houseSearch;
         public HouseBuySearchController(HouseCache houseCache,
             Fx.Domain.Base.IService.ISiteSearch<HouseBuyInfo> BuyHouseSearch,
-            Fx.Domain.Base.IService.IHouseSearch<HouseBuyInfo> houseSearch,
-            SiteCache siteCache)
+            Fx.Domain.Base.IService.IHouseSearch<HouseBuyInfo> houseSearch)
         {
             this.houseCache = houseCache;
             this.BuyHouseSearch = BuyHouseSearch;
             this.houseSearch = houseSearch;
-            this.siteCache = siteCache;
         }
 
 
         public ActionResult SecondShop(int id)
         {
-            var model = new HouseBuySearchModel(id,siteCache);
+            var model = new HouseBuySearchModel(id);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -55,14 +52,14 @@ namespace Fx.InformationPlatform.Site.Controllers
                     model.MainHouse = houseSearch.SearchByCatagroy(ChannelListDetailCatagroy.Shop, page, 10);
                 }
             }
-            model.TopHouse = houseCache.GetHouseBuyTopShow();
+            
             model.CheckModel();
             return View(model);
         }
 
         public ActionResult Restaurants(int id)
         {
-            var model = new HouseBuySearchModel(id,siteCache);
+            var model = new HouseBuySearchModel(id);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -80,14 +77,14 @@ namespace Fx.InformationPlatform.Site.Controllers
                     model.MainHouse = houseSearch.SearchByCatagroy(ChannelListDetailCatagroy.Restaurants, page, 10);
                 }
             }
-            model.TopHouse = houseCache.GetHouseBuyTopShow();
+            
             model.CheckModel();
             return View(model);
         }
 
         public ActionResult Warehouse(int id)
         {
-            var model = new HouseBuySearchModel(id,siteCache);
+            var model = new HouseBuySearchModel(id);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -105,14 +102,14 @@ namespace Fx.InformationPlatform.Site.Controllers
                     model.MainHouse = houseSearch.SearchByCatagroy(ChannelListDetailCatagroy.Warehouse, page, 10);
                 }
             }
-            model.TopHouse = houseCache.GetHouseBuyTopShow();
+            
             model.CheckModel();
             return View(model);
         }
 
         public ActionResult Office(int id)
         {
-            var model = new HouseBuySearchModel(id,siteCache);
+            var model = new HouseBuySearchModel(id);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -130,14 +127,14 @@ namespace Fx.InformationPlatform.Site.Controllers
                     model.MainHouse = houseSearch.SearchByCatagroy(ChannelListDetailCatagroy.Office, page, 10);
                 }
             }
-            model.TopHouse = houseCache.GetHouseBuyTopShow();
+            
             model.CheckModel();
             return View(model);
         }
 
         public ActionResult House(int id)
         {
-            var model = new HouseBuySearchModel(id,siteCache);
+            var model = new HouseBuySearchModel(id);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -155,14 +152,14 @@ namespace Fx.InformationPlatform.Site.Controllers
                     model.MainHouse = houseSearch.SearchByCatagroy(ChannelListDetailCatagroy.House, page, 10);
                 }
             }
-            model.TopHouse = houseCache.GetHouseBuyTopShow();
+            
             model.CheckModel();
             return View(model);
         }
 
         public ActionResult Flat(int id)
         {
-            var model = new HouseBuySearchModel(id,siteCache);
+            var model = new HouseBuySearchModel(id);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -180,14 +177,14 @@ namespace Fx.InformationPlatform.Site.Controllers
                     model.MainHouse = houseSearch.SearchByCatagroy(ChannelListDetailCatagroy.Flat, page, 10);
                 }
             }
-            model.TopHouse = houseCache.GetHouseBuyTopShow();
+            
             model.CheckModel();
             return View(model);
         }
 
         public ActionResult StudentAparment(int id)
         {
-            var model = new HouseBuySearchModel(id,siteCache);
+            var model = new HouseBuySearchModel(id);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -205,7 +202,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                     model.MainHouse = houseSearch.SearchByCatagroy(ChannelListDetailCatagroy.StudentAparment, page, 10);
                 }
             }
-            model.TopHouse = houseCache.GetHouseBuyTopShow();
+            
             model.CheckModel();
             return View(model);
         }

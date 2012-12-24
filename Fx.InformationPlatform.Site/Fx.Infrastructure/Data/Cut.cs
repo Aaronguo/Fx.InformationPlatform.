@@ -7,6 +7,12 @@ namespace Fx.Infrastructure.Data
 {
     public class Cut
     {
+        /// <summary>
+        /// 获取指定长度的字符串 1个中文2个字符
+        /// </summary>
+        /// <param name="str">字符串</param>
+        /// <param name="len">字符串的英文长度</param>
+        /// <returns></returns>
         public static string CutStr(string str, int len)
         {
             if (str == null || str.Length == 0 || len <= 0)

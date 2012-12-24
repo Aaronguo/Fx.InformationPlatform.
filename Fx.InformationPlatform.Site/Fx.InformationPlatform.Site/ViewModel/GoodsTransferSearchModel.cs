@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using Fx.Entity.FxGoods;
 using Fx.Entity.FxSite;
+using FxCacheService.FxGoods;
 using FxCacheService.FxSite;
 
 namespace Fx.InformationPlatform.Site.ViewModel
@@ -22,13 +24,13 @@ namespace Fx.InformationPlatform.Site.ViewModel
 
       
 
-        public GoodsTransferSearchModel(int id, SiteCache siteCache)
-            : base(siteCache)
+        public GoodsTransferSearchModel(int id)
+            : base()
         {
             this.CurrentIndex = id;
             this.IsChangeByGoods = true;
             this.IsChangeByPrice = true;
-            this.cache = siteCache;
+            this.TopGoods = DependencyResolver.Current.GetService<GoodsCache>().GetGoodsTransferTopShow();
         }
 
         public List<ChannelList> ClcDatas

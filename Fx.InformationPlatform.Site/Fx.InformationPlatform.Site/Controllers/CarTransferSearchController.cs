@@ -25,13 +25,11 @@ namespace Fx.InformationPlatform.Site.Controllers
         protected Fx.Domain.Base.IService.ICarSearch<CarTransferInfo> carSearch;
         public CarTransferSearchController(CarCache carCache,
             Fx.Domain.Base.IService.ISiteSearch<CarTransferInfo> transferCarSearch,
-            Fx.Domain.Base.IService.ICarSearch<CarTransferInfo> carSearch,
-            SiteCache siteCache)
+            Fx.Domain.Base.IService.ICarSearch<CarTransferInfo> carSearch)
         {
             this.carCache = carCache;
             this.transferCarSearch = transferCarSearch;
             this.carSearch = carSearch;
-            this.siteCache = siteCache;
         }
 
         /// <summary>
@@ -41,7 +39,7 @@ namespace Fx.InformationPlatform.Site.Controllers
         /// <returns></returns>
         public ActionResult Audi(int id)
         {
-            var model = new CarTransferSearchModel(id,siteCache);
+            var model = new CarTransferSearchModel(id);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -59,14 +57,14 @@ namespace Fx.InformationPlatform.Site.Controllers
                     model.MainCars = carSearch.SearchByCatagroy(ChannelListDetailCatagroy.Audi, page, 10);
                 }
             }
-            model.TopCars = carCache.GetCarTransferTopShow();
+            
             model.CheckModel();
             return View(model);
         }
 
         public ActionResult BMW(int id)
         {
-            var model = new CarTransferSearchModel(id,siteCache);
+            var model = new CarTransferSearchModel(id);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -83,14 +81,14 @@ namespace Fx.InformationPlatform.Site.Controllers
                     model.MainCars = carSearch.SearchByCatagroy(ChannelListDetailCatagroy.BMW, (id - 1), 10);
                 }
             }
-            model.TopCars = carCache.GetCarTransferTopShow();
+            
             model.CheckModel();
             return View(model);
         }
 
         public ActionResult Buick(int id)
         {
-            var model = new CarTransferSearchModel(id,siteCache);
+            var model = new CarTransferSearchModel(id);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -107,14 +105,14 @@ namespace Fx.InformationPlatform.Site.Controllers
                     model.MainCars = carSearch.SearchByCatagroy(ChannelListDetailCatagroy.Buick, (id - 1), 10);
                 }
             }
-            model.TopCars = carCache.GetCarTransferTopShow();
+            
             model.CheckModel();
             return View(model);
         }
 
         public ActionResult Citroen(int id)
         {
-            var model = new CarTransferSearchModel(id,siteCache);
+            var model = new CarTransferSearchModel(id);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -131,14 +129,14 @@ namespace Fx.InformationPlatform.Site.Controllers
                     model.MainCars = carSearch.SearchByCatagroy(ChannelListDetailCatagroy.Citroen, (id - 1), 10);
                 }
             }
-            model.TopCars = carCache.GetCarTransferTopShow();
+            
             model.CheckModel();
             return View(model);
         }
 
         public ActionResult Ford(int id)
         {
-            var model = new CarTransferSearchModel(id,siteCache);
+            var model = new CarTransferSearchModel(id);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -155,14 +153,14 @@ namespace Fx.InformationPlatform.Site.Controllers
                     model.MainCars = carSearch.SearchByCatagroy(ChannelListDetailCatagroy.Ford, (id - 1), 10);
                 }
             }
-            model.TopCars = carCache.GetCarTransferTopShow();
+            
             model.CheckModel();
             return View(model);
         }
 
         public ActionResult Honda(int id)
         {
-            var model = new CarTransferSearchModel(id,siteCache);
+            var model = new CarTransferSearchModel(id);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -179,14 +177,14 @@ namespace Fx.InformationPlatform.Site.Controllers
                     model.MainCars = carSearch.SearchByCatagroy(ChannelListDetailCatagroy.Honda, (id - 1), 10);
                 }
             }
-            model.TopCars = carCache.GetCarTransferTopShow();
+            
             model.CheckModel();
             return View(model);
         }
 
         public ActionResult Toyota(int id)
         {
-            var model = new CarTransferSearchModel(id,siteCache);
+            var model = new CarTransferSearchModel(id);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -203,14 +201,14 @@ namespace Fx.InformationPlatform.Site.Controllers
                     model.MainCars = carSearch.SearchByCatagroy(ChannelListDetailCatagroy.Toyota, (id - 1), 10);
                 }
             }
-            model.TopCars = carCache.GetCarTransferTopShow();
+            
             model.CheckModel();
             return View(model);
         }
 
         public ActionResult Nissan(int id)
         {
-            var model = new CarTransferSearchModel(id,siteCache);
+            var model = new CarTransferSearchModel(id);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -227,14 +225,14 @@ namespace Fx.InformationPlatform.Site.Controllers
                     model.MainCars = carSearch.SearchByCatagroy(ChannelListDetailCatagroy.Nissan, (id - 1), 10);
                 }
             }
-            model.TopCars = carCache.GetCarTransferTopShow();
+            
             model.CheckModel();
             return View(model);
         }
 
         public ActionResult MINI(int id)
         {
-            var model = new CarTransferSearchModel(id,siteCache);
+            var model = new CarTransferSearchModel(id);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -251,14 +249,14 @@ namespace Fx.InformationPlatform.Site.Controllers
                     model.MainCars = carSearch.SearchByCatagroy(ChannelListDetailCatagroy.MINI, (id - 1), 10);
                 }
             }
-            model.TopCars = carCache.GetCarTransferTopShow();
+            
             model.CheckModel();
             return View(model);
         }
 
         public ActionResult MercedesBenz(int id)
         {
-            var model = new CarTransferSearchModel(id,siteCache);
+            var model = new CarTransferSearchModel(id);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -275,14 +273,14 @@ namespace Fx.InformationPlatform.Site.Controllers
                     model.MainCars = carSearch.SearchByCatagroy(ChannelListDetailCatagroy.MercedesBenz, (id - 1), 10);
                 }
             }
-            model.TopCars = carCache.GetCarTransferTopShow();
+            
             model.CheckModel();
             return View(model);
         }
 
         public ActionResult Peugeot(int id)
         {
-            var model = new CarTransferSearchModel(id,siteCache);
+            var model = new CarTransferSearchModel(id);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -299,14 +297,14 @@ namespace Fx.InformationPlatform.Site.Controllers
                     model.MainCars = carSearch.SearchByCatagroy(ChannelListDetailCatagroy.Peugeot, (id - 1), 10);
                 }
             }
-            model.TopCars = carCache.GetCarTransferTopShow();
+            
             model.CheckModel();
             return View(model);
         }
 
         public ActionResult VW(int id)
         {
-            var model = new CarTransferSearchModel(id,siteCache);
+            var model = new CarTransferSearchModel(id);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -323,14 +321,14 @@ namespace Fx.InformationPlatform.Site.Controllers
                     model.MainCars = carSearch.SearchByCatagroy(ChannelListDetailCatagroy.VW, (id - 1), 10);
                 }
             }
-            model.TopCars = carCache.GetCarTransferTopShow();
+            
             model.CheckModel();
             return View(model);
         }
 
         public ActionResult Volvo(int id)
         {
-            var model = new CarTransferSearchModel(id,siteCache);
+            var model = new CarTransferSearchModel(id);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -347,14 +345,14 @@ namespace Fx.InformationPlatform.Site.Controllers
                     model.MainCars = carSearch.SearchByCatagroy(ChannelListDetailCatagroy.Volvo, (id - 1), 10);
                 }
             }
-            model.TopCars = carCache.GetCarTransferTopShow();
+            
             model.CheckModel();
             return View(model);
         }
 
         public ActionResult SecondHandCarOther(int id)
         {
-            var model = new CarTransferSearchModel(id,siteCache);
+            var model = new CarTransferSearchModel(id);
             if (id <= 0)
             {
                 return RedirectToAction("PageNotFound", "PageLink");
@@ -371,7 +369,7 @@ namespace Fx.InformationPlatform.Site.Controllers
                     model.MainCars = carSearch.SearchByCatagroy(ChannelListDetailCatagroy.SecondHandCarOther, (id - 1), 10);
                 }
             }
-            model.TopCars = carCache.GetCarTransferTopShow();
+            
             model.CheckModel();
             return View(model);
         }

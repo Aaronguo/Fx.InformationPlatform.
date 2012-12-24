@@ -141,7 +141,7 @@ namespace Fx.InformationPlatform.Site
         {
             if (cacheService.Get("YingTaoUrl") == null)
             {
-                cacheService.Insert("YingTaoUrl", GetString("YingTaoUrl", "http://yingtao.co.uk"), 3600, System.Web.Caching.CacheItemPriority.Default);
+                cacheService.Insert("YingTaoUrl", GetString("YingTaoUrl", "http://yingtao.co.uk/"), 3600, System.Web.Caching.CacheItemPriority.Default);
             }
             object o = cacheService.Get("YingTaoUrl");
             if (o != null)

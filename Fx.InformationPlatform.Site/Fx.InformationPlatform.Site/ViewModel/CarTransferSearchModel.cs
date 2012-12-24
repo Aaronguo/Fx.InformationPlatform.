@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using Fx.Entity.FxCar;
 using Fx.Entity.FxSite;
+using FxCacheService.FxCar;
 using FxCacheService.FxSite;
 
 namespace Fx.InformationPlatform.Site.ViewModel
@@ -24,11 +26,11 @@ namespace Fx.InformationPlatform.Site.ViewModel
             }
         }
 
-        public CarTransferSearchModel(int id, SiteCache siteCache)
-            :base(siteCache)
+        public CarTransferSearchModel(int id)
+            :base()
         {
             this.CurrentIndex = id;
-            this.cache = siteCache;
+            this.TopCars = DependencyResolver.Current.GetService<CarCache>().GetCarTransferTopShow();
         }
 
         public override void CheckModel()

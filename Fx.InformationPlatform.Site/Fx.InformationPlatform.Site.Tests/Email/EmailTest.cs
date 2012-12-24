@@ -30,7 +30,7 @@ namespace Fx.InformationPlatform.Site.Tests.Email
 
         public void SendMailCompletedEvent(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
-
+            Console.WriteLine("ok");
         }
 
 

@@ -8,6 +8,9 @@ using Fx.Entity.FxCar;
 using Fx.Entity.FxGoods;
 using Fx.Entity.FxHouse;
 using Fx.InformationPlatform.Site.ViewModel;
+using FxCacheService.FxCar;
+using FxCacheService.FxGoods;
+using FxCacheService.FxHouse;
 using FxCacheService.FxSite;
 
 namespace Fx.InformationPlatform.Site.Controllers
@@ -20,14 +23,12 @@ namespace Fx.InformationPlatform.Site.Controllers
         protected ISiteSearch<HouseBuyInfo> buyHouseSearch;
         protected IGoodsSearch<GoodsTransferInfo> goodsTransferSearch;
         protected IGoodsSearch<GoodsBuyInfo> goodsBuySearch;
-        protected SiteCache siteCache;
         public SearchController(ISiteSearch<CarTransferInfo> transferCarSearch,
             ISiteSearch<HouseTransferInfo> transferHouseSearch,
             ISiteSearch<CarBuyInfo> buyCarSearch,
             ISiteSearch<HouseBuyInfo> buyHouseSearch,
             IGoodsSearch<GoodsTransferInfo> goodsTransferSearch,
-            IGoodsSearch<GoodsBuyInfo> goodsBuySearch,
-            SiteCache siteCache)
+            IGoodsSearch<GoodsBuyInfo> goodsBuySearch)
         {
             this.transferCarSearch = transferCarSearch;
             this.transferHouseSearch = transferHouseSearch;
@@ -35,7 +36,6 @@ namespace Fx.InformationPlatform.Site.Controllers
             this.buyHouseSearch = buyHouseSearch;
             this.goodsTransferSearch = goodsTransferSearch;
             this.goodsBuySearch = goodsBuySearch;
-            this.siteCache = siteCache;
         }
 
         //Transfer 
@@ -55,7 +55,7 @@ namespace Fx.InformationPlatform.Site.Controllers
             int area, int city,
             int clc)
         {
-            var model = new GoodsTransferSearchModel(page, siteCache);
+            var model = new GoodsTransferSearchModel(page);
             model.Key = key;
             model.IsChangeByGoods = IsChangeByGoods;
             model.IsChangeByPrice = IsChangeByPrice;
@@ -75,7 +75,7 @@ namespace Fx.InformationPlatform.Site.Controllers
             int area, int city,
             int clc)
         {
-            var model = new CarTransferSearchModel(page, siteCache);
+            var model = new CarTransferSearchModel(page);
             model.Key = key;
             model.AreaId = area;
             model.CityId = city;
@@ -90,7 +90,7 @@ namespace Fx.InformationPlatform.Site.Controllers
             int area, int city,
             int clc)
         {
-            var model = new HouseTransferSearchModel(page, siteCache);
+            var model = new HouseTransferSearchModel(page);
             model.Key = key;
             model.AreaId = area;
             model.CityId = city;
@@ -108,7 +108,7 @@ namespace Fx.InformationPlatform.Site.Controllers
              int area, int city,
              int clc)
         {
-            var model = new GoodsBuySearchModel(page, siteCache);
+            var model = new GoodsBuySearchModel(page);
             model.Key = key;
             model.IsChangeByGoods = IsChangeByGoods;
             model.IsChangeByPrice = IsChangeByPrice;
@@ -128,7 +128,7 @@ namespace Fx.InformationPlatform.Site.Controllers
             int area, int city,
             int clc)
         {
-            var model = new CarBuySearchModel(page, siteCache);
+            var model = new CarBuySearchModel(page);
             model.Key = key;
             model.AreaId = area;
             model.CityId = city;
@@ -143,7 +143,7 @@ namespace Fx.InformationPlatform.Site.Controllers
             int area, int city,
             int clc)
         {
-            var model = new HouseBuySearchModel(page, siteCache);
+            var model = new HouseBuySearchModel(page);
             model.Key = key;
             model.AreaId = area;
             model.CityId = city;

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using Fx.Domain.FxSite.IService;
@@ -12,9 +13,9 @@ namespace Fx.InformationPlatform.Site.ViewModel
     {
         protected SiteCache cache;
 
-        public SearchBase(SiteCache siteCache)
+        public SearchBase()
         {
-            this.cache = siteCache;
+            this.cache = System.Web.Mvc.DependencyResolver.Current.GetService<SiteCache>();
         }
 
         public List<Fx.Entity.FxSite.Area> Areas

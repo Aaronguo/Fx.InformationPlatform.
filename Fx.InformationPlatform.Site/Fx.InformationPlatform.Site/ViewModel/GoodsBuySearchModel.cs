@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using Fx.Entity.FxGoods;
 using Fx.Entity.FxSite;
+using FxCacheService.FxGoods;
 using FxCacheService.FxSite;
 
 namespace Fx.InformationPlatform.Site.ViewModel
@@ -28,13 +30,13 @@ namespace Fx.InformationPlatform.Site.ViewModel
             }
         }
 
-        public GoodsBuySearchModel(int id, SiteCache siteCache)
-            : base(siteCache)
+        public GoodsBuySearchModel(int id)
+            : base()
         {
             this.CurrentIndex = id;
             this.IsChangeByGoods = true;
             this.IsChangeByPrice = true;
-            this.cache = siteCache;
+            this.TopGoods = System.Web.Mvc.DependencyResolver.Current.GetService<GoodsCache>().GetGoodsBuyTopShow();
         }
 
         public override void CheckModel()

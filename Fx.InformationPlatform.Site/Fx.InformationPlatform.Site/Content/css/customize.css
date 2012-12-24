@@ -1278,7 +1278,7 @@ a {
                 .searchs-results_list .srl_cons .rows_wks_sr_list .right_details_wkss .tops_tddds_names {
                     height: 22px;
                     line-height: 22px;
-                    width: 400px;
+                    width: 350px;
                     overflow: hidden;
                     text-align: left;
                     float: left;
@@ -1322,7 +1322,7 @@ a {
 }
 
 .right_icon_show_hidden {
-    width: 20px;
+    width: 70px;
     height: 22px;
     overflow: hidden;
     margin-left: 5px;

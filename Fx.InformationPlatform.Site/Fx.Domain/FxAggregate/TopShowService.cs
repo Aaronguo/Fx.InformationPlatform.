@@ -53,12 +53,7 @@ namespace Fx.Domain.FxAggregate
 
         public bool IsExist(TopShow entity)
         {
-            using (var content = new FxAggregateContext())
-            {
-                return content.TopShows
-                    .Where(r => r.TopShowId == entity.TopShowId && r.ChannelCatagroy == entity.ChannelCatagroy)
-                    .FirstOrDefault() != null;
-            }
+            return GetById(entity.TopShowId) != null;
         }
 
 
@@ -73,7 +68,7 @@ namespace Fx.Domain.FxAggregate
                 using (var content = new FxAggregateContext())
                 {
                     entity = content.TopShows
-                    .Where(r => r.TopShowId == entity.TopShowId && r.ChannelCatagroy == entity.ChannelCatagroy)
+                    .Where(r => r.TopShowId == entity.TopShowId)
                     .FirstOrDefault();
                     if (entity != null)
                     {
@@ -102,7 +97,7 @@ namespace Fx.Domain.FxAggregate
             }
         }
 
-       
+
         public List<CarTransferInfo> GetHomeCarTopShow()
         {
             var topShows = new List<TopShow>();
@@ -181,7 +176,7 @@ namespace Fx.Domain.FxAggregate
             return houses;
         }
 
-    
+
         public List<CarTransferInfo> GetCarTransferTopShow()
         {
             var topShows = new List<TopShow>();
