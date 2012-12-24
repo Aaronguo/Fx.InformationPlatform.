@@ -31,13 +31,13 @@ namespace Fx.InformationPlatform.Site.Controllers
         // GET: /Home/
 
         public ActionResult Index()
-        {
+        {            
             return View(CreateModel());
         }
 
         public ActionResult Test()
         {
-            return View();
+            return Content(InfosoftBrowserInfo.BrowserJavaScript);
         }
 
 

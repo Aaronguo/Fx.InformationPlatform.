@@ -177,6 +177,7 @@
     <Compile Include="Controllers\AjaxController.cs" />
     <Compile Include="Controllers\AjaxPostController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BrowerController.cs" />
     <Compile Include="Controllers\BuyController.cs" />
     <Compile Include="Controllers\CaptchaController.cs" />
     <Compile Include="Controllers\CarBuyController.cs" />
