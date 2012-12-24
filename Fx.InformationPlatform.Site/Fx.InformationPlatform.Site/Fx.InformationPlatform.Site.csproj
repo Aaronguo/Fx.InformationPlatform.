@@ -622,7 +622,7 @@
     <Content Include="Views\HouseBuySearch\House.cshtml" />
     <Content Include="Views\HouseBuySearch\Office.cshtml" />
     <Content Include="Views\HouseBuySearch\Restaurants.cshtml" />
-    <Content Include="Views\HouseBuySearch\SecondShop.cshtml" />
+    <Content Include="Views\HouseBuySearch\Shop.cshtml" />
     <Content Include="Views\HouseBuySearch\StudentAparment.cshtml" />
     <Content Include="Views\HouseBuySearch\Warehouse.cshtml" />
     <Content Include="Views\HouseBuySearch\Partial\Ad.cshtml" />
