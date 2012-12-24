@@ -96,6 +96,7 @@
     <Compile Include="FxAggregate\TopShowService.cs" />
     <Compile Include="FxBrower\BrowerService.cs" />
     <Compile Include="FxBrower\FxBrowerContext.cs" />
+    <Compile Include="FxBrower\FxBrowerInitializer.cs" />
     <Compile Include="FxBrower\Mapping\Brower_Mapping.cs" />
     <Compile Include="FxCar\CarListService.cs" />
     <Compile Include="FxCar\GlobalCacheHouse.cs" />

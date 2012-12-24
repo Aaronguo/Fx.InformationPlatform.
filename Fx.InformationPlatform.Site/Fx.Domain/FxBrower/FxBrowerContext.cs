@@ -10,6 +10,11 @@ namespace Fx.Domain.FxBrower
 {
     public class FxBrowerContext : DbContext, IDisposable
     {
+        static FxBrowerContext()
+        {
+            //System.Data.Entity.Database.SetInitializer(new FxBrowerInitializer());
+        }
+
         public FxBrowerContext()
             : base("fx.collectinfo-sqlserver")
         {
