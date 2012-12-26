@@ -24,6 +24,16 @@ namespace Fx.Entity.MemberShip
 
         public string HeadPicture { get; set; }
 
+        /// <summary>
+        /// 密保问题
+        /// </summary>
+        public string PasswordQuestion { get; set; }
+
+        /// <summary>
+        /// 密保问题答案
+        /// </summary>
+        public string PasswordAnswer { get; set; }
+
         public Guid ApplicationId { get; set; }
 
         public Guid UserId { get; set; }

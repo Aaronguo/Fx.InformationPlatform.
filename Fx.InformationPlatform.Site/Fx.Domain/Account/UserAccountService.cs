@@ -214,17 +214,18 @@ namespace Fx.Domain.Account
             if (u != null)
             {
                 string password = u.ResetPassword();
-                var template = "亲爱的用户，您在<a herf=\"http://yingtao.co.uk\">英淘网</a>上申请了重置密码, " +
-                    "您现在的密码为@Model.Password,为了密码安全，" +
-                    "请及时在<a href=\"http://usercenter.yingtao.co.uk/UserCenter/ChangePassword\">用户中心</a>修改密码。<br />" +
-                    "注意:此邮件由系统发出，请勿回复,谢谢!";
+                result.Tag = password;
+                //var template = "亲爱的用户，您在<a herf=\"http://yingtao.co.uk\">英淘网</a>上申请了重置密码, " +
+                //    "您现在的密码为@Model.Password,为了密码安全，" +
+                //    "请及时在<a href=\"http://usercenter.yingtao.co.uk/UserCenter/ChangePassword\">用户中心</a>修改密码。<br />" +
+                //    "注意:此邮件由系统发出，请勿回复,谢谢!";
 
-                var emailSend = FluentEmail.Email
-                    .From(System.Configuration.ConfigurationManager.AppSettings["resetsendemail"].ToString())
-                    .To(Email)
-                    .Subject("英淘网密码找回")
-                    .UsingTemplate(template, new { Password = password, });
-                var e = emailSend.Send();                
+                //var emailSend = FluentEmail.Email
+                //    .From(System.Configuration.ConfigurationManager.AppSettings["resetsendemail"].ToString())
+                //    .To(Email)
+                //    .Subject("英淘网密码找回")
+                //    .UsingTemplate(template, new { Password = password, });
+                //var e = emailSend.Send();                
             }
             else
             {

@@ -86,6 +86,13 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Register(RegisterUser user)
         {
+            if (user != null && user.PasswordQuestion != null)
+            {
+                if (user.PasswordQuestion == "请选择密保查询问题")
+                {
+                    ViewBag.PasswordQuestion = "请选择一个密保查询问题";
+                }
+            }
             if (!ModelState.IsValid || user == null ||
                 user.VerificationCode == null || user.Email == null
                 || Session["PictureCode"] == null)
@@ -109,6 +116,8 @@ namespace Fx.InformationPlatform.Site.Controllers
             other.QQ = user.QQ;
             other.Sex = SexCatalog.Male;
             other.NickName = user.NickName;
+            other.PasswordQuestion = user.PasswordQuestion;
+            other.PasswordAnswer = user.PasswordAnswer;
             var entityResult = accountService.AddUser(membershipuser, other);
             if (entityResult.isSuccess)
             {
@@ -155,13 +164,28 @@ namespace Fx.InformationPlatform.Site.Controllers
         /// <param name="useremail"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult ResetPassword(string useremail)
+        public ActionResult ResetPassword(string useremail, string passwordQuestion, string passwordAnswer)
         {
             var isExist = accountService.IsExistUser(useremail);
             if (isExist.isSuccess)
             {
-                accountService.ResetPassword(useremail);
-                ViewBag.Tip = "已发送邮件到您的邮箱,如果你未收到，请耐心等待几分钟";
+                var user = accountService.GetUserExtendInfo(useremail);
+                if (user != null &&
+                    user.PasswordAnswer == passwordAnswer &&
+                    user.PasswordQuestion == passwordQuestion)
+                {
+                    var res = accountService.ResetPassword(useremail);
+                    if (res.isSuccess)
+                    {
+                        ViewBag.Tip = "您的密码是："+res.Tag;
+                    }
+                    else
+                    {
+                        ViewBag.Tip = res.ResultMsg;
+                    }
+                    return View();
+                }
+                ViewBag.Tip = "您填写的信息不正确";
                 return View();
             }
             else

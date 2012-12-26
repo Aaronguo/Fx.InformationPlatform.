@@ -45,17 +45,6 @@
                 </div>
 
 
-                @*         <div class="grid_2 alpha">
-                    联系方式
-                </div>
-                <div class="grid_16 omega">
-                    @Html.TextBoxFor(model => model.Address)
-                    @Html.ValidationMessageFor(model => model.Address)
-                </div>
-                <div class="clear">
-                </div>*@
-
-
                 <div class="grid_2 alpha">
                     QQ
                 </div>
@@ -76,6 +65,53 @@
                 </div>
                 <div class="clear">
                 </div>
+
+
+                <div class="grid_2 alpha">
+                    密保问题
+                </div>
+                <div class="grid_16 omega">
+                    <select name="PasswordQuestion" id="PasswordQuestion">
+                        <option>请选择密保查询问题</option>
+                        <option value="我手机号码的后6位？">我手机号码的后6位？</option>
+                        <option value="我母亲的生日？">我母亲的生日？</option>
+                        <option value="我父亲的生日？">我父亲的生日？</option>
+                        <option value="我最好朋友的生日？">我最好朋友的生日？</option>
+                        <option value="我儿时居住地的地址？">我儿时居住地的地址？</option>
+                        <option value="我小学校名全称？">我小学校名全称？</option>
+                        <option value="我中学校名全称？">我中学校名全称？</option>
+                        <option value="离我家最近的医院全称？">离我家最近的医院全称？</option>
+                        <option value="离我家最近的公园全称？">离我家最近的公园全称？</option>
+                        <option value="我的座右铭是？">我的座右铭是？</option>
+                        <option value="我最喜爱的电影？">我最喜爱的电影？</option>
+                        <option value="我最喜爱的歌曲？">我最喜爱的歌曲？</option>
+                        <option value="我最喜爱的食物？">我最喜爱的食物？</option>
+                        <option value="我最大的爱好？">我最大的爱好？</option>
+                        <option value="我最喜欢的小说？">我最喜欢的小说？</option>
+                        <option value="我最喜欢的运动队？">我最喜欢的运动队？</option>
+                        <option value="其他">其他</option>
+                    </select>
+                    @ViewBag.PasswordQuestion
+                    <span style="color: #f00">*必填</span>
+                </div>
+                <div class="clear">
+                </div>
+
+
+                
+                <div class="grid_2 alpha">
+                    密保答案
+                </div>
+                <div class="grid_16 omega">
+                    @Html.TextBoxFor(model => model.PasswordAnswer)
+                    @Html.ValidationMessageFor(model => model.PasswordAnswer)
+                    <span style="color: #f00">*必填</span>
+                </div>
+                <div class="clear">
+                </div>
+
+
+
 
 
                 <div class="grid_2 alpha">
