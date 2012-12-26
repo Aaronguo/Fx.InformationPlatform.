@@ -79,7 +79,7 @@ namespace Fx.InformationPlatform.Site.Controllers
         private void BindArea()
         {
             var siteCache = System.Web.Mvc.DependencyResolver.Current.GetService<SiteCache>();
-            ViewData["carMileage"] = siteCache.GetAreaHtml();
+            ViewData["area"] = siteCache.GetAreaListItems();
         }
 
         private void BindCatagroy()
