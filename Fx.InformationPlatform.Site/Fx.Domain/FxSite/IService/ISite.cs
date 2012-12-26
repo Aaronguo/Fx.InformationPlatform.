@@ -3,13 +3,19 @@ using Fx.Entity.FxSite;
 
 namespace Fx.Domain.FxSite.IService
 {
-    public interface IPageAjax
+    public interface ISite
     {
         /// <summary>
         /// 获取所有的地区 顺序排序
         /// </summary>
         /// <returns></returns>
         List<Area> GetAreas();
+
+        /// <summary>
+        /// 获取所有的城市数据// 有重复的呢？
+        /// </summary>
+        /// <returns></returns>
+        List<City> GetCities();
 
         /// <summary>
         /// 获取地区对应的城市 顺序排序

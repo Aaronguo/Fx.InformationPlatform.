@@ -22,7 +22,7 @@ namespace Fx.InformationPlatform.Site.ViewModel
         {
             get
             {
-                return cache.GetHouseBuyChannel();
+                return siteCache.GetHouseBuyChannel();
             }
         }
 

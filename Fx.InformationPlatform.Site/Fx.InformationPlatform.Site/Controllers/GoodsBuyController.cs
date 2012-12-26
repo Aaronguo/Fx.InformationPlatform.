@@ -10,6 +10,7 @@ using Fx.Domain.FxSite.IService;
 using Fx.Entity;
 using Fx.Entity.FxGoods;
 using Fx.InformationPlatform.Site.ViewModel;
+using FxCacheService.FxSite;
 
 namespace Fx.InformationPlatform.Site.Controllers
 {
@@ -37,32 +38,44 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Electronics()
         {
-            BindCatagroy();
+            BindData();
             return View();
         }
 
         public ActionResult HomeSupplies()
         {
-            BindCatagroy();
+            BindData();
             return View();
         }
 
         public ActionResult Fashion()
         {
-            BindCatagroy();
+            BindData();
             return View();
         }
 
         public ActionResult CultureLife()
         {
-            BindCatagroy();
+            BindData();
             return View();
         }
 
         public ActionResult Other()
         {
-            BindCatagroy();
+            BindData();
             return View();
+        }
+
+        private void BindData()
+        {
+            BindCatagroy();
+            BindArea();
+        }
+
+        private void BindArea()
+        {
+            var siteCache = System.Web.Mvc.DependencyResolver.Current.GetService<SiteCache>();
+            ViewData["carMileage"] = siteCache.GetAreaHtml();
         }
 
         private void BindCatagroy()

@@ -1,4 +1,5 @@
 ﻿@model List<Fx.Entity.FxCar.CarBuyInfo>
+@using Fx.InformationPlatform.Site
 @foreach (var item in Model)
 {
     <div class="rows_wks_sr_list">
@@ -12,7 +13,7 @@
                     @*<img src="images/exchange-ico.jpg" />*@
                 </div>
             </div>
-            <div class="btm_descriptions">@item.PublishTitle</div>
+             <div class="btm_descriptions">@Helper.GetAreaName(item.AreaId) - @Helper.GetCityName(item.CityId)</div>
         </div>
         <div class="clear"></div>
     </div>

@@ -8,6 +8,7 @@ using Fx.Domain.FxHouse.IService;
 using Fx.Domain.FxSite.IService;
 using Fx.Entity.FxHouse;
 using Fx.InformationPlatform.Site.ViewModel;
+using FxCacheService.FxSite;
 
 namespace Fx.InformationPlatform.Site.Controllers
 {
@@ -35,13 +36,13 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult CommercialProperties()
         {
-            BindCatagroy();
+            BindData();
             return View();
         }
 
         public ActionResult Properties()
         {
-            BindCatagroy();
+            BindData();
             return View();
         }
 
@@ -98,7 +99,17 @@ namespace Fx.InformationPlatform.Site.Controllers
             return info;
         }
 
+        private void BindData()
+        {
+            BindCatagroy();
+            BindArea();
+        }
 
+        private void BindArea()
+        {
+            var siteCache = System.Web.Mvc.DependencyResolver.Current.GetService<SiteCache>();
+            ViewData["carMileage"] = siteCache.GetAreaHtml();
+        }
 
         private void BindCatagroy()
         {

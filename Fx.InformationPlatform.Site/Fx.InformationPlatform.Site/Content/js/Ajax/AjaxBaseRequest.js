@@ -1,19 +1,5 @@
 ﻿var AjaxBase = AjaxBase || {};
 //BindData To Control
-AjaxBase.GetAreaData = function () {
-    $.ajax({
-        url: "/Ajax/Aera",
-        type: "POST",
-        dataType: "json",
-        data: {},
-        success: function (data) {
-            $("#area").html(data);
-        },
-        error: function () {
-            $("#area").html("<option value='0'>服务异常，请稍后刷新重试</option>");
-        }
-    });
-}
 AjaxBase.GetCityData = function () {
     var index = $("#area").find("option:selected").val();
     if (!$("#publish").data(index)) {
@@ -78,7 +64,7 @@ AjaxBase.BindAreaChange = function () {
 };
 $(document).ready(function () {
     //GetArea
-    AjaxBase.GetAreaData();
+    //AjaxBase.GetAreaData();
 
     AjaxBase.BindAreaChange();
 });

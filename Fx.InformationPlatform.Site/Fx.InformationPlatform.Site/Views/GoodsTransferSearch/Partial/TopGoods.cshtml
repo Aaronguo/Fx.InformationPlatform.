@@ -1,4 +1,5 @@
 ﻿@model List<Fx.Entity.FxGoods.GoodsTransferInfo>
+@using Fx.InformationPlatform.Site
 @foreach (var item in Model)
 {
     if (item.Pictures.Count > 0)
@@ -19,7 +20,7 @@
                     置顶推荐
                 </div>
             </div>
-            <div class="btm_descriptions">@item.PublishTitle</div>
+             <div class="btm_descriptions">@Helper.GetAreaName(item.AreaId) - @Helper.GetCityName(item.CityId)</div>
         </div>
         <div class="clear"></div>
     </div>
@@ -39,7 +40,7 @@
                     置顶推荐
                 </div>
             </div>
-            <div class="btm_descriptions">@item.PublishTitle</div>
+             <div class="btm_descriptions">@Helper.GetAreaName(item.AreaId) - @Helper.GetCityName(item.CityId)</div>
         </div>
         <div class="clear"></div>
     </div>

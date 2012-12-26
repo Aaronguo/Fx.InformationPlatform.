@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.SessionState;
 using Fx.Domain.Account.IService;
+using FxCacheService.FxSite;
 
 namespace Fx.InformationPlatform.Site
 {
@@ -74,6 +75,19 @@ namespace Fx.InformationPlatform.Site
                 session[key] = userExtend.NickName == null ? "" : userExtend.NickName;
             }
             return session[key];
+        }
+
+
+        public static string GetAreaName(int areaId)
+        {
+            SiteCache siteCache = System.Web.Mvc.DependencyResolver.Current.GetService<SiteCache>();
+            return siteCache.GetArea().Where(r => r.AreaId==areaId).First().AreaName;
+        }
+
+        public static string GetCityName(int cityId)
+        {
+            SiteCache siteCache = System.Web.Mvc.DependencyResolver.Current.GetService<SiteCache>();
+            return siteCache.GetCity().Where(r => r.CityId == cityId).First().CityName;
         }
     }
 }

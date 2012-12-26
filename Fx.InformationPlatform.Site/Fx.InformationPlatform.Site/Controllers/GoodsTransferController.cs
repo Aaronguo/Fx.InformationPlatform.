@@ -10,6 +10,7 @@ using Fx.Domain.FxSite.IService;
 using Fx.Entity;
 using Fx.Entity.FxGoods;
 using Fx.InformationPlatform.Site.ViewModel;
+using FxCacheService.FxSite;
 
 namespace Fx.InformationPlatform.Site.Controllers
 {
@@ -40,34 +41,55 @@ namespace Fx.InformationPlatform.Site.Controllers
 
         public ActionResult Electronics()
         {
-            BindCatagroy();
+            BindData();
             return View();
         }
 
         public ActionResult HomeSupplies()
         {
-            BindCatagroy();
+            BindData();
             return View();
         }
 
         public ActionResult Fashion()
         {
-            BindCatagroy();
+            BindData();
             return View();
         }
 
         public ActionResult CultureLife()
         {
-            BindCatagroy();
+            BindData();
             return View();
         }
 
         public ActionResult Other()
         {
-            BindCatagroy();
+            BindData();
             return View();
         }
 
+
+        private void BindData()
+        {
+            BindCatagroy();
+            BindArea();
+        }
+
+        private void BindArea()
+        {
+            var siteCache = System.Web.Mvc.DependencyResolver.Current.GetService<SiteCache>();
+            ViewData["carMileage"] = siteCache.GetAreaHtml();
+        }
+
+        private void BindCatagroy()
+        {
+            InitParas();
+            List<SelectListItem> details = new List<SelectListItem>();
+            details.Add(new SelectListItem() { Value = "0", Text = "--请选择物品类别--" });
+            goodsService.GetChannelTransferDetail(this.ControllerName, this.ActionName).ForEach(r => details.Add(new SelectListItem() { Text = r.ChannelListDetailName, Value = r.ChannelListDetailId.ToString() }));
+            ViewData["catagroy"] = details;
+        }
 
         [HttpPost]
         public ActionResult Electronics(TransferViewGoods goods,
@@ -223,14 +245,7 @@ namespace Fx.InformationPlatform.Site.Controllers
             return View(transferService.Get(Id));
         }
 
-        private void BindCatagroy()
-        {
-            InitParas();
-            List<SelectListItem> details = new List<SelectListItem>();
-            details.Add(new SelectListItem() { Value = "0", Text = "--请选择物品类别--" });
-            goodsService.GetChannelTransferDetail(this.ControllerName, this.ActionName).ForEach(r => details.Add(new SelectListItem() { Text = r.ChannelListDetailName, Value = r.ChannelListDetailId.ToString() }));
-            ViewData["catagroy"] = details;
-        }
+     
 
 
         public ActionResult Success()

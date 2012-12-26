@@ -1,6 +1,6 @@
 ﻿@model Fx.Entity.FxGoods.GoodsBuyInfo
 @{
-    ViewBag.Title = Model.PublishTitle + "|  我在英淘网http://yingtao.co.uk发布了一条二手求购信息";
+    ViewBag.Title = Model.PublishTitle + "二手求购信息";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -84,6 +84,8 @@
         <span class="right_btns_demo_set">
             <font class="saler_btns"><img src="@Fx.InformationPlatform.Site.AppSettings.ImageDomain("infodetail/Contact.png")" id="demoBtn1"></font>
             <font class="shares_wwkks">分享：
+            <input id="jiathistitle" type="hidden" 
+    value="亲们！！ 我刚刚在英淘网 http://www.yingtao.co.uk 发现了-（@Model.PublishTitle）- 哦，有兴趣的就转发一下吧！！ （来自@英淘网UK）"/>
             @Html.Partial("_JiaThis")
 		</font>
             <font><img src="@Fx.InformationPlatform.Site.AppSettings.ImageDomain("infodetail/Message.png")" id="jifa_alert_fras" onclick="show_al_fra()"></font>

@@ -37,7 +37,7 @@ namespace Fx.InformationPlatform.Site.ViewModel
         {
             get
             {
-                return cache.GetGoodsChannel();
+                return siteCache.GetGoodsChannel();
             }
         }
 

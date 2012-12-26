@@ -10,7 +10,7 @@ namespace Fx.Domain.FxSite
     /// <summary>
     /// 发布信息Ajax服务
     /// </summary>
-    public class PublishAjaxService : IPageAjax
+    public class SiteService : ISite
     {
         public List<Entity.FxSite.Area> GetAreas()
         {
@@ -42,6 +42,15 @@ namespace Fx.Domain.FxSite
             using (var content = new SiteContext())
             {
                 return content.Areas.Include(r => r.Cities).ToList();
+            }
+        }
+
+
+        public List<Entity.FxSite.City> GetCities()
+        {
+            using (var content = new SiteContext())
+            {
+                return content.Cities.ToList();
             }
         }
     }

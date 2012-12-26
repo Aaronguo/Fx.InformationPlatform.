@@ -10,6 +10,7 @@ using Fx.Domain.FxSite.IService;
 using Fx.Entity;
 using Fx.Entity.FxCar;
 using Fx.InformationPlatform.Site.ViewModel;
+using FxCacheService.FxSite;
 
 namespace Fx.InformationPlatform.Site.Controllers
 {
@@ -180,9 +181,16 @@ namespace Fx.InformationPlatform.Site.Controllers
         #region BindData
         private void BindData()
         {
+            BindArea();
             BindCatagroy();
             BindCarYear();
             BindCarMileage();
+        }
+
+        private void BindArea()
+        {
+            var siteCache = System.Web.Mvc.DependencyResolver.Current.GetService<SiteCache>();
+            ViewData["carMileage"] = siteCache.GetAreaHtml();
         }
 
         private void BindCarMileage()

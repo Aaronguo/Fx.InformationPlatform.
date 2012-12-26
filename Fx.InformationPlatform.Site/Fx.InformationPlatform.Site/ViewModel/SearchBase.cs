@@ -11,18 +11,17 @@ namespace Fx.InformationPlatform.Site.ViewModel
 {
     public class SearchBase
     {
-        protected SiteCache cache;
-
+        public SiteCache siteCache;
         public SearchBase()
         {
-            this.cache = System.Web.Mvc.DependencyResolver.Current.GetService<SiteCache>();
+            this.siteCache = System.Web.Mvc.DependencyResolver.Current.GetService<SiteCache>();            
         }
 
         public List<Fx.Entity.FxSite.Area> Areas
         {
             get
             {
-                return cache.GetArea();
+                return siteCache.GetArea();
             }
         }
 

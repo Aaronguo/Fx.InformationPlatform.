@@ -1,6 +1,6 @@
 ﻿@model Fx.Entity.FxGoods.GoodsBuyInfo
 @{
-    ViewBag.Title = Model.PublishTitle + "|  我在英淘网http://yingtao.co.uk发布了一条二手求购信息";
+    ViewBag.Title = Model.PublishTitle + "二手求购信息";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -52,6 +52,8 @@
         <span class="right_btns_demo_set">
             <font class="saler_btns"><img src="@Fx.InformationPlatform.Site.AppSettings.ImageDomain("infodetail/Contact.png")" id="demoBtn1"></font>
             <font class="shares_wwkks">分享：
+            <input id="jiathistitle" type="hidden" 
+    value="亲们！！ 我刚刚在英淘网 http://www.yingtao.co.uk 发现了-（@Model.PublishTitle）- 哦，有兴趣的就转发一下吧！！ （来自@英淘网UK）"/>
             @Html.Partial("_JiaThis")
 		</font>
             <font><img src="@Fx.InformationPlatform.Site.AppSettings.ImageDomain("infodetail/Message.png")" id="jifa_alert_fras" onclick="show_al_fra()"></font>
@@ -85,6 +87,7 @@
 <input id="infoid" type="hidden" value="@Model.GoodsBuyInfoId" />
 <input id="channelCatagroy" type="hidden"  value="@((int)Fx.Entity.ChannelCatagroy.FxGoodsBuy)"/>
 <input id="email" type="hidden"  value="@Model.PublishUserEmail"/>
+
 
 <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js?uid=1353938214106494" charset="utf-8"></script>
 <script type="text/javascript" src="@Fx.InformationPlatform.Site.AppSettings.JavaScriptDomain("easydialog.min.js")"></script>
